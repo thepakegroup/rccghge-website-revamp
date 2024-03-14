@@ -4,6 +4,7 @@ import "./globals.css";
 import { ReduxProvider } from "@/redux/provider";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
+import Hero from "@/components/layout/Hero";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -28,12 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
-      <head>
-        <link rel="icon" href="logo.png" sizes="any" />
-      </head>
       <body suppressHydrationWarning className="font-quicksand">
         <ReduxProvider>
           <NavBar />
+          <Hero/>
           {children}
           <Footer />
         </ReduxProvider>

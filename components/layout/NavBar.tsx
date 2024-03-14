@@ -53,7 +53,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavBar() {
   return (
-    <nav className="">
+    <nav className=" sticky top-0 z-20 bg-white">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -69,7 +69,7 @@ export default function NavBar() {
 const MobileNav = () => {
   return (
     <div className="flex justify-between items-center px-6 py-4">
-      <Logo className="w-[30%] h-auto "/>
+      <Logo className="w-[30%] max-w-28  h-auto "/>
       <FaBars className="text-[28px]" />
     </div>
   );
