@@ -76,7 +76,7 @@
   }
 
   h1,h2 {
-    @apply font-playfair;
+    @apply font-playfair  ;
   }
 }
 
@@ -86,5 +86,8 @@
   }
   .wrapper {
     @apply container mx-auto px-6 lg:px-12 ;
+  }
+  .card{
+    @apply w-60 relative h-72 border-2  rounded-lg;
   }
 }
