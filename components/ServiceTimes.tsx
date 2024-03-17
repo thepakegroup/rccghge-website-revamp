@@ -6,7 +6,7 @@ import TitleBorderTop from "./TitleBorderTop";
 
 export default function ServiceTimes() {
   return (
-    <div className="flex items-center my-10  lg:gap-8 ">
+    <div className="flex items-center my-10 wrapper  lg:gap-8 ">
       <div className="hidden lg:w-2/5 lg:h-[380px] relative  lg:block">
         <ImageFill src="/images/service-component-img.png" className="" />
       </div>

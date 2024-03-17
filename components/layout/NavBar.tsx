@@ -6,12 +6,22 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import Link from "next/link";
-import { FaBars } from "react-icons/fa6";
-
+import { FaBars, FaChevronDown } from "react-icons/fa6";
+import {
+  AnimatePresence,
+  m,
+  slideInVariant,
+} from "@/lib/framer-motion/motionComponents";
 import { navLinks } from "@/app/data";
 import useIsActiveLink from "@/lib/hooks/useIsActiveLink";
 import { usePathname } from "next/navigation";
 import Logo from "../Logo";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../ui/collapsible";
+import React, { useState } from "react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -58,19 +68,82 @@ export default function NavBar() {
         <MobileNav />
       </div>
       <div className="hidden lg:block">
-
-      <LgNav />
+        <LgNav />
       </div>
-
     </nav>
   );
 }
 
 const MobileNav = () => {
+  const isActiveLink = useIsActiveLink();
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="flex justify-between items-center px-6 py-4">
-      <Logo className="w-[30%] max-w-28  h-auto "/>
-      <FaBars className="text-[28px]" />
+    <div className="flex justify-between items-center px-6 py-4 relative">
+      <Link href={"/"} className="w-[28%] max-w-28  h-auto ">
+        <Logo className="" />
+      </Link>
+      <FaBars
+        className="text-[28px] cursor-pointer active:scale-90"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+      {/* mobile menu */}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <m.div
+            initial={{ x: 300, scaleX: 0 }}
+            animate={{ x: 0, scaleX: 1 }}
+            exit={{ x: 300, scaleX: 0 }}
+            transition={{ duration: 0.5 }}
+            onMouseLeave={() => setIsOpen(false)}
+            className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  gap-10 font-medium  absolute bg-white top-16 right-0 h-screen  py-8 sm:py-10 px-4`}>
+            {navLinks.map((link) => {
+              //if home page display logo
+              if (link.url === "/") {
+                return <React.Fragment key={link.name}></React.Fragment>;
+              }
+
+              //if the navlink has a subUrls property, display a dropdown
+              if (link.subUrls) {
+                const subUrls = link.subUrls;
+
+                return (
+                  <Collapsible key={link.name}>
+                    <CollapsibleTrigger
+                      className={`cursor-pointer hover:border-b-2   underline-offset-8 border-primary flex items-center gap-5 ${pathname.startsWith(link.url) && "border-b-2 "}  `}>
+                      <>{link.name}</>
+                      <FaChevronDown />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className={`py-2 space-y-2 `}>
+                      {subUrls.map((subLink) => (
+                        <Link
+                          key={subLink.name}
+                          href={`${link.url}${subLink.url}`}
+                          className={`
+                      block hover:border-b-2 border-primary h-8 whitespace-nowrap
+                     ${isActiveLink(subLink.url) && "border-b-2 border-primary"}
+                    `}>
+                          {subLink.name}
+                        </Link>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+                );
+              }
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.url}
+                  className={`hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>
+                  {link.name}
+                </Link>
+              );
+            })}
+          </m.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -94,7 +167,7 @@ const LgNav = () => {
           const subUrls = link.subUrls;
 
           return (
-            <HoverCard key={link.name}>
+            <HoverCard key={link.name} openDelay={10}>
               <HoverCardTrigger
                 className={`cursor-pointer hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}  `}>
                 {link.name}

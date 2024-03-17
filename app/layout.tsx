@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
-import { Quicksand, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import { ReduxProvider } from "@/redux/provider";
-import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
+import NavBar from "@/components/layout/NavBar";
+import { ReduxProvider } from "@/redux/provider";
+import type { Metadata } from "next";
+import { Playfair_Display, Quicksand } from "next/font/google";
+import "./globals.css";
+import FramerMotion from "@/lib/framer-motion/LazyMotion";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -29,14 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
-      <body suppressHydrationWarning className="font-quicksand">
-        <ReduxProvider>
-          <NavBar />
-          <Hero/>
-          {children}
-          <Footer />
-        </ReduxProvider>
-      </body>
+      <FramerMotion>
+        <body suppressHydrationWarning className="font-quicksand overflow-x-hidden">
+          <ReduxProvider>
+            <NavBar />
+            <Hero />
+            {children}
+            <Footer />
+          </ReduxProvider>
+        </body>
+      </FramerMotion>
     </html>
   );
 }

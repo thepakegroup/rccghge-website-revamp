@@ -20,9 +20,9 @@ export default function Home() {
         <div className="line blueGradient w-full h-0.5"></div>
       </div>
       {/* service time component */}
-      <div className="wrapper mb-14 lg:mb-20">
-        <ServiceTimes />
-      </div>
+
+      <ServiceTimes />
+
       {/* events block */}
       <div className=" mb-14 lg:mb-20">
         <EventsBlock />
@@ -88,9 +88,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <GetConnected />
-      <PrayerRequestForm/>
-
+      <div className=" mb-14 lg:mb-20">
+        <GetConnected />
+      </div>
+      <div className=" mb-14 lg:mb-20">
+        <PrayerRequestForm />
+      </div>
     </main>
   );
 }
