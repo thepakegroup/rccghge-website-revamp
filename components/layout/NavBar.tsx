@@ -63,7 +63,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavBar() {
   return (
-    <nav className=" sticky top-0 z-20 bg-white">
+    <nav className=" sticky top-0 z-20 bg-white text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -151,7 +151,7 @@ const LgNav = () => {
   const isActiveLink = useIsActiveLink();
   const pathname = usePathname();
   return (
-    <div className="flex w-full justify-center items-center gap-10 font-medium md:gap-20">
+    <div className="flex w-full justify-center items-center gap-10 font-medium lg:gap-20">
       {navLinks.map((link) => {
         //if home page display logo
         if (link.url === "/") {

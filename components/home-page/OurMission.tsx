@@ -15,14 +15,14 @@ export default function OurMission() {
         <TitleBorderTop title="Our Mission & Vision" />
         {/*content  */}
         <div className="mission space-y-2">
-          <h1 className="text-xl capitalize md:text-2xl font-bold ">Our Mission</h1>
+          <h1 className="text-xl capitalize sm:text-2xl font-bold ">Our Mission</h1>
           <p className="desc ">
             To prepare families and individuals, for the second coming of our
             Lord and Savior Jesus Christ.
           </p>
         </div>
         <div className="vision space-y-2">
-          <h1 className="text-xl capitalize md:text-2xl font-bold ">Our Vision</h1>
+          <h1 className="text-xl capitalize sm:text-2xl font-bold ">Our Vision</h1>
           <p className="desc ">
             To create an atmosphere of true worship, that will bring down the
             glory of God in the midst of His people.

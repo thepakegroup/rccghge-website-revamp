@@ -58,7 +58,7 @@ export default function Home() {
         {/* text section */}
         <div className="flex flex-col gap-6">
           <div className="text container space-y-4 lg:space-y-6">
-            <h1 className="font-bold text-xl md:text-2xl text-center ">
+            <h1 className="font-bold text-xl sm:text-2xl text-center ">
               {" "}
               Download The RCCGHE App
             </h1>

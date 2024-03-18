@@ -76,7 +76,7 @@
   }
 
   h1,h2 {
-    @apply font-playfair  ;
+    @apply font-playfair font-bold ;
   }
 }
 
