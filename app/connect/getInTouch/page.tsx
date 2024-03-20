@@ -1,15 +1,10 @@
+"use client";
 import GetConnected from "@/components/home-page/GetConnected";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Link } from "lucide-react";
-import React from "react";
+import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { CollapsibleContent } from "@radix-ui/react-collapsible";
+import Link from "next/link";
+
+import { FaChevronDown } from "react-icons/fa6";
 
 export default function page() {
   return (
@@ -22,36 +17,30 @@ export default function page() {
           <p className=" md:text-lg">
             We’re glad you’re here! How may we serve you?
           </p>
-          <Select>
-            <SelectTrigger className="max-w-[350px] text-base md:text-lg">
-              <SelectValue placeholder="Connect With Us" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem
-                  className="text-base md:text-lg"
-                  value="I am new here and I want to connect">
-                  <Link href="/connect/getInTouch/new">
-                    I am new here and I want to connect
-                  </Link>
-                </SelectItem>
-                <SelectItem
-                  className="text-base md:text-lg"
-                  value="I have a question or comment">
-                  <Link href="/connect/getInTouch/question">
-                  I have a question or comment
-                  </Link>
-                </SelectItem>
-                <SelectItem
-                  className="text-base md:text-lg"
-                  value="Sign me up for the monthly new letter">
-                  <Link href="/connect/getInTouch/newsletter">
-                  Sign me up for the monthly new letter
-                  </Link>
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <Collapsible className="w-full">
+            <CollapsibleTrigger className=" w-full md:text-lg flex items-center gap-20 justify-center bg-white border rounded p-2 ">
+              Connect With Us <FaChevronDown />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="flex flex-col gap-3 p-2">
+              <Link
+                className="bg-white hover:bg-primary/10 active:scale-90 border rounded p-2"
+                href="/connect/getInTouch/connect">
+                I am new here and I want to connect
+              </Link>
+
+              <Link
+                className="bg-white hover:bg-primary/10 active:scale-90 border rounded p-2"
+                href="/connect/getInTouch/question">
+                I have a question or comment
+              </Link>
+
+              <Link
+                className="bg-white hover:bg-primary/10 active:scale-90 border rounded p-2"
+                href="/connect/getInTouch/newsletter">
+                Sign me up for the monthly new letter
+              </Link>
+            </CollapsibleContent>
+          </Collapsible>
         </div>
       </div>
       <GetConnected />

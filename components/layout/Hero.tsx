@@ -65,10 +65,26 @@ export default function Hero() {
         desc="Have something troubling you? let us know, you are in our prayers."
       />
     );
-  } else if (pathname.endsWith("/new")) {
-    src = "/images/hero-images/new-img.png";
+  } else if (pathname.endsWith("/connect/needARide")) {
+    src = "/images/hero-images/need-a-ride-img.png";
     content = (
       <HeroContent title="Need A Ride?" desc="You are in safe hands." />
+    );   
+  }else if (pathname.startsWith("/connect/getInTouch")) {
+    src = "/images/hero-images/our-beliefs-img.png";
+    content = (
+      <HeroContent
+        title="Get In Touch"
+        desc="We would be thrilled to hear from you."
+      />
+    );
+  } else if (pathname.startsWith("/ourMinistries/")) {
+    src = "/images/hero-images/our-ministries-img.png";
+    content = (
+      <HeroContent
+        title="Our Ministries"
+        desc="Join One or Two of our groups, let the Lord use you in mighty ways. We Would be honored so have you."
+      />
     );
   } else {
     console.log("not found");

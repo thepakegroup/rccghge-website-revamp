@@ -37,7 +37,7 @@ const formSchema = z.object({
 });
 
 export default function PrayerRequestForm() {
-  const defaultValues = {
+  const defaultValues: z.infer<typeof formSchema> = {
     name: "",
     phoneNo: "",
     request: "",
