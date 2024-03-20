@@ -171,8 +171,8 @@ const Connect = () => {
       <div className="space-y-5">
         <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
         <p className="  md:text-lg">
-          New here? You've come to the right place. Please fill out the form
-          below and we will be in touch soon!
+          New here? You&apos;ve come to the right place. Please fill out the
+          form below and we will be in touch soon!
         </p>
       </div>
       <Form {...form}>
@@ -585,8 +585,8 @@ const Question = () => {
       <div className="space-y-5 pb-10 text-center">
         <h1 className="text-xl md:text-2xl">Have questions or comments?</h1>
         <p className="  md:text-lg">
-          New here? You've come to the right place. Please fill out the form
-          below and we will be in touch soon!
+          New here? You&apos;ve come to the right place. Please fill out the
+          form below and we will be in touch soon!
         </p>
       </div>
       <Form {...form}>
@@ -750,7 +750,7 @@ const Newsletter = () => {
                     className="md:text-lg"
                     type="email"
                     {...field}
-                    className="md:text-lg"
+                    
                   />
                 </FormControl>
                 <FormMessage />
