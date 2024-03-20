@@ -6,10 +6,10 @@ import Link from "next/link";
 
 export default function GetConnected() {
   return (
-    <div className="space-y-5 sm:space-y-12">
-      <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 sm:h-20 w-[280px] sm:text-3xl lg:w-[500px] relative">
+    <div className="space-y-5 md:space-y-12 py-12 md:py-24">
+      <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl lg:w-[500px] relative">
         Get Connected
-        <FaCaretLeft className="absolute  -right-12 sm:text-[9rem] text-9xl" />
+        <FaCaretLeft className="absolute  -right-12 md:text-[9rem] text-9xl" />
       </h1>
       <ScrollArea className="w-full">
         <div className="social-card-container  w-full gap-5 flex items-center px-6">

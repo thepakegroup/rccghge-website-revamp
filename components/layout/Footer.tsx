@@ -4,9 +4,9 @@ import { Button } from "../ui/button";
 
 export default function Footer() {
   return (
-    <div className="wrapper py-5 bg-black text-white flex flex-col  lg:flex-row  text-sm gap-8">
+    <div className=" wrapper py-5 md:py-20 bg-black text-white flex flex-col  lg:flex-row  text-sm gap-8">
       {/* contact address and logo */}
-      <div className="flex flex-col w-full gap-10">
+      <div className=" flex flex-col w-full gap-10">
         <div className="contact w-full flex flex-col gap-6">
           <div className=" logo flex items-center justify-center bg-white p-2 w-fit gap-4 rounded-lg">
             <Logo className="w-[40%] " />
@@ -23,7 +23,7 @@ export default function Footer() {
         {/* email input */}
         <div className="hidden flex-col self-start lg:flex gap-2  ">
           <p className="capitalize">receive our sermons in your mail</p>
-          <div className="input flex border-2 border-white rounded-lg  ">
+          <div className="input flex border border-white rounded-lg  ">
             <input
               placeholder="Enter Email Address"
               className="bg-transparent w-[200px] p-2 "
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
       </div>
       {/* calendar */}
-      <div className="calendar w-full ">
+      <div className="calendar  w-full ">
         <p className="bold underline underline-offset-4 decoration-primary decoration-2 mb-4 text-lg">
           Calendar
         </p>
@@ -61,7 +61,7 @@ export default function Footer() {
         </ul>
       </div>
       {/* service times */}
-      <div className="service-time w-full ">
+      <div className="service-time  w-full ">
         <p className="bold underline underline-offset-4 decoration-primary decoration-2 mb-4 text-lg">
           Service Times - Online
         </p>
@@ -89,9 +89,9 @@ export default function Footer() {
         </ul>
       </div>
       {/* email input */}
-      <div className="flex flex-col self-start lg:hidden gap-2  ">
+      <div className="flex flex-col  w-fit justify-self-start self-start lg:hidden gap-2    ">
         <p className="capitalize">receive our sermons in your mail</p>
-        <div className="input flex border-2 border-white rounded-lg  ">
+        <div className="input flex border p-px border-white rounded-lg  ">
           <input
             placeholder="Enter Email Address"
             className="bg-transparent w-[200px] p-2 "
@@ -99,7 +99,7 @@ export default function Footer() {
             name="email"
             id="email"
           />
-          <Button className=" rounded-l-none ">Send</Button>
+          <Button className=" rounded-l-none  ">Send</Button>
         </div>
         <small>Copyright RCCG: Heaven&apos;s Glorious Embassy</small>
       </div>

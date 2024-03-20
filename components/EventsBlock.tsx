@@ -5,51 +5,51 @@ import { FaCalendar } from "react-icons/fa6";
 
 export default function EventsBlock() {
   return (
-    <div className=" flex flex-col items-center lg:flex-row">
-      <div className="h-10 wrapper py-10 w-full lg:h-60 lg:w-80 lg:text-center lg:gap-2 lg:pt-16 lg:flex-col flex gap-5 items-center blueGradient text-white relative">
-        <FaCalendar className="text-2xl" />
-        <h1 className="text-2xl  capitalize">Our Upcoming Events</h1>
-        <FaCaretRight className="hidden lg:block absolute top-24  text-5xl -right-[28px] text-[#4372b9]" />
-        <FaCaretDown className=" sm:hidden absolute -bottom-7 left-40 text-5xl text-[#2b4a83]" />
+    <div className=" flex flex-col items-center lg:flex-row py-12 md:py-24">
+      <div className="h-10 wrapper  w-full lg:h-72 lg:w-2/5 lg:max-w-80 lg:text-center lg:gap-2 lg:pt-16 lg:flex-col flex gap-5 items-center blueGradient py-8 text-white relative">
+        <FaCalendar className="text-2xl md:text-3xl " />
+        <h1 className="text-2xl md:text-3xl  capitalize">
+          Our Upcoming Events
+        </h1>
+        <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] text-[#4372b9]" />
+        <FaCaretDown className=" md:hidden absolute -bottom-7 left-40 text-5xl text-[#2b4a83]" />
       </div>
       {/* events */}
       <Link href={"/events"}>
-        <div className="flex w-full bg-primary/5 items-center lg:h-60 lg:divide-x lg:py-5">
-          <div className="h-60 w-1/2  flex flex-col gap-1 lg:gap-4 pt-8 lg:pt-10  px-4 ">
-            <h1 className="title text-lg sm:text-xl lg:tracking-wide font-semibold  ">
+        <div className="flex wrapper w-full justify-center gap-2 bg-primary/5 items-center lg:h-72 lg:divide-x lg:py-5">
+          <div className=" flex w-1/2  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   ">
+            <h1 className="title text-lg md:text-xl lg:tracking-wide font-semibold  ">
               Community Outreach Program
             </h1>
-            <p className="desc text-sm sm:text-base">
+            <p className="desc text-sm md:text-lg">
               Join us as we reach out to the local community and make a positive
               impact.
             </p>
-            <p className="date lg:p-2 text-sm sm:text-base blueGradient text-white p-1 rounded">
+            <p className="date lg:p-2 mt-2 text-sm md:text-lg blueGradient text-white p-1 rounded">
               Saturday, Oct 30th
             </p>
           </div>
-
-          <div className="h-60 w-1/2  flex flex-col gap-1 lg:gap-4 pt-8 lg:pt-10  px-4 ">
-            <h1 className="title text-lg sm:text-xl lg:tracking-wide font-semibold  ">
+          <div className=" flex w-1/2  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   ">
+            <h1 className="title text-lg md:text-xl lg:tracking-wide font-semibold  ">
               Community Outreach Program
             </h1>
-            <p className="desc text-sm sm:text-base">
+            <p className="desc text-sm md:text-lg">
               Join us as we reach out to the local community and make a positive
               impact.
             </p>
-            <p className="date lg:p-2 text-sm sm:text-base blueGradient text-white p-1 rounded">
+            <p className="date lg:p-2 mt-2 text-sm md:text-lg blueGradient text-white p-1 rounded">
               Saturday, Oct 30th
             </p>
           </div>
-
-          <div className="hidden lg:flex h-60 w-1/2   flex-col gap-1 lg:gap-4 pt-8 lg:pt-10  px-4 ">
-            <h1 className="title text-lg sm:text-xl lg:tracking-wide font-semibold  ">
+          <div className=" hidden xl:flex w-1/2  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   ">
+            <h1 className="title text-lg md:text-xl lg:tracking-wide font-semibold  ">
               Community Outreach Program
             </h1>
-            <p className="desc text-sm sm:text-base">
+            <p className="desc text-sm md:text-lg">
               Join us as we reach out to the local community and make a positive
               impact.
             </p>
-            <p className="date lg:p-2 text-sm sm:text-base blueGradient text-white p-1 rounded">
+            <p className="date lg:p-2 mt-2 text-sm md:text-lg blueGradient text-white p-1 rounded">
               Saturday, Oct 30th
             </p>
           </div>

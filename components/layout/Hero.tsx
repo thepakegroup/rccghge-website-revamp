@@ -1,12 +1,10 @@
 // a reuseable hero component,
 // contains image,title, desc?
 "use client";
-import React from "react";
-import { Button } from "../ui/button";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ImageFill from "@/lib/components/ImageFill";
+import { Button } from "../ui/button";
 export default function Hero() {
   let content = <Home />;
   const pathname = usePathname();
@@ -31,12 +29,15 @@ export default function Hero() {
   } else if (pathname.endsWith("/about/ourStory")) {
     src = "/images/hero-images/our-story-img.png";
     content = <HeroContent title="Our Story" />;
-  } else if (
-    pathname.endsWith("/about/ourBeliefs") ||
-    pathname.endsWith("/about/rccgWorldwide")
-  ) {
+  } else if (pathname.endsWith("/about/ourBeliefs")) {
     src = "/images/hero-images/our-beliefs-img.png";
     content = <HeroContent title="Our Beliefs" desc="What we believe in" />;
+  } else if (pathname.endsWith("/about/rccgWorldwide")) {
+    src = "/images/hero-images/our-beliefs-img.png";
+
+    content = (
+      <HeroContent title="RCCG Worldwide" desc="65 Years since founding" />
+    );
   } else if (pathname.endsWith("/new")) {
     src = "/images/hero-images/new-img.png";
     content = (
@@ -45,12 +46,36 @@ export default function Hero() {
         desc="Here are ways you can give to the church."
       />
     );
+  } else if (pathname.endsWith("/service")) {
+    src = "/images/hero-images/service-img.png";
+    content = <HeroContent title="Service Times" />;
+  } else if (pathname.endsWith("/give")) {
+    src = "/images/hero-images/service-img.png";
+    content = (
+      <HeroContent
+        title="Give"
+        desc="Here are ways you can give to the church."
+      />
+    );
+  } else if (pathname.endsWith("/connect/prayerRequests")) {
+    src = "/images/hero-images/prayer-request-img.png";
+    content = (
+      <HeroContent
+        title="Prayer Request"
+        desc="Have something troubling you? let us know, you are in our prayers."
+      />
+    );
+  } else if (pathname.endsWith("/new")) {
+    src = "/images/hero-images/new-img.png";
+    content = (
+      <HeroContent title="Need A Ride?" desc="You are in safe hands." />
+    );
   } else {
     console.log("not found");
   }
 
   return (
-    <div className="h-[400px] md:h-[500px] lg:h-[560px]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
+    <div className="h-[400px]  md:h-[560px]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
       <Image
         src={src}
         alt="hero image"
@@ -59,7 +84,7 @@ export default function Hero() {
         quality={100}
         className=" object-cover object-center "
       />
-      <div className="z-10 space-y-4 max-w-[600px]">{content}</div>
+      <div className="z-10 space-y-4 max-w-[800px]">{content}</div>
     </div>
   );
 }
@@ -67,7 +92,7 @@ export default function Hero() {
 const Home = () => {
   return (
     <>
-      <h1 className="title  text-3xl lg:text-4xl !leading-relaxed  ">
+      <h1 className="title  text-3xl md:text-4xl lg:text-5xl !leading-relaxed  ">
         Welcome To Heavens Glorious Embassy, In His Presence Through Worship
       </h1>
       <div className="desc">
@@ -81,10 +106,10 @@ const Home = () => {
 const HeroContent = ({ title, desc }: { title: string; desc?: string }) => {
   return (
     <>
-      <h1 className="title  text-3xl lg:text-4xl !leading-relaxed  capitalize ">
+      <h1 className="title   text-3xl md:text-4xl lg:text-5xl !leading-relaxed  capitalize ">
         {title}
       </h1>
-      <div className="desc sm:text-lg text-[15px] px-5">{desc}</div>
+      <div className="desc lg:text-lg text-[15px] px-5">{desc}</div>
     </>
   );
 };

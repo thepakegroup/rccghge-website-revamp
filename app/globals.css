@@ -83,9 +83,10 @@
 @layer components {
   .blueGradient {
     background: linear-gradient(90deg, #12234e 0%, #4473ba 100%);
+    color: white;
   }
   .wrapper {
-    @apply container mx-auto px-6 lg:px-12 ;
+    @apply container mx-auto px-6 md:px-12 ;
   }
   .card{
     @apply w-60 relative h-72 border-2  rounded-lg;

@@ -1,9 +1,9 @@
+import { Playfair_Display, Quicksand } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
 import NavBar from "@/components/layout/NavBar";
 import { ReduxProvider } from "@/redux/provider";
 import type { Metadata } from "next";
-import { Playfair_Display, Quicksand } from "next/font/google";
 import "./globals.css";
 import FramerMotion from "@/lib/framer-motion/LazyMotion";
 
