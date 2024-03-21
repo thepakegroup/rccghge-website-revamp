@@ -24,9 +24,10 @@ export default function GetConnected() {
                   </small>
                 </div>
               </div>
-              <Button asChild className="bg-transparent text-primary">
-                <Link href={"#"}>View profile</Link>
-              </Button>
+
+              <Link className="bg-transparent text-primary text-sm" href={"#"}>
+                View profile
+              </Link>
             </div>
             {/* card image */}
             <div className="card-img relative h-1/2 ">
@@ -52,9 +53,10 @@ export default function GetConnected() {
                   </small>
                 </div>
               </div>
-              <Button asChild className="bg-transparent text-primary">
-                <Link href={"#"}>View profile</Link>
-              </Button>
+
+              <Link className="bg-transparent text-primary text-sm" href={"#"}>
+                View profile
+              </Link>
             </div>
             {/* card image */}
             <div className="card-img relative h-1/2 ">

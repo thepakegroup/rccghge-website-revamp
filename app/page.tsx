@@ -6,9 +6,7 @@ import GiveCTA from "@/components/home-page/GiveCTA";
 import OurMinistries from "@/components/home-page/OurMinistries";
 import OurMission from "@/components/home-page/OurMission";
 import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (

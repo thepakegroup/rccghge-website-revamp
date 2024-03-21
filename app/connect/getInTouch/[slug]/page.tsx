@@ -57,7 +57,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       notFound();
       break;
   }
-  return <div className="w-full flex justify-center">{page}</div>;
+  return <div className="w-full flex justify-center page-spacing">{page}</div>;
 }
 
 const Connect = () => {
@@ -128,7 +128,11 @@ const Connect = () => {
       .refine((value) => value.some((item) => item), {
         message: "You have to select at least one item.",
       }),
-    signMeUpFor: z.enum(["single", "married"]),
+    signMeUpFor: z
+      .array(z.string())
+      .refine((value) => value.some((item) => item), {
+        message: "You have to select at least one item.",
+      }),
     request: z
       .string()
       .min(10, {
@@ -148,8 +152,8 @@ const Connect = () => {
     marriageStatus: "single",
     isOnline: "in-person",
     impression: "",
-    contactMeAbout: [""],
-    signMeUpFor: "single",
+    contactMeAbout: [],
+    signMeUpFor: [],
     request: "",
   };
   // 1. Define your form.
@@ -167,7 +171,7 @@ const Connect = () => {
   }
 
   return (
-    <div className="space-y-5 py-12 md:py-20  md:space-y-14 lg:max-w-3xl bg-white  w-full wrapper  rounded-lg ">
+    <div className="space-y-5  md:space-y-10   lg:max-w-3xl bg-white  w-full wrapper  rounded-lg ">
       <div className="space-y-5">
         <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
         <p className="  md:text-lg">
@@ -469,7 +473,7 @@ const Connect = () => {
                       <FormField
                         key={item.id}
                         control={form.control}
-                        name="contactMeAbout"
+                        name="signMeUpFor"
                         render={({ field }) => {
                           return (
                             <FormItem
@@ -522,14 +526,14 @@ const Connect = () => {
             )}
           />
           <div className="btn-container flex items-center gap-5">
-            <Button size="lg" className=" w-3/12 md:text-lg">
+            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg ">
               Submit
             </Button>
             <Button
               asChild
               size="lg"
               variant={"outline"}
-              className=" w-3/12 md:text-lg border-black">
+              className=" active:scale-90 w-3/12 md:text-lg border-black">
               <Link href={"/connect/getInTouch/"}>Cancel</Link>
             </Button>
           </div>
@@ -581,8 +585,8 @@ const Question = () => {
   }
 
   return (
-    <div className="py-12 md:py-20 lg:max-w-3xl wrapper  items-center w-full">
-      <div className="space-y-5 pb-10 text-center">
+    <div className="  lg:max-w-3xl wrapper  items-center w-full">
+      <div className=" space-y-5  md:space-y-8 pb-10 text-center">
         <h1 className="text-xl md:text-2xl">Have questions or comments?</h1>
         <p className="  md:text-lg">
           New here? You&apos;ve come to the right place. Please fill out the
@@ -650,7 +654,7 @@ const Question = () => {
             )}
           />
           <div className="btn-container flex items-center gap-5">
-            <Button size="lg" className=" w-3/12 md:text-lg">
+            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg">
               Submit
             </Button>
             <Button
@@ -698,8 +702,8 @@ const Newsletter = () => {
     // form.reset();
   }
   return (
-    <div className="py-12 md:py-20 lg:max-w-3xl wrapper  items-center w-full">
-      <div className="space-y-5 pb-10 text-center">
+    <div className=" lg:max-w-3xl wrapper  items-center w-full">
+      <div className=" space-y-5  md:space-y-8 pb-10 text-center">
         <h1 className="text-xl md:text-2xl">Monthly Newsletter</h1>
         <p className="  md:text-lg">
           Interested in receiving our newsletter? Please fill out the form below
@@ -746,12 +750,7 @@ const Newsletter = () => {
                   Email Address: <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    className="md:text-lg"
-                    type="email"
-                    {...field}
-                    
-                  />
+                  <Input className="md:text-lg" type="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -759,7 +758,7 @@ const Newsletter = () => {
           />
 
           <div className="btn-container flex items-center gap-5">
-            <Button size="lg" className=" w-3/12 md:text-lg">
+            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg">
               Submit
             </Button>
             <Button

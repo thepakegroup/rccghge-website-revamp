@@ -8,7 +8,7 @@ import { FaChevronDown } from "react-icons/fa6";
 
 export default function page() {
   return (
-    <div className="pt-12 md:pt-24">
+    <div className="page-spacing">
       <div className="flex items-center justify-center">
         <div className="bg-primary/5 p-5 md:p-12 flex flex-col justify-center items-center gap-3 text-center  ">
           <h1 className="text-xl md:text-2xl">

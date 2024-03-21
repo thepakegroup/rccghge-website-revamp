@@ -26,7 +26,7 @@ const serviceTimes = [
 ];
 export default function page() {
   return (
-    <div className="space-y-10 ppy-12 md:py-20 ">
+    <div className="space-y-10 py-12 md:py-20 ">
       {serviceTimes.map((service, i) => {
         return (
           <div
