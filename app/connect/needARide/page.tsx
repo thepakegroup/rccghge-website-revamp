@@ -75,7 +75,7 @@ export default function Page() {
   }
   return (
     <div className=" page-spacing ">
-      <div className="space-y-5  md:space-y-14 lg:max-w-3xl bg-white  w-full wrapper  rounded-lg ">
+      <div className="space-y-5 md:space-y-14 lg:max-w-3xl bg-white w-full wrapper rounded-lg ">
         <div className="space-y-5">
           <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
           <p className="font-semibold text-sm md:text-base">
