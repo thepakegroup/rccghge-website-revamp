@@ -26,18 +26,18 @@ const serviceTimes = [
 ];
 export default function page() {
   return (
-    <div className="space-y-5 py-10">
+    <div className="space-y-10 ppy-12 md:py-20 ">
       {serviceTimes.map((service, i) => {
         return (
           <div
             key={i}
-            className="bg-primary/5 wrapper py-5 sm:py-8 flex flex-col items-center justify-center lg:flex-row gap-5">
+            className="bg-primary/5 wrapper py-5 sm:py-8 flex flex-col items-center justify-center lg:flex-row gap-5 md:gap-10">
             {/* image */}
-            <div className="w-full h-56   relative">
+            <div className="w-full h-56 md:h-80   relative">
               <ImageFill src={service.src} />
             </div>
             {/* text content */}
-            <div className="space-y-3">
+            <div className="space-y-5 md:space-y-8 md:text-lg">
               <TitleBorderTop title={service.title} />
               <p>{service.desc}</p>
               <div className="flex items-center gap-3">
