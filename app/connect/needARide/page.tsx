@@ -74,8 +74,8 @@ export default function Page() {
     form.reset();
   }
   return (
-    <div className="  ">
-      <div className="space-y-5 py-12 md:py-20  md:space-y-14 lg:max-w-3xl bg-white  w-full wrapper  rounded-lg ">
+    <div className=" page-spacing ">
+      <div className="space-y-5  md:space-y-14 lg:max-w-3xl bg-white  w-full wrapper  rounded-lg ">
         <div className="space-y-5">
           <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
           <p className="font-semibold text-sm md:text-base">

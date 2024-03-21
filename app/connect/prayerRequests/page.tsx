@@ -53,8 +53,8 @@ export default function Page() {
     form.reset();
   }
   return (
-    <div className="  ">
-      <div className="space-y-5 pt-12 md:pt-20  md:space-y-14 lg:max-w-3xl bg-white z-10 w-full wrapper  rounded-lg ">
+    <div className=" page-spacing ">
+      <div className="space-y-5   md:space-y-14 lg:max-w-3xl bg-white z-10 w-full wrapper  rounded-lg ">
         <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
