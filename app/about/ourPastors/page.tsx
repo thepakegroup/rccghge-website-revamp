@@ -7,7 +7,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function OurPastors() {
   return (
-    <div className=" space-y-12  py-8 text-center">
+    <div className=" space-y-14 md:space-y-20  py-12 md:py-20 text-center">
       {/* lead pastor */}
       <div className=" space-y-2 lg:flex lg:flex-row-reverse lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
         {/* image section */}
@@ -17,7 +17,7 @@ export default function OurPastors() {
           </div>
           <div className="image-container relative max-w-sm py-8 lg:py-0 flex items-center justify-center ">
             {/* image */}
-            <div className=" w-80 h-64   relative aspect-square">
+            <div className=" w-80 h-64 md:h-80   relative aspect-square">
               {/* orange box */}
               <div className="box bg-primary rounded-lg absolute -top-2 sm: -left-2 w-52 h-1/2 aspect-square"></div>
 
@@ -37,7 +37,7 @@ export default function OurPastors() {
           </h1>
         </div>
         {/* text-section */}
-        <div className="space-y-2 lg:text-left lg:w-3/5">
+        <div className="space-y-2 md:space-y-5  lg:text-left lg:w-3/5">
           <div className="hidden lg:block">
             <TitleBorderTop title="Our Lead Pastor" />
           </div>
@@ -63,7 +63,7 @@ export default function OurPastors() {
         </div>
       </div>
       {/* assistant pastor */}
-      <div className=" space-y-2 lg:flex  lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
+      <div className=" space-y-2  lg:flex  lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
         {/* image section */}
         <div className="flex flex-col items-center justify-center gap-2 ">
           <div className="lg:hidden">
@@ -71,7 +71,7 @@ export default function OurPastors() {
           </div>
           <div className="image-container relative max-w-sm py-8 lg:py-0 flex items-center justify-center ">
             {/* image */}
-            <div className=" w-80 h-64   relative aspect-square">
+            <div className=" w-80 h-64 md:h-80   relative aspect-square">
               {/* orange box */}
               <div className="box bg-primary rounded-lg absolute -top-2 sm: -left-2 w-52 h-1/2 aspect-square"></div>
 
@@ -91,7 +91,7 @@ export default function OurPastors() {
           </h1>
         </div>
         {/* text-section */}
-        <div className="space-y-2 lg:text-left lg:w-3/5">
+        <div className="space-y-2 md:space-y-5 lg:text-left lg:w-3/5">
           <div className="hidden lg:block">
             <TitleBorderTop title="Our Associate Pastor" />
           </div>

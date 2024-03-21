@@ -78,12 +78,20 @@ export default function Hero() {
         desc="We would be thrilled to hear from you."
       />
     );
-  } else if (pathname.startsWith("/ourMinistries/")) {
+  } else if (pathname.startsWith("/ourMinistries")) {
     src = "/images/hero-images/our-ministries-img.png";
     content = (
       <HeroContent
         title="Our Ministries"
         desc="Join One or Two of our groups, let the Lord use you in mighty ways. We Would be honored so have you."
+      />
+    );
+  } else if (pathname.endsWith("/events")) {
+    src = "/images/hero-images/our-ministries-img.png";
+    content = (
+      <HeroContent
+        title="Our Upcoming Events"
+        desc="Stay up to date, don’t miss any."
       />
     );
   } else {

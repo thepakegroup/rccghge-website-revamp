@@ -58,7 +58,7 @@ export default function PrayerRequestForm() {
   return (
     <div className="relative flex items-center  justify-center">
       <ImageFill src="/images/ourMission-img.png" />
-      <div className="space-y-5 bg-white z-10 w-[min(100%,26rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
+      <div className="space-y-5 bg-white z-10 w-[min(100%,30rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
         <TitleBorderTop title="Have A Prayer Request?" className=" text-nowrap" />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -68,7 +68,7 @@ export default function PrayerRequestForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel className="md:text-lg">Name</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -82,7 +82,7 @@ export default function PrayerRequestForm() {
               name="phoneNo"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone No:</FormLabel>
+                  <FormLabel className="md:text-lg">Phone No:</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -96,7 +96,7 @@ export default function PrayerRequestForm() {
               name="request"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Request</FormLabel>
+                  <FormLabel className="md:text-lg">Request</FormLabel>
                   <FormControl>
                     <Textarea className="resize-none" {...field} />
                   </FormControl>

@@ -29,7 +29,7 @@ export default function OurMission() {
           </p>
         </div>
         {/* learn More button */}
-        <LearnMoreBtn url="/ourMission" className="w-32" />
+        <LearnMoreBtn url="/about/ourMission" className="w-32" />
       </div>
     </div>
   );

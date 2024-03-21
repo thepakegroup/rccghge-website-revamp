@@ -1,14 +1,30 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
+import useIsActiveLink from "@/lib/hooks/useIsActiveLink";
 import Link from "next/link";
 import React from "react";
 import { FaUsers } from "react-icons/fa6";
 
-export default function page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: { slug: string } }) {
+  const isActiveLink = useIsActiveLink();
   return (
-    <div className="py-12 md:py-20 wrapper">
-      <div className="ministries-card-container w-full gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center">
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+    <div className="py-12 md:py-20 wrapper relative">
+      <div className="bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
+        <ul className="flex items-center justify-center gap-10">
+          <li
+            className={`${isActiveLink("/ministries") && "border-b-2 border-primary"}`}>
+            <Link href={"/ourMinistries/ministries"}>Ministries</Link>
+          </li>
+          <li
+            className={`${isActiveLink("/departments") && "border-b-2 border-primary"}`}>
+            <Link href={"/ourMinistries/departments"}>Departments</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="ministries-card-container  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -31,7 +47,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -54,7 +70,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -77,7 +93,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -100,7 +116,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -123,7 +139,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -146,7 +162,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -169,7 +185,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"
@@ -192,7 +208,7 @@ export default function page({ params }: { params: { slug: string } }) {
             </Button>
           </div>
         </div>
-        <div className="relative  border-2  rounded-lg w-full md:w-72 h-80 ">
+        <div className="relative  border-2  rounded-lg w-full  h-80 ">
           <div className="card-img relative h-1/2 ">
             <ImageFill
               src="/images/ourMinistries-card-img.png"

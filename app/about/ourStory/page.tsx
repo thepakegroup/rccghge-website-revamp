@@ -6,9 +6,9 @@ import React from "react";
 export default function page() {
   return (
     <div className="py-10 sm:py-20 space-y-10 sm:space-y-20">
-      <div className="wrapper space-y-5 ">
+      <div className="wrapper space-y-5 md:space-y-10 ">
         <TitleBorderTop title="A special welcome to you!" />
-        <div className="text-[15px] sm:text-base space-y-4 tracking-wide leading-relaxed">
+        <div className=" sm:text-lg space-y-4 tracking-wide leading-relaxed">
           <p>
             We’re thrilled that you’ve decided to get to know us! Before you
             tour our site, we’d like to share a few things from our heart to

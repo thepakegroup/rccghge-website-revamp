@@ -19,11 +19,11 @@ export default function OurMinistries() {
                 className=" rounded-t-md"
               />
             </div>
-            <div className="w-10 absolute top-28 left-2  aspect-square blueGradient rounded-full flex items-center justify-center text-xl text-white">
+            <div className="w-10 absolute top-28 md:top-32 left-2  aspect-square blueGradient rounded-full flex items-center justify-center text-xl text-white">
               <FaUsers />
             </div>
 
-            <div className="card-content space-y-2 pt-3 p-2">
+            <div className="card-content space-y-2 pt-5 p-2 h-1/2">
               <h1 className="text-xl  capitalize font-bold">
                 Youth Ministries
               </h1>
@@ -34,13 +34,13 @@ export default function OurMinistries() {
             <div className="card-img relative h-1/2 ">
               <ImageFill
                 src="/images/ourMinistries-card-img.png"
-                className=""
+                className=" rounded-t-md"
               />
             </div>
-            <div className="w-10 absolute top-28 left-2  aspect-square blueGradient rounded-full flex items-center justify-center text-xl text-white">
+            <div className="w-10 absolute top-28 md:top-32 left-2  aspect-square blueGradient rounded-full flex items-center justify-center text-xl text-white">
               <FaUsers />
             </div>
-            <div className="card-content space-y-2 pt-3 p-2">
+            <div className="card-content space-y-2 pt-5 p-2 h-1/2">
               <h1 className="text-xl  capitalize font-bold">
                 Youth Ministries
               </h1>

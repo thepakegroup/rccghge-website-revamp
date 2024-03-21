@@ -6,8 +6,8 @@ import TitleBorderTop from "./TitleBorderTop";
 
 export default function ServiceTimes() {
   return (
-    <div className="flex items-center my-10 wrapper  lg:gap-8 ">
-      <div className="hidden lg:w-2/5 lg:h-[380px] relative  lg:block">
+    <div className="flex items-center  wrapper  md:gap-8 ">
+      <div className="hidden md:w-2/5 md:h-96 relative  lg:block">
         <ImageFill src="/images/service-component-img.png" className="" />
       </div>
 
@@ -16,7 +16,7 @@ export default function ServiceTimes() {
         <TitleBorderTop title="Our Service Times" />
         {/* card */}
         <ScrollArea className="w-full">
-          <div className=" card-container w-full h-72   flex item-center gap-5">
+          <div className=" card-container w-full h-72 md:h-80   flex item-center gap-5">
             <div className="card ">
               <div className=" absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
                 9:00 am

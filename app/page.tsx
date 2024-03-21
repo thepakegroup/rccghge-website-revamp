@@ -12,57 +12,50 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="  py-8 ">
+    <main className=" page-spacing">
       {/* divider */}
       <div className="wrapper flex items-center w-full gap-3 lg:mb-16 lg:mt-5">
         <div className="line blueGradient w-full h-0.5"></div>
         <Logo className="w-20 lg:w-28" />
         <div className="line blueGradient w-full h-0.5"></div>
       </div>
-      {/* service time component */}
-
       <ServiceTimes />
-
       {/* events block */}
-      <div className=" mb-14 lg:mb-20">
-        <EventsBlock />
-      </div>
-      <div className="wrapper mb-14 lg:mb-20">
+      <EventsBlock />
+      <div className="wrapper ">
         <OurMission />
       </div>
-      <div className="wrapper mb-14 lg:mb-20">
+      <div className="wrapper ">
         <OurMinistries />
       </div>
-      <div className=" mb-14 lg:mb-20">
-        <GiveCTA />
-      </div>
+      <GiveCTA />
       {/* download app image section */}
-      <div className=" mb-14 lg:mb-20 flex lg:justify-center lg:items-center lg:gap-20 flex-col lg:flex-row gap-5  relative">
+      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5  relative">
         {/* image section */}
-        <div className="flex items-center gap-8 justify-center">
+        <div className="flex items-center gap-10 lg:gap-18 justify-center ">
           <Image
             src="/images/phone-left.png"
             alt="phone"
             width={234}
             height={555}
-            className=" w-28 h-64 lg:h-80 lg:w-36 object-fill "
+            className=" w-28 h-64 md:h-[420px] md:w-52 object-fill  "
           />
           <Image
             src="/images/phone-right.png"
             alt="phone"
             width={234}
             height={555}
-            className=" w-28  h-64 lg:h-80 lg:w-36 object-fill "
+            className=" w-28  h-64 md:h-[420px] md:w-52 object-fill "
           />
         </div>
         {/* text section */}
-        <div className="flex flex-col gap-6">
-          <div className="text container space-y-4 lg:space-y-6">
-            <h1 className="font-bold text-xl sm:text-2xl text-center ">
+        <div className="flex flex-col gap-6 space-y-4 md:space-y-10">
+          <div className="text container space-y-4 md:space-y-10">
+            <h1 className="font-bold text-xl md:text-3xl text-center ">
               {" "}
               Download The RCCGHE App
             </h1>
-            <ol className="space-y-2 lg:space-y-4 mx-auto w-fit">
+            <ol className="space-y-2 md:space-y-6 mx-auto md:text-xl w-fit">
               <li className="list-disc">Submit Prayer Requests</li>
               <li className="list-disc">Watch And Listen To Sermons</li>
               <li className="list-disc">Find A Small Group</li>
@@ -70,30 +63,28 @@ export default function Home() {
             </ol>
           </div>
           {/* download buttons */}
-          <div className="flex items-center justify-center gap-2 ">
+          <div className="flex items-center justify-center gap-5  ">
             <Image
               src={"/images/get-on-playstore.png"}
               alt="get on playstore image"
               width={300}
               height={300}
-              className="w-44  "
+              className="w-44 md:w-52   "
             />
             <Image
               src={"/images/get-on-applestore.png"}
               alt="get on appl store image"
               width={300}
               height={300}
-              className="w-40 h-[53px] "
+              className="w-40 md:w-48 h-[53px] md:h-[63px] "
             />
           </div>
         </div>
       </div>
-      <div className=" mb-14 lg:mb-20">
-        <GetConnected />
-      </div>
-      <div className=" mb-14 lg:mb-20">
-        <PrayerRequestForm />
-      </div>
+
+      <GetConnected />
+
+      <PrayerRequestForm />
     </main>
   );
 }

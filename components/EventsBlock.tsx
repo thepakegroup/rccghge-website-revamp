@@ -5,7 +5,7 @@ import { FaCalendar } from "react-icons/fa6";
 
 export default function EventsBlock() {
   return (
-    <div className=" flex flex-col items-center lg:flex-row py-12 md:py-24">
+    <div className=" flex flex-col items-center lg:flex-row ">
       <div className="h-10 wrapper  w-full lg:h-72 lg:w-2/5 lg:max-w-80 lg:text-center lg:gap-2 lg:pt-16 lg:flex-col flex gap-5 items-center blueGradient py-8 text-white relative">
         <FaCalendar className="text-2xl md:text-3xl " />
         <h1 className="text-2xl md:text-3xl  capitalize">
@@ -16,7 +16,7 @@ export default function EventsBlock() {
       </div>
       {/* events */}
       <Link href={"/events"}>
-        <div className="flex wrapper w-full justify-center gap-2 bg-primary/5 items-center lg:h-72 lg:divide-x lg:py-5">
+        <div className="flex px-6  w-full justify-center gap-2 bg-primary/5 items-center lg:h-72 lg:divide-x lg:py-5">
           <div className=" flex w-1/2  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   ">
             <h1 className="title text-lg md:text-xl lg:tracking-wide font-semibold  ">
               Community Outreach Program

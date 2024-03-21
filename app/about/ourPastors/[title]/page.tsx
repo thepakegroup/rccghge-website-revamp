@@ -18,7 +18,7 @@ export default function page({ params }: { params: { title: string } }) {
 
   }
   return (
-    <div className=" space-y-12  py-10 text-center">
+    <div className="page-spacing text-center">
       <div className=" space-y-2 lg:flex lg:flex-row-reverse lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
         {/* image section */}
         <div className="flex flex-col items-center justify-center lg:justify-start gap-2 ">
@@ -50,7 +50,7 @@ export default function page({ params }: { params: { title: string } }) {
             <TitleBorderTop title={title} />
           </div>
           {/* text body */}
-         {textBody}
+          {textBody}
         </div>
       </div>
       <EventsBlock />
@@ -60,7 +60,7 @@ export default function page({ params }: { params: { title: string } }) {
 
 const LeadTextBody = () => {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 md:space-y-5">
       <p>
         Pastor John Omewah is the Senior Pastor of RCCG/Heaven’s Glorious
         Embassy, Plano, TX- Motto: 
@@ -94,7 +94,7 @@ const LeadTextBody = () => {
 }
 const AssociateTextBody = () => {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 md:space-y-5">
       <p>
         Pastor John Omewah is the Senior Pastor of RCCG/Heaven’s Glorious
         Embassy, Plano, TX- Motto: 
