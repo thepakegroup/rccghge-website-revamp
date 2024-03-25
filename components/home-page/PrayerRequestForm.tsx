@@ -17,16 +17,25 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Textarea } from "../ui/textarea";
 import ImageFill from "@/lib/components/ImageFill";
+import { sendPrayerRequest } from "@/app/utils/actions";
+import { toast } from "sonner";
+
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  phoneNo: z
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  subject: z.string().min(2, {
+    message: "Subject must be at least 2 characters.",
+  }),
+  mobile: z
     .string()
     .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
       message: "Please enter a valid phone number.",
     }),
-  request: z
+  content: z
     .string()
     .min(10, {
       message: "Request must be at least 10 characters.",
@@ -39,8 +48,10 @@ const formSchema = z.object({
 export default function PrayerRequestForm() {
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
-    phoneNo: "",
-    request: "",
+    email: "",
+    subject: "Prayer Request",
+    mobile: "",
+    content: "",
   };
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,17 +60,24 @@ export default function PrayerRequestForm() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    form.reset();
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    try {
+      const res = await sendPrayerRequest(data);
+      toast.success(res);
+      form.reset();
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   }
+
   return (
     <div className="relative flex items-center  justify-center">
       <ImageFill src="/images/ourMission-img.png" />
       <div className="space-y-5 bg-white z-10 w-[min(100%,30rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
-        <TitleBorderTop title="Have A Prayer Request?" className=" text-nowrap" />
+        <TitleBorderTop
+          title="Have A Prayer Request?"
+          className=" text-nowrap"
+        />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             {/* name */}
@@ -68,9 +86,27 @@ export default function PrayerRequestForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="md:text-lg">Name</FormLabel>
+                  <FormLabel className="md:text-lg">
+                    Name: <span className="text-red-500">*</span>
+                  </FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input className="md:text-lg" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* email */}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="md:text-lg">
+                    Email Address: <span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Input className="md:text-lg" type="email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -79,12 +115,14 @@ export default function PrayerRequestForm() {
             {/* Phone */}
             <FormField
               control={form.control}
-              name="phoneNo"
+              name="mobile"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="md:text-lg">Phone No:</FormLabel>
+                  <FormLabel className="md:text-lg">
+                    Phone No: <span className="text-red-500">*</span>
+                  </FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input type="tel" className="md:text-lg" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,12 +131,14 @@ export default function PrayerRequestForm() {
             {/* Request */}
             <FormField
               control={form.control}
-              name="request"
+              name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="md:text-lg">Request</FormLabel>
+                  <FormLabel className="md:text-lg">
+                    Request: <span className="text-red-500">*</span>
+                  </FormLabel>
                   <FormControl>
-                    <Textarea className="resize-none" {...field} />
+                    <Textarea className="resize-none " {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

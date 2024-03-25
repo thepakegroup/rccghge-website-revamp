@@ -38,7 +38,7 @@ const formSchema = z.object({
   address: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  phoneNo: z
+  mobile_number: z
     .string()
     .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
       message: "Please enter a valid phone number.",
@@ -47,7 +47,7 @@ const formSchema = z.object({
     required_error: "A date of birth is required.",
   }),
 
-  noOfPassengers: z.string({
+  passengers: z.string({
     required_error: "Number of passengers is required",
     invalid_type_error: "Number of passengers must be a number",
   }),
@@ -56,9 +56,9 @@ export default function Page() {
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
     address: "",
-    phoneNo: "",
+    mobile_number: "",
     date: new Date(),
-    noOfPassengers: "",
+    passengers: "",
   };
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,10 +67,10 @@ export default function Page() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    // Do something with the form data.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    console.log(data);
     form.reset();
   }
   return (
@@ -122,7 +122,7 @@ export default function Page() {
             {/* Phone */}
             <FormField
               control={form.control}
-              name="phoneNo"
+              name="mobile_number"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="md:text-lg">Phone No:</FormLabel>
@@ -189,10 +189,10 @@ export default function Page() {
                 </FormItem>
               )}
             />
-            {/* noOfPassengers */}
+            {/* passengers */}
             <FormField
               control={form.control}
-              name="noOfPassengers"
+              name="passengers"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="md:text-lg">

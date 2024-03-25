@@ -6,6 +6,7 @@ import { ReduxProvider } from "@/redux/provider";
 import type { Metadata } from "next";
 import "./globals.css";
 import FramerMotion from "@/lib/framer-motion/LazyMotion";
+import { Toaster } from "@/components/ui/sonner";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -31,9 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
       <FramerMotion>
-        <body suppressHydrationWarning className="font-quicksand overflow-x-hidden">
+        <body
+          suppressHydrationWarning
+          className="font-quicksand overflow-x-hidden">
           <ReduxProvider>
             <NavBar />
+            <Toaster richColors />
             <Hero />
             {children}
             <Footer />
