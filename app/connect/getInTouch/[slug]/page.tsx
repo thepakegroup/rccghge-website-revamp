@@ -1,4 +1,5 @@
 "use client";
+import { sendQuestion } from "@/app/utils/actions";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -38,6 +39,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronDown } from "react-icons/fa6";
+import { toast } from "sonner";
 import { z } from "zod";
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -548,7 +550,7 @@ const Question = () => {
     name: z.string().min(2, {
       message: "name must be at least 2 characters.",
     }),
-    phoneNo: z
+    mobile_number: z
       .string()
       .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
         message: "Please enter a valid phone number.",
@@ -567,7 +569,7 @@ const Question = () => {
   });
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
-    phoneNo: "",
+    mobile_number: "",
     email: "",
     question: "",
   };
@@ -577,11 +579,14 @@ const Question = () => {
     defaultValues: defaultValues,
   });
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    // form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await sendQuestion(values);
+      toast.success("Question sent successfully");
+      form.reset();
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   }
 
   return (
@@ -601,7 +606,9 @@ const Question = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="md:text-lg">Name</FormLabel>
+                <FormLabel className="md:text-lg">
+                  Name: <span className="text-red-500">*</span>
+                </FormLabel>
                 <FormControl>
                   <Input className="md:text-lg" {...field} />
                 </FormControl>
@@ -612,10 +619,12 @@ const Question = () => {
           {/* Phone */}
           <FormField
             control={form.control}
-            name="phoneNo"
+            name="mobile_number"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="md:text-lg">Phone No:</FormLabel>
+                <FormLabel className="md:text-lg">
+                  Phone No: <span className="text-red-500">*</span>
+                </FormLabel>
                 <FormControl>
                   <Input className="md:text-lg" {...field} />
                 </FormControl>
@@ -645,7 +654,9 @@ const Question = () => {
             name="question"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="md:text-lg">question</FormLabel>
+                <FormLabel className="md:text-lg">
+                  Question: <span className="text-red-500">*</span>
+                </FormLabel>
                 <FormControl>
                   <Textarea className="resize-none" {...field} />
                 </FormControl>

@@ -2,8 +2,15 @@ import EventsBlock from "@/components/EventsBlock";
 import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
 import React from "react";
+import { getPageWriteUp } from "../utils/actions";
+import { notFound } from "next/navigation";
 
-export default function give() {
+export default async function give() {
+    const writeUp = await getPageWriteUp("donate and give");
+    console.log(writeUp);
+    // if (!writeUp) {
+    //   return notFound();
+    // }
   return (
     <div className="page-spacing relative">
       <div>

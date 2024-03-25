@@ -1,8 +1,16 @@
+import { getPageWriteUp } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
+
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
 
-export default function page() {
+export default async function page() {
+  const writeUp = await getPageWriteUp("rccg-worldwide");
+  console.log(writeUp);
+  if (!writeUp) {
+    return notFound();
+  }
   return (
     <div className="py-12 md:py-20  relative ">
       <div className="  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md">
@@ -26,10 +34,15 @@ export default function page() {
       </div>
       {/* text content */}
       <div className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
-        <h1 className="font-bold text-2xl sm:text-3xl">How It All Began</h1>
+        <h1
+          className="font-bold text-2xl sm:text-3xl capitalize
+        ">
+          {writeUp.heading}
+        </h1>
         {/* text body */}
         <div className="space-y-2 tracking-wide leading-relaxed">
-          <p>
+          <p className="">{writeUp.content}</p>
+          {/* <p>
             The Redeemed Christian Church of God (RCCG) – is a worldwide
             non-denominational religious organization established in 1952. The
             RCCG has over 6 million members distributed in over 4,000 parishes
@@ -47,7 +60,7 @@ export default function page() {
           <p>
             The goal is to pursue the vision until every nation of the world is
             reached for Jesus Christ our Lord and savior.
-          </p>
+          </p> */}
         </div>
       </div>
       {/* video section */}

@@ -30,6 +30,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { sendRideRequest } from "@/app/utils/actions";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -38,7 +40,7 @@ const formSchema = z.object({
   address: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  phoneNo: z
+  mobile_number: z
     .string()
     .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
       message: "Please enter a valid phone number.",
@@ -47,7 +49,7 @@ const formSchema = z.object({
     required_error: "A date of birth is required.",
   }),
 
-  noOfPassengers: z.string({
+  passengers: z.string({
     required_error: "Number of passengers is required",
     invalid_type_error: "Number of passengers must be a number",
   }),
@@ -56,9 +58,9 @@ export default function Page() {
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
     address: "",
-    phoneNo: "",
+    mobile_number: "",
     date: new Date(),
-    noOfPassengers: "",
+    passengers: "",
   };
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,10 +69,16 @@ export default function Page() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+  
+    try {
+      const res = await sendRideRequest(data);
+      toast.success(res);
+      form.reset();
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
+
     form.reset();
   }
   return (
@@ -122,7 +130,7 @@ export default function Page() {
             {/* Phone */}
             <FormField
               control={form.control}
-              name="phoneNo"
+              name="mobile_number"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="md:text-lg">Phone No:</FormLabel>
@@ -189,14 +197,14 @@ export default function Page() {
                 </FormItem>
               )}
             />
-            {/* noOfPassengers */}
+            {/* passengers */}
             <FormField
               control={form.control}
-              name="noOfPassengers"
+              name="passengers"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="md:text-lg">
-                    How many passengers? <span className="text-red-500">*</span> 
+                    How many passengers? <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <Input type="number" {...field} className="md:text-lg" />

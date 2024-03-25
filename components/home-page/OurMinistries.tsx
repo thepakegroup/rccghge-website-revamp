@@ -50,7 +50,7 @@ export default function OurMinistries() {
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <LearnMoreBtn url="/ourMinistries" />
+      <LearnMoreBtn url="/ourMinistries/ministries" />
     </div>
   );
 }
