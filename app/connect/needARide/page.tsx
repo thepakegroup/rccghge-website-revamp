@@ -40,7 +40,7 @@ const formSchema = z.object({
   address: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  mobile_number: z
+
   mobile_number: z
     .string()
     .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
@@ -51,7 +51,6 @@ const formSchema = z.object({
   }),
 
   passengers: z.string({
-  passengers: z.string({
     required_error: "Number of passengers is required",
     invalid_type_error: "Number of passengers must be a number",
   }),
@@ -61,9 +60,7 @@ export default function Page() {
     name: "",
     address: "",
     mobile_number: "",
-    mobile_number: "",
     date: new Date(),
-    passengers: "",
     passengers: "",
   };
   // 1. Define your form.
@@ -74,7 +71,6 @@ export default function Page() {
 
   // 2. Define a submit handler.
   async function onSubmit(data: z.infer<typeof formSchema>) {
-  
     try {
       const res = await sendRideRequest(data);
       toast.success(res);
@@ -134,7 +130,6 @@ export default function Page() {
             {/* Phone */}
             <FormField
               control={form.control}
-              name="mobile_number"
               name="mobile_number"
               render={({ field }) => (
                 <FormItem>
@@ -206,7 +201,6 @@ export default function Page() {
             {/* passengers */}
             <FormField
               control={form.control}
-              name="passengers"
               name="passengers"
               render={({ field }) => (
                 <FormItem>

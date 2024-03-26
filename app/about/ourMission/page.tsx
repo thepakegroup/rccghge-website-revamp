@@ -5,7 +5,7 @@ import React from "react";
 
 export default async function page() {
   const mission = await getAllMissions();
-
+  console.log(mission);
 
   return (
     <div className="flex flex-col page-spacing ">
