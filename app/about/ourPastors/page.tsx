@@ -8,7 +8,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default async function OurPastors() {
   const leaders = await getAllLeaders();
-  console.log(leaders);
+
   return (
     <div className=" space-y-14 md:space-y-20  py-12 md:py-20 text-center">
       {/* lead pastor */}

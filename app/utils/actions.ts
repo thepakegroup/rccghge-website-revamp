@@ -181,7 +181,6 @@ export const sendPrayerRequest = async (data: PrayerRequest) => {
       throw new Error("Failed to send prayer request. Please try again.");
     }
     const prayerRequestData = await res.json();
-
     return prayerRequestData.message;
   } catch (error) {
     console.error("Error sending prayer request:", error);
@@ -238,7 +237,8 @@ export const sendQuestion = async (data: Question) => {
     if (!res.ok) {
       throw new Error("Failed to send question. Please try again.");
     }
-    await res.json();
+     await res.json();
+
     return "Question sent successfully";
   } catch (error) {
     console.error("Error sending question:", error);

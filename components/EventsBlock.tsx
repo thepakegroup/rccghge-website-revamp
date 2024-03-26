@@ -19,7 +19,7 @@ export default async function EventsBlock() {
       </div>
       {/* events */}
       <div className="flex px-6 wrapper  w-full justify-between gap-2 bg-primary/5 items-center lg:h-72 lg:divide-x lg:py-5">
-        {events?.map((event, i) => {
+        {events&&events?.map((event, i) => {
           const startDate = new Date(event.start_date);
           const endDate = new Date(event.end_date);
           return (
