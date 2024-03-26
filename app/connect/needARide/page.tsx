@@ -41,6 +41,7 @@ const formSchema = z.object({
     message: "name must be at least 2 characters.",
   }),
   mobile_number: z
+  mobile_number: z
     .string()
     .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
       message: "Please enter a valid phone number.",
@@ -49,6 +50,7 @@ const formSchema = z.object({
     required_error: "A date of birth is required.",
   }),
 
+  passengers: z.string({
   passengers: z.string({
     required_error: "Number of passengers is required",
     invalid_type_error: "Number of passengers must be a number",
@@ -59,7 +61,9 @@ export default function Page() {
     name: "",
     address: "",
     mobile_number: "",
+    mobile_number: "",
     date: new Date(),
+    passengers: "",
     passengers: "",
   };
   // 1. Define your form.
@@ -131,6 +135,7 @@ export default function Page() {
             <FormField
               control={form.control}
               name="mobile_number"
+              name="mobile_number"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="md:text-lg">Phone No:</FormLabel>
@@ -198,8 +203,10 @@ export default function Page() {
               )}
             />
             {/* passengers */}
+            {/* passengers */}
             <FormField
               control={form.control}
+              name="passengers"
               name="passengers"
               render={({ field }) => (
                 <FormItem>
