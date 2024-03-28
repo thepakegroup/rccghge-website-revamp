@@ -1,15 +1,16 @@
-import { getAllMissions } from "@/app/utils/actions";
+import { getMinistries, getOurMissions } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
 import React from "react";
 
 export default async function page() {
-  const mission = await getAllMissions();
+  const missions = await getOurMissions();
+
 
   return (
     <div className="flex flex-col page-spacing ">
       <div className="space-y-5 md:space-y-10 max-w-screen-md mx-auto">
-        {mission?.map((mission, i) => {
+        {missions?.map((mission, i) => {
           return (
             <div
               key={i}

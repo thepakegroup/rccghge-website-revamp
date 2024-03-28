@@ -35,11 +35,11 @@ export default async function ServiceTimes() {
                     />
                   </div>
 
-                  <div className="card-content py-2 px-1">
+                  <div className="card-content py-2 px-1 h-1/2 ">
                     <p className="card-title font-bold capitalize ">
                       {service.service_name}
                     </p>
-                    <p className="desc text-sm ">
+                    <p className="desc text-sm line-clamp-4 ">
                       {service.service_description}
                     </p>
                   </div>

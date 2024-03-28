@@ -1,4 +1,32 @@
 "use server";
+// MINISTRIES
+export type Ministry = {
+  id: number;
+  name: string;
+  banner: string;
+  slug: string;
+  category: string;
+  description: string;
+};
+
+export const getMinistries = async (
+  category: string
+): Promise<Ministry[] | undefined> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`
+    );
+    const ministryData = await res.json();
+
+    if (!res.ok) {
+      console.error(ministryData);
+      return;
+    }
+    return ministryData.message.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 // PAGE WRITE UPS
 type PageWriteUp = {
   id: number;
@@ -13,7 +41,9 @@ export const getPageWriteUp = async (
   slug: string
 ): Promise<PageWriteUp | undefined> => {
   try {
-    const res = await fetch(`${process.env.API_URL}/writeup/${slug}`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/writeup/${slug}`
+    );
     const writeUpData = await res.json();
     // if (!res.ok) {
     //   console.error(writeUpData.message);
@@ -44,7 +74,9 @@ type Leader = {
 
 export const getAllLeaders = async (): Promise<Leader[] | undefined> => {
   try {
-    const res = await fetch(`${process.env.API_URL}/leaders`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leaders`
+    );
     const leadersData = await res.json();
     if (!res.ok) {
       console.error(leadersData.message);
@@ -59,7 +91,9 @@ export const getSingleLeader = async (
   slug: string
 ): Promise<Leader | undefined> => {
   try {
-    const res = await fetch(`${process.env.API_URL}/leader/${slug}`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leader/${slug}`
+    );
     const leaderData = await res.json();
     if (!res.ok) {
       console.error(leaderData.message);
@@ -89,7 +123,9 @@ export type Event = {
 
 export const getAllEvents = async (): Promise<Event[] | undefined> => {
   try {
-    const res = await fetch(`${process.env.API_URL}/events/1`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1`
+    );
     const eventData = await res.json();
     if (!res.ok) {
       console.error(eventData.message);
@@ -122,9 +158,11 @@ type Mission = {
   created_at: string;
   updated_at: string;
 };
-export const getAllMissions = async (): Promise<Mission[] | undefined> => {
+export const getOurMissions = async (): Promise<Mission[] | undefined> => {
   try {
-    const res = await fetch(`${process.env.API_URL}/oms/all`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-mission`
+    );
     const missionsData = await res.json();
     if (!res.ok) {
       console.log("something went wrong", missionsData.message);
@@ -148,7 +186,9 @@ type ServiceTime = {
 };
 export const getServiceTimes = async (): Promise<ServiceTime[] | undefined> => {
   try {
-    const res = await fetch(`${process.env.API_URL}/service-times`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/service-times`
+    );
     if (!res.ok) {
       return;
     }
@@ -169,14 +209,18 @@ type PrayerRequest = {
   content: string;
 };
 export const sendPrayerRequest = async (data: PrayerRequest) => {
+  console.log(data);
   try {
-    const res = await fetch(`${process.env.API_URL}/create-prayer-request`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     if (!res.ok) {
       throw new Error("Failed to send prayer request. Please try again.");
     }
@@ -198,21 +242,26 @@ type RideRequest = {
 };
 
 export const sendRideRequest = async (data: RideRequest) => {
+  console.log(data);
   try {
-    const res = await fetch(`${process.env.STAGING_API_URL}/ride-request`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ride-request`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    console.log(res.json);
     if (!res.ok) {
       throw new Error("Failed to send ride request. Please try again.");
     }
     await res.json();
     return "Request sent successfully";
   } catch (error) {
-    console.error("Error sending ride request:", error);
+    console.log("Error sending ride request:", error);
     throw new Error("Failed to send ride request. Please try again.");
   }
 };
@@ -227,21 +276,56 @@ type Question = {
 
 export const sendQuestion = async (data: Question) => {
   try {
-    const res = await fetch(`${process.env.STAGING_API_URL}/question`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/question`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     if (!res.ok) {
       throw new Error("Failed to send question. Please try again.");
     }
-     await res.json();
+    await res.json();
 
     return "Question sent successfully";
   } catch (error) {
     console.error("Error sending question:", error);
     throw new Error("Failed to send question. Please try again.");
+  }
+};
+
+// SUSCRIBE NEWSLETTER
+type Newsletter = {
+  name: string;
+  email: string;
+  mobile: string;
+};
+
+export const subscribeNewsletter = async (data: Newsletter) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/subscribe`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Subscription Failed. Please try again.");
+    }
+    await res.json();
+
+    return "Subscribed successfully";
+  } catch (error) {
+    console.error("Error sending question:", error);
+    throw new Error("Subscription Failed. Please try again.");
   }
 };

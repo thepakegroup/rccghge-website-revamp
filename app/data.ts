@@ -47,11 +47,11 @@ export const navLinks = [
     subUrls: [
       {
         name: "Ministries",
-        url: "/ministries",
+        url: "/Ministry",
       },
       {
         name: "Departments",
-        url: "/departments",
+        url: "/Department",
       },
     ],
   },

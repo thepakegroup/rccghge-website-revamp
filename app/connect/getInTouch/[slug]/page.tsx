@@ -1,7 +1,6 @@
 "use client";
-import { sendQuestion } from "@/app/utils/actions";
+import { sendQuestion, subscribeNewsletter } from "@/app/utils/actions";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Collapsible,
@@ -18,11 +17,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -30,13 +24,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronDown } from "react-icons/fa6";
 import { toast } from "sonner";
@@ -581,7 +571,7 @@ const Question = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await sendQuestion(values);
+     const res =  await sendQuestion(values);
       toast.success("Question sent successfully");
       form.reset();
     } catch (error) {
@@ -686,7 +676,7 @@ const Newsletter = () => {
     name: z.string().min(2, {
       message: "name must be at least 2 characters.",
     }),
-    phoneNo: z
+    mobile: z
       .string()
       .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
         message: "Please enter a valid phone number.",
@@ -697,7 +687,7 @@ const Newsletter = () => {
   });
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
-    phoneNo: "",
+    mobile: "",
     email: "",
   };
   // 1. Define your form.
@@ -706,11 +696,15 @@ const Newsletter = () => {
     defaultValues: defaultValues,
   });
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    // form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const res = await subscribeNewsletter(values);
+      console.log(res);
+      toast.success(res);
+      form.reset();
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   }
   return (
     <div className=" lg:max-w-3xl wrapper  items-center w-full">
@@ -740,7 +734,7 @@ const Newsletter = () => {
           {/* Phone */}
           <FormField
             control={form.control}
-            name="phoneNo"
+            name="mobile"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">Phone No:</FormLabel>

@@ -19,26 +19,27 @@ export default async function EventsBlock() {
       </div>
       {/* events */}
       <div className="flex px-6 wrapper  w-full justify-between gap-2 bg-primary/5 items-center lg:h-72 lg:divide-x lg:py-5">
-        {events&&events?.map((event, i) => {
-          const startDate = new Date(event.start_date);
-          const endDate = new Date(event.end_date);
-          return (
-            <Link key={i} href={"/events"}>
-              <div
-                className={`${i === 2 ? "hidden xl:flex" : "flex"}  w-1/2  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   `}>
-                <h1 className="title text-lg md:text-xl lg:tracking-wide font-semibold  ">
-                  {event.title}
-                </h1>
-                <p className="desc text-sm md:text-lg">
-                  {event.short_description}
-                </p>
-                <p className="date w-fit text-nowrap lg:p-2 mt-2 text-sm md:text-lg blueGradient text-white p-1 rounded">
-                  {formattedDateRange(startDate, endDate)}
-                </p>
-              </div>
-            </Link>
-          );
-        })}
+        {events &&
+          events?.map((event, i) => {
+            const startDate = new Date(event.start_date);
+            const endDate = new Date(event.end_date);
+            return (
+              <Link key={i} href={"/events"}>
+                <div
+                  className={`${i === 2 ? "hidden xl:flex" : "flex"}  w-full h-full  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   `}>
+                  <h1 className="title text-lg md:text-xl lg:tracking-wide font-semibold  ">
+                    {event.title}
+                  </h1>
+                  <p className="desc text-sm md:text-lg line-clamp-4">
+                    {event.short_description}
+                  </p>
+                  <p className="date w-fit text-nowrap lg:p-2 mt-2 text-sm md:text-lg blueGradient text-white p-1 rounded">
+                    {formattedDateRange(startDate, endDate)}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
       </div>
     </div>
   );

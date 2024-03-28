@@ -91,7 +91,8 @@ export default async function page() {
                 </p>
 
                 <ImageFill
-                  src={` https://${event.banner}`}
+                  // NOTE: change the src to event banner
+                  src={` ${process.env.NEXT_PUBLIC_STAGING_API_URL}/event-image/${event.banner}`}
                   className="rounded-lg"
                 />
               </div>

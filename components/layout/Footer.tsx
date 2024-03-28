@@ -1,8 +1,42 @@
 import React from "react";
 import Logo from "../Logo";
 import { Button } from "../ui/button";
+import { get3Events, getServiceTimes } from "@/app/utils/actions";
 
-export default function Footer() {
+export default async function Footer() {
+  const events = await get3Events();
+  const serviceTimes = await getServiceTimes();
+  function formatDate(startDate: Date, endDate: Date) {
+    // Get month abbreviation (e.g., JAN)
+    const monthAbbreviation = startDate
+      .toLocaleString("default", { month: "short" })
+      .toUpperCase();
+
+    // Get day of the month
+    const dayOfMonth = startDate.getDate();
+
+    // Get month name (e.g., January)
+    const startMonth = startDate.toLocaleString("default", { month: "long" });
+    const endMonth = endDate.toLocaleString("default", { month: "long" });
+
+    // Get hour (12-hour format)
+    const startHour = startDate.getHours() % 12 || 12;
+    const endHour = endDate.getHours() % 12 || 12;
+
+    // Get minutes
+    const startMin = startDate.getMinutes().toString().padStart(2, "0");
+    const endMin = endDate.getMinutes().toString().padStart(2, "0");
+
+    // Get AM/PM
+    const ampm = startDate.getHours() >= 12 ? "pm" : "am";
+
+    // Construct the formatted date string
+    const monthFormat = `${monthAbbreviation}${dayOfMonth}`;
+    const rangeFormat = `${startMonth} ${dayOfMonth} @ ${startHour}:${startMin} ${ampm} - ${endMonth} ${endHour}:${endMin} ${ampm}`;
+
+    return { monthFormat, rangeFormat };
+  }
+  console.log(serviceTimes);
   return (
     <div className=" wrapper py-5 md:py-20 bg-black text-white flex flex-col  lg:flex-row  text-sm gap-8">
       {/* contact address and logo */}
@@ -42,22 +76,18 @@ export default function Footer() {
           Calendar
         </p>
         <ul className="flex flex-col gap-4 [&_li]:space-y-1 [&_.title]:underline decoration-white ">
-          <li className="">
-            <p className="date">JAN11</p>
-            <p className="time">January 11 @ 7:00 pm - February 29 @ 8:00 pm</p>
-            <p className="title">50 DAYS OF FASTING AND PRAYERS</p>
-          </li>
-
-          <li>
-            <p className="date">JAN11</p>
-            <p className="time">January 11 @ 7:00 pm - February 29 @ 8:00 pm</p>
-            <p className="title">50 DAYS OF FASTING AND PRAYERS</p>
-          </li>
-          <li>
-            <p className="date">JAN11</p>
-            <p className="time">January 11 @ 7:00 pm - February 29 @ 8:00 pm</p>
-            <p className="title">50 DAYS OF FASTING AND PRAYERS</p>
-          </li>
+          {events?.map((event, i) => {
+            const startDate = new Date(event.start_date);
+            const endDate = new Date(event.end_date);
+            const { monthFormat, rangeFormat } = formatDate(startDate, endDate);
+            return (
+              <li key={i}>
+                <p className="date">{monthFormat}</p>
+                <p className="time">{rangeFormat}</p>
+                <p className="title">{event?.title}</p>
+              </li>
+            );
+          })}
         </ul>
       </div>
       {/* service times */}
@@ -66,26 +96,18 @@ export default function Footer() {
           Service Times - Online
         </p>
         <ul className="grid grid-cols-2 gap-4   [&_li]:space-y-1 [&_.title]:capitalize ">
-          <li className=" ">
-            <p className="title">sunday school:</p>
-            <p className="time">9:00am-9:45am</p>
-          </li>
-          <li className=" ">
-            <p className="title">sunday school:</p>
-            <p className="time">9:00am-9:45am</p>
-          </li>
-          <li className=" ">
-            <p className="title">sunday school:</p>
-            <p className="time">9:00am-9:45am</p>
-          </li>
-          <li className=" ">
-            <p className="title">sunday school:</p>
-            <p className="time">9:00am-9:45am</p>
-          </li>
-          <li className=" ">
-            <p className="title">sunday school:</p>
-            <p className="time">9:00am-9:45am</p>
-          </li>
+          {serviceTimes?.map((service, i) => {
+           const [startTime, startAmPm, endTime, endAmPm] =
+             service.service_period.split(" ");
+            return (
+              <li key={i} className=" ">
+                <p className="title">{service.service_name}:</p>
+                <p className="time">
+                  {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
+                </p>
+              </li>
+            );
+          })}
         </ul>
       </div>
       {/* email input */}

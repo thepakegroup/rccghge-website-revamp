@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/home/webfiles/**",
       },
+      {
+        protocol: "https",
+        hostname: "staging.api.kouakoudomagni.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
