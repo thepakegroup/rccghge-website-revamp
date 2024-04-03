@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 export default function Hero() {
   let content = <Home />;
   const pathname = usePathname();
-
+  console.log(pathname);
   let src = "/images/hero-images/home-hero-img1.png";
 
   if (pathname.startsWith("/about/ourPastors")) {
@@ -69,13 +69,20 @@ export default function Hero() {
     src = "/images/hero-images/need-a-ride-img.png";
     content = (
       <HeroContent title="Need A Ride?" desc="You are in safe hands." />
-    );   
-  }else if (pathname.startsWith("/connect/getInTouch")) {
+    );
+  } else if (pathname.startsWith("/connect/getInTouch")) {
     src = "/images/hero-images/our-beliefs-img.png";
     content = (
       <HeroContent
         title="Get In Touch"
         desc="We would be thrilled to hear from you."
+      />
+    );
+  } else if (pathname.endsWith("/ourMinistries/joinUs")) {
+    content = (
+      <HeroContent
+        title="Join A Ministry"
+        desc="Join One or Two of our groups, let the Lord use you in mighty ways. We Would be honored so have you."
       />
     );
   } else if (pathname.startsWith("/ourMinistries")) {

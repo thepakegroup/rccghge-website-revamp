@@ -1,5 +1,9 @@
 "use client";
-import { sendQuestion, subscribeNewsletter } from "@/app/utils/actions";
+import {
+  connectWithUs,
+  sendQuestion,
+  subscribeNewsletter,
+} from "@/app/utils/actions";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -90,7 +94,7 @@ const Connect = () => {
     name: z.string().min(2, {
       message: "name must be at least 2 characters.",
     }),
-    phoneNo: z
+    mobile: z
       .string()
       .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
         message: "Please enter a valid phone number.",
@@ -98,16 +102,16 @@ const Connect = () => {
     address: z.string().min(2, {
       message: "name must be at least 2 characters.",
     }),
-    gender: z.enum(["male", "female"]),
+    gender: z.enum(["MALE", "FEMALE"]),
     email: z.string().email({
       message: "Please enter a valid email address.",
     }),
-    dob: z.date({
+    birthdate: z.date({
       required_error: "A date of birth is required.",
     }),
-    marriageStatus: z.enum(["single", "married", "divorced", "widowed"]),
-    isOnline: z.enum(["in-person", "online"]),
-    impression: z
+    marital_status: z.enum(["SINGLE", "MARRIED", "DIVORCED", "WIDOWED"]),
+    attended_service_as: z.enum(["In-Person", "Online"]),
+    first_impression: z
       .string()
       .min(10, {
         message: "Impression must be at least 10 characters.",
@@ -115,17 +119,17 @@ const Connect = () => {
       .max(160, {
         message: "Impression must not be longer than 30 characters.",
       }),
-    contactMeAbout: z
+    contact_about: z
       .array(z.string())
       .refine((value) => value.some((item) => item), {
         message: "You have to select at least one item.",
       }),
-    signMeUpFor: z
+    sign_me_up_for: z
       .array(z.string())
       .refine((value) => value.some((item) => item), {
         message: "You have to select at least one item.",
       }),
-    request: z
+    prayer_request: z
       .string()
       .min(10, {
         message: "Request must be at least 10 characters.",
@@ -136,17 +140,17 @@ const Connect = () => {
   });
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
-    phoneNo: "",
+    mobile: "",
     address: "",
-    gender: "male",
+    gender: "MALE",
     email: "",
-    dob: new Date(),
-    marriageStatus: "single",
-    isOnline: "in-person",
-    impression: "",
-    contactMeAbout: [],
-    signMeUpFor: [],
-    request: "",
+    birthdate: new Date(),
+    marital_status: "SINGLE",
+    attended_service_as: "In-Person",
+    first_impression: "",
+    contact_about: [],
+    sign_me_up_for: [],
+    prayer_request: "",
   };
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -155,11 +159,27 @@ const Connect = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values, "hello");
-    // form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+    const options = {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    } as const;
+    const newObj = {
+      ...values,
+      contact_about: values.contact_about.join(", "),
+      sign_me_up_for: values.sign_me_up_for.join(", "),
+      birthdate: values.birthdate.toLocaleDateString("en-US", options),
+    };
+    console.log(newObj);
+    try {
+      const res = await connectWithUs(newObj);
+      toast.success(res);
+      form.reset();
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   }
 
   return (
@@ -192,7 +212,7 @@ const Connect = () => {
           {/* Phone */}
           <FormField
             control={form.control}
-            name="phoneNo"
+            name="mobile"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">
@@ -253,10 +273,10 @@ const Connect = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem className="md:text-lg" value="male">
+                    <SelectItem className="md:text-lg" value="MALE">
                       Male
                     </SelectItem>
-                    <SelectItem className="md:text-lg" value="female">
+                    <SelectItem className="md:text-lg" value="FEMALE">
                       Female
                     </SelectItem>
                   </SelectContent>
@@ -270,7 +290,7 @@ const Connect = () => {
           {/* dob */}
           <FormField
             control={form.control}
-            name="dob"
+            name="birthdate"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">
@@ -300,7 +320,7 @@ const Connect = () => {
 
           <FormField
             control={form.control}
-            name="marriageStatus"
+            name="marital_status"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">Marriage Status: </FormLabel>
@@ -314,16 +334,16 @@ const Connect = () => {
                   </FormControl>
                   <SelectContent>
                     {/* "single" | "married" | "divorced" | "widowed" */}
-                    <SelectItem className="md:text-lg" value="single">
+                    <SelectItem className="md:text-lg" value="SINGLE">
                       Single
                     </SelectItem>
-                    <SelectItem className="md:text-lg" value="married">
+                    <SelectItem className="md:text-lg" value="MARRIED">
                       Married
                     </SelectItem>
-                    <SelectItem className="md:text-lg" value="divorced">
+                    <SelectItem className="md:text-lg" value="DIVORCED">
                       Divorced
                     </SelectItem>
-                    <SelectItem className="md:text-lg" value="widowed">
+                    <SelectItem className="md:text-lg" value="WIDOWED">
                       Widowed
                     </SelectItem>
                   </SelectContent>
@@ -337,7 +357,7 @@ const Connect = () => {
 
           <FormField
             control={form.control}
-            name="isOnline"
+            name="attended_service_as"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">
@@ -353,11 +373,11 @@ const Connect = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {/* "single" | "married" | "divorced" | "widowed" */}
-                    <SelectItem className="md:text-lg" value="in-person">
+                   
+                    <SelectItem className="md:text-lg" value="In-Person">
                       In-person
                     </SelectItem>
-                    <SelectItem className="md:text-lg" value="online">
+                    <SelectItem className="md:text-lg" value="Online">
                       Online
                     </SelectItem>
                   </SelectContent>
@@ -370,7 +390,7 @@ const Connect = () => {
           {/* impression */}
           <FormField
             control={form.control}
-            name="impression"
+            name="first_impression"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">
@@ -387,7 +407,7 @@ const Connect = () => {
           <Collapsible>
             <FormField
               control={form.control}
-              name="contactMeAbout"
+              name="contact_about"
               render={() => (
                 <FormItem>
                   <div className="mb-4">
@@ -405,7 +425,7 @@ const Connect = () => {
                       <FormField
                         key={item.id}
                         control={form.control}
-                        name="contactMeAbout"
+                        name="contact_about"
                         render={({ field }) => {
                           return (
                             <FormItem
@@ -447,7 +467,7 @@ const Connect = () => {
           <Collapsible>
             <FormField
               control={form.control}
-              name="signMeUpFor"
+              name="sign_me_up_for"
               render={() => (
                 <FormItem>
                   <div className="mb-4">
@@ -465,7 +485,7 @@ const Connect = () => {
                       <FormField
                         key={item.id}
                         control={form.control}
-                        name="signMeUpFor"
+                        name="sign_me_up_for"
                         render={({ field }) => {
                           return (
                             <FormItem
@@ -506,10 +526,10 @@ const Connect = () => {
           {/* Request */}
           <FormField
             control={form.control}
-            name="request"
+            name="prayer_request"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="md:text-lg">Request</FormLabel>
+                <FormLabel className="md:text-lg">Payer Request</FormLabel>
                 <FormControl>
                   <Textarea className="resize-none" {...field} />
                 </FormControl>
@@ -571,7 +591,7 @@ const Question = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-     const res =  await sendQuestion(values);
+      const res = await sendQuestion(values);
       toast.success("Question sent successfully");
       form.reset();
     } catch (error) {
@@ -699,7 +719,7 @@ const Newsletter = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const res = await subscribeNewsletter(values);
-      console.log(res);
+
       toast.success(res);
       form.reset();
     } catch (error) {

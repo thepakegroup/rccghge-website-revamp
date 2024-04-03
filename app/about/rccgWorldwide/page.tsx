@@ -7,7 +7,7 @@ import React from "react";
 
 export default async function page() {
   const writeUp = await getPageWriteUp("rccg-worldwide");
-  console.log(writeUp);
+
 
   return (
     <div className="py-12 md:py-20  relative ">

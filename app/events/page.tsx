@@ -1,74 +1,44 @@
 import SearchBar from "@/components/SearchBar";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import ImageFill from "@/lib/components/ImageFill";
-import React from "react";
-import { Event, getAllEvents } from "../utils/actions";
-export const formattedDateRange = (startDate: Date, endDate: Date) => {
-  const formattedStartDate = startDate.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-  });
-  const formattedStartTime = startDate.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-  });
-  const formattedEndTime = endDate.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-  });
-  return `${formattedStartDate} - ${formattedStartTime}-${formattedEndTime}`;
-};
-export default async function page() {
-  const months = [
-    "january ",
-    "febuary",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december",
-  ] as const;
-  // Get current month (0-indexed)
-  const currentMonthIndex = new Date().getMonth();
-  const defaultMonth = months[currentMonthIndex];
-  const events = await getAllEvents();
+import { getAllEvents } from "../utils/actions";
+
+export default async function page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const searchQuery = (searchParams.searchQuery || "") as string;
+  const dateQuery = (searchParams.dateQuery || "") as string;
+
+  const events = await getAllEvents(searchQuery);
+  const formattedDateRange = (startDate: Date, endDate: Date) => {
+    const formattedStartDate = startDate.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+    });
+    const formattedStartTime = startDate.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+    });
+    const formattedEndTime = endDate.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+    });
+    return `${formattedStartDate}, ${formattedStartTime}-${formattedEndTime}`;
+  };
 
   return (
     <div className="py-12 md:py-20 wrapper space-y-10">
       {/* search bar */}
-      <div className="flex items-center gap-10">
-        <Select>
-          <SelectTrigger className="focus-visible:ring-0 focus-visible:ring-offset-0    capitalize  md:text-base w-fit font-semibold ">
-            <SelectValue placeholder={defaultMonth} />
-          </SelectTrigger>
-          <SelectContent>
-            {months.map((month) => {
-              return (
-                <SelectItem
-                  className="capitalize md:text-base"
-                  key={month}
-                  value={month}>
-                  {month}
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
-        <SearchBar />
+      <div>
+        <SearchBar searchQuery={searchQuery} dateQuery={dateQuery} />
       </div>
       {/* Events */}
 
@@ -82,17 +52,17 @@ export default async function page() {
           return (
             <div
               key={i}
-              className=" even:flex-row-reverse flex items-center justify-center gap-8 flex-col lg:flex-row">
+              className=" even:lg:flex-row-reverse flex items-center justify-center gap-8 flex-col lg:flex-row">
               {/* image */}
-              <div className="relative w-full lg:w-1/2 lg:max-w-[500px] h-80 ">
-                <p className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-auto md:text-lg right-0 left-0  w-fit text-nowrap ">
+              <div className="relative w-full lg:w-1/2 lg:max-w-[500px] h-80 text-center">
+                <p className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-3  md:text-lg right-0 left-0    ">
                   {event.location} :{" "}
                   {`${formattedDateRange(startDate, endDate)}`}
                 </p>
 
                 <ImageFill
                   // NOTE: change the src to event banner
-                  src={` ${process.env.NEXT_PUBLIC_STAGING_API_URL}/event-image/${event.banner}`}
+                  src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/event-image/${!!event.banner ? event.banner : ""}`}
                   className="rounded-lg"
                 />
               </div>

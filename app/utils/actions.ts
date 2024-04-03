@@ -1,4 +1,5 @@
 "use server";
+import { onThisDay } from "../../lib/constants";
 // MINISTRIES
 export type Ministry = {
   id: number;
@@ -99,7 +100,7 @@ export const getSingleLeader = async (
       console.error(leaderData.message);
       return;
     }
-    // console.log(leaderData);
+
     return leaderData.message;
   } catch (error) {
     console.error("Error getting leaders", error);
@@ -121,16 +122,24 @@ export type Event = {
   notice_tag: number;
 };
 
-export const getAllEvents = async (): Promise<Event[] | undefined> => {
+export const getAllEvents = async (
+  searchQuery: string = "",
+  dateQuery: string = ""
+): Promise<Event[] | undefined> => {
+  console.log(
+    `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`
+  );
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`,
+      { ...onThisDay }
     );
     const eventData = await res.json();
     if (!res.ok) {
       console.error(eventData.message);
       return;
     }
+    console.log(eventData, searchQuery);
     return eventData.message.data;
   } catch (error) {
     console.log(error);
@@ -144,11 +153,14 @@ export const get3Events = async () => {
     if (!events) {
       return;
     }
+
     return events?.slice(0, 3);
   } catch (error) {
     return;
   }
 };
+
+
 // OUR MISSION
 type Mission = {
   id: number;
@@ -209,7 +221,6 @@ type PrayerRequest = {
   content: string;
 };
 export const sendPrayerRequest = async (data: PrayerRequest) => {
-  console.log(data);
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
@@ -242,7 +253,6 @@ type RideRequest = {
 };
 
 export const sendRideRequest = async (data: RideRequest) => {
-  console.log(data);
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ride-request`,
@@ -298,7 +308,7 @@ export const sendQuestion = async (data: Question) => {
   }
 };
 
-// SUSCRIBE NEWSLETTER
+// SUBSCRIBE NEWSLETTER
 type Newsletter = {
   name: string;
   email: string;
@@ -325,7 +335,104 @@ export const subscribeNewsletter = async (data: Newsletter) => {
 
     return "Subscribed successfully";
   } catch (error) {
-    console.error("Error sending question:", error);
+    console.error("Error subscribing:", error);
     throw new Error("Subscription Failed. Please try again.");
   }
 };
+// SUBSCRIBE SERMON
+
+export const subscribeSermon = async (formData: FormData) => {
+  const email = formData.get("email") as string;
+  if (!email) return;
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/sermon-subscription`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Subscription Failed. Please try again.");
+    }
+    await res.json();
+
+    return "Subscribed successfully";
+  } catch (error) {
+    console.error("subscription failed:", error);
+    throw new Error("Subscription Failed. Please try again.");
+  }
+};
+
+// SEND CONNECT REQUEST
+type Connect = {
+  name: string;
+  mobile: string;
+  email: string;
+  gender: "MALE" | "FEMALE";
+  marital_status: "MARRIED" | "SINGLE" | "DIVORCED" | "WIDOWED";
+  attended_service_as: "In-Person" | "Online";
+  birthdate: string;
+  first_impression: string;
+  contact_about: string;
+  sign_me_up_for: string;
+  prayer_request: string;
+};
+
+export const connectWithUs = async (data: Connect) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/new-connect`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Request Failed. Please try again.");
+    }
+    await res.json();
+
+    return "Request sent successfully";
+  } catch (error) {
+    console.error("Error sending request:", error);
+    throw new Error("Request Failed. Please try again.");
+  }
+};
+
+type JoinUs = Newsletter
+// JOIN US
+export const joinUs = async (data: JoinUs) => {
+  // join-group
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_STAGING_API_URL}/join-group`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error("Request Failed. Please try again.");
+      }
+      await res.json();
+
+      return "Request sent successfully";
+    } catch (error) {
+      console.error("Error sending request:", error);
+      throw new Error("Request Failed. Please try again.");
+    }
+}
+

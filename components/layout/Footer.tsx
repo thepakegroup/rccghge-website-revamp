@@ -1,7 +1,13 @@
 import React from "react";
 import Logo from "../Logo";
 import { Button } from "../ui/button";
-import { get3Events, getServiceTimes } from "@/app/utils/actions";
+import {
+  get3Events,
+  getServiceTimes,
+  subscribeSermon,
+} from "@/app/utils/actions";
+import { toast } from "sonner";
+import FooterInputButton from "./FooterInputButton";
 
 export default async function Footer() {
   const events = await get3Events();
@@ -36,7 +42,7 @@ export default async function Footer() {
 
     return { monthFormat, rangeFormat };
   }
-  console.log(serviceTimes);
+
   return (
     <div className=" wrapper py-5 md:py-20 bg-black text-white flex flex-col  lg:flex-row  text-sm gap-8">
       {/* contact address and logo */}
@@ -57,8 +63,11 @@ export default async function Footer() {
         {/* email input */}
         <div className="hidden flex-col self-start lg:flex gap-2  ">
           <p className="capitalize">receive our sermons in your mail</p>
-          <div className="input flex border border-white rounded-lg  ">
+          <form
+            action={subscribeSermon}
+            className="input flex border border-white rounded-lg  ">
             <input
+              required
               placeholder="Enter Email Address"
               className="bg-transparent w-[200px] p-2 "
               type="email"
@@ -66,7 +75,7 @@ export default async function Footer() {
               id="email"
             />
             <Button className=" rounded-l-none ">Send</Button>
-          </div>
+          </form>
           <small>Copyright RCCG: Heaven&apos;s Glorious Embassy</small>
         </div>
       </div>
@@ -97,8 +106,8 @@ export default async function Footer() {
         </p>
         <ul className="grid grid-cols-2 gap-4   [&_li]:space-y-1 [&_.title]:capitalize ">
           {serviceTimes?.map((service, i) => {
-           const [startTime, startAmPm, endTime, endAmPm] =
-             service.service_period.split(" ");
+            const [startTime, startAmPm, endTime, endAmPm] =
+              service.service_period.split(" ");
             return (
               <li key={i} className=" ">
                 <p className="title">{service.service_name}:</p>
@@ -113,16 +122,20 @@ export default async function Footer() {
       {/* email input */}
       <div className="flex flex-col  w-fit justify-self-start self-start lg:hidden gap-2    ">
         <p className="capitalize">receive our sermons in your mail</p>
-        <div className="input flex border p-px border-white rounded-lg  ">
+        <form
+          id="footer-input"
+          action={subscribeSermon}
+          className="input flex border p-px border-white rounded-lg  ">
           <input
+            required
             placeholder="Enter Email Address"
             className="bg-transparent w-[200px] p-2 "
             type="email"
             name="email"
             id="email"
           />
-          <Button className=" rounded-l-none  ">Send</Button>
-        </div>
+          <FooterInputButton/>
+        </form>
         <small>Copyright RCCG: Heaven&apos;s Glorious Embassy</small>
       </div>
     </div>

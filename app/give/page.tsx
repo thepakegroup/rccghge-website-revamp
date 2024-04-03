@@ -1,16 +1,9 @@
 import EventsBlock from "@/components/EventsBlock";
 import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
-import React from "react";
-import { getPageWriteUp } from "../utils/actions";
-import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export default async function give() {
-    const writeUp = await getPageWriteUp("donate and give");
-    console.log(writeUp);
-    // if (!writeUp) {
-    //   return notFound();
-    // }
   return (
     <div className="page-spacing relative">
       <div>
@@ -30,10 +23,10 @@ export default async function give() {
         <div className=" wrapper card-container flex flex-col justify-center lg:flex-row flex-wrap gap-10 mt-52 sm:mt-16 lg:mt-18 pb-10">
           <div className=" card border rounded-lg h-fit  w-full md:w-80 relative   ">
             {/* image */}
-            <div className="w-full h-36  relative">
+            <div className=" h-32  w-full  relative">
               <ImageFill
-                src="/images/give-card-img.png"
-                className="rounded-t-md"
+                src="/images/Givelify_idd7NjfDGX_2.svg"
+                className="rounded-t-md px-10 py-5 object-contain object-center"
               />
             </div>
             {/* content */}
@@ -43,69 +36,110 @@ export default async function give() {
                 Use Givelify to give to the church, they are very easy steps to
                 follow.
               </p>
-              <Button className=" px-8  hover:bg-orange-400 active:scale-95 ">
-                Give
+              <Button
+                asChild
+                className=" px-8  hover:bg-orange-400 active:scale-95 ">
+                <Link
+                  href={`https://www.givelify.com/donate/mobile-heaven-s-glorious-embassy-plano-tx-2j7wy5MTUwNTcyNw==/donation/amount `}>
+                  Give
+                </Link>
               </Button>
             </div>
           </div>
           <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
             {/* image */}
-            <div className="w-full h-36  relative">
+            <div className=" h-32  w-full  relative">
               <ImageFill
-                src="/images/give-card-img.png"
-                className="rounded-t-md"
+                src="/images/secure-give.png"
+                className="rounded-t-md px-10 py-5 object-contain object-center"
               />
             </div>
             {/* content */}
             <div className="space-y-2 p-4 ">
-              <h1 className="text-lg">Givelify</h1>
+              <h1 className="text-lg">Secure give</h1>
               <p>
-                Use Givelify to give to the church, they are very easy steps to
-                follow.
+                Use Secure give to give to the church, they are very easy steps
+                to follow.
               </p>
-              <Button className=" px-8  hover:bg-orange-400 active:scale-95 ">
-                Give
+              <Button
+                asChild
+                className=" px-8  hover:bg-orange-400 active:scale-95 ">
+                <Link href={`https://app.securegive.com/rccghge`}>Give</Link>
               </Button>
             </div>
           </div>
           <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
             {/* image */}
-            <div className="w-full h-36  relative">
+            <div className=" h-32  w-full  relative">
               <ImageFill
-                src="/images/give-card-img.png"
-                className="rounded-t-md"
+                src="/images/Zelle®_id9eOrSaCY_6.svg"
+                className="rounded-t-md px-10 py-5 object-contain object-center"
               />
             </div>
             {/* content */}
             <div className="space-y-2 p-4 ">
-              <h1 className="text-lg">Givelify</h1>
+              <h1 className="text-lg">Zelle</h1>
               <p>
-                Use Givelify to give to the church, they are very easy steps to
-                follow.
+                You can write a check in favour of RCCG, Heaven&apos;s Glorius
+                Embassy and drop in the offering basket or Zelle to give{" "}
+                <span className=" text-primary font-semibold">
+                  give@rccghge.org
+                </span>
               </p>
-              <Button className=" px-8  hover:bg-orange-400 active:scale-95 ">
-                Give
-              </Button>
             </div>
           </div>
           <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
             {/* image */}
-            <div className="w-full h-36  relative">
+            <div className=" h-32  w-full  relative">
               <ImageFill
-                src="/images/give-card-img.png"
-                className="rounded-t-md"
+                src="/images/text2give.png"
+                className="rounded-t-md px-10 py-5 object-contain object-center"
               />
             </div>
             {/* content */}
             <div className="space-y-2 p-4 ">
-              <h1 className="text-lg">Givelify</h1>
-              <p>
-                Use Givelify to give to the church, they are very easy steps to
-                follow.
+              <h1 className="text-lg">TextToGive</h1>
+              <p className="">
+                You can text to give using te type of giving and the amount. Eg.
+                &quot;Offering 100&quot; or &quot;Thithe 500&quot; etc to :{" "}
+                <span className=" text-primary font-semibold">9724026202</span>
               </p>
-              <Button className=" px-8  hover:bg-orange-400 active:scale-95 ">
-                Give
-              </Button>
+            </div>
+          </div>
+          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+            {/* image */}
+            <div className=" h-32  w-full  relative">
+              <ImageFill
+                src="/images/Cash App_idD6MElyMu_1.svg"
+                className="rounded-t-md px-10 py-5 object-contain object-center"
+              />
+            </div>
+            {/* content */}
+            <div className="space-y-2 p-4 ">
+              <h1 className="text-lg">CashApp</h1>
+              <p className="">
+                CashApp to{" "}
+                <span className=" text-primary font-semibold">$RCCGHGE</span>
+              </p>
+            </div>
+          </div>
+          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+            {/* image */}
+            <div className=" h-32  w-full  relative">
+              <ImageFill
+                src="/images/gift-location.jpg"
+                className="rounded-t-md px-10 py-5 object-contain object-center"
+              />
+            </div>
+            {/* content */}
+            <div className="space-y-2 p-4 ">
+              <h1 className="text-lg">Mail</h1>
+              <p className="">
+                You can mail your gifts to the church using the address{" "}
+                <span className=" text-primary font-semibold">
+                  3800 E Parker Road Plano Texas 75074
+                </span>
+              </p>
             </div>
           </div>
         </div>
