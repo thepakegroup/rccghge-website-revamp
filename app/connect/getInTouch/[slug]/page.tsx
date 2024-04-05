@@ -160,7 +160,7 @@ const Connect = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  
     const options = {
       month: "long",
       day: "numeric",
@@ -172,7 +172,7 @@ const Connect = () => {
       sign_me_up_for: values.sign_me_up_for.join(", "),
       birthdate: values.birthdate.toLocaleDateString("en-US", options),
     };
-    console.log(newObj);
+ 
     try {
       const res = await connectWithUs(newObj);
       toast.success(res);

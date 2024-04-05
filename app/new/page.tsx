@@ -2,12 +2,19 @@ import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import React from "react";
+import { getPageDisplaySetting } from "../utils/actions";
 
-export default function page() {
+export default async function page() {
+  const displaySetting = await getPageDisplaySetting("iam_new_page");
+  let our_service_times, our_upcoming_events;
+
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
   return (
     <div className="page-spacing  relative">
-      <div className="dic">
-        <div className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg">
+      <div className="">
+        <div className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg z-20">
           <h1 className="text-lg sm:text-xl">
             Welcome to RCCG Heavens Glorious Embassy{" "}
           </h1>
@@ -25,8 +32,8 @@ export default function page() {
           A place of belonging for all.
         </h1>
       </div>
-      <ServiceTimes />
-      <EventsBlock />
+      {our_service_times === "true" && <ServiceTimes />}
+      {our_upcoming_events === "true" && <EventsBlock />}
       <div className="space-y-8 sm:space-y-12 wrapper max-w-screen ">
         <h1 className="font-bold  text-2xl sm:text-3xl -mb-2">
           Plan your visit

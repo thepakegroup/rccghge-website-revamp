@@ -22,23 +22,19 @@ export const MotionImage = m(Image);
 export const MotionLink = m(Link);
 
 // Variants
-  export const containerVariant: Variants = {
+
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        duration: 0.1,
-        ease: "easeInOut",
-        when: "beforeChildren",
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
-    exit: { opacity: 0 },
   };
-
-  export const itemVariant: Variants = {
-    hidden: { opacity: 0, y: -10 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  const item: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
   };
 const slideInVariant = (
   duration: number = 0.8,

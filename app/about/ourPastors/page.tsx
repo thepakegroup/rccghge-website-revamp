@@ -1,4 +1,4 @@
-import { getAllLeaders } from "@/app/utils/actions";
+import { getAllLeaders, getPageDisplaySetting } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
@@ -8,6 +8,12 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default async function OurPastors() {
   const leaders = await getAllLeaders();
+  const displaySetting = await getPageDisplaySetting("our_pastors");
+  let our_service_times, our_upcoming_events;
+
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
 
   return (
     <div className=" space-y-14 md:space-y-20  py-12 md:py-20 text-center">
@@ -50,7 +56,7 @@ export default async function OurPastors() {
             {/* text-section */}
             <div className="space-y-2 md:space-y-5  lg:text-left lg:w-3/5">
               <div className="hidden lg:block">
-                 <TitleBorderTop title={`Our ${leader.position}`} />
+                <TitleBorderTop title={`Our ${leader.position}`} />
               </div>
               <p>{leader.short_description}</p>
 
@@ -67,8 +73,7 @@ export default async function OurPastors() {
         );
       })}
 
-
-      <EventsBlock />
+      {our_upcoming_events === "true" && <EventsBlock />}
     </div>
   );
 }

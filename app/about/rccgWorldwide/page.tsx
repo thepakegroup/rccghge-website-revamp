@@ -10,8 +10,8 @@ export default async function page() {
 
 
   return (
-    <div className="py-12 md:py-20  relative ">
-      <div className="  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md">
+    <div className=" page-spacing relative ">
+      <div className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md">
         <ul className="flex items-center justify-center gap-10 text-primary text-sm md:text-base">
           <li>
             <Link href={"https://www.rccg.org/"} target="_blank">

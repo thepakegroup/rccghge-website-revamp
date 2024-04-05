@@ -7,7 +7,7 @@ export default async function give() {
   return (
     <div className="page-spacing relative">
       <div>
-        <div className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-20 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg">
+        <div className="z-20 blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-20 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg">
           <h1 className="text-lg sm:text-xl">Our belief about giving</h1>
           <p>
             The stewardship of our finances is a tremendous—and often
@@ -20,8 +20,8 @@ export default async function give() {
           </p>
         </div>
         {/* give options */}
-        <div className=" wrapper card-container flex flex-col justify-center lg:flex-row flex-wrap gap-10 mt-52 sm:mt-16 lg:mt-18 pb-10">
-          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative   ">
+        <div className=" wrapper card-container flex flex-col justify-center lg:grid lg:grid-cols-3 max-w-screen-xl flex-wrap gap-10 mt-52 sm:mt-16 lg:mt-18 pb-10">
+          <div className=" card border rounded-lg  w-full md:w-80 relative   ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -46,7 +46,7 @@ export default async function give() {
               </Button>
             </div>
           </div>
-          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg  w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -68,7 +68,7 @@ export default async function give() {
               </Button>
             </div>
           </div>
-          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg  w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -88,7 +88,7 @@ export default async function give() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg  w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -106,7 +106,7 @@ export default async function give() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg  w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -123,7 +123,7 @@ export default async function give() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg h-fit  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg  w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill

@@ -7,8 +7,23 @@ import OurMinistries from "@/components/home-page/OurMinistries";
 import OurMission from "@/components/home-page/OurMission";
 import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
 import Image from "next/image";
+import { getPageDisplaySetting } from "./utils/actions";
 
-export default function Home() {
+export default async function Home() {
+  const displaySetting = await getPageDisplaySetting("landing_page");
+  let our_service_times,
+    our_upcoming_events,
+    our_mission_vision,
+    our_ministries;
+  if (displaySetting) {
+    ({
+      our_service_times,
+      our_upcoming_events,
+      our_mission_vision,
+      our_ministries,
+    } = displaySetting);
+  }
+ 
   return (
     <main className=" page-spacing">
       {/* divider */}
@@ -17,14 +32,14 @@ export default function Home() {
         <Logo className="w-20 lg:w-28" />
         <div className="line blueGradient w-full h-0.5"></div>
       </div>
-      <ServiceTimes />
-      {/* events block */}
-      <EventsBlock />
+      {our_service_times === "true" && <ServiceTimes />}
+
+      {our_upcoming_events === "true" && <EventsBlock />}
       <div className="wrapper ">
-        <OurMission />
+        {our_mission_vision === "true" && <OurMission />}
       </div>
       <div className="wrapper ">
-        <OurMinistries />
+        {our_ministries === "true" && <OurMinistries />}
       </div>
       <GiveCTA />
       {/* download app image section */}

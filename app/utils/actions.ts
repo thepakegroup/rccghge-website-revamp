@@ -1,5 +1,88 @@
 "use server";
 import { onThisDay } from "../../lib/constants";
+// HERO SECTION
+type Slide = {
+  id: number;
+  image_url: string;
+  target_page: string;
+  order: number;
+};
+
+type Setting = {
+  id: number;
+  page_name: string;
+  settings: DisplaySetting;
+};
+
+type SliderData = {
+  settings: Setting;
+  slides: Slide[];
+};
+
+type HeroContent = {
+  title: string;
+  desc: string;
+  ImgArr: string[];
+};
+
+type DisplaySetting = {
+  heading_text: string;
+  description_text: string;
+  our_service_times: "true" | "false";
+  our_upcoming_events: "true" | "false";
+  our_mission_vision: "true" | "false";
+  our_ministries: "true" | "false";
+};
+
+export const getHeroContent = async (
+  pageName: string
+): Promise<HeroContent | undefined> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`
+    );
+    const heroContent = await res.json();
+    console.log(heroContent.data);
+    if (!res.ok) {
+      console.error(heroContent.data);
+      return;
+    }
+    const imgArr = heroContent.data.slides.map((slide: Slide) => {
+      return slide.image_url;
+    });
+    const title = heroContent.data.settings.settings.heading_text;
+    const desc = heroContent.data.settings.settings.description_text;
+    return {
+      title: title,
+      desc: desc,
+      ImgArr: imgArr,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return;
+  }
+};
+
+export const getPageDisplaySetting = async (
+  pageName: string
+): Promise<DisplaySetting | undefined> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`
+    );
+    const displaySettings = await res.json();
+    if (!res.ok) {
+      console.error(displaySettings.data);
+      return;
+    }
+    return displaySettings.data.settings.settings;
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+};
+
 // MINISTRIES
 export type Ministry = {
   id: number;
@@ -46,10 +129,10 @@ export const getPageWriteUp = async (
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/writeup/${slug}`
     );
     const writeUpData = await res.json();
-    // if (!res.ok) {
-    //   console.error(writeUpData.message);
-    //   return;
-    // }
+    if (!res.ok) {
+      console.error(writeUpData.message);
+      return;
+    }
     return writeUpData.message[0];
   } catch (error) {
     console.error(error);
@@ -101,6 +184,7 @@ export const getSingleLeader = async (
       return;
     }
 
+    console.log(leaderData.message);
     return leaderData.message;
   } catch (error) {
     console.error("Error getting leaders", error);
@@ -126,9 +210,6 @@ export const getAllEvents = async (
   searchQuery: string = "",
   dateQuery: string = ""
 ): Promise<Event[] | undefined> => {
-  console.log(
-    `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`
-  );
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`,
@@ -139,7 +220,7 @@ export const getAllEvents = async (
       console.error(eventData.message);
       return;
     }
-    console.log(eventData, searchQuery);
+
     return eventData.message.data;
   } catch (error) {
     console.log(error);
@@ -159,7 +240,6 @@ export const get3Events = async () => {
     return;
   }
 };
-
 
 // OUR MISSION
 type Mission = {
@@ -264,7 +344,7 @@ export const sendRideRequest = async (data: RideRequest) => {
         body: JSON.stringify(data),
       }
     );
-    console.log(res.json);
+
     if (!res.ok) {
       throw new Error("Failed to send ride request. Please try again.");
     }
@@ -408,31 +488,30 @@ export const connectWithUs = async (data: Connect) => {
   }
 };
 
-type JoinUs = Newsletter
+type JoinUs = Newsletter;
 // JOIN US
 export const joinUs = async (data: JoinUs) => {
   // join-group
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STAGING_API_URL}/join-group`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("Request Failed. Please try again.");
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/join-group`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       }
-      await res.json();
+    );
 
-      return "Request sent successfully";
-    } catch (error) {
-      console.error("Error sending request:", error);
+    if (!res.ok) {
       throw new Error("Request Failed. Please try again.");
     }
-}
+    await res.json();
 
+    return "Request sent successfully";
+  } catch (error) {
+    console.error("Error sending request:", error);
+    throw new Error("Request Failed. Please try again.");
+  }
+};

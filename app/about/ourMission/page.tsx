@@ -1,11 +1,20 @@
-import { getMinistries, getOurMissions } from "@/app/utils/actions";
+import {
+  getMinistries,
+  getOurMissions,
+  getPageDisplaySetting,
+} from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
 import React from "react";
 
 export default async function page() {
   const missions = await getOurMissions();
+  const displaySetting = await getPageDisplaySetting("our_mission");
+  let our_service_times, our_upcoming_events;
 
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
 
   return (
     <div className="flex flex-col page-spacing ">
@@ -24,13 +33,12 @@ export default async function page() {
         })}
       </div>
       {/* service time component */}
-      <div className=" ">
-        <ServiceTimes />
-      </div>
+
+      {our_service_times === "true" && <div><ServiceTimes /></div>}
+
       {/* events block */}
-      <div className=" ">
-        <EventsBlock />
-      </div>
+
+      {our_upcoming_events === "true" && <EventsBlock />}
     </div>
   );
 }

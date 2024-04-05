@@ -31,6 +31,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       try {
         const res = await getMinistries(params.slug);
         setMinistriesData(res);
+        console.log(res);
       } catch (error) {
         console.error(error);
       }
@@ -41,7 +42,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     <div className="page-spacing wrapper relative">
       {/* tabs */}
       <div>
-        <div className="bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
+        <div className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
           <ul className="flex items-center justify-center gap-10">
             <li
               className={`${isActiveLink("/Ministry") && "border-b-2 border-primary"}`}>
@@ -64,7 +65,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 className="relative  border-2  rounded-lg w-full  h-80 ">
                 <div className="card-img relative h-1/2 ">
                   <ImageFill
-                    src="/images/ourMinistries-card-img.png"
+                    src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
                     className=" rounded-t-md"
                   />
                 </div>

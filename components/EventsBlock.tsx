@@ -7,7 +7,7 @@ import { FaCalendar } from "react-icons/fa6";
 export default async function EventsBlock() {
   const formattedDateRange = (startDate: Date, endDate: Date) => {
     const formattedStartMonth = startDate.toLocaleDateString("en-US", {
-      month: "long",
+      month: "short",
       day: "numeric",
     });
     const formattedStartTime = startDate.toLocaleTimeString("en-US", {

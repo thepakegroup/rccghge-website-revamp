@@ -8,6 +8,7 @@ import "./globals.css";
 import FramerMotion from "@/lib/framer-motion/LazyMotion";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
+import Head from "next/head";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
+   
       <FramerMotion>
         <body
           suppressHydrationWarning
@@ -45,10 +47,6 @@ export default function RootLayout({
           </ReduxProvider>
         </body>
       </FramerMotion>
-      <Script
-        async
-        src="https://platform.twitter.com/widgets.js"
-        strategy="afterInteractive"></Script>
     </html>
   );
 }

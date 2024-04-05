@@ -1,21 +1,27 @@
 "use client";
-import ImageFill from "@/lib/components/ImageFill";
-import { FaCaretLeft } from "react-icons/fa";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import Script from "next/script";
+import { FaCaretLeft } from "react-icons/fa";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import InstagramPost from "./InstagramPost";
-
+import React from "react";
+import PageSkeleton from "../PageSkeleton";
+export const revalidate = 0;
 export default function GetConnected() {
+  React.useEffect(() => {
+    const s = document.createElement("script");
+    s.setAttribute("src", "https://platform.twitter.com/widgets.js");
+    s.setAttribute("async", "true");
+    document.head.appendChild(s);
+  }, []);
   return (
-    <div className="space-y-5 md:space-y-12 ">
+    <div className="space-y-5 md:space-y-12  ">
       <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl lg:w-[500px] relative">
         Get Connected
         <FaCaretLeft className="absolute  -right-12 md:text-[9rem] text-9xl" />
       </h1>
-      <ScrollArea className="w-full">
-        <div className="social-card-container  w-full gap-5 flex items-center px-6">
+      <ScrollArea className="w-full ">
+        <div className="social-card-container  md:px-12  w-full gap-5 lg:gap-16 flex items-center px-6">
           {/* facebook timeline */}
           <ScrollArea className="card h-96 w-[340px]  pb-5 ">
             <iframe
@@ -28,22 +34,29 @@ export default function GetConnected() {
               allowFullScreen={true}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
           </ScrollArea>
-          {/* twitter timeline */}
-          <ScrollArea className="card h-96 w-[340px]  pb-5 ">
-            <a
-              className="twitter-timeline"
-              href="https://twitter.com/HgeRccg?ref_src=twsrc%5Etfw">
-              Tweets by HgeRccg
-            </a>{" "}
-          </ScrollArea>
+
           {/* instagram timeline */}
           <ScrollArea className="card h-96 w-[340px]  pb-5 ">
             <InstagramPost />
           </ScrollArea>
+          {/* twitter timeline */}
+          <ScrollArea className="card h-96 w-[340px]  pb-5 ">
+            <Link
+              className="twitter-timeline text-primary"
+              href="https://twitter.com/HgeRccg?ref_src=twsrc%5Etfw">
+              Tweets by HgeRccg
+            </Link>{" "}
+            {/* <Script
+              async
+              strategy="lazyOnload"
+              src="https://platform.twitter.com/widgets.js"></Script> */}
+          </ScrollArea>
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-        <p className="sm:hidden text-sm mx-auto text-center">scroll to see more 👉</p>
+      <p className="sm:hidden text-sm mx-auto text-center">
+        scroll to see more 👉
+      </p>
     </div>
   );
 }

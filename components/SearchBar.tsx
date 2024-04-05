@@ -80,7 +80,6 @@ function SearchBar({
     <div className="flex items-center gap-10">
       <Select
         onValueChange={(value) => {
-          console.log(value);
           router.push(
             `/events?searchQuery=${searchQuery}&dateQuery=${currentYear}-${encodeURIComponent(value)}-01`
           );
@@ -113,7 +112,6 @@ function SearchBar({
           onClick={() => {
             if (!inputRef.current) return;
             const value = inputRef.current.value;
-            console.log(value);
             router.push(
               `/events?searchQuery=${encodeURIComponent(value)}&dateQuery=${dateQuery}`
             );

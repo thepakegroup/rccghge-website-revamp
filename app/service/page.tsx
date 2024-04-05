@@ -27,6 +27,7 @@ const serviceTimes = [
 ];
 export default async function page() {
   const serviceTimes = await getServiceTimes();
+  
   return (
     <div className="space-y-10 py-12 md:py-20 ">
       {serviceTimes?.map((service, i) => {

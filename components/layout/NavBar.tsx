@@ -1,27 +1,29 @@
 "use client";
 
+import { navLinks } from "@/app/data";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import Link from "next/link";
-import { FaBars, FaChevronDown } from "react-icons/fa6";
 import {
   AnimatePresence,
   m,
-  slideInVariant,
+  stagger,
+  useAnimate,
 } from "@/lib/framer-motion/motionComponents";
-import { navLinks } from "@/app/data";
 import useIsActiveLink from "@/lib/hooks/useIsActiveLink";
+import { Variants } from "framer-motion";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { FaBars, FaChevronDown } from "react-icons/fa6";
 import Logo from "../Logo";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../ui/collapsible";
-import React, { useState } from "react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -63,7 +65,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavBar() {
   return (
-    <nav className=" sticky top-0 z-20 bg-white text-black">
+    <nav className=" sticky top-0 z-50 py-2 bg-white text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -148,15 +150,29 @@ const MobileNav = () => {
   );
 };
 const LgNav = () => {
+  const [scope, animate] = useAnimate();
+  useEffect(() => {
+    animate(
+      ".nav-link",
+      { y: [50, 0], opacity: [0, 1] },
+      { delay: stagger(0.1, { from: "center" }) }
+    );
+  }, []);
+
   const isActiveLink = useIsActiveLink();
   const pathname = usePathname();
+
   return (
-    <div className="flex w-full justify-center items-center gap-10 font-medium lg:gap-20">
+    <m.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      ref={scope}
+      className="nav-container flex w-full justify-center items-center gap-10 font-medium lg:gap-20">
       {navLinks.map((link) => {
         //if home page display logo
         if (link.url === "/") {
           return (
-            <Link key={link.name} href={link.url}>
+            <Link className="nav-link" key={link.name} href={link.url}>
               <Logo />
             </Link>
           );
@@ -169,7 +185,7 @@ const LgNav = () => {
           return (
             <HoverCard key={link.name} openDelay={10}>
               <HoverCardTrigger
-                className={`cursor-pointer hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}  `}>
+                className={` nav-link cursor-pointer hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}  `}>
                 {link.name}
               </HoverCardTrigger>
 
@@ -194,11 +210,11 @@ const LgNav = () => {
           <Link
             key={link.name}
             href={link.url}
-            className={`hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>
+            className={`nav-link hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>
             {link.name}
           </Link>
         );
       })}
-    </div>
+    </m.div>
   );
 };

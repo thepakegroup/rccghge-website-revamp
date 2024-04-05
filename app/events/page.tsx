@@ -17,7 +17,7 @@ export default async function page({
   const searchQuery = (searchParams.searchQuery || "") as string;
   const dateQuery = (searchParams.dateQuery || "") as string;
 
-  const events = await getAllEvents(searchQuery);
+  const events = await getAllEvents(searchQuery, dateQuery);
   const formattedDateRange = (startDate: Date, endDate: Date) => {
     const formattedStartDate = startDate.toLocaleDateString("en-US", {
       month: "long",
