@@ -8,6 +8,7 @@ import OurMission from "@/components/home-page/OurMission";
 import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
 import Image from "next/image";
 import { getPageDisplaySetting } from "./utils/actions";
+import Link from "next/link";
 
 export default async function Home() {
   const displaySetting = await getPageDisplaySetting("landing_page");
@@ -23,7 +24,7 @@ export default async function Home() {
       our_ministries,
     } = displaySetting);
   }
- 
+
   return (
     <main className=" page-spacing">
       {/* divider */}
@@ -77,20 +78,33 @@ export default async function Home() {
           </div>
           {/* download buttons */}
           <div className="flex items-center justify-center gap-5  ">
-            <Image
-              src={"/images/get-on-playstore.png"}
-              alt="get on playstore image"
-              width={300}
-              height={300}
-              className="w-44 md:w-52   "
-            />
-            <Image
-              src={"/images/get-on-applestore.png"}
-              alt="get on appl store image"
-              width={300}
-              height={300}
-              className="w-40 md:w-48 h-[53px] md:h-[63px] "
-            />
+            <Link
+            className="active:scale-90 w-sc"
+              href={
+                "https://play.google.com/store/apps/details?id=org.rccghge.mobile"
+              }
+              target="_blank">
+              <Image
+                src={"/images/get-on-playstore.png"}
+                alt="get on playstore image"
+                width={300}
+                height={300}
+                className="w-44 md:w-52   "
+              />
+            </Link>
+
+            <Link
+            className="active:scale-90 w-sc"
+              href={"https://apps.apple.com/us/app/rccghge/id6463586154"}
+              target="_blank">
+              <Image
+                src={"/images/get-on-applestore.png"}
+                alt="get on appl store image"
+                width={300}
+                height={300}
+                className="w-40 md:w-48 h-[53px] md:h-[63px] "
+              />
+            </Link>
           </div>
         </div>
       </div>

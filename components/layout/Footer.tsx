@@ -8,6 +8,7 @@ import {
 } from "@/app/utils/actions";
 import { toast } from "sonner";
 import FooterInputButton from "./FooterInputButton";
+import Link from "next/link";
 
 export default async function Footer() {
   const events = await get3Events();
@@ -48,10 +49,10 @@ export default async function Footer() {
       {/* contact address and logo */}
       <div className=" flex flex-col w-full gap-10">
         <div className="contact w-full flex flex-col gap-6">
-          <div className=" logo flex items-center justify-center bg-white p-2 w-fit gap-4 rounded-lg">
+          <Link href="/" className=" logo flex items-center justify-center bg-white p-2 w-fit gap-4 rounded-lg">
             <Logo className="w-[40%] " />
             <h2 className="text-xl font-bold text-black">RCCGHGE</h2>
-          </div>
+          </Link>
           <div className="text flex flex-col ">
             <p className="uppercase">{`HEAVEN'S GLORIOUS EMBASSY 3800`}</p>
             <p className="">{` E. Parker Road`}</p>

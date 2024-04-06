@@ -30,7 +30,7 @@ export default async function ServiceTimes() {
                   </div>
                   <div className="image relative h-1/2 ">
                     <ImageFill
-                      src="/images/service-component-img.png"
+                      src={service.image_url||"/images/service-component-img.png"}
                       className="rounded-t-md"
                     />
                   </div>

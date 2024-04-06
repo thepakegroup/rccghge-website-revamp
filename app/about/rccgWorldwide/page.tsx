@@ -45,7 +45,16 @@ export default async function page() {
         </div>
       </div>
       {/* video section */}
-      <div className=" w-[min(100%,1000px)] mb-12 md:mb-20 aspect-video lg:h-[480px] wrapper bg-red-500 "></div>
+      <div className=" w-[min(100%,1000px)] mb-12 md:mb-20 aspect-video lg:h-[480px] mx-auto bg-red-500 ">
+        <iframe
+          className="w-full h-full"  
+          src="https://www.youtube.com/embed/7bVUARoSFnQ?si=8nPEsy9Y6WDNI2Ff"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen></iframe>
+      </div>
       <EventsBlock />
     </div>
   );

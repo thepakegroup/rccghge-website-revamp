@@ -20,8 +20,8 @@ export default async function give() {
           </p>
         </div>
         {/* give options */}
-        <div className=" wrapper card-container flex flex-col justify-center lg:grid lg:grid-cols-3 max-w-screen-xl flex-wrap gap-10 mt-52 sm:mt-16 lg:mt-18 pb-10">
-          <div className=" card border rounded-lg  w-full md:w-80 relative   ">
+        <div className=" wrapper card-container flex flex-col justify-center md:grid lg:grid-cols-3 md:grid-cols-2 max-w-screen-xl flex-wrap gap-10 mt-52 sm:mt-16 lg:mt-18 pb-10">
+          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative   ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -46,7 +46,7 @@ export default async function give() {
               </Button>
             </div>
           </div>
-          <div className=" card border rounded-lg  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -68,7 +68,7 @@ export default async function give() {
               </Button>
             </div>
           </div>
-          <div className=" card border rounded-lg  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -88,7 +88,7 @@ export default async function give() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -106,7 +106,7 @@ export default async function give() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -123,7 +123,7 @@ export default async function give() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg  w-full md:w-80 relative ">
+          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill

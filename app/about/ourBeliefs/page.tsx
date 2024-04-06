@@ -1,3 +1,4 @@
+import { getOurBeliefs } from "@/app/utils/actions";
 import {
   Accordion,
   AccordionContent,
@@ -5,49 +6,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import React from "react";
-const beliefs = [
-  {
-    title: "God the father",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "Jesus christ",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "The Holy Spirit",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "the death & the ressurection of jesus christ",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "salvation",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "the holy bible",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "the baptism of the holy ghost",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "water baptism",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "the blood of jesus christ",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-  {
-    title: "the second comming of christ",
-    desc: "Creator of Heaven and Earth who made man in His own image and likeness",
-  },
-];
-export default function page() {
+
+export default async function page() {
+  const beliefs = await getOurBeliefs();
+  console.log(beliefs)
   return (
     <div className=" page-spacing ">
       <h1 className="capitalize text-2xl sm:text-3xl font-semibold wrapper text-center">
@@ -55,7 +17,7 @@ export default function page() {
       </h1>
       {/* accordion */}
       <Accordion type="single" collapsible className=" space-y-8 md:space-y-12  ">
-        {beliefs.map((item, i) => {
+        {beliefs?.map((item, i) => {
           return (
             <AccordionItem
               value={`item-${i + 1}`}
@@ -72,7 +34,7 @@ export default function page() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-base md:text-lg font-mediunm">
-                {item.desc}
+                {item.description}
               </AccordionContent>
             </AccordionItem>
           );

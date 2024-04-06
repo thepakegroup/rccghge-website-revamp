@@ -19,7 +19,7 @@ type SliderData = {
   slides: Slide[];
 };
 
-type HeroContent = {
+export type HeroContent = {
   title: string;
   desc: string;
   ImgArr: string[];
@@ -42,7 +42,7 @@ export const getHeroContent = async (
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`
     );
     const heroContent = await res.json();
-    console.log(heroContent.data);
+  
     if (!res.ok) {
       console.error(heroContent.data);
       return;
@@ -184,7 +184,6 @@ export const getSingleLeader = async (
       return;
     }
 
-    console.log(leaderData.message);
     return leaderData.message;
   } catch (error) {
     console.error("Error getting leaders", error);
@@ -213,7 +212,6 @@ export const getAllEvents = async (
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`,
-      { ...onThisDay }
     );
     const eventData = await res.json();
     if (!res.ok) {
@@ -266,6 +264,24 @@ export const getOurMissions = async (): Promise<Mission[] | undefined> => {
     return;
   }
 };
+type Belief = Mission;
+// OUR BELIEFS
+export const getOurBeliefs = async (): Promise<Belief[] | undefined> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-belief`
+    );
+    const ourBeliefData = await res.json();
+    if (!res.ok) {
+      console.log("something went wrong", ourBeliefData.message);
+      return;
+    }
+    return ourBeliefData.message;
+  } catch (error) {
+    console.error("something went wrong", error);
+    return;
+  }
+};
 
 // SERVICE TIMES
 type ServiceTime = {
@@ -273,6 +289,7 @@ type ServiceTime = {
   service_name: string;
   service_description: string;
   service_period: string;
+  image_url: string;
   created_at: string;
   updated_at: string;
 };
@@ -514,4 +531,14 @@ export const joinUs = async (data: JoinUs) => {
     console.error("Error sending request:", error);
     throw new Error("Request Failed. Please try again.");
   }
+};
+
+// INSTAGRAM FEED
+export const getInstagramFeed = async () => {
+  const res = await fetch(
+    `https://graph.instagram.com/me/media?fields=id,caption,permalink&access_token=${process.env.INSTAGRAM_KEY}`
+  );
+  const data = await res.json();
+  console.log(data)
+ 
 };

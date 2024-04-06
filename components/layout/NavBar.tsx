@@ -25,44 +25,6 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
-
 export default function NavBar() {
   return (
     <nav className=" sticky top-0 z-50 py-2 bg-white text-black">
@@ -80,9 +42,19 @@ const MobileNav = () => {
   const isActiveLink = useIsActiveLink();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-
+  const [scope, animate] = useAnimate();
+  useEffect(() => {
+    if (isOpen) 
+    animate(
+      ".nav-link",
+      { x: [20, 0], opacity: [0, 1] },
+      { delay: stagger(0.1,{startDelay:0.8}),}
+    );
+  }, [isOpen]);
   return (
-    <div className="flex justify-between items-center px-6 py-4 relative">
+    <div
+      ref={scope}
+      className="flex justify-between items-center px-6 py-2 relative">
       <Link href={"/"} className="w-[28%] max-w-28  h-auto ">
         <Logo className="" />
       </Link>
@@ -113,7 +85,7 @@ const MobileNav = () => {
                 return (
                   <Collapsible key={link.name}>
                     <CollapsibleTrigger
-                      className={`cursor-pointer hover:border-b-2   underline-offset-8 border-primary flex items-center gap-5 ${pathname.startsWith(link.url) && "border-b-2 "}  `}>
+                      className={`nav-link cursor-pointer hover:border-b-2   underline-offset-8 border-primary flex items-center gap-5 ${pathname.startsWith(link.url) && "border-b-2 "}  `}>
                       <>{link.name}</>
                       <FaChevronDown />
                     </CollapsibleTrigger>
@@ -138,7 +110,7 @@ const MobileNav = () => {
                 <Link
                   key={link.name}
                   href={link.url}
-                  className={`hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>
+                  className={`nav-link hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>
                   {link.name}
                 </Link>
               );

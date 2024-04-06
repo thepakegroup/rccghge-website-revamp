@@ -12,50 +12,20 @@ import {
   useAnimate,
 } from "@/lib/framer-motion/motionComponents";
 import { useEffect, useState } from "react";
-import { getHeroContent } from "@/app/utils/actions";
+import { type HeroContent, getHeroContent } from "@/app/utils/actions";
 export default function Hero() {
+  const pathname = usePathname();
+  const [scope, animate] = useAnimate();
   const [imageUrl, setImageUrl] = useState<string | undefined>();
   const [content, setContent] = useState<JSX.Element>();
-  // let content = <Home />;
-  const pathname = usePathname();
-  let src = "/images/hero-images/home-hero-img1.png";
 
-  // if (pathname.startsWith("/about/ourPastors")) {
-  //   src = "/images/hero-images/our-pastors-img.png";
-  // } else if (pathname.endsWith("/about/ourMission")) {
-  // } else if (pathname.endsWith("/about/ourStory")) {
-  //   src = "/images/hero-images/our-story-img.png";
-  // } else if (pathname.endsWith("/about/ourBeliefs")) {
-  //   src = "/images/hero-images/our-beliefs-img.png";
-  // } else if (pathname.endsWith("/about/rccgWorldwide")) {
-  //   src = "/images/hero-images/our-beliefs-img.png";
-  // } else if (pathname.endsWith("/new")) {
-  //   src = "/images/hero-images/new-img.png";
-  // } else if (pathname.endsWith("/service")) {
-  //   src = "/images/hero-images/service-img.png";
-  // } else if (pathname.endsWith("/give")) {
-  //   src = "/images/hero-images/service-img.png";
-  // } else if (pathname.endsWith("/connect/prayerRequests")) {
-  //   src = "/images/hero-images/prayer-request-img.png";
-  // } else if (pathname.endsWith("/connect/needARide")) {
-  //   src = "/images/hero-images/need-a-ride-img.png";
-  // } else if (pathname.startsWith("/connect/getInTouch")) {
-  //   src = "/images/hero-images/our-beliefs-img.png";
-  // } else if (pathname.endsWith("/ourMinistries/joinUs")) {
-  // } else if (pathname.startsWith("/ourMinistries")) {
-  //   src = "/images/hero-images/our-ministries-img.png";
-  // } else if (pathname.endsWith("/events")) {
-  //   src = "/images/hero-images/our-ministries-img.png";
-
-  // } else {
-  //   console.log("not found");
-  // }
+  // setting the hero images and titles
   useEffect(() => {
-    let heroContent;
-    (async () => {
+    let heroContent: HeroContent | undefined;
+    // Fetch hero content and update image and content
+    const fetchAndUpdateHeroContent = async () => {
       if (pathname.endsWith("/")) {
         heroContent = await getHeroContent("landing_page");
-
         if (heroContent) {
           setImageUrl(heroContent?.ImgArr[0]);
           setContent(<Home title={heroContent?.title} />);
@@ -64,17 +34,9 @@ export default function Hero() {
         heroContent = await getHeroContent("our_pastors");
 
         if (heroContent) {
-          setImageUrl(
-            heroContent?.ImgArr[0] || "/images/hero-images/our-pastors-img.png"
-          );
+          setImageUrl(heroContent?.ImgArr[0]);
           setContent(
-            <HeroContent
-              title={heroContent?.title || "Leadership"}
-              desc={
-                heroContent?.desc ||
-                "Just as Shepherd would not leave his sheep behind, So would the Lord not leave thee behind"
-              }
-            />
+            <HeroContent title={heroContent?.title} desc={heroContent?.desc} />
           );
         }
       } else if (pathname.endsWith("/about/ourMission")) {
@@ -93,37 +55,25 @@ export default function Hero() {
         heroContent = await getHeroContent("our_story");
 
         if (heroContent) {
-          setImageUrl(
-            heroContent?.ImgArr[0] || "/images/hero-images/our-story-img.png"
-          );
-          setContent(<HeroContent title={heroContent?.title || "Our Story"} />);
+          setImageUrl(heroContent?.ImgArr[0]);
+          setContent(<HeroContent title={heroContent?.title} />);
         }
       } else if (pathname.endsWith("/about/ourBeliefs")) {
         heroContent = await getHeroContent("our_beliefs");
 
         if (heroContent) {
-          setImageUrl(
-            heroContent?.ImgArr[0] || "/images/hero-images/our-beliefs-img.png"
-          );
+          setImageUrl(heroContent?.ImgArr[0]);
           setContent(
-            <HeroContent
-              title={heroContent?.title || "Our Beliefs"}
-              desc={heroContent?.desc || "What we believe in"}
-            />
+            <HeroContent title={heroContent?.title} desc={heroContent?.desc} />
           );
         }
       } else if (pathname.endsWith("/about/rccgWorldwide")) {
         heroContent = await getHeroContent("rccghge_worldwide");
 
         if (heroContent) {
-          setImageUrl(
-            heroContent?.ImgArr[0] || "/images/hero-images/our-beliefs-img.png"
-          );
+          setImageUrl(heroContent?.ImgArr[0]);
           setContent(
-            <HeroContent
-              title={heroContent?.title || "RCCG Worldwide"}
-              desc={heroContent?.desc || "65 Years since founding"}
-            />
+            <HeroContent title={heroContent?.title} desc={heroContent?.desc} />
           );
         }
       } else if (pathname.endsWith("/new")) {
@@ -133,7 +83,7 @@ export default function Hero() {
           setImageUrl(heroContent?.ImgArr[0]);
           setContent(
             <HeroContent
-              title={heroContent?.title || "I'm New Here"}
+              title={heroContent?.title}
               desc="Here are ways you can give to the church."
             />
           );
@@ -143,19 +93,16 @@ export default function Hero() {
 
         if (heroContent) {
           setImageUrl(heroContent?.ImgArr[0]);
-          setContent(
-            <HeroContent title={heroContent?.title || "Service Times"} />
-          );
+          setContent(<HeroContent title={heroContent?.title} />);
         }
       } else if (pathname.endsWith("/give")) {
-        // setImageUrl("/images/hero-images/service-img.png");
         heroContent = await getHeroContent("give");
 
         if (heroContent) {
           setImageUrl(heroContent?.ImgArr[0]);
           setContent(
             <HeroContent
-              title={heroContent?.title || "Give"}
+              title={heroContent?.title}
               desc="Here are ways you can give to the church."
             />
           );
@@ -188,7 +135,7 @@ export default function Hero() {
           setImageUrl(heroContent?.ImgArr[0]);
           setContent(
             <HeroContent
-              title={heroContent?.title || "Our Ministries"}
+              title={heroContent?.title}
               desc="Join One or Two of our groups, let the Lord use you in mighty ways. We Would be honored so have you"
             />
           );
@@ -204,21 +151,35 @@ export default function Hero() {
       } else {
         console.log("not found");
       }
-    })();
-  }, [pathname]);
+    };
+    fetchAndUpdateHeroContent();
+   
+
+    animate(".content", { opacity: [0, 1] }, { duration: 0.8, delay: 1 });
+
+  
+  }, [pathname, animate]);
+
+  // if the pathname is "/" and heroContent.ImgArr array length > 1,
+  useEffect(() => {
+    console.log(imageUrl);
+  }, [imageUrl]);
 
   return (
-    <div className="h-[400px]  md:h-[560px]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
-      <AnimatePresence>
+    <div
+      ref={scope}
+      className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
+      <AnimatePresence mode="popLayout">
         {/* <div className="relative w-full h-full"> */}
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
         {imageUrl && (
           <MotionImage
             key={imageUrl}
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
             src={imageUrl}
             alt="hero image"
             fill
@@ -228,8 +189,8 @@ export default function Hero() {
           />
         )}
         {/* </div> */}
+        <div className="z-10 content space-y-4 max-w-[800px]">{content}</div>
       </AnimatePresence>
-      <div className="z-10 space-y-4 max-w-[800px]">{content}</div>
     </div>
   );
 }
@@ -238,11 +199,11 @@ const Home = ({ title }: { title: string }) => {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    animate(".title", { opacity: [0, 1] }, { duration: 0.8, delay: 0.5 });
+    animate(".title", { opacity: [0, 1] }, { duration: 0.8, delay: 1 });
     animate(
       ".desc",
       { opacity: [0, 1], y: [-30, 0] },
-      { duration: 0.8, delay: 0.8 }
+      { duration: 0.8, delay: 1.2 }
     );
   }, [pathname, animate]);
   return (
@@ -262,11 +223,11 @@ const HeroContent = ({ title, desc }: { title: string; desc?: string }) => {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    animate(".title", { opacity: [0, 1] }, { duration: 0.8, delay: 0.5 });
+    animate(".title", { opacity: [0, 1] }, { duration: 0.8, delay: 1 });
     animate(
       ".desc",
       { opacity: [0, 1], y: [-30, 0] },
-      { duration: 0.8, delay: 0.8 }
+      { duration: 0.8, delay: 1.2 }
     );
   }, [pathname, animate]);
   return (

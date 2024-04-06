@@ -4,10 +4,9 @@ const InstagramPost = () => {
   return (
     <div>
       <iframe
-        src="https://www.instagram.com/p/C5RApNhgjrW/embed/"
+        src={`https://www.instagram.com/p/C4JQ7yIPF0E/embed/`}
         frameBorder="0"
         scrolling="no"
-        // allowTransparency={true}
         style={{
           border: "none",
           overflow: "hidden",
@@ -16,9 +15,7 @@ const InstagramPost = () => {
           width: "100%",
         }}
         width="100%"
-        height="710">
-        
-        </iframe>
+        height="710"></iframe>
     </div>
   );
 };

@@ -35,7 +35,7 @@ export default async function EventsBlock() {
         <FaCaretDown className=" md:hidden absolute -bottom-7 left-40 text-5xl text-[#2b4a83]" />
       </div>
       {/* events */}
-      <div className="flex px-2 md:px-12 w-full  gap-2 bg-primary/5 items-center lg:h-80 lg:divide-x lg:py-5 overflow-hidden">
+      <div className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 items-center lg:h-80 lg:divide-x lg:py-5 overflow-hidden relative">
         {events &&
           events?.map((event, i) => {
             const startDate = new Date(event.start_date);
@@ -45,7 +45,7 @@ export default async function EventsBlock() {
             return (
               <Link
                 key={i}
-                href={"/events?searchQuery&monthQuery"}
+                href={"/events"}
                 className={`${i === 2 ? "hidden xl:flex" : "flex"}  text-center overflow-hidden w-full h-full  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   `}>
                 <h1 className="title text-lg truncate max-w-xl  md:text-xl lg:tracking-wide font-semibold  ">
                   {event.title}
@@ -60,6 +60,11 @@ export default async function EventsBlock() {
               </Link>
             );
           })}
+        <Link
+          href={"/events"}
+          className="  border-none  text-sm text-primary absolute right-0 left-0 bottom-1  text-center lg:text-right lg:right-20 lg:bottom-5 font-semibold ">
+          click to see more{" "}
+        </Link>
       </div>
     </div>
   );

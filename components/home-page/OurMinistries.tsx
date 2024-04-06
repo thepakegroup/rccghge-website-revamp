@@ -31,13 +31,9 @@ export default async function OurMinistries() {
 
                 <div className="card-content space-y-2 pt-5 p-2 h-1/2">
                   <h1 className="text-xl  capitalize font-bold">
-                    {
-                      ministry.name
-                    }
+                    {ministry.name}
                   </h1>
-                  <p className="">
-                    {ministry.description}
-                  </p>
+                  <p className="line-clamp-3">{ministry.description}</p>
                 </div>
               </div>
             );
