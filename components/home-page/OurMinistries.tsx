@@ -5,6 +5,7 @@ import LearnMoreBtn from "../LearnMoreBtn";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { FaUsers } from "react-icons/fa6";
 import { getMinistries } from "@/app/utils/actions";
+import { MotionDiv, staggerContainer, staggerFromRightItem } from "@/lib/framer-motion/motionComponents";
 
 export default async function OurMinistries() {
   // Ministry
@@ -15,10 +16,10 @@ export default async function OurMinistries() {
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
       <ScrollArea className="w-full">
-        <div className="ministries-card-container w-full gap-5 flex items-center">
+        <MotionDiv variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px -200px 0px" }} className="ministries-card-container w-full gap-5 flex items-center">
           {ministries?.map((ministry, i) => {
             return (
-              <div key={i} className="card  ">
+              <MotionDiv variants={staggerFromRightItem} key={i} className="card  ">
                 <div className="card-img relative h-1/2 ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${ministry.banner}`}
@@ -35,11 +36,11 @@ export default async function OurMinistries() {
                   </h1>
                   <p className="line-clamp-3">{ministry.description}</p>
                 </div>
-              </div>
+              </MotionDiv>
             );
           })}
 
-        </div>
+        </MotionDiv>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
       <LearnMoreBtn url="/ourMinistries/Ministry" />

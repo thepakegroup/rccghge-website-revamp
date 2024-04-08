@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
 import NavBar from "@/components/layout/NavBar";
 import { ReduxProvider } from "@/redux/provider";
-import type { Metadata } from "next";
+import{ Metadata } from "next";
 import "./globals.css";
 import FramerMotion from "@/lib/framer-motion/LazyMotion";
 import { Toaster } from "@/components/ui/sonner";
@@ -22,7 +22,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "RCCGHE",
+  title: {
+    default: "RCCGHE",
+    template: "%s | RCCGHE",
+  },
   description: "Heavens glorious embassy - Into his presence through worship",
 };
 

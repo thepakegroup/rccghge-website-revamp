@@ -3,7 +3,14 @@ import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import React from "react";
 import { getPageDisplaySetting } from "../utils/actions";
+import { MotionDiv, MotionH1 } from "@/lib/framer-motion/motionComponents";
+import { slideInFromBottom } from "../give/page";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "New Here?",
+  description: "Welcome to RCCG Heavens Glorious Embassy",
+};
 export default async function page() {
   const displaySetting = await getPageDisplaySetting("iam_new_page");
   let our_service_times, our_upcoming_events;
@@ -14,7 +21,11 @@ export default async function page() {
   return (
     <div className="page-spacing  relative">
       <div className="">
-        <div className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg z-20">
+        <MotionDiv
+          variants={slideInFromBottom(1, 0.5)}
+          initial="hidden"
+          animate="visible"
+          className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg z-20">
           <h1 className="text-lg sm:text-xl">
             Welcome to RCCG Heavens Glorious Embassy{" "}
           </h1>
@@ -27,10 +38,14 @@ export default async function page() {
             perceived self-sufficiency. As people of faith, we give faithfully
             and generously
           </p>
-        </div>
-        <h1 className="font-bold wrapper  text-2xl sm:text-3xl mt-52 sm:mt-16 lg:mt-20 ">
+        </MotionDiv>
+        <MotionH1
+          variants={slideInFromBottom(1, 0)}
+          initial="hidden"
+          whileInView={"visible"}
+          className="font-bold wrapper  text-2xl sm:text-3xl mt-52 sm:mt-16 lg:mt-20 ">
           A place of belonging for all.
-        </h1>
+        </MotionH1>
       </div>
       {our_service_times === "true" && <ServiceTimes />}
       {our_upcoming_events === "true" && <EventsBlock />}

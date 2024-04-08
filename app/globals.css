@@ -93,6 +93,6 @@
     @apply space-y-14 md:space-y-20 py-12 md:py-20;
   }
   .card {
-    @apply w-64 lg:w-80 relative h-72 md:h-80 border-2  rounded-lg;
+    @apply w-64 lg:w-80 relative h-72 md:h-80 border-2 shadow-md  rounded-lg;
   }
 }

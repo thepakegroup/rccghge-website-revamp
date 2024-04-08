@@ -23,8 +23,9 @@ export default async function page() {
           return (
             <div
               key={i}
-              className="border-2 rounded-lg p-3 md:space-y-4   mx-6 lg:mx-12">
+              className="border-2 rounded-lg p-3 md:space-y-4    mx-6 lg:mx-12">
               <h1 className="text-xl sm:text-2xl">{mission.title}</h1>
+              <hr className="w-2/5 border opacity-50 " />
               <p className="font-medium text-[15px] sm:text-lg">
                 {mission.description}
               </p>

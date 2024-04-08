@@ -1,17 +1,23 @@
+import { slideInFromBottom } from "@/app/give/page";
 import { getPageWriteUp } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import { Metadata } from "next";
 
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import React from "react";
 
+import React from "react";
+export const metadata: Metadata = {
+  title: "RCCG Worldwide",
+  description:"The Redeemed Christian Church of God (RCCG) – is a worldwide non-denominational religious organization established in 1952. The RCCG has over 6 million members distributed in over 4,000 parishes in the continents of Africa, Europe, Asia, and America.",
+};
 export default async function page() {
   const writeUp = await getPageWriteUp("rccg-worldwide");
-
+ 
 
   return (
     <div className=" page-spacing relative ">
-      <div className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md">
+      <MotionDiv variants={slideInFromBottom(1, 0.5)} initial="hidden" animate="visible" className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md">
         <ul className="flex items-center justify-center gap-10 text-primary text-sm md:text-base">
           <li>
             <Link href={"https://www.rccg.org/"} target="_blank">
@@ -29,7 +35,7 @@ export default async function page() {
             </Link>
           </li>
         </ul>
-      </div>
+      </MotionDiv>
       {/* text content */}
       <div className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
         <h1

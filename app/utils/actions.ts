@@ -1,5 +1,6 @@
 "use server";
-import { onThisDay } from "../../lib/constants";
+// import { onThisDay } from "../../lib/constants";
+const onThisDay = { next: { revalidate: 3600 } };
 // HERO SECTION
 type Slide = {
   id: number;
@@ -39,10 +40,11 @@ export const getHeroContent = async (
 ): Promise<HeroContent | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`,
+      { ...onThisDay }
     );
     const heroContent = await res.json();
-  
+
     if (!res.ok) {
       console.error(heroContent.data);
       return;
@@ -69,7 +71,8 @@ export const getPageDisplaySetting = async (
 ): Promise<DisplaySetting | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`,
+      { ...onThisDay }
     );
     const displaySettings = await res.json();
     if (!res.ok) {
@@ -98,7 +101,8 @@ export const getMinistries = async (
 ): Promise<Ministry[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`,
+      { ...onThisDay }
     );
     const ministryData = await res.json();
 
@@ -126,7 +130,8 @@ export const getPageWriteUp = async (
 ): Promise<PageWriteUp | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/writeup/${slug}`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/writeup/${slug}`,
+      { ...onThisDay }
     );
     const writeUpData = await res.json();
     if (!res.ok) {
@@ -159,7 +164,8 @@ type Leader = {
 export const getAllLeaders = async (): Promise<Leader[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leaders`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leaders`,
+      { ...onThisDay }
     );
     const leadersData = await res.json();
     if (!res.ok) {
@@ -176,7 +182,8 @@ export const getSingleLeader = async (
 ): Promise<Leader | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leader/${slug}`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leader/${slug}`,
+      { ...onThisDay }
     );
     const leaderData = await res.json();
     if (!res.ok) {
@@ -212,6 +219,7 @@ export const getAllEvents = async (
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`,
+      { ...onThisDay }
     );
     const eventData = await res.json();
     if (!res.ok) {
@@ -251,7 +259,8 @@ type Mission = {
 export const getOurMissions = async (): Promise<Mission[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-mission`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-mission`,
+      { ...onThisDay }
     );
     const missionsData = await res.json();
     if (!res.ok) {
@@ -269,7 +278,8 @@ type Belief = Mission;
 export const getOurBeliefs = async (): Promise<Belief[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-belief`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-belief`,
+      { ...onThisDay }
     );
     const ourBeliefData = await res.json();
     if (!res.ok) {
@@ -296,13 +306,14 @@ type ServiceTime = {
 export const getServiceTimes = async (): Promise<ServiceTime[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/service-times`
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/service-times`,
+      { ...onThisDay }
     );
     if (!res.ok) {
       return;
     }
     const serviceTimesData = await res.json();
-
+ 
     return serviceTimesData.message;
   } catch (error) {
     return;
@@ -534,11 +545,10 @@ export const joinUs = async (data: JoinUs) => {
 };
 
 // INSTAGRAM FEED
-export const getInstagramFeed = async () => {
-  const res = await fetch(
-    `https://graph.instagram.com/me/media?fields=id,caption,permalink&access_token=${process.env.INSTAGRAM_KEY}`
-  );
-  const data = await res.json();
-  console.log(data)
- 
-};
+// export const getInstagramFeed = async () => {
+//   const res = await fetch(
+//     `https://graph.instagram.com/me/media?fields=id,caption,permalink&access_token=${process.env.INSTAGRAM_KEY}`
+//   );
+//   const data = await res.json();
+//   // console.log(data);
+// };

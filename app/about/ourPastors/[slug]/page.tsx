@@ -1,4 +1,4 @@
-import { getSingleLeader } from "@/app/utils/actions";
+import { getAllLeaders, getSingleLeader } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import ImageFill from "@/lib/components/ImageFill";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+
 
 export default async function page({ params }: { params: { slug: string } }) {
   const leader = await getSingleLeader(params.slug);

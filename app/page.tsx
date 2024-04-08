@@ -24,7 +24,7 @@ export default async function Home() {
       our_ministries,
     } = displaySetting);
   }
-
+  
   return (
     <main className=" page-spacing">
       {/* divider */}
@@ -79,7 +79,7 @@ export default async function Home() {
           {/* download buttons */}
           <div className="flex items-center justify-center gap-5  ">
             <Link
-            className="active:scale-90 w-sc"
+              className="active:scale-90 w-sc"
               href={
                 "https://play.google.com/store/apps/details?id=org.rccghge.mobile"
               }
@@ -94,7 +94,7 @@ export default async function Home() {
             </Link>
 
             <Link
-            className="active:scale-90 w-sc"
+              className="active:scale-90 w-sc"
               href={"https://apps.apple.com/us/app/rccghge/id6463586154"}
               target="_blank">
               <Image

@@ -2,10 +2,15 @@ import { getAllLeaders, getPageDisplaySetting } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
+export const metadata: Metadata = {
+  title: "Our Pastors",
+  description:"Just as Shepherd would not leave his sheep behind, So would the Lord not leave thee behind",
+};
 export default async function OurPastors() {
   const leaders = await getAllLeaders();
   const displaySetting = await getPageDisplaySetting("our_pastors");

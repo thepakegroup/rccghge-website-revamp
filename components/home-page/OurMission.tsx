@@ -22,7 +22,7 @@ export default async function OurMission() {
             <h1 className="text-xl capitalize sm:text-2xl font-bold ">
               {mission.title}
             </h1>
-            <p className="desc ">
+            <p className="desc line-clamp-2 ">
              {mission.description}
             </p>
           </div>

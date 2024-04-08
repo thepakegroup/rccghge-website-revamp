@@ -9,7 +9,7 @@ import React from "react";
 
 export default async function page() {
   const beliefs = await getOurBeliefs();
-  console.log(beliefs)
+  
   return (
     <div className=" page-spacing ">
       <h1 className="capitalize text-2xl sm:text-3xl font-semibold wrapper text-center">

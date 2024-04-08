@@ -6,7 +6,6 @@ import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import InstagramPost from "./InstagramPost";
 import React from "react";
 import PageSkeleton from "../PageSkeleton";
-import { getInstagramFeed } from "@/app/utils/actions";
 export const revalidate = 0;
 export default function GetConnected() {
   React.useEffect(() => {
@@ -14,10 +13,7 @@ export default function GetConnected() {
     s.setAttribute("src", "https://platform.twitter.com/widgets.js");
     s.setAttribute("async", "true");
     document.head.appendChild(s);
-    (async () => {
-      const res = await getInstagramFeed();
-      console.log(res);
-    })();
+
   }, []);
   return (
     <div className="space-y-5 md:space-y-12  ">
@@ -41,10 +37,6 @@ export default function GetConnected() {
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
           </ScrollArea>
 
-          {/* instagram timeline */}
-          <ScrollArea className="card h-96 w-[340px]  pb-5 ">
-            <InstagramPost />
-          </ScrollArea>
           {/* twitter timeline */}
           <ScrollArea className="card h-96 w-[340px]  pb-5 ">
             <Link
@@ -56,6 +48,11 @@ export default function GetConnected() {
               async
               strategy="lazyOnload"
               src="https://platform.twitter.com/widgets.js"></Script> */}
+          </ScrollArea>
+
+          {/* instagram timeline */}
+          <ScrollArea className="card h-96 w-[340px]  pb-5 ">
+            <InstagramPost />
           </ScrollArea>
         </div>
         <ScrollBar orientation="horizontal" />

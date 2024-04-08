@@ -46,14 +46,14 @@ export default async function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : "flex"}  text-center overflow-hidden w-full h-full  md:px-5  flex-col  gap-2 lg:gap-4 py-6 lg:py-8   `}>
+                className={`${i === 2 ? "hidden xl:flex" : "flex"}  text-center overflow-hidden w-full h-full  md:px-5  flex-col gap-2 lg:gap-4 py-6 lg:py-8   `}>
                 <h1 className="title text-lg truncate max-w-xl  md:text-xl lg:tracking-wide font-semibold  ">
                   {event.title}
                 </h1>
-                <p className="desc text-sm md:text-lg line-clamp-3 max-w-xl">
+                <p className="desc text-sm md:text-lg  line-clamp-3 max-w-xl">
                   {event.short_description}
                 </p>
-                <p className="date w-fit tracking-wide px-5  text-center mx-auto  lg:p-2 mt-2 text-sm md:text-base blueGradient text-white p-1 flex-col flex md:block  rounded">
+                <p className="date mt-auto w-fit tracking-wide px-5  text-center mx-auto  lg:p-2  text-sm md:text-base blueGradient text-white p-1 flex-col flex md:block  rounded">
                   <span>{formattedStartMonth}</span>{" "}
                   <span>{formattedTimeRange}</span>
                 </p>

@@ -2,12 +2,22 @@ import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
 import React from "react";
 import { getServiceTimes } from "../utils/actions";
-
+import { Metadata } from "next";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import { slideInFromBottom } from "../give/page";
+export const metadata:Metadata = {
+  title: "Service Times",
+}
 export default async function page() {
   const serviceTimes = await getServiceTimes();
   
   return (
-    <div className="space-y-10 py-12 md:py-20 ">
+    <MotionDiv
+      variants={slideInFromBottom(1, 0)}
+      initial="hidden"
+      whileInView={"visible"}
+      viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+      className="space-y-10 py-12 md:py-20 ">
       {serviceTimes?.map((service, i) => {
         const [startTime, startAmPm, endTime, endAmPm] =
           service.service_period.split(" ");
@@ -36,6 +46,6 @@ export default async function page() {
           </div>
         );
       })}
-    </div>
+    </MotionDiv>
   );
 }

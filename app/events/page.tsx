@@ -55,8 +55,9 @@ export default async function page({
               className=" even:lg:flex-row-reverse flex items-center justify-center gap-8 flex-col lg:flex-row">
               {/* image */}
               <div className="relative w-full lg:w-1/2 lg:max-w-[500px] h-80 text-center">
-                <p className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-3  md:text-lg right-0 left-0    ">
-                  {event.location} :{" "}
+                <p className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-3  md:text-lg right-0 left-0 break-words ">
+                  {event.location} <br />
+                  <hr className="w-1/2 mx-auto opacity-50 my-1 border" />
                   {`${formattedDateRange(startDate, endDate)}`}
                 </p>
 

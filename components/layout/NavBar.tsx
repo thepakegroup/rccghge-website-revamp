@@ -27,7 +27,7 @@ import {
 
 export default function NavBar() {
   return (
-    <nav className=" sticky top-0 z-50 py-2 bg-white text-black">
+    <nav className=" sticky top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -44,13 +44,13 @@ const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scope, animate] = useAnimate();
   useEffect(() => {
-    if (isOpen) 
-    animate(
-      ".nav-link",
-      { x: [20, 0], opacity: [0, 1] },
-      { delay: stagger(0.1,{startDelay:0.8}),}
-    );
-  }, [isOpen]);
+    if (isOpen)
+      animate(
+        ".nav-link",
+        { x: [20, 0], opacity: [0, 1] },
+        { delay: stagger(0.1, { startDelay: 0.6 }) }
+      );
+  }, [isOpen, animate]);
   return (
     <div
       ref={scope}
@@ -94,7 +94,7 @@ const MobileNav = () => {
                         <Link
                           key={subLink.name}
                           href={`${link.url}${subLink.url}`}
-                          className={`
+                          className={` sub-links
                       block hover:border-b-2 border-primary h-8 whitespace-nowrap
                      ${isActiveLink(subLink.url) && "border-b-2 border-primary"}
                     `}>

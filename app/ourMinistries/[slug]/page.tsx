@@ -20,6 +20,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import { slideInFromBottom } from "@/app/give/page";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [ministriesData, setMinistriesData] = React.useState<
@@ -31,7 +33,6 @@ export default function Page({ params }: { params: { slug: string } }) {
       try {
         const res = await getMinistries(params.slug);
         setMinistriesData(res);
-        console.log(res);
       } catch (error) {
         console.error(error);
       }
@@ -42,7 +43,11 @@ export default function Page({ params }: { params: { slug: string } }) {
     <div className="page-spacing wrapper relative">
       {/* tabs */}
       <div>
-        <div className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
+        <MotionDiv
+          variants={slideInFromBottom(1, 0.5)}
+          initial="hidden"
+          animate="visible"
+          className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
           <ul className="flex items-center justify-center gap-10">
             <li
               className={`${isActiveLink("/Ministry") && "border-b-2 border-primary"}`}>
@@ -53,16 +58,21 @@ export default function Page({ params }: { params: { slug: string } }) {
               <Link href={"/ourMinistries/Department"}>Departments</Link>
             </li>
           </ul>
-        </div>
+        </MotionDiv>
 
         {params.slug === "joinUs" ? (
           <JoinUsForm />
         ) : (
-          <div className="ministries-card-container  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+          <MotionDiv
+            variants={slideInFromBottom(1, 0)}
+            initial="hidden"
+            whileInView={"visible"}
+            viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+            className="ministries-card-container  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
             {ministriesData?.map((item, i) => (
               <div
                 key={i}
-                className="relative  border-2  rounded-lg w-full  h-80 ">
+                className=" shadow-md relative  border-2  rounded-lg w-full  h-80 ">
                 <div className="card-img relative h-1/2 ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
@@ -86,7 +96,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 </div>
               </div>
             ))}
-          </div>
+          </MotionDiv>
         )}
       </div>
     </div>
@@ -129,7 +139,12 @@ const JoinUsForm = () => {
     }
   }
   return (
-    <div className=" lg:max-w-3xl wrapper  items-center w-full">
+    <MotionDiv
+      variants={slideInFromBottom(1, 0.5)}
+      initial="hidden"
+      whileInView={"visible"}
+      viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+      className=" lg:max-w-3xl wrapper  items-center w-full">
       <div className=" space-y-5  md:space-y-8 pb-10 text-center">
         <h1 className="text-xl md:text-2xl">Thank You For Showing Interest!</h1>
         <p className="  md:text-lg">
@@ -193,6 +208,6 @@ const JoinUsForm = () => {
           </Button>
         </form>
       </Form>
-    </div>
+    </MotionDiv>
   );
 };

@@ -22,41 +22,19 @@ export const MotionImage = m(Image);
 export const MotionLink = m(Link);
 
 // Variants
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+export const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
     },
-  };
-  const item: Variants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 },
-  };
-const slideInVariant = (
-  duration: number = 0.8,
-  delay: number = 0
-): Variants => {
-  return {
-    hidden: {
-      opacity: 0,
-      x: 50,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: duration,
-        delay: delay,
-      },
-    },
-  };
+  },
 };
 
-
-
+export const staggerFromRightItem: Variants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+};
 // Functions
-export { AnimatePresence, m, slideInVariant, stagger, useAnimate };
+export { AnimatePresence, m, stagger, useAnimate };
