@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
 import Link from "next/link";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Our Upcoming Events",
+  description: "Stay up to date, don’t miss any.",
+};
 export const slideInFromBottom = (duration = 0.8, delay = 0) => {
   return {
     hidden: {

@@ -2,8 +2,11 @@ import { getPageDisplaySetting, getPageWriteUp } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
+import { Metadata } from "next";
 import React from "react";
-
+export const metadata : Metadata = {
+  title: "Our Story",
+}
 export default async function page() {
   const writeUp = await getPageWriteUp("our-story");
   const displaySetting = await getPageDisplaySetting("our_story");

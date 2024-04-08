@@ -183,7 +183,7 @@ export default function Hero() {
 
   // if the pathname is "/" and heroContent.ImgArr array length > 1,
   useEffect(() => {
-    console.log(imageUrl);
+  
   }, [imageUrl]);
 
   return (
@@ -205,6 +205,7 @@ export default function Hero() {
                 src={homepageImgUrl}
                 alt="hero image"
                 fill
+                sizes="100vw"
                 priority
                 quality={100}
                 className=" object-cover object-center "
@@ -266,7 +267,7 @@ const HeroContent = ({ title, desc }: { title: string; desc?: string }) => {
       { opacity: [0, 1], y: [-30, 0] },
       { duration: 0.8, delay: 1.2 }
     );
-  }, [pathname, animate,]);
+  }, [pathname, animate]);
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <h1 className="title   text-3xl md:text-4xl lg:text-5xl !leading-relaxed  capitalize ">

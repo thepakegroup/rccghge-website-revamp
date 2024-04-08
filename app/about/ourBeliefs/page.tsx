@@ -5,8 +5,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Metadata } from "next";
 import React from "react";
-
+export const metadata: Metadata = {
+  title: "Our Beliefs",
+  description: "This We Believe; Our Declaration Of Faith",
+};
 export default async function page() {
   const beliefs = await getOurBeliefs();
   

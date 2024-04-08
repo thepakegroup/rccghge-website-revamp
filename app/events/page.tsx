@@ -8,6 +8,11 @@ import {
 } from "@/components/ui/select";
 import ImageFill from "@/lib/components/ImageFill";
 import { getAllEvents } from "../utils/actions";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Our Upcoming Events",
+  description: "Stay up to date, don’t miss any.",
+};
 
 export default async function page({
   searchParams,
@@ -37,7 +42,7 @@ export default async function page({
   return (
     <div className="py-12 md:py-20 wrapper space-y-10">
       {/* search bar */}
-      <div>
+      <div className="wrapper">
         <SearchBar searchQuery={searchQuery} dateQuery={dateQuery} />
       </div>
       {/* Events */}
@@ -55,11 +60,11 @@ export default async function page({
               className=" even:lg:flex-row-reverse flex items-center justify-center gap-8 flex-col lg:flex-row">
               {/* image */}
               <div className="relative w-full lg:w-1/2 lg:max-w-[500px] h-80 text-center">
-                <p className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-3  md:text-lg right-0 left-0 break-words ">
-                  {event.location} <br />
+                <div className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-3  md:text-lg right-0 left-0 break-words ">
+                  <p>{event.location}</p>
                   <hr className="w-1/2 mx-auto opacity-50 my-1 border" />
-                  {`${formattedDateRange(startDate, endDate)}`}
-                </p>
+                  <p>{`${formattedDateRange(startDate, endDate)}`}</p>
+                </div>
 
                 <ImageFill
                   // NOTE: change the src to event banner

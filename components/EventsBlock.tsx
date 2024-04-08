@@ -25,14 +25,13 @@ export default async function EventsBlock() {
   };
   const events = await get3Events();
   return (
-    <div className=" flex flex-col items-center lg:flex-row ">
+    <div className=" flex flex-col items-center lg:flex-row shadow-[0_0px_20px_-2px_rgba(0,0,0,0.1),0_0px_10px_-4px_rgba(0,0,0,0.3)]  ">
       <div className="h-10 wrapper  w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:text-center lg:gap-2 lg:pt-16 lg:flex-col flex gap-5 items-center blueGradient py-8 text-white relative">
         <FaCalendar className="text-2xl md:text-3xl " />
         <h1 className="text-2xl md:text-3xl  capitalize">
           Our Upcoming Events
         </h1>
         <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] text-[#4372b9]" />
-        <FaCaretDown className=" md:hidden absolute -bottom-7 left-40 text-5xl text-[#2b4a83]" />
       </div>
       {/* events */}
       <div className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 items-center lg:h-80 lg:divide-x lg:py-5 overflow-hidden relative">
@@ -46,7 +45,7 @@ export default async function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : "flex"}  text-center overflow-hidden w-full h-full  md:px-5  flex-col gap-2 lg:gap-4 py-6 lg:py-8   `}>
+                className={`${i === 2 ? "hidden xl:flex" : "flex"}  text-center overflow-hidden w-full h-full  md:px-5 justify-between items-center  flex-col gap-2 lg:gap-4 py-6 lg:py-8   `}>
                 <h1 className="title text-lg truncate max-w-xl  md:text-xl lg:tracking-wide font-semibold  ">
                   {event.title}
                 </h1>

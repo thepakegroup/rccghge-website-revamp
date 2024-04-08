@@ -3,11 +3,24 @@ import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
+import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-
-
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const leader = await getSingleLeader(params.slug);
+  return {
+    title: leader?.name,
+    description:leader?.short_description
+  };
+}
 export default async function page({ params }: { params: { slug: string } }) {
   const leader = await getSingleLeader(params.slug);
 
@@ -71,7 +84,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             <p>{highlightedDesc}</p>
           </div>
         </div>
-        <Button asChild className="w-32 ml-32  ">
+        <Button asChild className="w-32 lg:ml-32 mx-auto   ">
           <Link href={`/about/ourPastors`}>Go back</Link>
         </Button>
       </div>

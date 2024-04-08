@@ -5,8 +5,13 @@ import {
 } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
+import { Metadata } from "next";
 import React from "react";
-
+export const metadata: Metadata = {
+  title: "Our Mission",
+  description:
+    "To prepare families, friends and individuals, for the second coming of our Lord and Savior Jesus Christ.",
+};
 export default async function page() {
   const missions = await getOurMissions();
   const displaySetting = await getPageDisplaySetting("our_mission");
@@ -35,7 +40,11 @@ export default async function page() {
       </div>
       {/* service time component */}
 
-      {our_service_times === "true" && <div><ServiceTimes /></div>}
+      {our_service_times === "true" && (
+        <div>
+          <ServiceTimes />
+        </div>
+      )}
 
       {/* events block */}
 

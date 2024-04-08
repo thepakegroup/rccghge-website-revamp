@@ -129,7 +129,7 @@ const LgNav = () => {
       { y: [50, 0], opacity: [0, 1] },
       { delay: stagger(0.1, { from: "center" }) }
     );
-  }, []);
+  }, [animate]);
 
   const isActiveLink = useIsActiveLink();
   const pathname = usePathname();
