@@ -1,4 +1,5 @@
 import { get3Events } from "@/app/utils/actions";
+import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
@@ -25,16 +26,16 @@ export default async function EventsBlock() {
   };
   const events = await get3Events();
   return (
-    <div className=" flex flex-col items-center lg:flex-row shadow-[0_0px_20px_-2px_rgba(0,0,0,0.1),0_0px_10px_-4px_rgba(0,0,0,0.3)]  ">
-      <div className="h-10 wrapper  w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:text-center lg:gap-2 lg:pt-16 lg:flex-col flex gap-5 items-center blueGradient py-8 text-white relative">
-        <FaCalendar className="text-2xl md:text-3xl " />
+    <div className=" flex flex-col items-center lg:flex-row   ">
+      <div className="h-10 wrapper  items-center w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-16 lg:flex-col flex gap-5  blueGradient py-8 text-white relative">
+        <FaCalendar className="text-2xl md:text-3xl lg:self-start " />
         <h1 className="text-2xl md:text-3xl  capitalize">
           Our Upcoming Events
         </h1>
         <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] text-[#4372b9]" />
       </div>
       {/* events */}
-      <div className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 items-center lg:h-80 lg:divide-x lg:py-5 overflow-hidden relative">
+      <div className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 lg:h-80 md:divide-x-2 lg:py-5 overflow-hidden relative">
         {events &&
           events?.map((event, i) => {
             const startDate = new Date(event.start_date);
@@ -45,24 +46,23 @@ export default async function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : "flex"}  text-center overflow-hidden w-full h-full  md:px-5 justify-between items-center  flex-col gap-2 lg:gap-4 py-6 lg:py-8   `}>
-                <h1 className="title text-lg truncate max-w-xl  md:text-xl lg:tracking-wide font-semibold  ">
+                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full lg:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8 px-6   `}>
+                <h1 className="title text-lg truncate max-w-xl md:text-xl lg:tracking-wide font-semibold   ">
                   {event.title}
                 </h1>
-                <p className="desc text-sm md:text-lg  line-clamp-3 max-w-xl">
+                <p className="desc  text-sm md:text-lg text-gray-500  line-clamp-3 max-w-xl ">
                   {event.short_description}
                 </p>
-                <p className="date mt-auto w-fit tracking-wide px-5  text-center mx-auto  lg:p-2  text-sm md:text-base blueGradient text-white p-1 flex-col flex md:block  rounded">
-                  <span>{formattedStartMonth}</span>{" "}
-                  <span>{formattedTimeRange}</span>
+                <p className="date mt-auto w-fit tracking-wide px-5  lg:p-2  text-sm md:text-base blueGradient text-white p-1 items-center flex  rounded">
+                  {formattedStartMonth}, {formattedTimeRange}
                 </p>
               </Link>
             );
           })}
         <Link
           href={"/events"}
-          className="  border-none  text-sm text-primary absolute right-0 left-0 bottom-1  text-center lg:text-right lg:right-20 lg:bottom-5 font-semibold ">
-          click to see more{" "}
+          className="  border-none  text-sm text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-7 md:px-12 lg:px-0">
+          <span>see more events</span> <MoveRight className="text-primary" />
         </Link>
       </div>
     </div>

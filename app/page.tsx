@@ -44,7 +44,7 @@ export default async function Home() {
       </div>
       <GiveCTA />
       {/* download app image section */}
-      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5  relative">
+      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5 py-10  relative">
         {/* image section */}
         <div className="flex items-center gap-10 lg:gap-18 justify-center ">
           <Image
@@ -52,14 +52,16 @@ export default async function Home() {
             alt="phone"
             width={234}
             height={555}
-            className=" w-28 h-64 md:h-[420px] md:w-52 object-fill  "
+            quality={100}
+            className=" w-28 h-64 md:h-[450px] md:w-52 object-fill  "
           />
           <Image
             src="/images/phone-right.png"
             alt="phone"
             width={234}
             height={555}
-            className=" w-28  h-64 md:h-[420px] md:w-52 object-fill "
+            quality={100}
+            className=" w-28  h-64 md:h-[450px] md:w-52 object-fill "
           />
         </div>
         {/* text section */}

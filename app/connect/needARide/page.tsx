@@ -85,10 +85,15 @@ export default function Page() {
   }
   return (
     <div className=" page-spacing ">
-      <MotionDiv variants={slideInFromBottom(1, 0)} initial="hidden" whileInView="visible" className="space-y-5 md:space-y-14 lg:max-w-3xl bg-white w-full wrapper rounded-lg ">
+      <MotionDiv
+        variants={slideInFromBottom(1, 0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="space-y-5 md:space-y-14 lg:max-w-3xl bg-white w-full wrapper rounded-lg ">
         <div className="space-y-5">
           <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
-          <p className="font-semibold text-sm md:text-base">
+          <p className="text-sm md:text-base">
             Please enter your information below, to enable us attend to your
             need in an appropriate and timely manner.{" "}
             <span className="text-primary">
@@ -121,7 +126,7 @@ export default function Page() {
               name="address"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="md:text-lg">address</FormLabel>
+                  <FormLabel className="md:text-lg">Address</FormLabel>
                   <FormControl>
                     <Input {...field} className="md:text-lg" />
                   </FormControl>

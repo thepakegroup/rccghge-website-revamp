@@ -5,18 +5,18 @@ import { getServiceTimes } from "../utils/actions";
 import { Metadata } from "next";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "../give/page";
-export const metadata:Metadata = {
+export const metadata: Metadata = {
   title: "Service Times",
-}
+};
 export default async function page() {
   const serviceTimes = await getServiceTimes();
-  
+
   return (
     <MotionDiv
       variants={slideInFromBottom(1, 0)}
       initial="hidden"
       whileInView={"visible"}
-      viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+      viewport={{ once: true }}
       className="space-y-10 py-12 md:py-20 ">
       {serviceTimes?.map((service, i) => {
         const [startTime, startAmPm, endTime, endAmPm] =
@@ -34,11 +34,14 @@ export default async function page() {
             </div>
             {/* text content */}
             <div className="space-y-5 lg:w-3/5 md:space-y-8 md:text-lg">
-              <TitleBorderTop title={service.service_name} />
-              <p>{service.service_description}</p>
+              <TitleBorderTop
+                title={service.service_name.toLowerCase()}
+                className=" capitalize"
+              />
+              <p className="">{service.service_description}</p>
               <div className="flex items-center gap-3">
                 {/* <p className="blueGradient px-8 rounded ">{service.day}</p> */}
-                <p className="blueGradient px-8 rounded ">
+                <p className="blueGradient px-8 rounded  ">
                   {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
                 </p>
               </div>

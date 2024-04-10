@@ -16,7 +16,7 @@ export default async function OurMinistries() {
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
       <ScrollArea className="w-full">
-        <MotionDiv variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px -200px 0px" }} className="ministries-card-container w-full gap-5 flex items-center">
+        <MotionDiv variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px -200px 0px" }} className="ministries-card-container w-full gap-5 flex items-center mb-3">
           {ministries?.map((ministry, i) => {
             return (
               <MotionDiv variants={staggerFromRightItem} key={i} className="card  ">

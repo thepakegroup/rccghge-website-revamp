@@ -60,6 +60,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       variants={slideInFromBottom(1, 0)}
       initial="hidden"
       whileInView="visible"
+      viewport={{ once: true }}
       className="w-full flex justify-center page-spacing">
       {page}
     </MotionDiv>
@@ -257,7 +258,7 @@ const Connect = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="md:text-lg">
-                  address <span className="text-red-500">*</span>
+                  Address <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input {...field} className="md:text-lg" />

@@ -48,7 +48,8 @@ export default function Page({ params }: { params: { slug: string } }) {
           variants={slideInFromBottom(1, 0.5)}
           initial="hidden"
           animate="visible"
-          className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
+          viewport={{ once: true }}
+          className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md ">
           <ul className="flex items-center justify-center gap-10 ">
             <li
               className={`${isActiveLink("/Ministry") && "border-b-2 border-primary"}`}>
@@ -73,7 +74,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             {ministriesData?.map((item, i) => (
               <div
                 key={i}
-                className=" shadow-md relative  border-2  rounded-lg w-full h-max ">
+                className="  relative  border-2  rounded-lg w-full md:h-80  ">
                 <div className="card-img relative h-[150px] ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
@@ -84,14 +85,16 @@ export default function Page({ params }: { params: { slug: string } }) {
                   <FaUsers />
                 </div>
 
-                <div className="card-content space-y-2 pt-5 p-2 flex flex-col justify-between h-1/2">
+                <div className="card-content space-y-2 pt-5   p-2 flex flex-col justify-between h-1/2">
                   <div className="space-y-2">
                     <h1 className="text-xl  capitalize font-bold">
                       {item.name}
                     </h1>
-                    <p className="">{item.description}</p>
+                    <p className="line-clamp-2 text-gray-500">
+                      {item.description}
+                    </p>
                   </div>
-                  <Button asChild size={"lg"} className="w-fit">
+                  <Button asChild size={"lg"} className="w-fit mt-auto">
                     <Link href={`/ourMinistries/joinUs`}>Join Us</Link>
                   </Button>
                 </div>

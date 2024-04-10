@@ -15,7 +15,7 @@ export default function ConnectDropdown() {
     <Collapsible className="w-full">
       <CollapsibleTrigger
         onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
-        className=" w-full md:text-lg flex items-center gap-20 justify-center bg-white border rounded p-2 ">
+        className=" w-full md:text-lg flex items-center gap-20 justify-between bg-white border rounded p-2 ">
         <>Connect With Us</>
         {isSubMenuOpen ? <FaChevronUp /> : <FaChevronDown />}
       </CollapsibleTrigger>

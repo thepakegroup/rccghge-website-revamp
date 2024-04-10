@@ -15,7 +15,8 @@ export default function page() {
           variants={slideInFromBottom(1, 0)}
           initial="hidden"
           whileInView="visible"
-          className="bg-primary/5 p-5 md:p-12 flex flex-col justify-center items-center gap-3 text-center  ">
+          viewport={{ once: true }}
+          className="bg-primary/5 p-5 md:p-12 flex flex-col   gap-3  w-full max-w-screen-lg ">
           <h1 className="text-xl md:text-2xl">
             We would be thrilled to hear from you
           </h1>

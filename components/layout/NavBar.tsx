@@ -57,9 +57,7 @@ const MobileNav = () => {
         { delay: stagger(0.1, { startDelay: 0.6 }) }
       );
   }, [isOpen, animate]);
-  useEffect(() => {
-    console.log(openSubMenuIndex);
-  }, [openSubMenuIndex]);
+
   return (
     <div
       ref={scope}
@@ -92,7 +90,7 @@ const MobileNav = () => {
             animate={{ x: 0, scaleX: 1 }}
             exit={{ x: 300, scaleX: 0 }}
             transition={{ duration: 0.5 }}
-            className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  gap-10 font-medium  absolute bg-white top-16 right-0 h-screen  py-8 sm:py-10 px-4`}>
+            className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  font-medium  absolute bg-white top-16 right-0 h-screen  `}>
             {navLinks.map((link, i) => {
               //if home page display logo
               if (link.url === "/") {
@@ -111,7 +109,7 @@ const MobileNav = () => {
                         setIsSubMenuOpen(!isSubMenuOpen);
                         handleSubMenuClick(i);
                       }}
-                      className={`nav-link cursor-pointer hover:border-b-2   underline-offset-8 border-primary flex items-center gap-5 ${pathname.startsWith(link.url) && "border-b-2 "}  `}>
+                      className={`nav-link cursor-pointer hover:border-primary border-b-2 w-full   underline-offset-8  flex items-center gap-5 pl-4 py-3 ${pathname.startsWith(link.url) && "border-primary  "}  `}>
                       <>{link.name}</>
                       {isSubMenuOpen && openSubMenuIndex === i ? (
                         <FaChevronUp />
@@ -119,14 +117,15 @@ const MobileNav = () => {
                         <FaChevronDown />
                       )}
                     </CollapsibleTrigger>
-                    <CollapsibleContent className={`py-2 space-y-2 `}>
+                    <CollapsibleContent
+                      className={`py-2  space-y-2 ${isSubMenuOpen && "border-b-2"} `}>
                       {subUrls.map((subLink) => (
                         <Link
                           onClick={() => setIsOpen(false)}
                           key={subLink.name}
                           href={`${link.url}${subLink.url}`}
                           className={` sub-links
-                      block hover:border-b-2 border-primary h-8 whitespace-nowrap
+                      block hover:border-b-2 border-primary pl-4 h-8 whitespace-nowrap
                      ${isActiveLink(subLink.url) && "border-b-2 border-primary"}
                     `}>
                           {subLink.name}
@@ -142,7 +141,7 @@ const MobileNav = () => {
                   onClick={() => setIsOpen(false)}
                   key={link.name}
                   href={link.url}
-                  className={`nav-link hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>
+                  className={`nav-link hover:border-primary border-b-2 decoration-2 underline-offset-8  pl-4 py-3 w-full ${pathname.startsWith(link.url) && "border-primary"}`}>
                   {link.name}
                 </Link>
               );
@@ -193,7 +192,7 @@ const LgNav = () => {
                 {link.name}
               </HoverCardTrigger>
 
-              <HoverCardContent className="w-40 text-center space-y-2">
+              <HoverCardContent className="w-40 space-y-2">
                 {subUrls.map((subLink) => (
                   <Link
                     key={subLink.name}
