@@ -1,12 +1,9 @@
-import {
-  getMinistries,
-  getOurMissions,
-  getPageDisplaySetting,
-} from "@/app/utils/actions";
+import { slideInFromBottom } from "@/app/give/page";
+import { getOurMissions, getPageDisplaySetting } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { Metadata } from "next";
-import React from "react";
 export const metadata: Metadata = {
   title: "Our Mission",
   description:
@@ -23,7 +20,12 @@ export default async function page() {
 
   return (
     <div className="flex flex-col page-spacing ">
-      <div className="space-y-5 md:space-y-10 max-w-screen-md mx-auto">
+      <MotionDiv
+        variants={slideInFromBottom(1, 0)}
+        initial="hidden"
+        whileInView={"visible"}
+        viewport={{ once: true }}
+        className="space-y-5 md:space-y-10 max-w-screen-md mx-auto">
         {missions?.map((mission, i) => {
           return (
             <div
@@ -37,7 +39,7 @@ export default async function page() {
             </div>
           );
         })}
-      </div>
+      </MotionDiv>
       {/* service time component */}
 
       {our_service_times === "true" && (

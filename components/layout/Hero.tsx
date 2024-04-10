@@ -28,7 +28,6 @@ export default function Hero() {
     const fetchAndUpdateHeroContent = async () => {
       let i = 0;
       if (pathname.endsWith("/")) {
-        console.log("home page");
         heroContent = await getHeroContent("landing_page");
         if (heroContent) {
           // Set interval to change the image every 5 seconds
@@ -182,9 +181,7 @@ export default function Hero() {
   }, [pathname, animate]);
 
   // if the pathname is "/" and heroContent.ImgArr array length > 1,
-  useEffect(() => {
-  
-  }, [imageUrl]);
+  useEffect(() => {}, [imageUrl]);
 
   return (
     <div
@@ -221,6 +218,7 @@ export default function Hero() {
                 src={imageUrl}
                 alt="hero image"
                 fill
+                sizes="100vw"
                 priority
                 quality={100}
                 className=" object-cover object-center "

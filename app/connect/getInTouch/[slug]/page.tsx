@@ -1,4 +1,5 @@
 "use client";
+import { slideInFromBottom } from "@/app/give/page";
 import {
   connectWithUs,
   sendQuestion,
@@ -28,6 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -53,7 +55,15 @@ export default function Page({ params }: { params: { slug: string } }) {
       notFound();
       break;
   }
-  return <div className="w-full flex justify-center page-spacing">{page}</div>;
+  return (
+    <MotionDiv
+      variants={slideInFromBottom(1, 0)}
+      initial="hidden"
+      whileInView="visible"
+      className="w-full flex justify-center page-spacing">
+      {page}
+    </MotionDiv>
+  );
 }
 
 const Connect = () => {
@@ -160,7 +170,6 @@ const Connect = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-  
     const options = {
       month: "long",
       day: "numeric",
@@ -172,7 +181,7 @@ const Connect = () => {
       sign_me_up_for: values.sign_me_up_for.join(", "),
       birthdate: values.birthdate.toLocaleDateString("en-US", options),
     };
- 
+
     try {
       const res = await connectWithUs(newObj);
       toast.success(res);
@@ -373,7 +382,6 @@ const Connect = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                   
                     <SelectItem className="md:text-lg" value="In-Person">
                       In-person
                     </SelectItem>
@@ -546,7 +554,7 @@ const Connect = () => {
               size="lg"
               variant={"outline"}
               className=" active:scale-90 w-3/12 md:text-lg border-black">
-              <Link href={"/connect/getInTouch/"}>Cancel</Link>
+              <Link href={"/connect/getInTouch"}>Go Back</Link>
             </Button>
           </div>
         </form>
@@ -683,7 +691,7 @@ const Question = () => {
               size="lg"
               variant={"outline"}
               className=" w-3/12 md:text-lg border-black">
-              <Link href={"/connect/getInTouch/"}>Cancel</Link>
+              <Link href={"/connect/getInTouch"}>Go Back</Link>
             </Button>
           </div>
         </form>
@@ -791,7 +799,7 @@ const Newsletter = () => {
               size="lg"
               variant={"outline"}
               className=" w-3/12 md:text-lg border-black">
-              <Link href={"/connect/getInTouch/"}>Cancel</Link>
+              <Link href={"/connect/getInTouch/"}>Go Back</Link>
             </Button>
           </div>
         </form>

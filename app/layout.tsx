@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
 import NavBar from "@/components/layout/NavBar";
 import { ReduxProvider } from "@/redux/provider";
-import{ Metadata } from "next";
+import { Metadata } from "next";
 import "./globals.css";
 import FramerMotion from "@/lib/framer-motion/LazyMotion";
 import { Toaster } from "@/components/ui/sonner";
@@ -36,7 +36,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
-   
       <FramerMotion>
         <body
           suppressHydrationWarning
@@ -44,7 +43,9 @@ export default function RootLayout({
           <ReduxProvider>
             <NavBar />
             <Toaster richColors position="top-right" />
-            <Hero />
+            <div className="mt-20">
+              <Hero />
+            </div>
             {children}
             <Footer />
           </ReduxProvider>

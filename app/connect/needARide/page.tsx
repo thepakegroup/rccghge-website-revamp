@@ -32,6 +32,8 @@ import {
 } from "@/components/ui/select";
 import { sendRideRequest } from "@/app/utils/actions";
 import { toast } from "sonner";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import { slideInFromBottom } from "@/app/give/page";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -83,7 +85,7 @@ export default function Page() {
   }
   return (
     <div className=" page-spacing ">
-      <div className="space-y-5 md:space-y-14 lg:max-w-3xl bg-white w-full wrapper rounded-lg ">
+      <MotionDiv variants={slideInFromBottom(1, 0)} initial="hidden" whileInView="visible" className="space-y-5 md:space-y-14 lg:max-w-3xl bg-white w-full wrapper rounded-lg ">
         <div className="space-y-5">
           <h1 className="text-xl md:text-2xl">Kindly Fill The Following</h1>
           <p className="font-semibold text-sm md:text-base">
@@ -219,7 +221,7 @@ export default function Page() {
             </Button>
           </form>
         </Form>
-      </div>
+      </MotionDiv>
     </div>
   );
 }

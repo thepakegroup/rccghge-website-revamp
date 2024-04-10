@@ -5,14 +5,19 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import Link from "next/link";
-import React from "react";
-import { FaChevronDown } from "react-icons/fa6";
+import React, { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
 export default function ConnectDropdown() {
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
   return (
     <Collapsible className="w-full">
-      <CollapsibleTrigger className=" w-full md:text-lg flex items-center gap-20 justify-center bg-white border rounded p-2 ">
-        Connect With Us <FaChevronDown />
+      <CollapsibleTrigger
+        onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
+        className=" w-full md:text-lg flex items-center gap-20 justify-center bg-white border rounded p-2 ">
+        <>Connect With Us</>
+        {isSubMenuOpen ? <FaChevronUp /> : <FaChevronDown />}
       </CollapsibleTrigger>
       <CollapsibleContent className="flex flex-col gap-3 p-2">
         <Link

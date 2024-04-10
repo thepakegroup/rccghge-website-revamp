@@ -1,24 +1,22 @@
+import { slideInFromBottom } from "@/app/give/page";
 import { getAllLeaders, getSingleLeader } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 type Props = {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const leader = await getSingleLeader(params.slug);
   return {
     title: leader?.name,
-    description:leader?.short_description
+    description: leader?.short_description,
   };
 }
 export default async function page({ params }: { params: { slug: string } }) {
@@ -45,7 +43,12 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <div className="page-spacing text-center">
       <div className="flex flex-col gap-5">
-        <div className="relative space-y-2 lg:flex lg:flex-row-reverse lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
+        <MotionDiv
+          variants={slideInFromBottom(1, 0)}
+          initial="hidden "
+          whileInView={"visible"}
+          viewport={{ once: true }}
+          className="relative space-y-2 lg:flex lg:flex-row-reverse lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
           {/* image section */}
           <div className="flex flex-col items-center justify-center lg:justify-start gap-2 ">
             <div className="lg:hidden">
@@ -83,7 +86,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             {/* text body */}
             <p>{highlightedDesc}</p>
           </div>
-        </div>
+        </MotionDiv>
         <Button asChild className="w-32 lg:ml-32 mx-auto   ">
           <Link href={`/about/ourPastors`}>Go back</Link>
         </Button>

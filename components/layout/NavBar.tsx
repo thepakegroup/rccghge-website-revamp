@@ -17,7 +17,7 @@ import { Variants } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { FaBars, FaChevronDown } from "react-icons/fa6";
+import { FaBars, FaChevronDown, FaChevronUp, FaX } from "react-icons/fa6";
 import Logo from "../Logo";
 import {
   Collapsible,
@@ -27,7 +27,7 @@ import {
 
 export default function NavBar() {
   return (
-    <nav className=" sticky top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
+    <nav className=" fixed   w-screen top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -42,6 +42,12 @@ const MobileNav = () => {
   const isActiveLink = useIsActiveLink();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [openSubMenuIndex, setOpenSubMenuIndex] = useState<number | null>(null);
+  const handleSubMenuClick = (index: number) => {
+    setOpenSubMenuIndex(openSubMenuIndex === index ? null : index);
+  };
+
   const [scope, animate] = useAnimate();
   useEffect(() => {
     if (isOpen)
@@ -51,6 +57,9 @@ const MobileNav = () => {
         { delay: stagger(0.1, { startDelay: 0.6 }) }
       );
   }, [isOpen, animate]);
+  useEffect(() => {
+    console.log(openSubMenuIndex);
+  }, [openSubMenuIndex]);
   return (
     <div
       ref={scope}
@@ -58,10 +67,23 @@ const MobileNav = () => {
       <Link href={"/"} className="w-[28%] max-w-28  h-auto ">
         <Logo className="" />
       </Link>
-      <FaBars
-        className="text-[28px] cursor-pointer active:scale-90"
-        onClick={() => setIsOpen(!isOpen)}
-      />
+      {isOpen ? (
+        <FaX
+          className="text-2xl cursor-pointer active:scale-90"
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setIsSubMenuOpen(false);
+          }}></FaX>
+      ) : (
+        <FaBars
+          className="text-[28px] cursor-pointer active:scale-90"
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setIsSubMenuOpen(false);
+          }}
+        />
+      )}
+
       {/* mobile menu */}
       <AnimatePresence mode="wait">
         {isOpen && (
@@ -70,9 +92,8 @@ const MobileNav = () => {
             animate={{ x: 0, scaleX: 1 }}
             exit={{ x: 300, scaleX: 0 }}
             transition={{ duration: 0.5 }}
-            onMouseLeave={() => setIsOpen(false)}
             className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  gap-10 font-medium  absolute bg-white top-16 right-0 h-screen  py-8 sm:py-10 px-4`}>
-            {navLinks.map((link) => {
+            {navLinks.map((link, i) => {
               //if home page display logo
               if (link.url === "/") {
                 return <React.Fragment key={link.name}></React.Fragment>;
@@ -85,13 +106,23 @@ const MobileNav = () => {
                 return (
                   <Collapsible key={link.name}>
                     <CollapsibleTrigger
+                      key={link.name}
+                      onClick={() => {
+                        setIsSubMenuOpen(!isSubMenuOpen);
+                        handleSubMenuClick(i);
+                      }}
                       className={`nav-link cursor-pointer hover:border-b-2   underline-offset-8 border-primary flex items-center gap-5 ${pathname.startsWith(link.url) && "border-b-2 "}  `}>
                       <>{link.name}</>
-                      <FaChevronDown />
+                      {isSubMenuOpen && openSubMenuIndex === i ? (
+                        <FaChevronUp />
+                      ) : (
+                        <FaChevronDown />
+                      )}
                     </CollapsibleTrigger>
                     <CollapsibleContent className={`py-2 space-y-2 `}>
                       {subUrls.map((subLink) => (
                         <Link
+                          onClick={() => setIsOpen(false)}
                           key={subLink.name}
                           href={`${link.url}${subLink.url}`}
                           className={` sub-links
@@ -108,6 +139,7 @@ const MobileNav = () => {
 
               return (
                 <Link
+                  onClick={() => setIsOpen(false)}
                   key={link.name}
                   href={link.url}
                   className={`nav-link hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname.startsWith(link.url) && "underline"}`}>

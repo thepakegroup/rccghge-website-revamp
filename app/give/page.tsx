@@ -44,7 +44,7 @@ export default async function page() {
           whileInView={"visible"}
           viewport={{ once: true, margin: "0px 0px -200px 0px" }}
           className=" wrapper card-container flex flex-col justify-center md:grid lg:grid-cols-3 md:grid-cols-2 max-w-screen-xl flex-wrap gap-10 mt-52 sm:mt-16 lg:mt-18 pb-10">
-          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative   ">
+          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative   ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -69,7 +69,7 @@ export default async function page() {
               </Button>
             </div>
           </div>
-          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
+          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -91,7 +91,7 @@ export default async function page() {
               </Button>
             </div>
           </div>
-          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
+          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80  relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -111,7 +111,7 @@ export default async function page() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
+          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -129,7 +129,7 @@ export default async function page() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
+          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -146,7 +146,7 @@ export default async function page() {
               </p>
             </div>
           </div>
-          <div className=" card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
+          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill

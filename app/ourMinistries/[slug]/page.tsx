@@ -32,6 +32,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     (async () => {
       try {
         const res = await getMinistries(params.slug);
+        console.log(res);
         setMinistriesData(res);
       } catch (error) {
         console.error(error);
@@ -48,7 +49,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           initial="hidden"
           animate="visible"
           className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md">
-          <ul className="flex items-center justify-center gap-10">
+          <ul className="flex items-center justify-center gap-10 ">
             <li
               className={`${isActiveLink("/Ministry") && "border-b-2 border-primary"}`}>
               <Link href={"/ourMinistries/Ministry"}>Ministries</Link>
@@ -68,12 +69,12 @@ export default function Page({ params }: { params: { slug: string } }) {
             initial="hidden"
             whileInView={"visible"}
             viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-            className="ministries-card-container  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+            className="ministries-card-container  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start">
             {ministriesData?.map((item, i) => (
               <div
                 key={i}
-                className=" shadow-md relative  border-2  rounded-lg w-full  h-80 ">
-                <div className="card-img relative h-1/2 ">
+                className=" shadow-md relative  border-2  rounded-lg w-full h-max ">
+                <div className="card-img relative h-[150px] ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
                     className=" rounded-t-md"

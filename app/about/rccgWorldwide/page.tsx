@@ -37,7 +37,7 @@ export default async function page() {
         </ul>
       </MotionDiv>
       {/* text content */}
-      <div className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
+      <MotionDiv variants={slideInFromBottom(1, 0)} initial="hidden" whileInView="visible"   className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
         <h1
           className="font-bold text-2xl sm:text-3xl capitalize
         ">
@@ -49,7 +49,7 @@ export default async function page() {
             <div dangerouslySetInnerHTML={{ __html: writeUp?.content }} />
           )}
         </div>
-      </div>
+      </MotionDiv>
       {/* video section */}
       <div className=" w-[min(100%,1000px)] mb-12 md:mb-20 aspect-video lg:h-[480px] mx-auto bg-red-500 ">
         <iframe
