@@ -42,12 +42,10 @@ export default function RootLayout({
           className="font-quicksand overflow-x-hidden">
           <ReduxProvider>
             <NavBar />
-            <Toaster richColors position="top-right" />
-            <div className="mt-20">
-              <Hero />
-            </div>
+            <Hero />
             {children}
             <Footer />
+            <Toaster richColors position="top-right" />
           </ReduxProvider>
         </body>
       </FramerMotion>

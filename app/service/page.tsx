@@ -12,43 +12,45 @@ export default async function page() {
   const serviceTimes = await getServiceTimes();
 
   return (
-    <MotionDiv
-      variants={slideInFromBottom(1, 0)}
-      initial="hidden"
-      whileInView={"visible"}
-      viewport={{ once: true }}
-      className="space-y-10 py-12 md:py-20 ">
-      {serviceTimes?.map((service, i) => {
-        const [startTime, startAmPm, endTime, endAmPm] =
-          service.service_period.split(" ");
+    <div className="py-12 md:py-20 ">
+      <MotionDiv
+        variants={slideInFromBottom(1, 0)}
+        initial="hidden"
+        whileInView={"visible"}
+        viewport={{ once: true }}
+        className="space-y-10 ">
+        {serviceTimes?.map((service, i) => {
+          const [startTime, startAmPm, endTime, endAmPm] =
+            service.service_period.split(" ");
 
-        return (
-          <div
-            key={i}
-            className="bg-primary/5 wrapper py-5 sm:py-8 flex flex-col items-center justify-center lg:flex-row gap-5 md:gap-10">
-            {/* image */}
-            <div className="w-full lg:w-2/5 h-56 md:h-80   relative">
-              <ImageFill
-                src={service.image_url || "/images/service-times-img1.png"}
-              />
-            </div>
-            {/* text content */}
-            <div className="space-y-5 lg:w-3/5 md:space-y-8 md:text-lg">
-              <TitleBorderTop
-                title={service.service_name.toLowerCase()}
-                className=" capitalize"
-              />
-              <p className="">{service.service_description}</p>
-              <div className="flex items-center gap-3">
-                {/* <p className="blueGradient px-8 rounded ">{service.day}</p> */}
-                <p className="blueGradient px-8 rounded  ">
-                  {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
-                </p>
+          return (
+            <div
+              key={i}
+              className="bg-primary/5 wrapper py-5 sm:py-8 flex flex-col items-center justify-center lg:flex-row gap-5 md:gap-10">
+              {/* image */}
+              <div className="w-full lg:w-2/5 h-56 md:h-80   relative">
+                <ImageFill
+                  src={service.image_url || "/images/service-times-img1.png"}
+                />
+              </div>
+              {/* text content */}
+              <div className="space-y-5 lg:w-3/5 md:space-y-8 md:text-lg">
+                <TitleBorderTop
+                  title={service.service_name.toLowerCase()}
+                  className=" capitalize"
+                />
+                <p className="">{service.service_description}</p>
+                <div className="flex items-center gap-3">
+                  {/* <p className="blueGradient px-8 rounded ">{service.day}</p> */}
+                  <p className="blueGradient px-8 rounded  ">
+                    {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </MotionDiv>
+          );
+        })}
+      </MotionDiv>
+    </div>
   );
 }

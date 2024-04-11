@@ -9,6 +9,7 @@ import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
 import Image from "next/image";
 import { getPageDisplaySetting } from "./utils/actions";
 import Link from "next/link";
+import LogoDivider from "@/components/LogoDivider";
 
 export default async function Home() {
   const displaySetting = await getPageDisplaySetting("landing_page");
@@ -24,15 +25,11 @@ export default async function Home() {
       our_ministries,
     } = displaySetting);
   }
-  
+
   return (
     <main className=" page-spacing">
       {/* divider */}
-      <div className="wrapper flex items-center w-full gap-3 lg:mb-16 lg:mt-5">
-        <div className="line blueGradient w-full h-0.5"></div>
-        <Logo className="w-20 lg:w-28" />
-        <div className="line blueGradient w-full h-0.5"></div>
-      </div>
+      <LogoDivider />
       {our_service_times === "true" && <ServiceTimes />}
 
       {our_upcoming_events === "true" && <EventsBlock />}
@@ -44,7 +41,7 @@ export default async function Home() {
       </div>
       <GiveCTA />
       {/* download app image section */}
-      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5 py-10  relative">
+      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5 md:py-10  relative">
         {/* image section */}
         <div className="flex items-center gap-10 lg:gap-18 justify-center ">
           <Image
@@ -81,7 +78,7 @@ export default async function Home() {
           {/* download buttons */}
           <div className="flex items-center justify-center gap-5  ">
             <Link
-              className="active:scale-90 w-sc"
+              className="active:scale-90 "
               href={
                 "https://play.google.com/store/apps/details?id=org.rccghge.mobile"
               }

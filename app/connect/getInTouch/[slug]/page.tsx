@@ -56,14 +56,16 @@ export default function Page({ params }: { params: { slug: string } }) {
       break;
   }
   return (
-    <MotionDiv
-      variants={slideInFromBottom(1, 0)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="w-full flex justify-center page-spacing">
-      {page}
-    </MotionDiv>
+    <div className="py-12 md:py-20">
+      <MotionDiv
+        variants={slideInFromBottom(1, 0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="w-full flex justify-center ">
+        {page}
+      </MotionDiv>
+    </div>
   );
 }
 

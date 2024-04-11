@@ -32,7 +32,7 @@ export default async function EventsBlock() {
         <h1 className="text-2xl md:text-3xl  capitalize">
           Our Upcoming Events
         </h1>
-        <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] text-[#4372b9]" />
+        <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] -z-10 text-[#4372b9]" />
       </div>
       {/* events */}
       <div className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 lg:h-80 md:divide-x-2 lg:py-5 overflow-hidden relative">
