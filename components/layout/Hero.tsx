@@ -27,6 +27,7 @@ export default function Hero() {
     // Fetch hero content and update image and content
     const fetchAndUpdateHeroContent = async () => {
       let i = 0;
+      // HOME PAGE
       if (pathname.endsWith("/")) {
         heroContent = await getHeroContent("landing_page");
         if (heroContent) {
@@ -42,6 +43,7 @@ export default function Hero() {
         }
       } else {
         clearInterval(interval);
+        // ABOUT PAGE
         if (pathname.startsWith("/about/ourPastors")) {
           heroContent = await getHeroContent("our_pastors");
 
@@ -128,8 +130,10 @@ export default function Hero() {
               />
             );
           }
-        } else if (pathname.endsWith("/connect/prayerRequests")) {
-          setImageUrl("/images/hero-images/prayer-request-img.png");
+        }
+        // CONNECT PAGE
+        else if (pathname.endsWith("/connect/prayerRequests")) {
+          setImageUrl("/images/hero-images/prayer request.jpg");
           setContent(
             <HeroContent
               title="Prayer Request"
@@ -142,16 +146,17 @@ export default function Hero() {
             <HeroContent title="Need A Ride?" desc="You are in safe hands." />
           );
         } else if (pathname.startsWith("/connect/getInTouch")) {
-          setImageUrl("/images/hero-images/our-beliefs-img.png");
+          setImageUrl("/images/hero-images/live service.jpg");
           setContent(
             <HeroContent
               title="Get In Touch"
               desc="We would be thrilled to hear from you."
             />
           );
-        } else if (pathname.startsWith("/ourMinistries")) {
+        }
+        // MINISTRIES
+        else if (pathname.startsWith("/ourMinistries")) {
           heroContent = await getHeroContent("our_ministry");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -161,8 +166,20 @@ export default function Hero() {
               />
             );
           }
-        } else if (pathname.endsWith("/events")) {
-          setImageUrl("/images/hero-images/our-ministries-img.png");
+          // MINISTRIES SUB PAGES (Departments and Ministries)
+          if (pathname.endsWith("/young-adult-ministry")) {
+            setImageUrl("/images/hero-images/ministries sub-pages/young-adult-ministry.png");
+            setContent(
+              <HeroContent
+                title="Young Adults Ministry"
+                desc="For Children are the heritage of the lord..."
+              />
+            );
+          }
+        }
+        // EVENTS
+        else if (pathname.endsWith("/events")) {
+          setImageUrl("/images/hero-images/upcoming events.jpg");
           setContent(
             <HeroContent
               title="Our Upcoming Events"

@@ -1,5 +1,16 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-export default function Title({ title }: { title: string }) {
-  return <h1 className="text-2xl sm:text-3xl font-bold capitalize">{title}</h1>;
+export default function Title({
+  title,
+  className,
+}: {
+  title: string;
+  className?: string;
+}) {
+  return (
+    <h1 className={cn("text-2xl sm:text-3xl font-bold capitalize", className)}>
+      {title}
+    </h1>
+  );
 }

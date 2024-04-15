@@ -35,7 +35,7 @@ export default async function OurPastors() {
             return (
               <div
                 key={i}
-                className=" space-y-2 lg:flex odd:lg:flex-row-reverse lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10  tracking-wide leading-relaxed   wrapper ">
+                className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24  tracking-wide leading-relaxed   ">
                 {/* image section */}
                 <div className="flex flex-col items-center justify-center gap-2 ">
                   <div className="lg:hidden">
@@ -70,7 +70,7 @@ export default async function OurPastors() {
                   <div className="hidden lg:block">
                     <TitleBorderTop title={`Our ${leader.position}`} />
                   </div>
-                  <p>{leader.short_description}</p>
+                  <p className="text-justify">{leader.short_description}</p>
 
                   <h1 className="hidden lg:block font-bold text-lg sm:text-xl">
                     {leader.name}

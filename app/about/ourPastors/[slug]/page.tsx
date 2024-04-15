@@ -39,7 +39,7 @@ export default async function page({ params }: { params: { slug: string } }) {
 
   return (
     <div className="page-spacing text-center">
-      <div className="flex flex-col gap-5">
+     
         <MotionDiv
           variants={slideInFromBottom(1, 0)}
           initial="hidden "
@@ -81,7 +81,7 @@ export default async function page({ params }: { params: { slug: string } }) {
               <TitleBorderTop title={`Our ${leader?.position}`} />
             </div>
             {/* text body */}
-            <p dangerouslySetInnerHTML={{ __html: highlightedDesc }} />
+            <p className="text-justify" dangerouslySetInnerHTML={{ __html: highlightedDesc }} />
             <Link
               href={`/about/ourPastors`}
               className="flex items-center text-primary justify-center gap-2 hover:gap-3 hover:scale-105 w-fit mx-auto lg:mx-0  ">
@@ -89,7 +89,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             </Link>
           </div>
         </MotionDiv>
-      </div>
+     
       <EventsBlock />
     </div>
   );

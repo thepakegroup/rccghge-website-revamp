@@ -1,10 +1,20 @@
 import React from "react";
 import Title from "./components/Title";
+import ImageCarousel from "@/lib/components/ImageCarousel";
+import ImageFill from "@/lib/components/ImageFill";
+import Image from "next/image";
+import TitleBorderTop from "@/components/TitleBorderTop";
+import YoungAdults from "./components/YoungAdults";
 
 export default function page({ params }: { params: { slug: string } }) {
-  console.log(params.slug);
   switch (params.slug) {
     // MINISTRIES
+    case "young-adult-ministry":
+      return (
+        <>
+         <YoungAdults />
+        </>
+      );
     case "elders-ministry":
       return (
         <TitleBodyContainer title="HGE Elders’ Ministry">
@@ -66,26 +76,7 @@ export default function page({ params }: { params: { slug: string } }) {
           </p>
         </TitleBodyContainer>
       );
-    case "evangelism":
-      return (
-        <TitleBodyContainer title="evangelism">
-          <p>
-            SWAT (Soul Winning Action Team): S.W.A.T. (Soul Winning Action
-            Team): The HGE Soul Winning Action Team is designed to fulfill
-            utmost priority of the church, which is the great commission given
-            by our Lord Jesus, to go out, seek the lost, and make disciples. It
-            is with compassion that we have committed our lives to reaching out
-            to the community, and reclaiming those that are spiritually wounded,
-            battered, sick, discouraged, and those that have lost hope and are
-            ignorant of God’s love and success for their lives. Our primary goal
-            is to develop leaders who will impact our community, and provide
-            hope as we help transform lives. Our mission is to minister to the
-            people who are hurting and to help them achieve wholeness. We are
-            the arms of Heaven’s Glorious Embassy, and as our Brother’s Keeper,
-            we are very determined to bring people to Christ.
-          </p>
-        </TitleBodyContainer>
-      );
+
     case "women-s-ministry":
       return (
         <TitleBodyContainer title="women's ministry">
@@ -100,7 +91,7 @@ export default function page({ params }: { params: { slug: string } }) {
           </p>
         </TitleBodyContainer>
       );
-    case "the-embassy-choir":
+    case "music-ministry":
       return (
         <TitleBodyContainer title="The Embassy Choir">
           <p>
@@ -144,16 +135,29 @@ export default function page({ params }: { params: { slug: string } }) {
       );
     case "drama-ministry":
       return (
-        <TitleBodyContainer title="Drama Ministry">
-          <p>
-            Ministering to the body of Christ, by way of soul and spiritual
-            skits and drama presentations. This Ministry uses the theatrical
-            talents of the members to minister to the church during holidays and
-            special events. The members of this ministry use their talents in
-            music, spoken word, acting, and dance to communicate the gospel of
-            Jesus Christ to the Church and the world at large.
-          </p>
-        </TitleBodyContainer>
+        <>
+          <TitleBodyContainer title="Drama Ministry">
+            <p>
+              Ministering to the body of Christ, by way of soul and spiritual
+              skits and drama presentations. This Ministry uses the theatrical
+              talents of the members to minister to the church during holidays
+              and special events. The members of this ministry use their talents
+              in music, spoken word, acting, and dance to communicate the gospel
+              of Jesus Christ to the Church and the world at large.
+            </p>
+          </TitleBodyContainer>
+          {/* carousel */}
+          <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
+            <ImageCarousel
+              imgArr={[
+                "/images/ourMinistries/drama1.png",
+                "/images/ourMinistries/drama2.png",
+                "/images/ourMinistries/drama3.png",
+              ]}
+              time={5000}
+            />
+          </div>
+        </>
       );
     case "connect-ministry":
       return (
@@ -161,7 +165,7 @@ export default function page({ params }: { params: { slug: string } }) {
           <p>
             Consists of a group of believers filled with passion and love for
             one another. This Ministry is dedicated to the spiritual growth and
-            physical welfare of church members, new converts and our guests. The
+            physical welfare of church members, new converts and our guests. The
             Vision of this Ministry is to ensure all new comers and believers
             that God leads to us at H.G.E; are successfully followed up,
             incorporated and assimilated into an on-going process of
@@ -225,19 +229,146 @@ export default function page({ params }: { params: { slug: string } }) {
       );
     case "hge-wellness-ministry":
       return (
-        <TitleBodyContainer title="HGE Wellness Ministry">
-          <p>
-            The Embassy Wellness Ministry promotes health, wellness and healthy
-            living habits. Every quarter the ministry organizes a free wellness
-            clinic with health screening activities; including blood pressure,
-            cholesterol and blood glucose levels. We are blessed with medical
-            professionals who volunteer their time during the clinic to educate
-            and encourage our congregation and community.
-          </p>
-        </TitleBodyContainer>
+        <>
+          <TitleBodyContainer title="HGE Wellness Ministry">
+            <p>
+              The Embassy Wellness Ministry promotes health, wellness and
+              healthy living habits. Every quarter the ministry organizes a free
+              wellness clinic with health screening activities; including blood
+              pressure, cholesterol and blood glucose levels. We are blessed
+              with medical professionals who volunteer their time during the
+              clinic to educate and encourage our congregation and community.
+            </p>
+          </TitleBodyContainer>
+          {/* carousel */}
+          <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
+            <ImageCarousel
+              imgArr={[
+                "/images/ourMinistries/wellness1.png",
+                "/images/ourMinistries/wellness2.png",
+                "/images/ourMinistries/wellness3.png",
+                "/images/ourMinistries/wellness4.png",
+                "/images/ourMinistries/wellness5.png",
+                "/images/ourMinistries/wellness6.png",
+                "/images/ourMinistries/wellness7.png",
+                "/images/ourMinistries/wellness8.png",
+                "/images/ourMinistries/wellness9.png",
+              ]}
+              time={5000}
+            />
+          </div>
+        </>
+      );
+    case "teenage-ministry":
+      return (
+        <>
+          <TitleBodyContainer
+            title="HGE Teenagers Ministry
+">
+            <p>
+              Is dedicated to building the spiritual lives of our teenager. Our
+              mission is to provide a stimulating and nurturing environment, so
+              that our youth may grow in their spirituality and become
+              productive Christians. As we are well aware, a lot is going on in
+              the life of our youth in this day and age. We endeavor to give our
+              youth a Christian education, lead them to a personal relationship
+              with Jesus Christ, and encourage them to grow in Christian faith.
+              We groom our youth and encourage them to participate in all areas
+              of the church. The Teenage Ministry seeks to develop the spiritual
+              conscientiousness of members transitioning from childhood to young
+              adults. Planned activities are designed to minister to their
+              specific needs, and help them understand the responsibility of
+              making choices as well as the consequences of their actions.  The
+              Teenage Ministry includes children from the age of 13-19. Our
+              teenager have fun by learning through Field Trips, Activities,
+              Youth Led Worships, Annual Programs and Celebrations etc.
+            </p>
+          </TitleBodyContainer>
+          {/* carousel */}
+          <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
+            <ImageCarousel
+              imgArr={[
+                "/images/ourMinistries/teenage1.png",
+                "/images/ourMinistries/teenage2.png",
+              ]}
+              time={5000}
+            />
+          </div>
+        </>
+      );
+    case "hge-children-ministry":
+      return (
+        <>
+          <TitleBodyContainer title="HGE Children Ministry">
+            <p>
+              HGE CHILDREN MINISTRY is designed solely to help our children to
+              know, love, and follow Christ with all their hearts in a safe,
+              high-energy, enriching environment; for preschoolers to preteens.
+              Hence, our acronym:{" "}
+              <span className="text-primary">
+                “CHILD”-Changing Hearts Into Lifelong Disciples.
+              </span>
+            </p>
+            <p>HGE CHILDREN PARTNERS WITH PARENTS TO :</p>
+            <ul className=" marker:text-black">
+              <li>
+                Develop children as Christ-followers and teach them to share
+                their faith.
+              </li>
+              <li>Develop children as worshippers;</li>
+              <li>Develop children as prayer warriors;</li>
+              <li>
+                Teach children to make wise choices according to Scripture;
+              </li>
+              <li>Teach children to treat all people equally;</li>
+              <li>
+                Support families with fun, creative ways to enhance each child’s
+                spiritual journey in life.
+              </li>
+
+              <li>
+                We offer weekly activities and frequent opportunities for group
+                learning. Sunday morning is filled with fun and interactive
+                teaching from the Word of God.
+              </li>
+            </ul>
+          </TitleBodyContainer>
+          {/* carousel */}
+          <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
+            <ImageCarousel
+              imgArr={[
+                "/images/ourMinistries/children1.png",
+                "/images/ourMinistries/children2.png",
+                "/images/ourMinistries/children3.png",
+                "/images/ourMinistries/children4.png",
+              ]}
+              time={5000}
+            />
+          </div>
+        </>
       );
 
     // DEPARTMENTS
+    case "evangelism":
+      return (
+        <TitleBodyContainer title="evangelism">
+          <p>
+            SWAT (Soul Winning Action Team): S.W.A.T. (Soul Winning Action
+            Team): The HGE Soul Winning Action Team is designed to fulfill
+            utmost priority of the church, which is the great commission given
+            by our Lord Jesus, to go out, seek the lost, and make disciples. It
+            is with compassion that we have committed our lives to reaching out
+            to the community, and reclaiming those that are spiritually wounded,
+            battered, sick, discouraged, and those that have lost hope and are
+            ignorant of God’s love and success for their lives. Our primary goal
+            is to develop leaders who will impact our community, and provide
+            hope as we help transform lives. Our mission is to minister to the
+            people who are hurting and to help them achieve wholeness. We are
+            the arms of Heaven’s Glorious Embassy, and as our Brother’s Keeper,
+            we are very determined to bring people to Christ.
+          </p>
+        </TitleBodyContainer>
+      );
     case "believers-class-membership-class":
       return (
         <TitleBodyContainer title="Believers’ Class & Membership Class">
@@ -483,7 +614,175 @@ export default function page({ params }: { params: { slug: string } }) {
           </p>
         </TitleBodyContainer>
       );
+    case "technical-department":
+      return (
+        <div className=" space-y-14 md:space-y-20   ">
+          {/* technical */}
+          <div className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+            {/* image */}
 
+            <Image
+              src={`/images/ourMinistries/technical1.png`}
+              width={556}
+              height={449}
+              className="w-full lg:w-2/5 object-contain "
+              alt="technical department image"
+            />
+
+            {/* text-section */}
+            <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+              <Title title={`Technical`} />
+
+              <p className="text-justify">
+                We are responsible for the installation and maintenance of the
+                PA system, and all musical instruments. Our primary goal is to
+                maintain high sound quality during service and special events.
+                We are also responsible for ensuring adequate lighting inside
+                the Church auditorium during service. We work hard to ensure a
+                sound system that allows the Word and the music to be heard with
+                detail at the appropriate level for our congregation. We
+                recognize that truly exceptional sound requires an unusual
+                amount of applied skill and attention to technical detail, and
+                this meticulous care is exactly what our Church receives from
+                us.
+              </p>
+            </div>
+          </div>
+          {/* audio */}
+          <div className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+            {/* image */}
+
+            <Image
+              src={`/images/ourMinistries/technical2.png`}
+              width={556}
+              height={449}
+              className="w-full lg:w-2/5 object-contain "
+              alt="technical department image"
+            />
+
+            {/* text-section */}
+            <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+              <Title title={`Audio`} />
+
+              <p className="text-justify">
+                We are Responsible for audio recording of church sermons, and
+                sales of Christian books, Sunday school manuals, audio and video
+                recordings of Church services and special programs. We are also
+                tasked with editing the audio digital master of church services,
+                guest speakers and musical productions.
+              </p>
+            </div>
+          </div>
+          {/* video */}
+          <div className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+            {/* image */}
+
+            <Image
+              src={`/images/ourMinistries/technical3.png`}
+              width={556}
+              height={449}
+              className="w-full lg:w-2/5 object-contain "
+              alt="technical department image"
+            />
+
+            {/* text-section */}
+            <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+              <Title title={`Video`} />
+
+              <p className="text-justify">
+                We record all church services as well as other activities. We
+                are responsible for shooting and editing all church service and
+                special event videos.
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    case "church-office":
+      return (
+        <div className=" space-y-14 md:space-y-20   ">
+          {/* pastor assist */}
+          <div className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+            {/* image */}
+
+            <Image
+              src={`/images/ourMinistries/church-office1.png`}
+              width={556}
+              height={449}
+              className="w-full lg:w-2/5 object-contain "
+              alt="technical department image"
+            />
+
+            {/* text-section */}
+            <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+              <Title title={`Pastor’s Assistant`} />
+
+              <p className="text-justify">
+                The PA (Pastor’s Assistant) in conjunction with the Church
+                Administrator, is responsible for the day-to-day operation of
+                Church office. This includes ensuring a smooth running office in
+                accordance with the church policies and procedures. He draws up
+                the Church programs for Sunday service, and assists the Pastor
+                in whatever capacity required.
+              </p>
+            </div>
+          </div>
+          {/* admin*/}
+          <div className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+            {/* image */}
+
+            <Image
+              src={`/images/ourMinistries/church-office2.png`}
+              width={556}
+              height={449}
+              className="w-full lg:w-2/5 object-contain "
+              alt="technical department image"
+            />
+
+            {/* text-section */}
+            <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+              <Title title={`Administration`} />
+
+              <p className="text-justify">
+                The Administrator is responsible for the efficient and effective
+                operation of the Church office, and for developing policies and
+                procedures to support day-to-day operations and activities of
+                the Church. The Church Administrator is also the custodian of
+                the Church calendar of events and programs.
+              </p>
+            </div>
+          </div>
+          {/* accnts */}
+          <div className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+            {/* image */}
+
+            <Image
+              src={`/images/ourMinistries/church-office3.png`}
+              width={556}
+              height={449}
+              className="w-full lg:w-2/5 object-contain "
+              alt="technical department image"
+            />
+
+            {/* text-section */}
+            <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+              <Title title={`Accounts`} />
+
+              <p className="text-justify">
+                Our primary purpose is to be good stewards of the tithes and
+                offerings the Church receives. We take every precaution to
+                ensure that all monies received are processed timely,
+                accurately, and proper records are maintained. We maintain the
+                integrity of all financial matters by ensuring all accounting
+                policies and practices are compliant with accepted accounting
+                principles. We work with the board of trustees on annual
+                budgets, expense reporting and also, with external auditors on
+                successful completion of annual audits.
+              </p>
+            </div>
+          </div>
+        </div>
+      );
     default:
       return null;
   }

@@ -1,4 +1,22 @@
-export const sm = window.matchMedia("(min-width: 640px)").matches
-export const md = window.matchMedia("(min-width: 768px)").matches
-export const lg = window.matchMedia("(min-width: 1024px)").matches
-export const xl = window.matchMedia("(min-width: 1280px)").matches
+'use client'
+import { ReactNode } from "react";
+
+
+
+import { useMediaQuery } from "react-responsive";
+export const Desktop = ({ children }: { children: ReactNode }) => {
+  const isDesktop = useMediaQuery({ minWidth: 992 });
+  return isDesktop ? children : null;
+};
+export const Tablet = ({ children }: { children: ReactNode }) => {
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+  return isTablet ? children : null;
+};
+export const Mobile = (({ children }: { children: ReactNode }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  return isMobile ? children : null;
+});
+export const MobileAbove = ({ children }: { children: ReactNode }) => {
+  const isNotMobile = useMediaQuery({ minWidth: 768 });
+  return isNotMobile ? children : null;
+};

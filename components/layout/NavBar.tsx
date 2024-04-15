@@ -192,7 +192,7 @@ const LgNav = () => {
                 {link.name}
               </HoverCardTrigger>
 
-              <HoverCardContent className="w-40 space-y-2">
+              <HoverCardContent className="w-40 space-y-2 ">
                 {subUrls.map((subLink) => (
                   <Link
                     key={subLink.name}
