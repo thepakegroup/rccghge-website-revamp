@@ -99,7 +99,9 @@ export default function Hero() {
               />
             );
           }
-        } else if (pathname.endsWith("/new")) {
+        }
+        // NEW || SERVICE || GIVE PAGE
+        else if (pathname.endsWith("/new")) {
           heroContent = await getHeroContent("iam_new_page");
 
           if (heroContent) {
@@ -133,26 +135,42 @@ export default function Hero() {
         }
         // CONNECT PAGE
         else if (pathname.endsWith("/connect/prayerRequests")) {
-          setImageUrl("/images/hero-images/prayer request.jpg");
-          setContent(
-            <HeroContent
-              title="Prayer Request"
-              desc="Have something troubling you? let us know, you are in our prayers."
-            />
-          );
+          heroContent = await getHeroContent("prayer_request");
+        
+          if (heroContent) {
+            setImageUrl(heroContent?.ImgArr[0]);
+            setContent(
+              <HeroContent
+                title={heroContent?.title}
+                desc={heroContent?.desc}
+              />
+            );
+          }
+  
         } else if (pathname.endsWith("/connect/needARide")) {
-          setImageUrl("/images/hero-images/need-a-ride-img.png");
-          setContent(
-            <HeroContent title="Need A Ride?" desc="You are in safe hands." />
-          );
+          heroContent = await getHeroContent("need_a_ride");
+
+          if (heroContent) {
+            setImageUrl(heroContent?.ImgArr[0]);
+            setContent(
+              <HeroContent
+                title={heroContent?.title}
+                desc={heroContent?.desc}
+              />
+            );
+          }
         } else if (pathname.startsWith("/connect/getInTouch")) {
-          setImageUrl("/images/hero-images/live service.jpg");
-          setContent(
-            <HeroContent
-              title="Get In Touch"
-              desc="We would be thrilled to hear from you."
-            />
-          );
+          heroContent = await getHeroContent("get_in_touch");
+
+          if (heroContent) {
+            setImageUrl(heroContent?.ImgArr[0]);
+            setContent(
+              <HeroContent
+                title={heroContent?.title}
+                desc={heroContent?.desc}
+              />
+            );
+          }
         }
         // MINISTRIES
         else if (pathname.startsWith("/ourMinistries")) {
@@ -168,7 +186,9 @@ export default function Hero() {
           }
           // MINISTRIES SUB PAGES (Departments and Ministries)
           if (pathname.endsWith("/young-adult-ministry")) {
-            setImageUrl("/images/hero-images/ministries sub-pages/young-adult-ministry.png");
+            setImageUrl(
+              "/images/hero-images/ministries sub-pages/young-adult-ministry.png"
+            );
             setContent(
               <HeroContent
                 title="Young Adults Ministry"

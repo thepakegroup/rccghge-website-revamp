@@ -75,7 +75,7 @@ export default function PrayerRequestForm() {
       {/* dark overlay */}
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       <ImageFill src="/images/ourMission-img.png" />
-      <div className="space-y-5 bg-white z-10 w-[min(90%,30rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
+      <div className="space-y-5 bg-white z-10 w-[min(90%,35rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
         <TitleBorderTop
           title="Have A Prayer Request?"
           className=" text-nowrap"

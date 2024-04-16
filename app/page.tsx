@@ -1,5 +1,5 @@
 import EventsBlock from "@/components/EventsBlock";
-import Logo from "@/components/Logo";
+import LogoDivider from "@/components/LogoDivider";
 import ServiceTimes from "@/components/ServiceTimes";
 import GetConnected from "@/components/home-page/GetConnected";
 import GiveCTA from "@/components/home-page/GiveCTA";
@@ -7,9 +7,8 @@ import OurMinistries from "@/components/home-page/OurMinistries";
 import OurMission from "@/components/home-page/OurMission";
 import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
 import Image from "next/image";
-import { getPageDisplaySetting } from "./utils/actions";
 import Link from "next/link";
-import LogoDivider from "@/components/LogoDivider";
+import { getPageDisplaySetting } from "./utils/actions";
 
 export default async function Home() {
   const displaySetting = await getPageDisplaySetting("landing_page");
@@ -66,7 +65,7 @@ export default async function Home() {
           <div className="text container space-y-4 md:space-y-10">
             <h1 className="font-bold text-xl md:text-3xl text-center ">
               {" "}
-              Download The RCCGHE App
+              Download The RCCGHGE App
             </h1>
             <ol className="space-y-2 md:space-y-6 mx-auto md:text-xl w-fit">
               <li className="list-disc">Submit Prayer Requests</li>

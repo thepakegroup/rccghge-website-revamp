@@ -15,7 +15,7 @@ export default function MinistriesTab() {
       animate="visible"
       viewport={{ once: true }}
       className="z-20 bg-white absolute -top-10  mx-6 lg:mx-12  rounded-lg left-0 right-0 p-5 xl:px-32 lg:text-lg shadow-md ">
-      <ul className="flex items-center justify-center gap-10 ">
+      <ul className="flex items-center justify-center gap-10 max-w-screen-xl ">
         <li
           className={`${isActiveLink("/Ministry") && "border-b-2 border-primary"}`}>
           <Link href={"/ourMinistries/Ministry"}>Ministries</Link>

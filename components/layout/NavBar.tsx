@@ -13,7 +13,6 @@ import {
   useAnimate,
 } from "@/lib/framer-motion/motionComponents";
 import useIsActiveLink from "@/lib/hooks/useIsActiveLink";
-import { Variants } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -27,7 +26,8 @@ import {
 
 export default function NavBar() {
   return (
-    <nav className=" sticky   w-screen top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
+    <nav
+      className=" sticky   w-screen top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>

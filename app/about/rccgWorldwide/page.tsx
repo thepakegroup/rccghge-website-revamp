@@ -17,7 +17,11 @@ export default async function page() {
 
   return (
     <div className=" page-spacing relative ">
-      <MotionDiv variants={slideInFromBottom(1, 0.5)} initial="hidden" animate="visible" className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md">
+      <MotionDiv
+        variants={slideInFromBottom(1, 0.5)}
+        initial="hidden"
+        animate="visible"
+        className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md max-w-screen-xl">
         <ul className="flex items-center justify-center gap-10 text-primary text-sm md:text-base">
           <li>
             <Link href={"https://www.rccg.org/"} target="_blank">
@@ -37,7 +41,11 @@ export default async function page() {
         </ul>
       </MotionDiv>
       {/* text content */}
-      <MotionDiv variants={slideInFromBottom(1, 0)} initial="hidden" whileInView="visible"   className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
+      <MotionDiv
+        variants={slideInFromBottom(1, 0)}
+        initial="hidden"
+        whileInView="visible"
+        className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
         <h1
           className="font-bold text-2xl sm:text-3xl capitalize
         ">
@@ -53,7 +61,7 @@ export default async function page() {
       {/* video section */}
       <div className=" w-[min(100%,1000px)] mb-12 md:mb-20 aspect-video lg:h-[480px] mx-auto bg-red-500 ">
         <iframe
-          className="w-full h-full"  
+          className="w-full h-full"
           src="https://www.youtube.com/embed/7bVUARoSFnQ?si=8nPEsy9Y6WDNI2Ff"
           title="YouTube video player"
           frameBorder="0"

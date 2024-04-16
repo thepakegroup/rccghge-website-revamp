@@ -1,8 +1,10 @@
-import React from "react";
-import ContactUsForm from "./components/ContactUsForm";
-import Logo from "@/components/Logo";
 import LogoDivider from "@/components/LogoDivider";
+import ScrollToTop from "@/lib/components/ScrollToTop";
+import React from "react";
+import JoinUsForm from "../components/JoinUsForm";
 import Title from "./components/Title";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import { slideInFromBottom } from "@/app/give/page";
 
 export default function MinistriesLayout({
   params,
@@ -14,7 +16,12 @@ export default function MinistriesLayout({
   console.log(params.slug);
   return (
     <div className="page-spacing">
-      <div>
+      <MotionDiv
+        variants={slideInFromBottom(1, 0)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="title-top wrapper">
           {params.slug === "hge-children-ministry" && (
             <Title
@@ -45,10 +52,12 @@ export default function MinistriesLayout({
         <LogoDivider />
         <div
           className={` ${params.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 `}>
+          <ScrollToTop />
           {children}
         </div>
-      </div>
-      <ContactUsForm />
+      </MotionDiv>
+      
+      <JoinUsForm />
     </div>
   );
 }

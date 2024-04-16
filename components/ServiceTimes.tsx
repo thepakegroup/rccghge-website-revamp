@@ -1,23 +1,27 @@
-import React from "react";
-import LearnMoreBtn from "./LearnMoreBtn";
+import { getHeroContent, getServiceTimes } from "@/app/utils/actions";
 import ImageFill from "@/lib/components/ImageFill";
-import { ScrollArea, ScrollBar } from "./ui/scroll-area";
-import TitleBorderTop from "./TitleBorderTop";
-import { getServiceTimes } from "@/app/utils/actions";
 import {
   MotionDiv,
   staggerContainer,
   staggerFromRightItem,
 } from "@/lib/framer-motion/motionComponents";
-import { Variants } from "framer-motion";
+import LearnMoreBtn from "./LearnMoreBtn";
+import TitleBorderTop from "./TitleBorderTop";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import { Skeleton } from "./ui/skeleton";
 
 export default async function ServiceTimes() {
   const serviceTimes = await getServiceTimes();
-
+  const imgArr = await getHeroContent("our_service").then((res) => res?.ImgArr);
+  
   return (
     <div className="flex items-center  wrapper  md:gap-8 ">
       <div className="hidden md:w-2/5 md:h-[480px] relative  lg:block">
-        <ImageFill src="/images/service-component-img.png" className="" />
+        {imgArr ? (
+          <ImageFill src={imgArr[0]} className="" />
+        ) : (
+          <Skeleton className=" w-full h-full" />
+        )}
       </div>
 
       <div className=" w-full lg:w-3/5 h-full  flex flex-col gap-5">

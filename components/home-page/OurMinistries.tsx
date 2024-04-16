@@ -1,11 +1,10 @@
-import React from "react";
-import TitleBorderTop from "../TitleBorderTop";
-import ImageFill from "@/lib/components/ImageFill";
-import LearnMoreBtn from "../LearnMoreBtn";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-import { FaUsers } from "react-icons/fa6";
 import { getMinistries } from "@/app/utils/actions";
+import ImageFill from "@/lib/components/ImageFill";
 import { MotionDiv, staggerContainer, staggerFromRightItem } from "@/lib/framer-motion/motionComponents";
+import { FaUsers } from "react-icons/fa6";
+import LearnMoreBtn from "../LearnMoreBtn";
+import TitleBorderTop from "../TitleBorderTop";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 export default async function OurMinistries() {
   // Ministry
