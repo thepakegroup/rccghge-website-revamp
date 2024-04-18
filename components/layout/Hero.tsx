@@ -12,7 +12,12 @@ import {
   useAnimate,
 } from "@/lib/framer-motion/motionComponents";
 import { useEffect, useState } from "react";
-import { type HeroContent, getHeroContent } from "@/app/utils/actions";
+import {
+  type HeroContent,
+  getHeroContent,
+  getYoungAdultsContent,
+  getYoungAdultsHeroContent,
+} from "@/app/utils/actions";
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -136,7 +141,7 @@ export default function Hero() {
         // CONNECT PAGE
         else if (pathname.endsWith("/connect/prayerRequests")) {
           heroContent = await getHeroContent("prayer_request");
-        
+
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -146,7 +151,6 @@ export default function Hero() {
               />
             );
           }
-  
         } else if (pathname.endsWith("/connect/needARide")) {
           heroContent = await getHeroContent("need_a_ride");
 
@@ -186,15 +190,17 @@ export default function Hero() {
           }
           // MINISTRIES SUB PAGES (Departments and Ministries)
           if (pathname.endsWith("/young-adult-ministry")) {
-            setImageUrl(
-              "/images/hero-images/ministries sub-pages/young-adult-ministry.png"
-            );
-            setContent(
-              <HeroContent
-                title="Young Adults Ministry"
-                desc="For Children are the heritage of the lord..."
-              />
-            );
+            heroContent = await getYoungAdultsHeroContent();
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+           
           }
         }
         // EVENTS

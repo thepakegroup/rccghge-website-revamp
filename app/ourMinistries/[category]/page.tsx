@@ -48,7 +48,6 @@ export default async function Page({
 
   return (
     <div className="page-spacing wrapper relative">
-      
       <div>
         {/* tabs */}
         <MinistriesTab />
@@ -56,14 +55,14 @@ export default async function Page({
           variants={slideInFromBottom(1, 0)}
           initial="hidden"
           whileInView={"visible"}
-          viewport={{ once: true,}}
+          viewport={{ once: true }}
           className="ministries-card-container mx-auto  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start max-w-screen-xl ">
           {ministriesData?.map((item, i) => (
             <Link
               key={i}
               href={`/ourMinistries/${params.category}/${item.slug}#`}
               scroll={true}
-              className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-700 cursor-pointer translation-all duration-300 ">
+              className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-400 cursor-pointer translation-all duration-300 ">
               <div className="    card-img relative h-[200px] rounded-t-md ">
                 <ImageFill
                   src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}

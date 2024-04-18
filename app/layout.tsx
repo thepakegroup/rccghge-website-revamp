@@ -39,7 +39,7 @@ export default function RootLayout({
       <FramerMotion>
         <body
           suppressHydrationWarning
-          className="font-quicksand overflow-x-hidden">
+          className="font-quicksand overflow-x-hidden  ">
           <ReduxProvider>
             <NavBar />
             <Hero />

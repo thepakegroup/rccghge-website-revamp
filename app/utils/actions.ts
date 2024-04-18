@@ -1,6 +1,7 @@
 "use server";
-// import { onThisDay } from "../../lib/constants";
 const onThisDay = { next: { revalidate: 3600 } };
+// ## GET REQUESTS ## //
+
 // HERO SECTION
 type Slide = {
   id: number;
@@ -95,7 +96,7 @@ export type Ministry = {
   category: string;
   description: string;
 };
-
+// Get all  Ministries/Departments
 export const getMinistries = async (
   category: string
 ): Promise<Ministry[] | undefined> => {
@@ -115,6 +116,106 @@ export const getMinistries = async (
     console.error(error);
   }
 };
+// Get youth ministry
+export type Team = {
+  id: number;
+  name: string;
+  office: string;
+  image_url: string;
+  created_at: string;
+  updated_at: string;
+};
+
+type Slider = {
+  item_url: string;
+  id: number;
+};
+
+export type GalleryItem = Slider;
+
+type Subsection = {
+  our_mission: {
+    title: string;
+    content: string;
+  };
+  our_vision: {
+    title: string;
+    content: string;
+  };
+  our_events: {
+    title: string;
+    content: string;
+  };
+  media_url: string;
+};
+
+type Settings = {
+  id: number;
+  ministry: string;
+  settings: {
+    heading_text: string;
+    heading_description: string;
+    subheading_description: string;
+    subheading_text: string;
+    subsection: Subsection;
+  };
+  created_at: string;
+  updated_at: string;
+};
+
+type YoungAdultsContent = {
+  settings: Settings;
+  gallery: GalleryItem[];
+  sliders: Slider[];
+  programs: any[]; // Define type if available
+  teams: Team[];
+};
+export const getYoungAdultsContent = async (): Promise<
+  YoungAdultsContent | undefined
+> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/youth-page`,
+      { ...onThisDay }
+    );
+    const ministryData: YoungAdultsContent = await res
+      .json()
+      .then((res) => res.data);
+
+    if (!res.ok) {
+      console.error("Something went wrong", ministryData);
+      return;
+    }
+    return ministryData;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// hero content for young adults
+export const getYoungAdultsHeroContent = async (): Promise<
+  HeroContent | undefined
+> => {
+  try {
+    const heroContent = await getYoungAdultsContent();
+    if (heroContent) {
+      console.log(heroContent.settings.settings);
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // PAGE WRITE UPS
 type PageWriteUp = {
   id: number;
@@ -313,13 +414,14 @@ export const getServiceTimes = async (): Promise<ServiceTime[] | undefined> => {
       return;
     }
     const serviceTimesData = await res.json();
- 
+
     return serviceTimesData.message;
   } catch (error) {
     return;
   }
 };
 
+// ## POST REQUESTS ## //
 // SEND PRAYER REQUEST
 type PrayerRequest = {
   name: string;

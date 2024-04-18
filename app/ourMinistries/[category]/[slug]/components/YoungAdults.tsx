@@ -3,39 +3,14 @@ import Image from "next/image";
 import React from "react";
 import Title from "./Title";
 import GridImgCarousel from "@/lib/components/GridImgCarousel";
+import { getYoungAdultsContent } from "@/app/utils/actions";
 
-export default function YoungAdults() {
-  const galleryImages = [
-    "/images/ourMinistries/gallery1.jpg",
-    "/images/ourMinistries/gallery2.jpg",
-    "/images/ourMinistries/gallery3.jpg",
-    "/images/ourMinistries/gallery4.jpg",
-    "/images/ourMinistries/gallery5.jpg",
-    "/images/ourMinistries/gallery6.jpg",
-    "/images/ourMinistries/gallery7.jpg",
-  ];
-  const teamImages = [
-    {
-      imgUrl: "/images/ourMinistries/team1.png",
-      title: "Lead Minister",
-      name: "Yomi Fasalojo",
-    },
-    {
-      imgUrl: "/images/ourMinistries/team2.png",
-      title: "prayer cord.",
-      name: "Tosin Olubode",
-    },
-    {
-      imgUrl: "/images/ourMinistries/team3.png",
-      title: "Social Community Outreach",
-      name: "Tope Ajasa",
-    },
-    {
-      imgUrl: "/images/ourMinistries/team4.png",
-      title: "impact choir",
-      name: "Dare David",
-    },
-  ];
+export default async function YoungAdults() {
+  const content = await getYoungAdultsContent();
+
+  const missionSection = content?.settings.settings.subsection;
+  const galleryImages = content?.gallery;
+  const teamImages = content?.teams;
   return (
     <div className="space-y-14 md:space-y-20">
       <div className="wrapper ">
@@ -45,7 +20,7 @@ export default function YoungAdults() {
           <div className=" w-full lg:w-1/2  aspect-video lg:h-[480px] mx-auto bg-red-500 ">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/7bVUARoSFnQ?si=8nPEsy9Y6WDNI2Ff"
+              src="https://www.youtube.com/embed/j93q9lK8Lz4"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -56,39 +31,38 @@ export default function YoungAdults() {
           <div className="lg:w-1/2 space-y-3">
             {/* mission */}
             <div className="border-2 rounded-lg p-3 space-y-2   mx-6 lg:mx-12">
-              <h1 className="text-xl sm:text-2xl text-primary">Our Mission</h1>
+              <h1 className="capitalize text-xl sm:text-2xl text-primary">
+                {missionSection?.our_mission.title}
+              </h1>
 
               <p className="font-medium text-sm text-pretty md:text-base ">
-                To prepare families and individuals, for the second coming of
-                our Lord and Savior Jesus Christ.
+                {missionSection?.our_mission.content}
               </p>
             </div>
             {/* vision */}
             <div className="border-2 rounded-lg p-3 space-y-2   mx-6 lg:mx-12">
-              <h1 className="text-xl sm:text-2xl text-primary">Our Vision</h1>
+              <h1 className="capitalize text-xl sm:text-2xl text-primary">
+                {missionSection?.our_vision.title}
+              </h1>
 
               <p className="font-medium text-sm text-pretty md:text-base ">
-                To prepare families and individuals, for the second coming of
-                our Lord and Savior Jesus Christ.
+                {missionSection?.our_vision.content}
               </p>
             </div>
-            {/* vision */}
+            {/* events */}
             <div className="border-2 rounded-lg p-3 space-y-2   mx-6 lg:mx-12">
-              <h1 className="text-xl sm:text-2xl text-primary">Our Events</h1>
-
-              <ul className="font-medium text-sm text-pretty md:text-base space-y-2  ">
-                <li>
-                  - IMPACT Service at 10am (Every Last Sunday of the month)
-                </li>
-                <li>
-                  - Scripture UNPLUGGED at 7pm (Every First & Third Tuesday of
-                  the month)
-                </li>
-                <li>
-                  - Prayers every Thursday from 9 - 9:30pm (Prayer line
-                  (717)-275-8941 Access Code: 8329883)
-                </li>
-              </ul>
+              <h1 className="capitalize text-xl sm:text-2xl text-primary">
+                {missionSection?.our_events.title}
+              </h1>
+              {missionSection?.our_events.content && (
+                <div
+                  className="prose text-sm text-pretty md:text-base"
+                  dangerouslySetInnerHTML={{
+                    __html: missionSection?.our_events.content,
+                  }}
+                />
+              )}
+            
             </div>
           </div>
         </div>

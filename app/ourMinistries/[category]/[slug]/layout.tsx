@@ -5,14 +5,19 @@ import JoinUsForm from "../components/JoinUsForm";
 import Title from "./components/Title";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "@/app/give/page";
+import { getYoungAdultsContent } from "@/app/utils/actions";
 
-export default function MinistriesLayout({
+export default async function MinistriesLayout({
   params,
   children,
 }: {
   params: { slug: string };
   children: React.ReactNode;
 }) {
+  const heading = await getYoungAdultsContent().then((res) => ({
+    title: res?.settings?.settings?.subheading_text,
+    desc: res?.settings?.settings?.subheading_description,
+  }));
   console.log(params.slug);
   return (
     <div className="page-spacing">
@@ -20,8 +25,7 @@ export default function MinistriesLayout({
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
-      >
+        viewport={{ once: true }}>
         <div className="title-top wrapper">
           {params.slug === "hge-children-ministry" && (
             <Title
@@ -37,14 +41,10 @@ export default function MinistriesLayout({
           )}
           {params.slug === "young-adult-ministry" && (
             <div className="space-y-4 text-center max-w-4xl mx-auto mb-10">
-              <Title
-                className="text-center "
-                title="How many times have you thought to yourself how great it would be to connect with GOD -"
-              />
-              <p className="font-medium">
-                This is NEXT! - The Young Adult and Singles Ministry of Heavens
-                Glorious Embassy.
-              </p>
+              {heading.title && (
+                <Title className="text-center " title={heading?.title} />
+              )}
+              <p className="font-medium">{heading?.desc}</p>
             </div>
           )}
         </div>
@@ -56,7 +56,7 @@ export default function MinistriesLayout({
           {children}
         </div>
       </MotionDiv>
-      
+
       <JoinUsForm />
     </div>
   );

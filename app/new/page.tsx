@@ -43,6 +43,7 @@ export default async function page() {
           variants={slideInFromBottom(1, 0)}
           initial="hidden"
           whileInView={"visible"}
+          viewport={{ once: true }}
           className="font-bold wrapper  text-2xl sm:text-3xl mt-52 sm:mt-16 lg:mt-20 ">
           A place of belonging for all.
         </MotionH1>

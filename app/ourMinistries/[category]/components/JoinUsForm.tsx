@@ -1,5 +1,4 @@
 "use client";
-import { slideInFromBottom } from "@/app/give/page";
 import { joinUs } from "@/app/utils/actions";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +11,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import ImageFill from "@/lib/components/ImageFill";
-import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -54,21 +52,16 @@ export default function JoinUsForm() {
     }
   }
   return (
-    <MotionDiv
-      variants={slideInFromBottom(1, 0.5)}
-      initial="hidden"
-      whileInView={"visible"}
-      viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-      className=" relative flex items-center  justify-center">
+    <div className=" relative flex items-center  justify-center">
       {/* dark overlay */}
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       <ImageFill src="/images/ourMission-img.png" />
       <div className="space-y-5 bg-white z-10 w-[min(90%,35rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
-        <div className=" space-y-5   text-center">
+        <div className=" space-y-5 text-center">
           <h1 className="text-xl md:text-2xl">
             Thank You For Showing Interest!
           </h1>
-          <p className="  md:text-lg">Please enter your information below</p>
+          <p className="  md:text-lg">Please enter your information below </p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -127,6 +120,6 @@ export default function JoinUsForm() {
           </form>
         </Form>
       </div>
-    </MotionDiv>
+    </div>
   );
 }

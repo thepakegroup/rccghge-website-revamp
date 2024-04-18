@@ -26,8 +26,7 @@ import {
 
 export default function NavBar() {
   return (
-    <nav
-      className=" sticky   w-screen top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
+    <nav className=" sticky w-screen top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -118,15 +117,14 @@ const MobileNav = () => {
                       )}
                     </CollapsibleTrigger>
                     <CollapsibleContent
-                      className={`py-2  space-y-2 ${isSubMenuOpen && "border-b-2"} `}>
+                      className={`py-2  space-y-2 ${isSubMenuOpen && "border-b-2  "}  `}>
                       {subUrls.map((subLink) => (
                         <Link
                           onClick={() => setIsOpen(false)}
                           key={subLink.name}
                           href={`${link.url}${subLink.url}`}
                           className={` sub-links
-                      block hover:border-b-2 border-primary pl-4 h-8 whitespace-nowrap
-                     ${isActiveLink(subLink.url) && "border-b-2 border-primary"}
+                      block hover:border-b-2 border-primary pl-4 h-8 whitespace-nowrap ${isActiveLink(subLink.url) && "border-b-2 border-primary "}
                     `}>
                           {subLink.name}
                         </Link>

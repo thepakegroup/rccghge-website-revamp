@@ -1,4 +1,5 @@
 "use client";
+import { GalleryItem, Team } from "@/app/utils/actions";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,8 +24,8 @@ export default function GridImgCarousel({
   numOfCols = 3,
   height = "200px",
 }: {
-  imgArr?: string[];
-  cardObjArr?: Card[];
+  imgArr?: GalleryItem[];
+  cardObjArr?: Team[];
   time: number;
   numOfRows?: number;
   numOfCols?: number;
@@ -88,7 +89,7 @@ export default function GridImgCarousel({
           {imgArr &&
             imgArr
               .slice(startIndex, startIndex + numOfCols * numOfRows)
-              .map((url, index) => {
+              .map((item, index) => {
                 return (
                   <div
                     key={startIndex + index}
@@ -102,7 +103,7 @@ export default function GridImgCarousel({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.5 }}
-                      src={url}
+                      src={item.item_url}
                       fill
                       alt="grid image"
                       className=" object-cover   object-center"
@@ -114,7 +115,7 @@ export default function GridImgCarousel({
             cardObjArr
               .slice(startIndex, startIndex + numOfCols * numOfRows)
               .map((card, index) => {
-                const { imgUrl, title, name } = card;
+                const { name,image_url,office  } = card;
                 return (
                   <MotionDiv
                     className=" relative  flex flex-col gap-4"
@@ -136,7 +137,7 @@ export default function GridImgCarousel({
                         // animate={{ opacity: 1 }}
                         // exit={{ opacity: 0 }}
                         // transition={{ duration: 0.5 }}
-                        src={imgUrl}
+                        src={image_url}
                         fill
                         alt="grid image"
                         className=" object-cover   object-center"
@@ -150,7 +151,7 @@ export default function GridImgCarousel({
                           className={
                             "text-xl sm:text-2xl font-bold capitalize"
                           }>
-                          {title}
+                          {office}
                         </h1>
                       </div>
                       <p className="text-sm">{name}</p>

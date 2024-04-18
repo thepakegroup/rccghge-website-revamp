@@ -5,7 +5,7 @@ import { useEffect, useLayoutEffect } from "react";
 
 export default function ScrollToTop() {
   const pathname = usePathname();
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.scroll(0, 0);
   }, [pathname]);
   return <></>;
