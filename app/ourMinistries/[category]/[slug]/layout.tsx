@@ -6,21 +6,23 @@ import Title from "./components/Title";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "@/app/give/page";
 import { getYoungAdultsContent } from "@/app/utils/actions";
+import NavButtons from "./components/NavButtons";
 
 export default async function MinistriesLayout({
   params,
   children,
 }: {
-  params: { slug: string };
+  params: { category: string; slug: string };
   children: React.ReactNode;
 }) {
   const heading = await getYoungAdultsContent().then((res) => ({
     title: res?.settings?.settings?.subheading_text,
     desc: res?.settings?.settings?.subheading_description,
   }));
-  console.log(params.slug);
+
   return (
-    <div className="page-spacing">
+    <div className="page-spacing relative">
+      <NavButtons params={params} />
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"

@@ -1,0 +1,70 @@
+"use client";
+import { getMinistriesSlug } from "@/app/utils/actions";
+import { MoveLeft, MoveRight } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+export default function NavButtons({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) {
+  const [slugArr, setSlugArr] = useState<string[]>();
+  const [currentIndex, setCurrentIndex] = useState<number>(-1);
+  // i want it to keep track of the current slug of the page
+  // and then i can use it to get the next and previous slugs in the slugArr
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await getMinistriesSlug(params.category);
+        setSlugArr(res);
+        // Find the index of the current slug in slugArr
+        const index = res?.indexOf(params.slug);
+        setCurrentIndex(index??-1);
+      } catch (error) {
+        if (error instanceof Error) console.log(error.message);
+      }
+    })();
+    console.log(params.category, params.slug);
+  }, [params.category, params.slug]);
+
+  // Get the next and previous slugs
+  const prevSlug =
+    slugArr && currentIndex !== null && currentIndex > 0
+      ? slugArr[currentIndex - 1]
+      : null;
+  const nextSlug =
+    slugArr && currentIndex !== null && currentIndex < slugArr.length - 1
+      ? slugArr[currentIndex + 1]
+      : null;
+
+  console.log(
+    `ourMinistries/${params.category}/${nextSlug}`,
+    prevSlug,
+    nextSlug
+  );
+
+  return (
+    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-50 text-white  capitalize">
+      {/* Previous Button */}
+
+      <Link
+        href={`/ourMinistries/${params.category}/${nextSlug}`}
+        className={`prev-btn ${prevSlug ? "block" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2`}>
+        <MoveLeft className="shrink-0" />
+        <h1 className="hidden group-hover:block">{prevSlug}</h1>
+      </Link>
+
+      {/* Next Button */}
+
+      <Link
+        href={`/ourMinistries/${params.category}/${nextSlug}`}
+        className={`next-btn ${nextSlug ? "block" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-l-full flex items-center text-right justify-end group gap-3 pl-2`}>
+        <h1 className="hidden group-hover:block">{nextSlug}</h1>
+        <MoveRight className="shrink-0" />
+      </Link>
+    </div>
+  );
+}

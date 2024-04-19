@@ -106,12 +106,32 @@ export const getMinistries = async (
       { ...onThisDay }
     );
     const ministryData = await res.json();
-
+    
     if (!res.ok) {
       console.error(ministryData);
       return;
     }
     return ministryData.message.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const getMinistriesSlug = async (
+  category: string
+): Promise<string[] | undefined> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`,
+      { ...onThisDay }
+    );
+    const ministryData = await res.json();
+    if (!res.ok) {
+      console.error(ministryData);
+      return;
+    }
+    return ministryData?.message.data
+      .map((data: Ministry) => data.slug)
+      .filter((slug: string) => slug !== "young-adult-ministry");
   } catch (error) {
     console.error(error);
   }
@@ -199,7 +219,6 @@ export const getYoungAdultsHeroContent = async (): Promise<
   try {
     const heroContent = await getYoungAdultsContent();
     if (heroContent) {
-      console.log(heroContent.settings.settings);
       const imgArr = heroContent.sliders.map((slide: Slider) => {
         return slide.item_url;
       });
@@ -431,6 +450,7 @@ type PrayerRequest = {
   content: string;
 };
 export const sendPrayerRequest = async (data: PrayerRequest) => {
+
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
