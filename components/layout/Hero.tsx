@@ -15,9 +15,8 @@ import { useEffect, useState } from "react";
 import {
   type HeroContent,
   getHeroContent,
-  getYoungAdultsContent,
-  getYoungAdultsHeroContent,
 } from "@/app/utils/actions";
+import { getYoungAdultsHeroContent } from "@/app/utils/subMinistriesActions";
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();

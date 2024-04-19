@@ -3,7 +3,8 @@ import Image from "next/image";
 import React from "react";
 import Title from "./Title";
 import GridImgCarousel from "@/lib/components/GridImgCarousel";
-import { getYoungAdultsContent } from "@/app/utils/actions";
+import { getYoungAdultsContent } from "@/app/utils/subMinistriesActions";
+
 
 export default async function YoungAdults() {
   const content = await getYoungAdultsContent();

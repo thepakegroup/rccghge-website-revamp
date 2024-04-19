@@ -5,14 +5,15 @@ import ImageFill from "@/lib/components/ImageFill";
 import Image from "next/image";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import YoungAdults from "./components/YoungAdults";
+import { getChildrenContent } from "@/app/utils/subMinistriesActions";
 
-export default function page({ params }: { params: { slug: string } }) {
+export default async function page({ params }: { params: { slug: string } }) {
   switch (params.slug) {
     // MINISTRIES
     case "young-adult-ministry":
       return (
         <>
-         <YoungAdults />
+          <YoungAdults />
         </>
       );
     case "elders-ministry":
@@ -297,10 +298,19 @@ export default function page({ params }: { params: { slug: string } }) {
         </>
       );
     case "hge-children-ministry":
+      const content = await getChildrenContent().then((res) => ({
+        title: res?.settings.settings.body.title,
+        body: res?.settings.settings.body.content,
+      }));
+      const imgArr = await getChildrenContent().then((res) => {
+        return res?.carousel?.map((slide) => slide.item_url)
+      })
       return (
         <>
-          <TitleBodyContainer title="HGE Children Ministry">
-            <p>
+          <TitleBodyContainer title={content?.title ?? ""}>
+            <div
+              dangerouslySetInnerHTML={{ __html: content?.body ?? "" }}></div>
+            {/* <p>
               HGE CHILDREN MINISTRY is designed solely to help our children to
               know, love, and follow Christ with all their hearts in a safe,
               high-energy, enriching environment; for preschoolers to preteens.
@@ -331,19 +341,11 @@ export default function page({ params }: { params: { slug: string } }) {
                 learning. Sunday morning is filled with fun and interactive
                 teaching from the Word of God.
               </li>
-            </ul>
+            </ul> */}
           </TitleBodyContainer>
           {/* carousel */}
           <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
-            <ImageCarousel
-              imgArr={[
-                "/images/ourMinistries/children1.png",
-                "/images/ourMinistries/children2.png",
-                "/images/ourMinistries/children3.png",
-                "/images/ourMinistries/children4.png",
-              ]}
-              time={5000}
-            />
+            <ImageCarousel imgArr={imgArr || [] } time={5000} />
           </div>
         </>
       );

@@ -1,5 +1,6 @@
 "use client";
-import { GalleryItem, Team } from "@/app/utils/actions";
+
+import { GalleryItem, Team } from "@/app/utils/subMinistriesActions";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import { Button } from "@/components/ui/button";
 import {

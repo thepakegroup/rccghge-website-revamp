@@ -106,7 +106,7 @@ export const getMinistries = async (
       { ...onThisDay }
     );
     const ministryData = await res.json();
-    
+
     if (!res.ok) {
       console.error(ministryData);
       return;
@@ -118,7 +118,7 @@ export const getMinistries = async (
 };
 export const getMinistriesSlug = async (
   category: string
-): Promise<string[] | undefined> => {
+): Promise<{ slug: string; name: string }[] | undefined> => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`,
@@ -130,110 +130,13 @@ export const getMinistriesSlug = async (
       return;
     }
     return ministryData?.message.data
-      .map((data: Ministry) => data.slug)
+      .map((data: Ministry) => ({ slug: data.slug, name: data.name }))
       .filter((slug: string) => slug !== "young-adult-ministry");
   } catch (error) {
     console.error(error);
   }
 };
-// Get youth ministry
-export type Team = {
-  id: number;
-  name: string;
-  office: string;
-  image_url: string;
-  created_at: string;
-  updated_at: string;
-};
 
-type Slider = {
-  item_url: string;
-  id: number;
-};
-
-export type GalleryItem = Slider;
-
-type Subsection = {
-  our_mission: {
-    title: string;
-    content: string;
-  };
-  our_vision: {
-    title: string;
-    content: string;
-  };
-  our_events: {
-    title: string;
-    content: string;
-  };
-  media_url: string;
-};
-
-type Settings = {
-  id: number;
-  ministry: string;
-  settings: {
-    heading_text: string;
-    heading_description: string;
-    subheading_description: string;
-    subheading_text: string;
-    subsection: Subsection;
-  };
-  created_at: string;
-  updated_at: string;
-};
-
-type YoungAdultsContent = {
-  settings: Settings;
-  gallery: GalleryItem[];
-  sliders: Slider[];
-  programs: any[]; // Define type if available
-  teams: Team[];
-};
-export const getYoungAdultsContent = async (): Promise<
-  YoungAdultsContent | undefined
-> => {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/youth-page`,
-      { ...onThisDay }
-    );
-    const ministryData: YoungAdultsContent = await res
-      .json()
-      .then((res) => res.data);
-
-    if (!res.ok) {
-      console.error("Something went wrong", ministryData);
-      return;
-    }
-    return ministryData;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-// hero content for young adults
-export const getYoungAdultsHeroContent = async (): Promise<
-  HeroContent | undefined
-> => {
-  try {
-    const heroContent = await getYoungAdultsContent();
-    if (heroContent) {
-      const imgArr = heroContent.sliders.map((slide: Slider) => {
-        return slide.item_url;
-      });
-      const title = heroContent.settings.settings.heading_text;
-      const desc = heroContent.settings.settings.heading_description;
-      return {
-        title: title,
-        desc: desc,
-        ImgArr: imgArr,
-      };
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 // PAGE WRITE UPS
 type PageWriteUp = {
@@ -450,7 +353,6 @@ type PrayerRequest = {
   content: string;
 };
 export const sendPrayerRequest = async (data: PrayerRequest) => {
-
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
