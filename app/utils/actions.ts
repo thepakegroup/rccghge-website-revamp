@@ -131,7 +131,7 @@ export const getMinistriesSlug = async (
     }
     return ministryData?.message.data
       .map((data: Ministry) => ({ slug: data.slug, name: data.name }))
-      .filter((slug: string) => slug !== "young-adult-ministry");
+      // .filter((slug: string) => slug !== "young-adult-ministry");
   } catch (error) {
     console.error(error);
   }

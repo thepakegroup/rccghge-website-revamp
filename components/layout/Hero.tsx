@@ -12,11 +12,13 @@ import {
   useAnimate,
 } from "@/lib/framer-motion/motionComponents";
 import { useEffect, useState } from "react";
+import { type HeroContent, getHeroContent } from "@/app/utils/actions";
 import {
-  type HeroContent,
-  getHeroContent,
-} from "@/app/utils/actions";
-import { getYoungAdultsHeroContent } from "@/app/utils/subMinistriesActions";
+  getChildrenHeroContent,
+  getPrayerHeroContent,
+  getWellnessHeroContent,
+  getYoungAdultsHeroContent,
+} from "@/app/utils/subMinistriesActions";
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -199,7 +201,42 @@ export default function Hero() {
                 />
               );
             }
-           
+          }
+          if (pathname.endsWith("/hge-children-ministry")) {
+            heroContent = await getChildrenHeroContent();
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/prayer-ministry")) {
+            heroContent = await getPrayerHeroContent();
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/hge-wellness-ministry")) {
+            heroContent = await getWellnessHeroContent();
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
           }
         }
         // EVENTS

@@ -12,23 +12,19 @@ export default function NavButtons({
 }) {
   const [slugArr, setSlugArr] = useState<{ slug: string; name: string }[]>();
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
-  // i want it to keep track of the current slug of the page
-  // and then i can use it to get the next and previous slugs in the slugArr
 
   useEffect(() => {
     (async () => {
       try {
         const res = await getMinistriesSlug(params.category);
         setSlugArr(res);
-        // Find the index of the current slug in slugArr
-        // Find the index of the current slug in slugArr
+        // Find the index of the current slug in slugAr
         const index = res?.findIndex((item) => item.slug === params.slug);
-        setCurrentIndex(index??-1);
+        setCurrentIndex(index ?? -1);
       } catch (error) {
         if (error instanceof Error) console.log(error.message);
       }
     })();
-    console.log(params.category, params.slug);
   }, [params.category, params.slug]);
 
   // Get the next and previous slugs
@@ -41,21 +37,15 @@ export default function NavButtons({
       ? slugArr[currentIndex + 1].slug
       : null;
 
-  console.log(
-    `ourMinistries/${params.category}/${nextSlug}`,
-    prevSlug,
-    nextSlug
-  );
-
   return (
-    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-50 text-white  capitalize">
+    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-40 text-white  capitalize ">
       {/* Previous Button */}
 
       <Link
         href={`/ourMinistries/${params.category}/${prevSlug}`}
-        className={`prev-btn ${prevSlug ? "opacity-100" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2`}>
+        className={`prev-btn ${prevSlug ? "opacity-100" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2 `}>
         <MoveLeft className="shrink-0" />
-        <h1 className="hidden group-hover:block">{prevSlug}</h1>
+        <h1 className="hidden group-hover:block ">{prevSlug}</h1>
       </Link>
 
       {/* Next Button */}

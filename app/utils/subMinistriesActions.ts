@@ -1,4 +1,4 @@
-'use server'
+"use server";
 
 import { HeroContent } from "./actions";
 
@@ -78,15 +78,7 @@ export const getYoungAdultsContent = async () => {
   }
 };
 // get content for children ministry
-type CarouselItem = {
-  item_url: string;
-  id: number;
-};
-
-type SliderItem = {
-  item_url: string;
-  id: number;
-};
+type CarouselItem = Slider;
 
 type BodyContent = {
   title: string;
@@ -109,28 +101,73 @@ type ChildrenSetting = {
 type ChildrenContent = {
   settings: ChildrenSetting;
   carousel: CarouselItem[];
-  sliders: SliderItem[];
+  sliders: Slider[];
 };
 
-
+// CHILDREN
 export const getChildrenContent = async () => {
-    try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/children-page`,
-          { ...onThisDay }
-        );
-        const childrenContent: ChildrenContent = await res.json().then(res=>res.data)
-        if (!res.ok) {
-             console.error("Something went wrong", childrenContent);
-             return;
-        }
-        return childrenContent;
-    } catch (error) {
-        if (error instanceof Error) {
-            console.error(error.message);
-        }
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/children-page`,
+      { ...onThisDay }
+    );
+    const childrenContent: ChildrenContent = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", childrenContent);
+      return;
     }
-}
+    return childrenContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+//WELLNESS
+export const getWellnessContent = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/wellness-page`,
+      { ...onThisDay }
+    );
+    const wellnessContent: ChildrenContent = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", wellnessContent);
+      return;
+    }
+    return wellnessContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+type PrayerContent = Omit<ChildrenContent, "carousel">;
+// PRAYER
+export const getPrayerContent = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/prayer-page`,
+      { ...onThisDay }
+    );
+    const prayerContent: PrayerContent = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", prayerContent);
+      return;
+    }
+    return prayerContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
 
 // HERO CONTENT
 // hero content for young adults
@@ -153,5 +190,79 @@ export const getYoungAdultsHeroContent = async (): Promise<
     }
   } catch (error) {
     console.error(error);
+  }
+};
+// hero content for children
+export const getChildrenHeroContent = async (): Promise<
+  HeroContent | undefined
+> => {
+  try {
+    const heroContent = await getChildrenContent();
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+
+// hero content for wellness
+export const getWellnessHeroContent = async (): Promise<
+  HeroContent | undefined
+> => {
+  try {
+    const heroContent = await getWellnessContent();
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+
+// hero content for prayer
+export const getPrayerHeroContent = async (): Promise<
+  HeroContent | undefined
+> => {
+  try {
+    const heroContent = await getPrayerContent();
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
   }
 };

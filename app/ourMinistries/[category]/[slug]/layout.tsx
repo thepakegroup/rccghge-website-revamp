@@ -8,6 +8,7 @@ import NavButtons from "./components/NavButtons";
 import Title from "./components/Title";
 import {
   getChildrenContent,
+  getPrayerContent,
   getYoungAdultsContent,
 } from "@/app/utils/subMinistriesActions";
 
@@ -34,13 +35,18 @@ export default async function MinistriesLayout({
         title: res?.settings.settings.subheading_text,
       }));
       break;
+    case "prayer-ministry":
+      heading = await getPrayerContent().then((res) => ({
+        title: res?.settings?.settings?.subheading_text,
+      }));
+      break;
 
     default:
       break;
   }
 
   return (
-    <div className="page-spacing relative">
+    <div className="py-12 md:py-20 flex flex-col gap-14 mb:gap-20 relative">
       <NavButtons params={params} />
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
@@ -48,20 +54,15 @@ export default async function MinistriesLayout({
         whileInView="visible"
         viewport={{ once: true }}>
         <div className="title-top wrapper">
-          {params.slug === "hge-children-ministry" && (
-            <Title className="text-center mb-10" title={heading?.title ?? ""} />
+          {params.slug === "hge-children-ministry" && heading.title && (
+            <Title className="text-center mb-10" title={heading?.title} />
           )}
-          {params.slug === "prayer-ministry" && (
-            <Title
-              className="text-center mb-10"
-              title="“Men ought always to pray and not to faint” (Luke 18:1)"
-            />
+          {params.slug === "prayer-ministry" && heading.title && (
+            <Title className="text-center mb-10" title={heading?.title} />
           )}
-          {params.slug === "young-adult-ministry" && (
+          {params.slug === "young-adult-ministry" && heading.title && (
             <div className="space-y-4 text-center max-w-4xl mx-auto mb-10">
-              {heading?.title && (
-                <Title className="text-center " title={heading?.title} />
-              )}
+              <Title className="text-center " title={heading?.title} />
               <p className="font-medium">{heading?.desc}</p>
             </div>
           )}

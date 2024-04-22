@@ -5,9 +5,14 @@ import ImageFill from "@/lib/components/ImageFill";
 import Image from "next/image";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import YoungAdults from "./components/YoungAdults";
-import { getChildrenContent } from "@/app/utils/subMinistriesActions";
+import {
+  getChildrenContent,
+  getPrayerContent,
+  getWellnessContent,
+} from "@/app/utils/subMinistriesActions";
 
 export default async function page({ params }: { params: { slug: string } }) {
+  let content;
   switch (params.slug) {
     // MINISTRIES
     case "young-adult-ministry":
@@ -186,60 +191,65 @@ export default async function page({ params }: { params: { slug: string } }) {
         </TitleBodyContainer>
       );
     case "prayer-ministry":
+      content = await getPrayerContent().then((res) => ({
+        title: res?.settings.settings.body.title,
+        body: res?.settings.settings.body.content,
+      }));
+
       return (
-        <TitleBodyContainer title="Prayer Ministry">
-          <p>
-            Prayer is the life wire of our church. Our vision is to raise
-            dynamic prayer warriors with integrity, who are committed to the
-            task of bringing down the presence of God during our worship
-            services. Our mission is to serve in HGE as prayer intercessors for
-            God’s people, and to encourage and assist each person in personal
-            and corporate prayer. We do this by praying in faith in the name of
-            our Lord Jesus Christ, relentlessly opposing the works of Satan in
-            the lives of the people of God, whilst encouraging others to also do
-            the same.
-          </p>
-          <p className="uppercase">OUR STRATEGIES ARE AS FOLLOWS :</p>
-          <ul className=" marker:text-black">
-            <li>To live a righteous and holy life by the grace of God;</li>
-            <li>
-              To be consistent in our goals and foster unity by praying in one
-              accord;
-            </li>
-            <li>
-              To pray for our Pastors, Ministers, Workers and HGE Congregation;
-            </li>
-            <li>To pray for the church staff & church projects;</li>
-            <li>To pray for our community and the nation;</li>
-            <li>
-              To develop a family oriented environment free of ethnicity through
-              our prayers;
-            </li>
-            <li>To encourage and assist others in learning how to pray;</li>
-            <li>
-              To ensure every request we receive is handled timely & effectively
-              in prayers;
-            </li>
-            <li>
-              We are a militant prayer team, obedient servants and there is no
-              tolerance for sin. We meet twice a week, to pray and have online
-              prayer meetings twice a week.
-            </li>
-          </ul>
+        <TitleBodyContainer title={content?.title ?? ""}>
+          <div dangerouslySetInnerHTML={{ __html: content?.body ?? "" }}></div>
+          {/* <p>
+              Prayer is the life wire of our church. Our vision is to raise
+              dynamic prayer warriors with integrity, who are committed to the
+              task of bringing down the presence of God during our worship
+              services. Our mission is to serve in HGE as prayer intercessors
+              for God’s people, and to encourage and assist each person in
+              personal and corporate prayer. We do this by praying in faith in
+              the name of our Lord Jesus Christ, relentlessly opposing the works
+              of Satan in the lives of the people of God, whilst encouraging
+              others to also do the same.
+            </p>
+            <p className="uppercase">OUR STRATEGIES ARE AS FOLLOWS :</p>
+            <ul className=" marker:text-black">
+              <li>To live a righteous and holy life by the grace of God;</li>
+              <li>
+                To be consistent in our goals and foster unity by praying in one
+                accord;
+              </li>
+              <li>
+                To pray for our Pastors, Ministers, Workers and HGE
+                Congregation;
+              </li>
+              <li>To pray for the church staff & church projects;</li>
+              <li>To pray for our community and the nation;</li>
+              <li>
+                To develop a family oriented environment free of ethnicity
+                through our prayers;
+              </li>
+              <li>To encourage and assist others in learning how to pray;</li>
+              <li>
+                To ensure every request we receive is handled timely &
+                effectively in prayers;
+              </li>
+              <li>
+                We are a militant prayer team, obedient servants and there is no
+                tolerance for sin. We meet twice a week, to pray and have online
+                prayer meetings twice a week.
+              </li>
+            </ul> */}
         </TitleBodyContainer>
       );
     case "hge-wellness-ministry":
+      content = await getWellnessContent().then((res) => ({
+        title: res?.settings.settings.body.title,
+        body: res?.settings.settings.body.content,
+      }));
       return (
         <>
-          <TitleBodyContainer title="HGE Wellness Ministry">
-            <p>
-              The Embassy Wellness Ministry promotes health, wellness and
-              healthy living habits. Every quarter the ministry organizes a free
-              wellness clinic with health screening activities; including blood
-              pressure, cholesterol and blood glucose levels. We are blessed
-              with medical professionals who volunteer their time during the
-              clinic to educate and encourage our congregation and community.
-            </p>
+          <TitleBodyContainer title={content?.title ?? ""}>
+            <div
+              dangerouslySetInnerHTML={{ __html: content?.body ?? "" }}></div>
           </TitleBodyContainer>
           {/* carousel */}
           <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
@@ -298,13 +308,14 @@ export default async function page({ params }: { params: { slug: string } }) {
         </>
       );
     case "hge-children-ministry":
-      const content = await getChildrenContent().then((res) => ({
+      content = await getChildrenContent().then((res) => ({
         title: res?.settings.settings.body.title,
         body: res?.settings.settings.body.content,
       }));
       const imgArr = await getChildrenContent().then((res) => {
-        return res?.carousel?.map((slide) => slide.item_url)
-      })
+        return res?.carousel?.map((slide) => slide.item_url);
+      });
+
       return (
         <>
           <TitleBodyContainer title={content?.title ?? ""}>
@@ -345,7 +356,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           </TitleBodyContainer>
           {/* carousel */}
           <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">
-            <ImageCarousel imgArr={imgArr || [] } time={5000} />
+            <ImageCarousel imgArr={imgArr || []} time={5000} />
           </div>
         </>
       );
