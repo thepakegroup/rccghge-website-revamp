@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { type HeroContent, getHeroContent } from "@/app/utils/actions";
 import {
   getChildrenHeroContent,
+  getMinistryHeroContent,
   getPrayerHeroContent,
   getWellnessHeroContent,
   getYoungAdultsHeroContent,
@@ -238,6 +239,236 @@ export default function Hero() {
               );
             }
           }
+          if (pathname.endsWith("/pre-marital-marriage-counselling")) {
+            heroContent = await getMinistryHeroContent(
+              "pre-marital-marriage-department"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/believers-class-membership-class")) {
+            heroContent = await getMinistryHeroContent("believers_membership");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/protocol-department")) {
+            heroContent = await getMinistryHeroContent("protocol_department");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/greeters-department")) {
+            heroContent = await getMinistryHeroContent("greeters_department");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/holy-police-department")) {
+            heroContent = await getMinistryHeroContent("holy_police_deparment");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/ushering-department")) {
+            heroContent = await getMinistryHeroContent("ushering_department");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/media-publication-department")) {
+            heroContent = await getMinistryHeroContent(
+              "media_publication_ministry"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/it-department")) {
+            heroContent = await getMinistryHeroContent("it_department");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/public_relations-department")) {
+            heroContent = await getMinistryHeroContent(
+              "public_relations_ministry"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/evangelism")) {
+            heroContent = await getMinistryHeroContent("evangelism_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/women-s-ministry")) {
+            heroContent = await getMinistryHeroContent("womens_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/music-ministry")) {
+            heroContent = await getMinistryHeroContent(
+              "embassy_choir_ministry"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/sunday-school-department")) {
+            heroContent = await getMinistryHeroContent(
+              "sunday_school_ministry"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/sanitation-janitorial-department")) {
+            heroContent = await getMinistryHeroContent("sanitation_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/connect-ministry")) {
+            heroContent = await getMinistryHeroContent("connect_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/transportation-department")) {
+            heroContent = await getMinistryHeroContent(
+              "transportation_department"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/follow-up-department")) {
+            heroContent = await getMinistryHeroContent("follow_up_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/hospitality-care-department")) {
+            heroContent = await getMinistryHeroContent(
+              "hospitality_care_department"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
         }
         // EVENTS
         else if (pathname.endsWith("/events")) {
@@ -260,7 +491,9 @@ export default function Hero() {
   }, [pathname, animate]);
 
   // if the pathname is "/" and heroContent.ImgArr array length > 1,
-  useEffect(() => {}, [imageUrl]);
+  useEffect(() => {
+    console.log(imageUrl);
+  }, [imageUrl]);
 
   return (
     <div

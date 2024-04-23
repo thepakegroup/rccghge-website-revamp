@@ -32,20 +32,28 @@ export default function NavButtons({
     slugArr && currentIndex !== null && currentIndex > 0
       ? slugArr[currentIndex - 1].slug
       : null;
+  const prevPage =
+    slugArr && currentIndex !== null && currentIndex > 0
+      ? slugArr[currentIndex - 1].name
+      : null;
   const nextSlug =
     slugArr && currentIndex !== null && currentIndex < slugArr.length - 1
       ? slugArr[currentIndex + 1].slug
       : null;
+  const nextPage =
+    slugArr && currentIndex !== null && currentIndex < slugArr.length - 1
+      ? slugArr[currentIndex + 1].name
+      : null;
 
   return (
-    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-40 text-white  capitalize ">
+    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-40 text-white capitalize ">
       {/* Previous Button */}
 
       <Link
         href={`/ourMinistries/${params.category}/${prevSlug}`}
         className={`prev-btn ${prevSlug ? "opacity-100" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2 `}>
         <MoveLeft className="shrink-0" />
-        <h1 className="hidden group-hover:block ">{prevSlug}</h1>
+        <h1 className="hidden group-hover:block ">{prevPage}</h1>
       </Link>
 
       {/* Next Button */}
@@ -53,7 +61,7 @@ export default function NavButtons({
       <Link
         href={`/ourMinistries/${params.category}/${nextSlug}`}
         className={`next-btn ${nextSlug ? "opacity-100" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-l-full flex items-center text-right justify-end group gap-3 pl-2`}>
-        <h1 className="hidden group-hover:block">{nextSlug}</h1>
+        <h1 className="hidden group-hover:block">{nextPage}</h1>
         <MoveRight className="shrink-0" />
       </Link>
     </div>

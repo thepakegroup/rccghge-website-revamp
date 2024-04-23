@@ -169,7 +169,71 @@ export const getPrayerContent = async () => {
   }
 };
 
+// PRE-MARITAL | BELIEVERS | PROTOCOL | GREETER | HOLY POLICE | USHERING | MEDIA | IT | PUBLIC RELATIONS | EVANGELISM | WOMEN | MUSIC | SUNDAY SCHOOL | SANITATION | CONNECT | TRANSPORTATION | FOLLOW UP | HOSPITALITY
+type MinistryOptions =
+  | "pre-marital-marriage-department"
+  | "believers_membership"
+  | "protocol_department"
+  | "greeters_department"
+  | "holy_police_deparment"
+  | "ushering_department"
+  | "media_publication_ministry"
+  | "it_department"
+  | "public_relations_ministry"
+  | "evangelism_ministry"
+  | "womens_ministry"
+  | "embassy_choir_ministry"
+  | "sunday_school_ministry"
+  | "sanitation_ministry"
+  | "connect_ministry"
+  | "transportation_department"
+  | "follow_up_ministry"
+  | "hospitality_care_department";
+export const getMinistryContent = async (ministry: MinistryOptions) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/common-1/${ministry}`,
+      { ...onThisDay }
+    );
+    const pageContent: ChildrenContent = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", pageContent);
+      return;
+    }
+    return pageContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
 // HERO CONTENT
+// hero content for PRE-MARITAL | BELIEVERS | PROTOCOL | GREETER | HOLY POLICE | USHERING | MEDIA | IT | PUBLIC RELATIONS | EVANGELISM | WOMEN | MUSIC | SUNDAY SCHOOL | SANITATION | CONNECT | TRANSPORTATION | FOLLOW UP | HOSPITALITY
+export const getMinistryHeroContent = async (
+  ministry: MinistryOptions
+): Promise<HeroContent | undefined> => {
+  try {
+    const heroContent = await getMinistryContent(ministry);
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
 // hero content for young adults
 export const getYoungAdultsHeroContent = async (): Promise<
   HeroContent | undefined
