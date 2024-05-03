@@ -39,6 +39,10 @@ export async function generateMetadata({ params }: Param): Promise<Metadata> {
       };
   }
 }
+export function generateStaticParams() {
+  return [{ category: "Ministry" }, { category: "Department" }];
+}
+
 export default async function Page({
   params,
 }: {
@@ -60,7 +64,7 @@ export default async function Page({
           {ministriesData?.map((item, i) => (
             <Link
               key={i}
-              href={`/ourMinistries/${params.category}/${item.slug}#`}
+              href={`/ourMinistries/${params.category}/${item.slug}`}
               scroll={true}
               className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-400 cursor-pointer translation-all duration-300 ">
               <div className="    card-img relative h-[200px] rounded-t-md ">

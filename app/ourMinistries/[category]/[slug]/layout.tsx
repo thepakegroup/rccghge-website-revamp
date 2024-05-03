@@ -1,4 +1,9 @@
 import { slideInFromBottom } from "@/app/give/page";
+import {
+  getChildrenContent,
+  getPrayerContent,
+  getYoungAdultsContent,
+} from "@/app/utils/subMinistriesActions";
 import LogoDivider from "@/components/LogoDivider";
 import ScrollToTop from "@/lib/components/ScrollToTop";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
@@ -6,11 +11,6 @@ import React from "react";
 import JoinUsForm from "../components/JoinUsForm";
 import NavButtons from "./components/NavButtons";
 import Title from "./components/Title";
-import {
-  getChildrenContent,
-  getPrayerContent,
-  getYoungAdultsContent,
-} from "@/app/utils/subMinistriesActions";
 
 export default async function MinistriesLayout({
   params,
@@ -70,7 +70,7 @@ export default async function MinistriesLayout({
 
         <LogoDivider />
         <div
-          className={` ${params.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 `}>
+          className={` ${params.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 marker:text-black `}>
           <ScrollToTop />
           {children}
         </div>

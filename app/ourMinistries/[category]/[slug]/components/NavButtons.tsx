@@ -46,7 +46,7 @@ export default function NavButtons({
       : null;
 
   return (
-    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-40 text-white capitalize ">
+    <div className="fixed w-full flex justify-between items-center h-16 top-1/2 z-30 text-white capitalize ">
       {/* Previous Button */}
 
       <Link

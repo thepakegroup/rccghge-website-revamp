@@ -1,9 +1,7 @@
 "use server";
 
 import { HeroContent } from "./actions";
-
-const onThisDay = { next: { revalidate: 3600 } };
-
+import { onThisDay } from "@/lib/constants";
 // Get youth ministry
 export type Team = {
   id: number;
@@ -51,11 +49,20 @@ type YoungAdultsSettings = {
   updated_at: string;
 };
 
+type Program = {
+  id: number;
+  flyer_url: string;
+  name: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+};
+
 type YoungAdultsContent = {
   settings: YoungAdultsSettings;
   gallery: GalleryItem[];
   sliders: Slider[];
-  programs: any[]; // Define type if available
+  programs: Program[];
   teams: Team[];
 };
 export const getYoungAdultsContent = async () => {
@@ -85,7 +92,7 @@ type BodyContent = {
   content: string;
 };
 
-type ChildrenSetting = {
+type Setting = {
   id: number;
   ministry: string;
   settings: {
@@ -99,7 +106,7 @@ type ChildrenSetting = {
 };
 
 type ChildrenContent = {
-  settings: ChildrenSetting;
+  settings: Setting;
   carousel: CarouselItem[];
   sliders: Slider[];
 };
@@ -146,6 +153,27 @@ export const getWellnessContent = async () => {
     }
   }
 };
+// DRAMA
+export const getDramaContent = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/drama-page`,
+      { ...onThisDay }
+    );
+    const dramaContent: ChildrenContent = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", dramaContent);
+      return;
+    }
+    return dramaContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
 type PrayerContent = Omit<ChildrenContent, "carousel">;
 // PRAYER
 export const getPrayerContent = async () => {
@@ -168,8 +196,29 @@ export const getPrayerContent = async () => {
     }
   }
 };
+// TEENAGE
+export const getTeenageContent = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/teenage-page`,
+      { ...onThisDay }
+    );
+    const teenageContent: ChildrenContent = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", teenageContent);
+      return;
+    }
+    return teenageContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
 
-// PRE-MARITAL | BELIEVERS | PROTOCOL | GREETER | HOLY POLICE | USHERING | MEDIA | IT | PUBLIC RELATIONS | EVANGELISM | WOMEN | MUSIC | SUNDAY SCHOOL | SANITATION | CONNECT | TRANSPORTATION | FOLLOW UP | HOSPITALITY
+//  PRE-MARITAL | BELIEVERS | PROTOCOL | GREETER | HOLY POLICE | USHERING | MEDIA | IT | PUBLIC RELATIONS | EVANGELISM | WOMEN | MUSIC | SUNDAY SCHOOL | SANITATION | CONNECT | TRANSPORTATION | FOLLOW UP | HOSPITALITY|ELDERS | MENS
 type MinistryOptions =
   | "pre-marital-marriage-department"
   | "believers_membership"
@@ -188,7 +237,9 @@ type MinistryOptions =
   | "connect_ministry"
   | "transportation_department"
   | "follow_up_ministry"
-  | "hospitality_care_department";
+  | "hospitality_care_department"
+  | "mens_ministry"
+  | "elders_minstry";
 export const getMinistryContent = async (ministry: MinistryOptions) => {
   try {
     const res = await fetch(
@@ -209,8 +260,43 @@ export const getMinistryContent = async (ministry: MinistryOptions) => {
     }
   }
 };
+// CHURCH OFFICE | TECHNICAL
+type MinistryOption2 = "church_office_ministry" | "technical_ministry";
+type PageSection = {
+  id: number;
+  name: string;
+  description: string;
+  image_url: string;
+  ministry: string;
+  created_at: string;
+  updated_at: string;
+};
+type MinistryContent2 = ChildrenContent & {
+  pageSection: PageSection[];
+};
+export const getMinistryContent2 = async (ministry: MinistryOption2) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/common-2/${ministry}`,
+      { ...onThisDay }
+    );
+    const pageContent: MinistryContent2 = await res
+      .json()
+      .then((res) => res.data);
+    if (!res.ok) {
+      console.error("Something went wrong", pageContent);
+      return;
+    }
+    return pageContent;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+
 // HERO CONTENT
-// hero content for PRE-MARITAL | BELIEVERS | PROTOCOL | GREETER | HOLY POLICE | USHERING | MEDIA | IT | PUBLIC RELATIONS | EVANGELISM | WOMEN | MUSIC | SUNDAY SCHOOL | SANITATION | CONNECT | TRANSPORTATION | FOLLOW UP | HOSPITALITY
+// hero content for PRE-MARITAL | BELIEVERS | PROTOCOL | GREETER | HOLY POLICE | USHERING | MEDIA | IT | PUBLIC RELATIONS | EVANGELISM | WOMEN | MUSIC | SUNDAY SCHOOL | SANITATION | CONNECT | TRANSPORTATION | FOLLOW UP | HOSPITALITY|ELDERS | MENS
 export const getMinistryHeroContent = async (
   ministry: MinistryOptions
 ): Promise<HeroContent | undefined> => {
@@ -234,6 +320,31 @@ export const getMinistryHeroContent = async (
     }
   }
 };
+
+// hero content for CHURCH OFFICE | TECHNICAL
+export const getMinistryHeroContent2 = async (
+  ministry: MinistryOption2
+): Promise<HeroContent | undefined> => {
+  try {
+    const heroContent = await getMinistryContent2(ministry);
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+    }
+  }
+};
+
 // hero content for young adults
 export const getYoungAdultsHeroContent = async (): Promise<
   HeroContent | undefined
@@ -312,6 +423,56 @@ export const getPrayerHeroContent = async (): Promise<
 > => {
   try {
     const heroContent = await getPrayerContent();
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+
+// hero content for teenage
+export const getTeenageHeroContent = async (): Promise<
+  HeroContent | undefined
+> => {
+  try {
+    const heroContent = await getTeenageContent();
+    if (heroContent) {
+      const imgArr = heroContent.sliders.map((slide: Slider) => {
+        return slide.item_url;
+      });
+      const title = heroContent.settings.settings.heading_text;
+      const desc = heroContent.settings.settings.heading_description;
+      return {
+        title: title,
+        desc: desc,
+        ImgArr: imgArr,
+      };
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+};
+
+//hero content for drama
+export const getDramaHeroContent = async (): Promise<
+  HeroContent | undefined
+> => {
+  try {
+    const heroContent = await getDramaContent();
     if (heroContent) {
       const imgArr = heroContent.sliders.map((slide: Slider) => {
         return slide.item_url;

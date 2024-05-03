@@ -1,5 +1,5 @@
 "use server";
-const onThisDay = { next: { revalidate: 3600 } };
+import { onThisDay } from "@/lib/constants";
 // ## GET REQUESTS ## //
 
 // HERO SECTION
@@ -131,7 +131,7 @@ export const getMinistriesSlug = async (
     }
     return ministryData?.message.data
       .map((data: Ministry) => ({ slug: data.slug, name: data.name }))
-      // .filter((slug: string) => slug !== "young-adult-ministry");
+     
   } catch (error) {
     console.error(error);
   }

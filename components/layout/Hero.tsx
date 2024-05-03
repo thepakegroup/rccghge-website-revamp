@@ -15,8 +15,12 @@ import { useEffect, useState } from "react";
 import { type HeroContent, getHeroContent } from "@/app/utils/actions";
 import {
   getChildrenHeroContent,
+  getDramaHeroContent,
   getMinistryHeroContent,
+  getMinistryHeroContent2,
   getPrayerHeroContent,
+  getTeenageContent,
+  getTeenageHeroContent,
   getWellnessHeroContent,
   getYoungAdultsHeroContent,
 } from "@/app/utils/subMinistriesActions";
@@ -215,6 +219,19 @@ export default function Hero() {
               );
             }
           }
+          if (pathname.endsWith("/drama-ministry")) {
+            heroContent = await getDramaHeroContent();
+
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
           if (pathname.endsWith("/prayer-ministry")) {
             heroContent = await getPrayerHeroContent();
             if (heroContent) {
@@ -227,6 +244,7 @@ export default function Hero() {
               );
             }
           }
+
           if (pathname.endsWith("/hge-wellness-ministry")) {
             heroContent = await getWellnessHeroContent();
             if (heroContent) {
@@ -239,6 +257,46 @@ export default function Hero() {
               );
             }
           }
+          if (pathname.endsWith("/teenage-ministry")) {
+            heroContent = await getTeenageHeroContent();
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          // same fetch
+          if (pathname.endsWith("/church-office")) {
+            heroContent = await getMinistryHeroContent2(
+              "church_office_ministry"
+            );
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/technical-department")) {
+            heroContent = await getMinistryHeroContent2("technical_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          //same fetch
           if (pathname.endsWith("/pre-marital-marriage-counselling")) {
             heroContent = await getMinistryHeroContent(
               "pre-marital-marriage-department"
@@ -339,7 +397,7 @@ export default function Hero() {
               );
             }
           }
-          if (pathname.endsWith("/public_relations-department")) {
+          if (pathname.endsWith("/public-relations-department")) {
             heroContent = await getMinistryHeroContent(
               "public_relations_ministry"
             );
@@ -469,6 +527,31 @@ export default function Hero() {
               );
             }
           }
+          if (pathname.endsWith("/men-s-ministry")) {
+            heroContent = await getMinistryHeroContent("mens_ministry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          if (pathname.endsWith("/elders-ministry")) {
+            heroContent = await getMinistryHeroContent("elders_minstry");
+            if (heroContent) {
+              setImageUrl(heroContent?.ImgArr[0]);
+              setContent(
+                <HeroContent
+                  title={heroContent.title}
+                  desc={heroContent.desc}
+                />
+              );
+            }
+          }
+          ///////
         }
         // EVENTS
         else if (pathname.endsWith("/events")) {
@@ -492,7 +575,7 @@ export default function Hero() {
 
   // if the pathname is "/" and heroContent.ImgArr array length > 1,
   useEffect(() => {
-    console.log(imageUrl);
+    // console.log(imageUrl);
   }, [imageUrl]);
 
   return (
@@ -556,9 +639,11 @@ const Home = ({ title }: { title: string }) => {
   }, [pathname, animate]);
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
-      <h1 className="title  text-3xl md:text-4xl lg:text-5xl !leading-relaxed  ">
-        {title}
-      </h1>
+      <div
+        dangerouslySetInnerHTML={{ __html: title }}
+        className="title  text-3xl md:text-4xl lg:text-5xl !leading-relaxed  "
+      />
+
       <div className="desc">
         <Button className="lg:text-lg desc" asChild>
           <Link href="/about/ourStory">Learn More About Us </Link>

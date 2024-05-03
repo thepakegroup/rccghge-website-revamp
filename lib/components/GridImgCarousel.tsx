@@ -116,7 +116,7 @@ export default function GridImgCarousel({
             cardObjArr
               .slice(startIndex, startIndex + numOfCols * numOfRows)
               .map((card, index) => {
-                const { name,image_url,office  } = card;
+                const { name, image_url, office } = card;
                 return (
                   <MotionDiv
                     className=" relative  flex flex-col gap-4"
@@ -161,11 +161,17 @@ export default function GridImgCarousel({
                 );
               })}
         </div>
-        <div className="flex justify-between ">
-          <Button size={"icon"} className="rounded-full" onClick={handlePrev}>
+        <div className="flex justify-between  ">
+          <Button
+            size={"icon"}
+            className="rounded-full z-40"
+            onClick={handlePrev}>
             <MoveLeft />
           </Button>
-          <Button size={"icon"} className="rounded-full" onClick={handleNext}>
+          <Button
+            size={"icon"}
+            className="rounded-full z-40"
+            onClick={handleNext}>
             <MoveRight />
           </Button>
         </div>

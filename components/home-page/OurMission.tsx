@@ -8,7 +8,7 @@ import { Skeleton } from "../ui/skeleton";
 export default async function OurMission() {
   const missions = await getOurMissions();
   const imgArr = await getHeroContent("our_mission").then((res) => res?.ImgArr);
-  console.log(imgArr);
+
   return (
     <div className="flex lg:gap-14 ">
       <div className="hidden lg:w-2/5 lg:h-[340px]  relative  lg:block">
