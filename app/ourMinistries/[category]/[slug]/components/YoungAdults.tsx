@@ -4,6 +4,8 @@ import React from "react";
 import Title from "./Title";
 import GridImgCarousel from "@/lib/components/GridImgCarousel";
 import { getYoungAdultsContent } from "@/app/utils/subMinistriesActions";
+import { TeamImages } from "./team-images";
+import { GalleryImages } from "./gallery-images";
 
 export default async function YoungAdults() {
   const content = await getYoungAdultsContent();
@@ -30,7 +32,8 @@ export default async function YoungAdults() {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen></iframe>
+              allowFullScreen
+            ></iframe>
           </div>
           {/* mission,vision,events */}
           {missionSection && (
@@ -87,7 +90,8 @@ export default async function YoungAdults() {
             return (
               <div
                 key={i}
-                className=" space-y-8  lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+                className=" space-y-8  lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   "
+              >
                 {/* image */}
 
                 <Image
@@ -140,30 +144,32 @@ export default async function YoungAdults() {
       <div className="wrapper w-full space-y-8 ">
         <TitleBorderTop title="our gallery" />
         {/* mobile screens */}
-        <div className=" block md:hidden lg:hidden ">
+        {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
             imgArr={galleryImages}
             time={5000}
             numOfRows={2}
             numOfCols={1}
           />
-        </div>
+        </div> */}
         {/* ABOVE mobile screens */}
 
-        <div className="hidden md:block ">
+        {/* <div className="hidden md:block ">
           <GridImgCarousel
             imgArr={galleryImages}
             time={5000}
             numOfCols={3}
             numOfRows={2}
           />
-        </div>
+        </div> */}
+        {/*  */}
+        <GalleryImages imgArr={galleryImages} />
       </div>
       {/* our Team */}
       <div className="wrapper w-full space-y-8 ">
         <TitleBorderTop title="our great team" />
         {/* mobile screens */}
-        <div className=" block md:hidden lg:hidden ">
+        {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
             cardObjArr={teamImages}
             time={5000}
@@ -171,12 +177,13 @@ export default async function YoungAdults() {
             numOfCols={1}
             height="300px"
           />
-        </div>
+        </div> */}
         {/* ABOVE mobile screens */}
 
-        <div className="hidden md:block ">
+        {/* <div className="hidden md:block ">
           <GridImgCarousel cardObjArr={teamImages} time={5000} height="400px" />
-        </div>
+        </div> */}
+        <TeamImages teamImages={teamImages} />
       </div>
     </div>
   );

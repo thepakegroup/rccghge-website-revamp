@@ -35,9 +35,8 @@ export default function GridImgCarousel({
   if (!imgArr && !cardObjArr) {
     throw new Error("At least one of imgArr or cardObjArr must be provided");
   }
-
+  // console.log(imgArr, cardObjArr, time, numOfRows, numOfCols, height);
   const [startIndex, setStartIndex] = useState(0); // Track the start index of the current batch
-
   const handleNext = () => {
     if (imgArr) {
       // Calculate the total number of items left to display
@@ -86,7 +85,8 @@ export default function GridImgCarousel({
             gridTemplateColumns: `repeat(${numOfCols}, minmax(0, 1fr))`,
             gridTemplateRows: `repeat(${numOfRows}, minmax(0, 1fr))`,
             gap: "1rem",
-          }}>
+          }}
+        >
           {imgArr &&
             imgArr
               .slice(startIndex, startIndex + numOfCols * numOfRows)
@@ -97,7 +97,8 @@ export default function GridImgCarousel({
                     className="relative w-full "
                     style={{
                       height: height,
-                    }}>
+                    }}
+                  >
                     <MotionImage
                       key={startIndex + index}
                       initial={{ opacity: 0 }}
@@ -107,7 +108,7 @@ export default function GridImgCarousel({
                       src={item.item_url}
                       fill
                       alt="grid image"
-                      className=" object-cover   object-center"
+                      className=" object-cover"
                     />
                   </div>
                 );
@@ -125,7 +126,8 @@ export default function GridImgCarousel({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}>
+                    transition={{ duration: 0.5 }}
+                  >
                     <div
                       className="image relative h-full "
                       // style={{
@@ -149,9 +151,8 @@ export default function GridImgCarousel({
                       <div className="flex flex-col w-fit gap-1">
                         <div className="line bg-primary w-16 h-1"></div>
                         <h1
-                          className={
-                            "text-xl sm:text-2xl font-bold capitalize"
-                          }>
+                          className={"text-xl sm:text-2xl font-bold capitalize"}
+                        >
                           {office}
                         </h1>
                       </div>
@@ -165,13 +166,15 @@ export default function GridImgCarousel({
           <Button
             size={"icon"}
             className="rounded-full z-40"
-            onClick={handlePrev}>
+            onClick={handlePrev}
+          >
             <MoveLeft />
           </Button>
           <Button
             size={"icon"}
             className="rounded-full z-40"
-            onClick={handleNext}>
+            onClick={handleNext}
+          >
             <MoveRight />
           </Button>
         </div>
