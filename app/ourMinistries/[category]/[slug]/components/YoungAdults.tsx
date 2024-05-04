@@ -144,32 +144,32 @@ export default async function YoungAdults() {
       <div className="wrapper w-full space-y-8 ">
         <TitleBorderTop title="Our Gallery" />
         {/* mobile screens */}
-        <div className=" block md:hidden lg:hidden ">
+        {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
             imgArr={galleryImages}
             time={5000}
             numOfRows={2}
             numOfCols={1}
           />
-        </div>
+        </div> */}
         {/* ABOVE mobile screens */}
 
-        <div className="hidden md:block ">
+        {/* <div className="hidden md:block ">
           <GridImgCarousel
             imgArr={galleryImages}
             time={5000}
             numOfCols={3}
             numOfRows={2}
           />
-        </div>
-        {/* new updates */}
+        </div> */}
+        {/* new updated */}
         <GalleryImages imgArr={galleryImages} />
       </div>
       {/* our Team */}
       <div className="wrapper w-full space-y-8 ">
         <TitleBorderTop title="Our Great Team" />
         {/* mobile screens */}
-        <div className=" block md:hidden lg:hidden ">
+        {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
             cardObjArr={teamImages}
             time={5000}
@@ -177,12 +177,12 @@ export default async function YoungAdults() {
             numOfCols={1}
             height="300px"
           />
-        </div>
+        </div> */}
         {/* ABOVE mobile screens */}
 
-        <div className="hidden md:block ">
+        {/* <div className="hidden md:block ">
           <GridImgCarousel cardObjArr={teamImages} time={5000} height="400px" />
-        </div>
+        </div> */}
 
         {/* new updated */}
         <TeamImages teamImages={teamImages} />
