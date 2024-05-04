@@ -19,11 +19,10 @@ export const GalleryImages = ({ imgArr }: { imgArr: any }) => {
       <Swiper
         slidesPerView={3}
         spaceBetween={20}
-        loop={true}
         // custom nav
         navigation={{
-          nextEl: ".go_next",
-          prevEl: ".go_prev",
+          nextEl: ".go_next_two",
+          prevEl: ".go_prev_two",
         }}
         modules={[Grid, Navigation]}
         breakpoints={{
@@ -72,8 +71,8 @@ export const GalleryImages = ({ imgArr }: { imgArr: any }) => {
         })}
       </Swiper>
       <div className="w-[99%] mx-auto flex justify-between items-center !mt-5">
-        <MoveLeft className="go_prev text-white bg-[#FF8412] rounded-full p-1 size-10" />
-        <MoveRight className="go_next text-white bg-[#FF8412] rounded-full p-1 size-10" />
+        <MoveLeft className="go_prev_two text-white bg-[#FF8412] rounded-full p-1 size-10" />
+        <MoveRight className="go_next_two text-white bg-[#FF8412] rounded-full p-1 size-10" />
       </div>
     </Fragment>
   );
