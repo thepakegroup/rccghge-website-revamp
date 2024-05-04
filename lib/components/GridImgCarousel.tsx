@@ -11,11 +11,6 @@ import {
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-type Card = {
-  imgUrl: string;
-  title: string;
-  name: string;
-};
 
 export default function GridImgCarousel({
   imgArr,
@@ -94,7 +89,7 @@ export default function GridImgCarousel({
                 return (
                   <div
                     key={startIndex + index}
-                    className="relative w-full "
+                    className="relative w-full  "
                     style={{
                       height: height,
                     }}>
@@ -107,11 +102,12 @@ export default function GridImgCarousel({
                       src={item.item_url}
                       fill
                       alt="grid image"
-                      className=" object-cover   object-center"
+                      className=" "
                     />
                   </div>
                 );
               })}
+          {/* teams grid image  */}
           {cardObjArr &&
             cardObjArr
               .slice(startIndex, startIndex + numOfCols * numOfRows)
@@ -126,22 +122,14 @@ export default function GridImgCarousel({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}>
-                    <div
-                      className="image relative h-full "
-                      // style={{
-                      //   height: height,
-                      // }}
-                    >
+                    <div className="image relative h-full  ">
                       <MotionImage
                         key={index}
-                        // initial={{ opacity: 0 }}
-                        // animate={{ opacity: 1 }}
-                        // exit={{ opacity: 0 }}
-                        // transition={{ duration: 0.5 }}
                         src={image_url}
                         fill
                         alt="grid image"
-                        className=" object-cover   object-center"
+                        style={{ objectPosition: "top", objectFit: "cover" }}
+                    
                       />
                     </div>
                     <div className="card-content h-fit">
