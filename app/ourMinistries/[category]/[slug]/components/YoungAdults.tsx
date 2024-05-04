@@ -142,7 +142,7 @@ export default async function YoungAdults() {
 
       {/* our gallery */}
       <div className="wrapper w-full space-y-8 ">
-        <TitleBorderTop title="our gallery" />
+        <TitleBorderTop title="Our Gallery" />
         {/* mobile screens */}
         {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
@@ -167,7 +167,7 @@ export default async function YoungAdults() {
       </div>
       {/* our Team */}
       <div className="wrapper w-full space-y-8 ">
-        <TitleBorderTop title="our great team" />
+        <TitleBorderTop title="Our Great Team" />
         {/* mobile screens */}
         {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
