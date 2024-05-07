@@ -18,7 +18,8 @@ export default async function page() {
         initial="hidden"
         whileInView={"visible"}
         viewport={{ once: true }}
-        className="space-y-10 ">
+        className="space-y-10 "
+      >
         {serviceTimes?.map((service, i) => {
           const [startTime, startAmPm, endTime, endAmPm] =
             service.service_period.split(" ");
@@ -26,7 +27,8 @@ export default async function page() {
           return (
             <div
               key={i}
-              className="bg-primary/5 wrapper py-5 sm:py-8 flex flex-col items-center justify-center lg:flex-row gap-5 md:gap-10">
+              className="bg-primary/5 wrapper py-5 sm:py-8 flex flex-col items-center justify-center lg:flex-row gap-5 md:gap-10"
+            >
               {/* image */}
               <div className="w-full lg:w-2/5 h-56 md:h-80   relative">
                 <ImageFill
@@ -42,7 +44,7 @@ export default async function page() {
                 <p className="">{service.service_description}</p>
                 <div className="flex items-center gap-3">
                   {/* <p className="blueGradient px-8 rounded ">{service.day}</p> */}
-                  <p className="blueGradient px-8 rounded  ">
+                  <p className="blueGradient px-8 rounded py-4  ">
                     {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
                   </p>
                 </div>

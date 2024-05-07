@@ -590,7 +590,7 @@ export default function Hero() {
         {pathname.endsWith("/")
           ? homepageImgUrl && (
               <MotionImage
-                key={homepageImgUrl + "home"}
+                key={homepageImgUrl}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -642,7 +642,7 @@ const Home = ({ title }: { title: string }) => {
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className="title font-playfair text-3xl md:text-4xl lg:text-5xl !leading-relaxed  "
+        className={`hero-title title font-playfair text-base md:text-lg lg:text-2xl !leading-[55px]  `}
       />
 
       <div className="desc">

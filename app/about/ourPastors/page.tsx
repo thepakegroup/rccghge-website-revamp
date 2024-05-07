@@ -30,12 +30,14 @@ export default async function OurPastors() {
         <MotionDiv
           variants={slideInFromBottom(1, 1)}
           initial="hidden "
-          animate={"visible"}>
+          animate={"visible"}
+        >
           {leaders?.map((leader, i) => {
             return (
               <div
                 key={i}
-                className=" space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24  tracking-wide leading-relaxed   ">
+                className=" w-[96%] lg:w-[90%] space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24  tracking-wide leading-relaxed   "
+              >
                 {/* image section */}
                 <div className="flex flex-col items-center justify-center gap-2 ">
                   <div className="lg:hidden">
@@ -77,7 +79,8 @@ export default async function OurPastors() {
                   </h1>
                   <Link
                     href={`/about/ourPastors/${leader.slug}`}
-                    className="flex items-center text-primary justify-center gap-2 hover:gap-3 hover:scale-105 w-fit mx-auto lg:mx-0  ">
+                    className="flex items-center text-primary justify-center gap-2 hover:gap-3 hover:scale-105 w-fit mx-auto lg:mx-0  "
+                  >
                     Read more <FaArrowRight />
                   </Link>
                 </div>
