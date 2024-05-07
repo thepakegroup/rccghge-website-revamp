@@ -2,6 +2,7 @@ import { getHeroContent, getServiceTimes } from "@/app/utils/actions";
 import ImageFill from "@/lib/components/ImageFill";
 import {
   MotionDiv,
+  MotionLink,
   staggerContainer,
   staggerFromRightItem,
 } from "@/lib/framer-motion/motionComponents";
@@ -41,10 +42,11 @@ export default async function ServiceTimes() {
                 service.service_period.split(" ");
 
               return (
-                <MotionDiv
+                <MotionLink
                   variants={staggerFromRightItem}
                   key={i}
                   className="card  "
+                  href="/service"
                 >
                   <div className=" absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
                     {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
@@ -66,7 +68,7 @@ export default async function ServiceTimes() {
                       {service?.service_description}
                     </p>
                   </div>
-                </MotionDiv>
+                </MotionLink>
               );
             })}
           </MotionDiv>
