@@ -642,10 +642,11 @@ const Home = ({ title }: { title: string }) => {
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className={`hero-title title font-playfair text-base md:text-lg lg:text-2xl !leading-[55px]  `}
+        className={`hero-title title font-playfair text-[17px] lg:text-2xl !leading-[30px] 
+        min-[394px]:!leading-[40px] md:!leading-[50px] lg:!leading-[60px]  `}
       />
 
-      <div className="desc">
+      <div className="desc mt-5">
         <Button className="lg:text-lg desc" asChild>
           <Link href="/about/ourStory">Learn More About Us </Link>
         </Button>
