@@ -4,6 +4,8 @@ import React from "react";
 import Title from "./Title";
 import GridImgCarousel from "@/lib/components/GridImgCarousel";
 import { getYoungAdultsContent } from "@/app/utils/subMinistriesActions";
+import { TeamImages } from "./team-images";
+import { GalleryImages } from "./gallery-images";
 
 export default async function YoungAdults() {
   const content = await getYoungAdultsContent();
@@ -30,7 +32,8 @@ export default async function YoungAdults() {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen></iframe>
+              allowFullScreen
+            ></iframe>
           </div>
           {/* mission,vision,events */}
           {missionSection && (
@@ -87,14 +90,15 @@ export default async function YoungAdults() {
             return (
               <div
                 key={i}
-                className=" space-y-8  lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   ">
+                className=" space-y-8  lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24   "
+              >
                 {/* image */}
 
                 <Image
                   src={program.flyer_url}
                   width={556}
                   height={449}
-                  className="w-full lg:w-2/5 object-contain "
+                  className="w-full max-h-96 lg:w-2/5 object-contain "
                   alt="flyer image"
                 />
 
@@ -105,30 +109,7 @@ export default async function YoungAdults() {
                     className=" prose"
                     dangerouslySetInnerHTML={{ __html: program.description }}
                   />
-                  {/* <ul className="text-justify marker:text-black">
-                    <li>
-                      {" "}
-                      The Impact academy will build your spiritual muscle,
-                    </li>
-                    <li>
-                      {" "}
-                      You will gain tangible insights discovering who YOU are &
-                      what is your PURPOSE here on earth
-                    </li>
-                    <li>
-                      {" "}
-                      It will equip you with understanding of God&apos;s word to
-                      enforce your life of victory
-                    </li>
-                    <li>
-                      Make you a better believer and you can have confidence to
-                      fulfil the great commision.
-                    </li>
-                    <li>
-                      The Impact Academy is a place you want to be to make
-                      impact within your circle of influence
-                    </li>
-                  </ul> */}
+                
                 </div>
               </div>
             );
@@ -138,32 +119,34 @@ export default async function YoungAdults() {
 
       {/* our gallery */}
       <div className="wrapper w-full space-y-8 ">
-        <TitleBorderTop title="our gallery" />
+        <TitleBorderTop title="Our Gallery" />
         {/* mobile screens */}
-        <div className=" block md:hidden lg:hidden ">
+        {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
             imgArr={galleryImages}
             time={5000}
             numOfRows={2}
             numOfCols={1}
           />
-        </div>
+        </div> */}
         {/* ABOVE mobile screens */}
 
-        <div className="hidden md:block ">
+        {/* <div className="hidden md:block ">
           <GridImgCarousel
             imgArr={galleryImages}
             time={5000}
             numOfCols={3}
             numOfRows={2}
           />
-        </div>
+        </div> */}
+        {/* new updated */}
+        <GalleryImages imgArr={galleryImages} />
       </div>
       {/* our Team */}
       <div className="wrapper w-full space-y-8 ">
-        <TitleBorderTop title="our great team" />
+        <TitleBorderTop title="Our Great Team" />
         {/* mobile screens */}
-        <div className=" block md:hidden lg:hidden ">
+        {/* <div className=" block md:hidden lg:hidden ">
           <GridImgCarousel
             cardObjArr={teamImages}
             time={5000}
@@ -171,12 +154,15 @@ export default async function YoungAdults() {
             numOfCols={1}
             height="300px"
           />
-        </div>
+        </div> */}
         {/* ABOVE mobile screens */}
 
-        <div className="hidden md:block ">
+        {/* <div className="hidden md:block ">
           <GridImgCarousel cardObjArr={teamImages} time={5000} height="400px" />
-        </div>
+        </div> */}
+
+        {/* new updated */}
+        <TeamImages teamImages={teamImages} />
       </div>
     </div>
   );

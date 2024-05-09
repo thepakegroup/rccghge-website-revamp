@@ -3,6 +3,7 @@ import React from "react";
 const InstagramPost = () => {
   return (
     <div>
+      
       <iframe
         src={`https://www.instagram.com/p/C4JQ7yIPF0E/embed/`}
         frameBorder="0"
@@ -13,9 +14,10 @@ const InstagramPost = () => {
           maxWidth: "540px",
           minWidth: "326px",
           width: "100%",
+          height: "710px",
+          position: "relative",
         }}
-        width="100%"
-        height="710"></iframe>
+        ></iframe>
     </div>
   );
 };

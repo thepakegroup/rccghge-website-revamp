@@ -581,7 +581,8 @@ export default function Hero() {
   return (
     <div
       ref={scope}
-      className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
+      className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative"
+    >
       <AnimatePresence mode="popLayout">
         {/* <div className="relative w-full h-full"> */}
         {/* Dark overlay */}
@@ -641,7 +642,7 @@ const Home = ({ title }: { title: string }) => {
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className="title  text-3xl md:text-4xl lg:text-5xl !leading-relaxed  "
+        className={`hero-title title font-playfair text-base md:text-lg lg:text-2xl !leading-[55px]  `}
       />
 
       <div className="desc">

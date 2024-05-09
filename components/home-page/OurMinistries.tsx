@@ -1,10 +1,16 @@
 import { getMinistries } from "@/app/utils/actions";
 import ImageFill from "@/lib/components/ImageFill";
-import { MotionDiv, staggerContainer, staggerFromRightItem } from "@/lib/framer-motion/motionComponents";
+import {
+  MotionDiv,
+  MotionLink,
+  staggerContainer,
+  staggerFromRightItem,
+} from "@/lib/framer-motion/motionComponents";
 import { FaUsers } from "react-icons/fa6";
 import LearnMoreBtn from "../LearnMoreBtn";
 import TitleBorderTop from "../TitleBorderTop";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import { Truncate } from "@/lib/components/truncate";
 
 export default async function OurMinistries() {
   // Ministry
@@ -15,10 +21,21 @@ export default async function OurMinistries() {
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
       <ScrollArea className="w-full">
-        <MotionDiv variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px -200px 0px" }} className="ministries-card-container w-full gap-5 flex items-center mb-3">
+        <MotionDiv
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+          className="ministries-card-container w-full gap-5 flex items-center mb-3"
+        >
           {ministries?.map((ministry, i) => {
             return (
-              <MotionDiv variants={staggerFromRightItem} key={i} className="card  ">
+              <MotionLink
+                variants={staggerFromRightItem}
+                key={i}
+                className="card  "
+                href={`/ourMinistries/${ministry.category}/${ministry.slug}`}
+              >
                 <div className="card-img relative h-1/2 ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${ministry.banner}`}
@@ -30,15 +47,19 @@ export default async function OurMinistries() {
                 </div>
 
                 <div className="card-content space-y-2 pt-5 p-2 h-1/2">
-                  <h1 className="text-xl  capitalize font-bold">
-                    {ministry.name}
+                  <h1
+                    className="text-xl  capitalize font-bold"
+                    title={ministry?.name}
+                  >
+                    {Truncate(ministry.name, 25)}
                   </h1>
-                  <p className="line-clamp-3">{ministry.description}</p>
+                  <p className="line-clamp-2">
+                    {Truncate(ministry.description, 180)}
+                  </p>
                 </div>
-              </MotionDiv>
+              </MotionLink>
             );
           })}
-
         </MotionDiv>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>

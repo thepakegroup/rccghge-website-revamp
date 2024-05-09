@@ -13,7 +13,6 @@ export default function GetConnected() {
     s.setAttribute("src", "https://platform.twitter.com/widgets.js");
     s.setAttribute("async", "true");
     document.head.appendChild(s);
-
   }, []);
   return (
     <div className="space-y-5 md:space-y-12  ">
@@ -21,7 +20,7 @@ export default function GetConnected() {
         Get Connected
         <FaCaretLeft className="absolute  -right-12 md:text-[9rem] text-9xl" />
       </h1>
-      <script async src="//www.instagram.com/embed.js"></script>
+      {/* <script async src="//www.instagram.com/embed.js"></script> */}
       <ScrollArea className="w-full ">
         <div className="social-card-container  md:px-12  w-full gap-5 lg:gap-16 flex items-center px-6">
           {/* facebook timeline */}
@@ -35,6 +34,7 @@ export default function GetConnected() {
               frameBorder="0"
               allowFullScreen={true}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+           
           </ScrollArea>
 
           {/* twitter timeline */}
@@ -44,10 +44,6 @@ export default function GetConnected() {
               href="https://twitter.com/HgeRccg?ref_src=twsrc%5Etfw">
               Tweets by HgeRccg
             </Link>{" "}
-            {/* <Script
-              async
-              strategy="lazyOnload"
-              src="https://platform.twitter.com/widgets.js"></Script> */}
           </ScrollArea>
 
           {/* instagram timeline */}
