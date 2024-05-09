@@ -37,9 +37,10 @@ export default async function EventsBlock() {
       {/* events */}
       <div
         className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 h-80
-       lg:h-80 md:divide-x-2 lg:py-5 overflow-auto lg:overflow-hidden relative"
-      >
-        {events &&
+       lg:h-80 md:divide-x-2 lg:py-5 overflow-auto lg:overflow-hidden relative">
+        {events?.length === 0 ? (
+          <p className="text-center w-full h-full flex items-center font-semibold justify-center text-gray-500  text-xl">No upcoming events at the moment</p>
+        ) : (
           events?.map((event, i) => {
             const startDate = new Date(event.start_date);
             const endDate = new Date(event.end_date);
@@ -49,8 +50,7 @@ export default async function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full lg:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8 px-6   `}
-              >
+                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full lg:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8 px-6   `}>
                 <h1 className="title text-lg truncate max-w-xl md:text-xl lg:tracking-wide font-semibold   ">
                   {event.title}
                 </h1>
@@ -62,11 +62,11 @@ export default async function EventsBlock() {
                 </p>
               </Link>
             );
-          })}
+          })
+        )}
         <Link
           href={"/events"}
-          className="  mt-8 lg:mt-0  border-none  text-sm text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-7 md:px-12 lg:px-0"
-        >
+          className="  mt-8 lg:mt-0  border-none  text-sm text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-7 md:px-12 lg:px-0">
           <span>see more events</span> <MoveRight className="text-primary" />
         </Link>
       </div>

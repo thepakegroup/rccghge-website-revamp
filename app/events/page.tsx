@@ -49,7 +49,9 @@ export default async function page({
 
       <div className="flex flex-col py-10  gap-10">
         {/* cards sections */}
-        {events?.map((event, i) => {
+        {
+          
+          events?.map((event, i) => {
           // getting formatted date
           const startDate = new Date(event.start_date);
           const endDate = new Date(event.end_date);
