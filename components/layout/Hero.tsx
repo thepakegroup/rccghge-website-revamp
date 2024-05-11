@@ -581,8 +581,7 @@ export default function Hero() {
   return (
     <div
       ref={scope}
-      className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative"
-    >
+      className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
       <AnimatePresence mode="popLayout">
         {/* <div className="relative w-full h-full"> */}
         {/* Dark overlay */}
@@ -638,12 +637,12 @@ const Home = ({ title }: { title: string }) => {
       { duration: 0.8, delay: 1.2 }
     );
   }, [pathname, animate]);
+  const headingClasses = `[&_h1]:text-3xl md:[&_h1]:text-4xl lg:[&_h1]:text-5xl [&_h2]:text-lg md:[&_h2]:text-2xl  `;
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className={`hero-title title font-playfair text-[17px] lg:text-2xl !leading-[30px] 
-        min-[394px]:!leading-[40px] md:!leading-[50px] lg:!leading-[60px]  `}
+        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-3  text-white  ${headingClasses}  `}
       />
 
       <div className="desc mt-5">
