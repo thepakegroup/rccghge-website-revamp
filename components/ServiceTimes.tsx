@@ -64,7 +64,7 @@ export default async function ServiceTimes() {
                     <p className="card-title font-bold capitalize ">
                       {service.service_name}
                     </p>
-                    <p className="desc text-sm line-clamp-4 ">
+                    <p className="desc text-sm line-clamp-4 " >
                       {service?.service_description}
                     </p>
                   </div>
