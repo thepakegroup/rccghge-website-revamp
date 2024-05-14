@@ -49,13 +49,15 @@ export default async function Footer() {
       {/* contact address and logo */}
       <div className=" flex flex-col w-full gap-10">
         <div className="contact w-full flex flex-col gap-6">
-          <Link href="/" className=" logo flex items-center justify-center bg-white p-2 w-fit gap-4 rounded-lg">
+          <Link
+            href="/"
+            className=" logo flex items-center justify-center bg-white p-2 w-fit gap-4 rounded-lg">
             <Logo className="w-[40%] " />
             <h2 className="text-xl font-bold text-black">RCCGHGE</h2>
           </Link>
           <div className="text flex flex-col ">
-            <p className="uppercase">{`HEAVEN'S GLORIOUS EMBASSY 3800`}</p>
-            <p className="">{` E. Parker Road`}</p>
+            <p className="uppercase">{`HEAVEN'S GLORIOUS EMBASSY `}</p>
+            <p className="">{`3800 E. Parker Road`}</p>
             <p className="">{`Plano TX 75074`}</p>
             <p className="phonNo">{`972-509-5300`}</p>
             <p className="email">{`info@rccghge.org events@rccghge.org`}</p>
@@ -135,7 +137,7 @@ export default async function Footer() {
             name="email"
             id="email"
           />
-          <FooterInputButton/>
+          <FooterInputButton />
         </form>
         <small>Copyright RCCG: Heaven&apos;s Glorious Embassy</small>
       </div>

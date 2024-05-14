@@ -129,14 +129,14 @@ export const getMinistriesSlug = async (
       console.error(ministryData);
       return;
     }
-    return ministryData?.message.data
-      .map((data: Ministry) => ({ slug: data.slug, name: data.name }))
-     
+    return ministryData?.message.data.map((data: Ministry) => ({
+      slug: data.slug,
+      name: data.name,
+    }));
   } catch (error) {
     console.error(error);
   }
 };
-
 
 // PAGE WRITE UPS
 type PageWriteUp = {
@@ -195,7 +195,7 @@ export const getAllLeaders = async (): Promise<Leader[] | undefined> => {
       console.error(leadersData.message);
       return;
     }
-    return leadersData.message;
+    return leadersData.message.reverse();
   } catch (error) {
     return;
   }
@@ -337,7 +337,7 @@ export const getServiceTimes = async (): Promise<ServiceTime[] | undefined> => {
     }
     const serviceTimesData = await res.json();
 
-    return serviceTimesData.message;
+    return serviceTimesData.message.reverse();
   } catch (error) {
     return;
   }

@@ -44,7 +44,7 @@ export default async function page() {
                       {i + 1}
                     </div>
                     <h1 className="text-lg md:text-xl  capitalize text-left ">
-                      {item.title}
+                      {item.title.toLowerCase()}
                     </h1>
                   </div>
                 </AccordionTrigger>

@@ -25,7 +25,7 @@ export default async function page() {
           variants={slideInFromBottom(1, 0.5)}
           initial="hidden"
           animate="visible"
-          className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-40 lg:text-lg z-20 max-w-screen-xl">
+          className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:text-lg z-20 max-w-screen-xl">
           <h1 className="text-lg sm:text-xl">
             Welcome to RCCG Heavens Glorious Embassy{" "}
           </h1>

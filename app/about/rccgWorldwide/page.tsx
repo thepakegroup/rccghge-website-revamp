@@ -9,18 +9,19 @@ import Link from "next/link";
 import React from "react";
 export const metadata: Metadata = {
   title: "RCCG Worldwide",
-  description:"The Redeemed Christian Church of God (RCCG) – is a worldwide non-denominational religious organization established in 1952. The RCCG has over 6 million members distributed in over 4,000 parishes in the continents of Africa, Europe, Asia, and America.",
+  description:
+    "The Redeemed Christian Church of God (RCCG) – is a worldwide non-denominational religious organization established in 1952. The RCCG has over 6 million members distributed in over 4,000 parishes in the continents of Africa, Europe, Asia, and America.",
 };
 export default async function page() {
   const writeUp = await getPageWriteUp("rccg-worldwide");
- 
 
   return (
     <div className=" page-spacing relative ">
       <MotionDiv
         variants={slideInFromBottom(1, 0.5)}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
         className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md max-w-screen-xl">
         <ul className="flex items-center justify-center gap-10 text-primary text-sm md:text-base">
           <li>
@@ -45,7 +46,7 @@ export default async function page() {
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
         whileInView="visible"
-        className="space-y-5 wrapper mb-12 md:mb-20  max-w-screen-lg">
+        className="space-y-5 wrapper !mt-10 mb-12 md:mb-20  max-w-screen-lg">
         <h1
           className="font-bold text-2xl sm:text-3xl capitalize
         ">

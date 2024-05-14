@@ -75,7 +75,7 @@ export default function Hero() {
             setContent(
               <HeroContent
                 title={"Our Mission & Vision"}
-                desc="With Hearts full of faith we come together to uplift each other. grow spiritually, and spread love in ever action. Fostering a close-knit community and selflessly extending a helping hand."
+                desc="With Hearts full of faith we come together to uplift each other. grow spiritually, and spread love in every action. Fostering a close-knit community and selflessly extending a helping hand."
               />
             );
           }
@@ -100,13 +100,15 @@ export default function Hero() {
           }
         } else if (pathname.endsWith("/about/rccgWorldwide")) {
           heroContent = await getHeroContent("rccghge_worldwide");
-
+          const foundingYear = 1952;
+          const currentYear = new Date().getFullYear();
+          const yearsSinceFounding = currentYear - foundingYear;
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
               <HeroContent
                 title={heroContent?.title}
-                desc={heroContent?.desc}
+                desc={`${yearsSinceFounding} Years since founding`}
               />
             );
           }
@@ -190,7 +192,7 @@ export default function Hero() {
             setContent(
               <HeroContent
                 title={heroContent?.title}
-                desc="Join One or Two of our groups, let the Lord use you in mighty ways. We Would be honored so have you"
+                desc="Join One or Two of our groups, let the Lord use you in mighty ways. We Would be honored to have you"
               />
             );
           }
