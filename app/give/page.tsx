@@ -25,7 +25,7 @@ export default async function page() {
           variants={slideInFromBottom(1, 0.5)}
           initial="hidden"
           animate="visible"
-          className="z-20 blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-20 wrapper text-white rounded-lg left-0 right-0 p-5 lg:text-lg max-w-screen-xl">
+          className="z-20 blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-20 wrapper text-white rounded-lg left-0 right-0 p-5 lg:text-lg max-w-screen-xl lg:px-20">
           <h1 className="text-lg sm:text-xl">Our belief about giving</h1>
           <p>
             The stewardship of our finances is a tremendous—and often
