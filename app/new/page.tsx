@@ -159,7 +159,7 @@ export default async function page() {
       </div>
       {/* blue Gratient text */}
       <div className=" flex items-center h-80 lg:h-96 relative blueGradient px-5 lg:px-48 max-w-screen-2xl ">
-        <h1 className="text-center w-full text-xl lg:text-3xl !leading-loose  ">
+        <h1 className="text-center w-full text-xl lg:text-3xl !leading-loose tracking-wider  ">
           COMMUNION, PRAYER, PRAISE AND WORSHIP, GIVING, AND BIBLICAL TEACHING
           ARE KEY COMPONENTS OF OUR WORSHIP SERVICE EACH WEEK.
         </h1>

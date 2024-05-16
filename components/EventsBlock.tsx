@@ -1,5 +1,6 @@
 import { get3Events } from "@/app/utils/actions";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
@@ -26,20 +27,27 @@ export default async function EventsBlock() {
   };
   const events = await get3Events();
   return (
-    <div className=" flex flex-col items-center lg:flex-row gap-1 lg:gap-0   ">
-      <div className="h-10 wrapper  items-center w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-16 lg:flex-col flex gap-5  blueGradient py-8 text-white relative">
-        <FaCalendar className="text-2xl md:text-3xl lg:self-start " />
-        <h1 className="text-2xl md:text-3xl  capitalize">
+    <div className=" flex flex-col items-center wrapper  lg:flex-row gap-1 lg:gap-0   ">
+      <div className="h-10 pl-2 lg:wrapper  items-center lg:items-start w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-20 lg:flex-col flex gap-5  blueGradient py-8 text-white relative ">
+        <Image
+          src="/images/calender_icon.png"
+          alt="calendar"
+          width={30}
+          height={30}
+        />
+        <h1 className="text-2xl md:text-3xl lg:text-left  capitalize">
           Our Upcoming Events
         </h1>
-        <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] -z-10 text-[#4372b9]" />
+        <FaCaretRight className="hidden lg:block absolute top-20  text-9xl -right-[70px] -z-10 text-[#4977bd]" />
       </div>
       {/* events */}
       <div
-        className="flex px-2 py-2  md:px-12 w-full  gap-2 bg-primary/5 h-80
+        className="flex px-2 py-2  md:px-8 w-full  gap-2 bg-primary/5 h-fit
        lg:h-80 md:divide-x-2 lg:py-5 overflow-auto lg:overflow-hidden relative">
         {events?.length === 0 ? (
-          <p className="text-center w-full h-full flex items-center font-semibold justify-center text-gray-500  text-xl">No upcoming events at the moment</p>
+          <h1 className="text-center w-full h-full flex items-center font-semibold justify-center text-gray-500  text-xl">
+            No upcoming events at the moment
+          </h1>
         ) : (
           events?.map((event, i) => {
             const startDate = new Date(event.start_date);
@@ -64,11 +72,13 @@ export default async function EventsBlock() {
             );
           })
         )}
-        <Link
-          href={"/events"}
-          className="  mt-8 lg:mt-0  border-none  text-sm text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-7 md:px-12 lg:px-0">
-          <span>see more events</span> <MoveRight className="text-primary" />
-        </Link>
+        {events?.length !== 0 && (
+          <Link
+            href={"/events"}
+            className="  mt-8 lg:mt-0  border-none  text-sm text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-7 md:px-12 lg:px-0">
+            <span>see more events</span> <MoveRight className="text-primary" />
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -35,10 +35,12 @@ export default async function Home() {
       <div className="wrapper ">
         {our_mission_vision === "true" && <OurMission />}
       </div>
-      <div className="wrapper ">
+      <div className="wrapper bg-primary/5 py-5 ">
         {our_ministries === "true" && <OurMinistries />}
       </div>
-      <GiveCTA />
+      <div className="wrapper">
+        <GiveCTA />
+      </div>
       {/* download app image section */}
       <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5 md:py-10  relative">
         {/* image section */}

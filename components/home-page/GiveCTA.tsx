@@ -9,7 +9,7 @@ export default async function GiveCTA() {
   const imgArr = await getHeroContent("give").then((res) => res?.ImgArr);
   return (
     <div className=" lg:flex items-center h-80 lg:h-96 ">
-      <div className="h-full blueGradient text-white flex flex-col justify-center text-center items-center gap-6 px-5 lg:px-20 lg:w-1/2">
+      <div className="h-full blueGradient text-white flex flex-col justify-center text-center items-center gap-3 px-5 lg:px-20 lg:w-1/2">
         <h1 className="text-2xl lg:text-3xl">Give To The Church</h1>
         <p>
           We are on a journey to winning souls for Christ, and we would love if
@@ -25,7 +25,7 @@ export default async function GiveCTA() {
         {imgArr ? (
           <ImageFill src={imgArr[0]} />
         ) : (
-          <Skeleton  className=" w-full h-full" />
+          <Skeleton className=" w-full h-full" />
         )}
       </div>
     </div>

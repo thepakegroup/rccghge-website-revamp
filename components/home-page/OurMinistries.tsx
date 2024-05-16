@@ -17,7 +17,7 @@ export default async function OurMinistries() {
   const ministries = await getMinistries("Ministry");
 
   return (
-    <div className=" flex flex-col gap-8 ">
+    <div className=" flex flex-col gap-8  ">
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
       <ScrollArea className="w-full">
@@ -33,7 +33,7 @@ export default async function OurMinistries() {
               <MotionLink
                 variants={staggerFromRightItem}
                 key={i}
-                className="card  "
+                className="card bg-white "
                 href={`/ourMinistries/${ministry.category}/${ministry.slug}`}
               >
                 <div className="card-img relative h-1/2 ">
@@ -63,7 +63,7 @@ export default async function OurMinistries() {
         </MotionDiv>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <LearnMoreBtn url="/ourMinistries/Ministry" />
+      <LearnMoreBtn className=" self-end" url="/ourMinistries/Ministry" />
     </div>
   );
 }

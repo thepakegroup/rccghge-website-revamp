@@ -90,6 +90,10 @@
     background: linear-gradient(90deg, #12234e 0%, #4473ba 100%);
     color: white;
   }
+  .homeGradient{
+     background: linear-gradient(90deg, #12234e 10%, #4473ba 100%);
+    color: white;
+  }
   .wrapper {
     @apply mx-auto px-6 md:px-12;
   }
