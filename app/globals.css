@@ -90,9 +90,12 @@
     background: linear-gradient(90deg, #12234e 0%, #4473ba 100%);
     color: white;
   }
-  .homeGradient{
-     background: linear-gradient(90deg, #12234e 10%, #4473ba 100%);
-    color: white;
+
+  .homeGradient {
+    background:
+      url("/images/stars1.png") no-repeat center center,
+      linear-gradient(90deg, #12234e 20%, #4473ba 100%);
+    background-size: cover;
   }
   .wrapper {
     @apply mx-auto px-6 md:px-12;

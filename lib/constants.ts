@@ -4,4 +4,3 @@ const currentDate = new Date();
 const isSunday = currentDate.getDay() === 0;
 
 export const onThisDay = { next: { revalidate: 3600 } };
-

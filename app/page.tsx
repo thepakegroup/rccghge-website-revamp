@@ -9,6 +9,7 @@ import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
 import Image from "next/image";
 import Link from "next/link";
 import { getPageDisplaySetting } from "./utils/actions";
+import ScrollToTop from "@/lib/components/ScrollToTop";
 
 export default async function Home() {
   const displaySetting = await getPageDisplaySetting("landing_page");
@@ -27,6 +28,7 @@ export default async function Home() {
 
   return (
     <main className=" page-spacing">
+      <ScrollToTop />
       {/* divider */}
       <LogoDivider />
       {our_service_times === "true" && <ServiceTimes />}

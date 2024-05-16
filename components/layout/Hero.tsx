@@ -570,8 +570,6 @@ export default function Hero() {
       }
     };
     fetchAndUpdateHeroContent();
-
-    // animate(".content", { opacity: [0, 1] }, { duration: 0.8, delay: 0.8 });
     return () => clearInterval(interval);
   }, [pathname, animate]);
 
@@ -589,40 +587,61 @@ export default function Hero() {
 
         {/* gradient wavy bottom header tilte */}
         <div className="relative   z-20 w-full overflow-hidden">
-          <div className="homeGradient h-[200px] sm:h-[250px] "></div>
+          <div className="homeGradient svg-background  h-[200px] sm:h-[250px] "></div>
+          {/* header content */}
           <div className="z-10 absolute top-8 sm:top-14 left-0 right-0 px-1 mx-auto content space-y-4 max-w-[800px]">
             {content}
           </div>
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
-            className="w-full  -mt-1 "
+            className=" w-full  -mt-1 "
             viewBox="0 0 1440 320">
-            {/* gradient definition */}
             <defs>
+              {/* gradient definition */}
               <linearGradient
                 id="blueGradient"
-                x1="10%"
+                x1="0%"
                 y1="0%"
                 x2="100%"
                 y2="0%">
                 <stop
-                  offset="10%"
+                  offset="20%"
                   style={{ stopColor: "#12234e", stopOpacity: 1 }}
                 />
-               
                 <stop
                   offset="100%"
                   style={{ stopColor: "#4473ba", stopOpacity: 1 }}
                 />
               </linearGradient>
+              {/* image Pattern definition */}
+              <pattern
+                id="imagePattern"
+                patternUnits="userSpaceOnUse"
+                width="1440"
+                height="320">
+                <image
+                  href="/images/stars1.png"
+                  x="0"
+                  y="0"
+                  width="1440"
+                  height="320"
+                  preserveAspectRatio="xMidYMid slice"
+                />
+              </pattern>
             </defs>
             <path
               fill="url(#blueGradient)"
               fill-opacity="1"
               d="M0,192L40,170.7C80,149,160,107,240,112C320,117,400,171,480,192C560,213,640,203,720,186.7C800,171,880,149,960,128C1040,107,1120,85,1200,90.7C1280,96,1360,128,1400,144L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
+            <path
+              fill="url(#imagePattern)"
+              fill-opacity="1"
+              d="M0,192L40,170.7C80,149,160,107,240,112C320,117,400,171,480,192C560,213,640,203,720,186.7C800,171,880,149,960,128C1040,107,1120,85,1200,90.7C1280,96,1360,128,1400,144L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
           </svg>
         </div>
+        {/* hero image */}
         <div className="relative h-[300px] sm:h-[450px] lg:h-[600px] -mt-24 sm:-mt-40 lg:-mt-60  bg-blue-950  w-full z-10">
           <AnimatePresence mode="popLayout">
             {/* <div className="relative w-full h-full"> */}
@@ -655,42 +674,24 @@ export default function Hero() {
       ref={scope}
       className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
       <AnimatePresence mode="popLayout">
-        {/* <div className="relative w-full h-full"> */}
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black opacity-[0.35] z-10"></div>
-        {pathname.endsWith("/")
-          ? homepageImgUrl && (
-              <MotionImage
-                key={homepageImgUrl}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                src={homepageImgUrl}
-                alt="hero image"
-                fill
-                sizes="100vw"
-                priority
-                quality={100}
-                className=" object-cover object-center "
-              />
-            )
-          : imageUrl && (
-              <MotionImage
-                key={imageUrl}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                src={imageUrl}
-                alt="hero image"
-                fill
-                sizes="100vw"
-                priority
-                quality={100}
-                className=" object-cover object-center "
-              />
-            )}
+        {imageUrl && (
+          <MotionImage
+            key={imageUrl}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            src={imageUrl}
+            alt="hero image"
+            fill
+            sizes="100vw"
+            priority
+            quality={100}
+            className=" object-cover object-center "
+          />
+        )}
         {/* </div> */}
         <div className="z-10 content space-y-4 max-w-[800px] font-semibold">
           {content}
@@ -722,8 +723,7 @@ const Home = ({ title }: { title: string }) => {
 
       <div className="desc mt-5">
         <Button
-          size={"lg"}
-          className="lg:text-lg desc  bg-white text-blue-950 hover:bg-transparent hover:border-2 hover:border-white hover:text-white"
+          className="lg:text-lg desc active:scale-95  bg-white text-blue-950 hover:bg-transparent hover:border-2 hover:border-white hover:text-white"
           asChild>
           <Link href="/about/ourStory">Learn More About Us </Link>
         </Button>

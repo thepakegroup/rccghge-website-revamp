@@ -39,7 +39,7 @@ export default async function page() {
                   title={service.service_name.toLowerCase()}
                   className=" capitalize"
                 />
-                <p
+                <div
                   className=""
                   dangerouslySetInnerHTML={{ __html: service.service_description }}
                 />
