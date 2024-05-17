@@ -455,10 +455,10 @@ export default async function page({
                 />
 
                 {/* text-section */}
-                <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+                <div className="space-y-2 md:space-y-5 sm:text-lg  lg:w-3/5">
                   <Title title={item.name} />
                   <div
-                    className="text-justify prose"
+                    className="text-justify "
                     dangerouslySetInnerHTML={{ __html: item.description ?? "" }}
                   />
                 </div>
@@ -492,10 +492,10 @@ export default async function page({
                 />
 
                 {/* text-section */}
-                <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+                <div className="space-y-2 md:space-y-5 sm:text-lg  lg:w-3/5">
                   <Title title={item.name} />
                   <div
-                    className="text-justify prose"
+                    className="text-justify "
                     dangerouslySetInnerHTML={{ __html: item.description ?? "" }}
                   />
                 </div>

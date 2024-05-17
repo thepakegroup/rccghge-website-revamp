@@ -23,7 +23,7 @@ export default async function page() {
     ({ our_service_times, our_upcoming_events } = displaySetting);
   }
   return (
-    <div className="page-spacing  relative">
+    <div className="page-spacing  relative sm:text-lg [&_a]:underline [&_a]:text-[#1ca8db]">
       <div className="">
         <MotionDiv
           variants={slideInFromBottom(1, 0.5)}
@@ -64,7 +64,7 @@ export default async function page() {
       </div>
       {/* sunday service */}
       <div className="space-y-8 sm:space-y-12  max-w-screen-2xl ">
-        <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl lg:w-[500px] relative">
+        <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl sm:w-[300px] lg:w-[500px] relative">
           Sunday Services
           <FaCaretLeft className="absolute -right-16 md:text-[9rem] text-9xl" />
         </h1>
@@ -76,11 +76,14 @@ export default async function page() {
               the Worship Center and an online worship service at 11 am on
               YouTube and the HGE Online Church.
             </p>
-
-            <h1 className=" text-[#1ca8db] text-2xl py-4 lg:py-px ">
+            <br />
+            <a
+              href="https://youtube.com/@rccgheavensgloriousembassy?si=u6NvTF0k3CKmdaV6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" text-[#1ca8db] text-2xl py-4 lg:py-px font-playfair  font-bold  ">
               Watch on YouTube
-            </h1>
-            <h1 className=" text-[#1ca8db] text-2xl">Watch on online church</h1>
+            </a>
           </div>
           <Separator orientation="vertical" />
           <div className="space-y-8  ">
@@ -88,7 +91,10 @@ export default async function page() {
               <TitleBorderTop title="NextGen Youth" />
               <p>
                 NextGen Youth (grades 6 - 12) meet in person at 11 am on campus
-                and have a 1 pm broadcast on the youth youtube page
+                and have a 1 pm broadcast on the{" "}
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  youth youtube page
+                </a>
               </p>
             </div>
             <div className="space-y-2 md:space-y-3  ">
@@ -113,7 +119,7 @@ export default async function page() {
       </div>
       {/* Wednesday bible study*/}
       <div className="space-y-8 sm:space-y-12  max-w-screen ">
-        <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl lg:w-[500px] relative">
+        <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl sm:w-[400px] lg:w-[500px] relative">
           Wednesday Bible Study
           <FaCaretLeft className="absolute -right-16 md:text-[9rem] text-9xl" />
         </h1>
@@ -169,7 +175,7 @@ export default async function page() {
         <h1 className="font-bold text-center text-3xl sm:text-4xl -mb-2">
           Plan your visit
         </h1>
-        <div className="grid grid-cols-1 gap-8 w-full mx-auto lg:grid-cols-[1fr_auto_1fr]">
+        <div className="grid grid-cols-1 gap-8 w-full mx-auto  lg:grid-cols-[1fr_auto_1fr]">
           <div className="space-y-2 md:space-y-5  ">
             <TitleBorderTop title="Arrival & Parking" />
             <p>

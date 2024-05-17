@@ -97,6 +97,7 @@
       linear-gradient(90deg, #12234e 20%, #4473ba 100%);
     background-size: cover;
   }
+
   .wrapper {
     @apply mx-auto px-6 md:px-12;
   }
@@ -111,4 +112,9 @@
 
 .hero-title .ql-size-huge {
   @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+@media screen and (max-width: 450px) {
+  .hero-image-container {
+    margin-top: -6rem !important;
+  }
 }

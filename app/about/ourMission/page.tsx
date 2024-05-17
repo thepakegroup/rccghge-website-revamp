@@ -19,7 +19,7 @@ export default async function page() {
   }
 
   return (
-    <div className="flex flex-col page-spacing ">
+    <div className=" page-spacing ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"

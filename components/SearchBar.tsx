@@ -1,9 +1,9 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { Input } from "./ui/input";
+import { useRouter } from "next/navigation";
+import { useRef } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { Button } from "./ui/button";
-import Link from "next/link";
+import { Input } from "./ui/input";
 import {
   Select,
   SelectContent,
@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { useRouter } from "next/navigation";
 
 function SearchBar({
   searchQuery,

@@ -62,9 +62,12 @@ export default async function ServiceTimes() {
                     <p className="card-title font-bold capitalize ">
                       {service.service_name}
                     </p>
-                    <p className="desc text-sm line-clamp-4 ">
-                      {service?.service_description}
-                    </p>
+                    <div
+                      className="desc text-sm line-clamp-4 sm:text-[15px] "
+                      dangerouslySetInnerHTML={{
+                        __html: service?.service_description,
+                      }}
+                    />
                   </div>
                 </MotionLink>
               );

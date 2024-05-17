@@ -105,7 +105,7 @@ export default async function Footer() {
       {/* service times */}
       <div className="service-time  w-full ">
         <p className="bold underline underline-offset-4 decoration-primary decoration-2 mb-4 text-lg">
-          Service Times - Online
+          Service Times
         </p>
         <ul className="grid grid-cols-2 gap-4   [&_li]:space-y-1 [&_.title]:capitalize ">
           {serviceTimes?.map((service, i) => {

@@ -44,16 +44,16 @@ export default async function Home() {
         <GiveCTA />
       </div>
       {/* download app image section */}
-      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col lg:flex-row gap-5 md:py-10  relative">
+      <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col sm:flex-row gap-5 md:py-10  relative">
         {/* image section */}
-        <div className="flex items-center gap-10 lg:gap-18 justify-center ">
+        <div className="flex sm:w-1/2 items-center gap-10 lg:gap-18 justify-center ">
           <Image
             src="/images/phone-left.png"
             alt="phone"
             width={234}
             height={555}
             quality={100}
-            className=" w-28 h-64 md:h-[450px] md:w-52 object-fill  "
+            className=" w-28 h-64 lg:h-[450px] md:w-52 object-fill  "
           />
           <Image
             src="/images/phone-right.png"
@@ -61,17 +61,17 @@ export default async function Home() {
             width={234}
             height={555}
             quality={100}
-            className=" w-28  h-64 md:h-[450px] md:w-52 object-fill "
+            className=" w-28  h-64 lg:h-[450px] md:w-52 object-fill "
           />
         </div>
         {/* text section */}
-        <div className="flex flex-col gap-6 space-y-4 md:space-y-10">
-          <div className="text container space-y-4 md:space-y-10">
-            <h1 className="font-bold text-xl md:text-3xl text-center ">
+        <div className="flex sm:w-1/2 flex-col gap-6 space-y-4 lg:space-y-10">
+          <div className="text container space-y-4 lg:space-y-10">
+            <h1 className="font-bold text-xl lg:text-3xl text-center sm:text-start ">
               {" "}
               Download The RCCGHGE App
             </h1>
-            <ol className="space-y-2 md:space-y-6 mx-auto md:text-xl w-fit">
+            <ol className="space-y-2 lg:space-y-6 mx-auto lg:text-xl w-fit">
               <li className="list-disc">Submit Prayer Requests</li>
               <li className="list-disc">Watch And Listen To Sermons</li>
               <li className="list-disc">Find A Small Group</li>
@@ -91,7 +91,7 @@ export default async function Home() {
                 alt="get on playstore image"
                 width={300}
                 height={300}
-                className="w-44 md:w-52   "
+                className="w-44 lg:w-52   "
               />
             </Link>
 
@@ -104,7 +104,7 @@ export default async function Home() {
                 alt="get on appl store image"
                 width={300}
                 height={300}
-                className="w-40 md:w-48 h-[53px] md:h-[63px] "
+                className="w-40 lg:w-48 h-[53px] lg:h-[63px] "
               />
             </Link>
           </div>

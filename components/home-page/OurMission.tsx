@@ -10,8 +10,8 @@ export default async function OurMission() {
   const imgArr = await getHeroContent("our_mission").then((res) => res?.ImgArr);
 
   return (
-    <div className="flex lg:gap-14 ">
-      <div className="hidden lg:w-2/5 lg:h-[340px]  relative  lg:block">
+    <div className="flex sm:gap-10 lg:gap-14 ">
+      <div className="hidden lg:w-2/5 sm:w-4/5 sm:h-[340px]  relative  sm:block">
         {imgArr ? (
           <ImageFill src={imgArr[0]} className="" />
         ) : (
@@ -28,7 +28,7 @@ export default async function OurMission() {
             <h1 className="text-xl capitalize sm:text-2xl font-bold ">
               {mission.title}
             </h1>
-            <p className="desc line-clamp-2 ">{mission.description}</p>
+            <p className="desc line-clamp-2  ">{mission.description}</p>
           </div>
         ))}
 

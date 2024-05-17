@@ -587,12 +587,12 @@ export default function Hero() {
 
         {/* gradient wavy bottom header tilte */}
         <div className="relative   z-20 w-full overflow-hidden">
-          <div className="homeGradient svg-background  h-[200px] sm:h-[250px] "></div>
+          <div className="homeGradient svg-background h-[180px] sm:h-[230px]  "></div>
           {/* header content */}
-          <div className="z-10 absolute top-8 sm:top-14 left-0 right-0 px-1 mx-auto content space-y-4 max-w-[800px]">
+          <div className="z-10 absolute  top-4 sm:top-8  left-0 right-0 px-1 mx-auto content space-y-4 max-w-[800px]">
             {content}
           </div>
-
+          {/* wave svg */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
@@ -625,8 +625,8 @@ export default function Hero() {
                   href="/images/stars1.png"
                   x="0"
                   y="0"
-                  width="1440"
-                  height="320"
+                  width="1500"
+                  height="400"
                   preserveAspectRatio="xMidYMid slice"
                 />
               </pattern>
@@ -634,15 +634,17 @@ export default function Hero() {
             <path
               fill="url(#blueGradient)"
               fill-opacity="1"
-              d="M0,192L40,170.7C80,149,160,107,240,112C320,117,400,171,480,192C560,213,640,203,720,186.7C800,171,880,149,960,128C1040,107,1120,85,1200,90.7C1280,96,1360,128,1400,144L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
+              d="M0,32L80,53.3C160,75,320,117,480,117.3C640,117,800,75,960,64C1120,53,1280,75,1360,85.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
             <path
               fill="url(#imagePattern)"
               fill-opacity="1"
-              d="M0,192L40,170.7C80,149,160,107,240,112C320,117,400,171,480,192C560,213,640,203,720,186.7C800,171,880,149,960,128C1040,107,1120,85,1200,90.7C1280,96,1360,128,1400,144L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
+              d="M0,32L80,53.3C160,75,320,117,480,117.3C640,117,800,75,960,64C1120,53,1280,75,1360,85.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
           </svg>
+
+          {/* d="M0,160L60,176C120,192,240,224,360,245.3C480,267,600,277,720,245.3C840,213,960,139,1080,133.3C1200,128,1320,192,1380,224L1440,256L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" */}
         </div>
         {/* hero image */}
-        <div className="relative h-[300px] sm:h-[450px] lg:h-[600px] -mt-24 sm:-mt-40 lg:-mt-60  bg-blue-950  w-full z-10">
+        <div className="relative h-[300px] sm:h-[450px] lg:h-[600px] -mt-[8rem] sm:-mt-44 xl:-mt-72 lg:-mt-64 2xl:-mt-80 hero-image-container bg-blue-950  w-full z-10">
           <AnimatePresence mode="popLayout">
             {/* <div className="relative w-full h-full"> */}
             {/* Dark overlay */}
@@ -660,7 +662,7 @@ export default function Hero() {
                 sizes="100vw"
                 priority
                 quality={100}
-                className=" object-cover object-center lg:object-top "
+                className="  object-cover object-center  "
               />
             )}
             {/* </div> */}

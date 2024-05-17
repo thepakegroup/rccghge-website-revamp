@@ -1,14 +1,12 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getAllLeaders, getSingleLeader } from "@/app/utils/actions";
+import { getSingleLeader } from "@/app/utils/actions";
 import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
-import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 type Props = {
   params: { slug: string };

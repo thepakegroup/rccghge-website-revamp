@@ -20,10 +20,7 @@ export default async function EventsBlock() {
       hour: "numeric",
       minute: "2-digit",
     });
-    return [
-      `${formattedStartMonth}`,
-      `${formattedStartTime} - ${formattedEndTime}`,
-    ];
+    return [`${formattedStartMonth}`, `${formattedStartTime} `];
   };
   const events = await get3Events();
   return (
@@ -58,7 +55,7 @@ export default async function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full lg:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8 px-6   `}>
+                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full lg:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8    `}>
                 <h1 className="title text-lg truncate max-w-xl md:text-xl lg:tracking-wide font-semibold   ">
                   {event.title}
                 </h1>
@@ -75,7 +72,7 @@ export default async function EventsBlock() {
         {events?.length !== 0 && (
           <Link
             href={"/events"}
-            className="  mt-8 lg:mt-0  border-none  text-sm text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-7 md:px-12 lg:px-0">
+            className="  mt-8 lg:mt-0   border-none   lg:text-lg text-primary absolute right-0  left-0 bottom-1  flex items-center gap-2 justify-start  md:justify-end  lg:right-20 lg:bottom-5 font-semibold px-2 md:px-12 lg:px-0">
             <span>see more events</span> <MoveRight className="text-primary" />
           </Link>
         )}
