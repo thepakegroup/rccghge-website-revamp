@@ -12,6 +12,7 @@ export default function Logo({
       src={logo}
       alt={"logo"}
       priority
+      quality={100}
       className={className}
       {...props}
     />

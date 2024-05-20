@@ -26,7 +26,7 @@ import {
 
 export default function NavBar() {
   return (
-    <nav className=" sticky w-screen top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
+    <nav className=" sticky w-full top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -174,7 +174,7 @@ const LgNav = () => {
         if (link.url === "/") {
           return (
             <Link className="nav-link" key={link.name} href={link.url}>
-              <Logo />
+              <Logo className=" w-44 " />
             </Link>
           );
         }
