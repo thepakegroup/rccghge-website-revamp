@@ -71,8 +71,8 @@ export const GalleryImages = ({ imgArr }: { imgArr: any }) => {
         })}
       </Swiper>
       <div className="w-[99%] mx-auto flex justify-between items-center !mt-5">
-        <MoveLeft className="go_prev_two text-white bg-[#FF8412] rounded-full p-1 size-10" />
-        <MoveRight className="go_next_two text-white bg-[#FF8412] rounded-full p-1 size-10" />
+        <MoveLeft className="go_prev_two cursor-pointer text-white bg-[#FF8412] rounded-full p-1 size-10" />
+        <MoveRight className="go_next_two cursor-pointer text-white bg-[#FF8412] rounded-full p-1 size-10" />
       </div>
     </Fragment>
   );

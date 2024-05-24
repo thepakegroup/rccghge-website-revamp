@@ -34,6 +34,7 @@ export default function ImageCarousel({
           key={imgIndex}
           fill
           sizes="100vw"
+          priority
           className=" object-cover object-center"
           initial={{ opacity: 0, x: 150 }}
           animate={{ opacity: 1, x: 0 }}

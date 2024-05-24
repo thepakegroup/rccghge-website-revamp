@@ -168,7 +168,7 @@ const LgNav = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       ref={scope}
-      className="nav-container flex w-full justify-center items-center gap-10 font-medium lg:gap-20">
+      className="nav-container flex w-full justify-center items-center gap-10 font-medium xl:gap-20">
       {navLinks.map((link) => {
         //if home page display logo
         if (link.url === "/") {
