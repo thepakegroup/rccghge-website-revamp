@@ -46,7 +46,7 @@ export default async function MinistriesLayout({
   }
 
   return (
-    <div className="py-12 md:py-20 flex flex-col gap-14 mb:gap-20 relative">
+    <div className="py-12  flex flex-col gap-14 mb:gap-20 relative">
       <NavButtons params={params} />
       <MotionDiv
         variants={slideInFromBottom(1, 0)}

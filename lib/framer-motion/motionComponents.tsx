@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Elements
+export const MotionMain= m.main;
 export const MotionDiv = m.div;
 export const MotionH1 = m.h1;
 export const MotionA = m.a;

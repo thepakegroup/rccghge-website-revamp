@@ -19,7 +19,7 @@ export default async function YoungAdults() {
   const galleryImages = content?.gallery;
   const teamImages = content?.teams;
   return (
-    <div className="space-y-14 md:space-y-20">
+    <div className="space-y-14 ">
       <div className="wrapper ">
         {/* mission section */}
         <div className="flex flex-col lg:flex-row lg:justify-between gap-10">
@@ -85,7 +85,7 @@ export default async function YoungAdults() {
       {/* our programs */}
       <div className="wrapper bg-primary/5 py-10 space-y-10">
         <TitleBorderTop title="our programs" />
-        <div className=" space-y-14 md:space-y-20    ">
+        <div className=" space-y-14     ">
           {programs?.map((program, i) => {
             return (
               <div

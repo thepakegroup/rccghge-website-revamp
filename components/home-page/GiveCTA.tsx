@@ -9,10 +9,7 @@ export default async function GiveCTA() {
     <div className=" sm:flex items-center h-80 lg:h-96 ">
       <div className="h-full blueGradient text-white flex flex-col justify-center text-center items-center gap-3 px-5 lg:px-20 sm:w-1/2">
         <h1 className="text-2xl lg:text-3xl">Give To The Church</h1>
-        <p>
-          We are on a journey to winning souls for Christ, and we would love if
-          you are a part of this.
-        </p>
+        <p>we have several ways to give to the ministry.</p>
         <LearnMoreBtn
           url="/give"
           text="Give Now"

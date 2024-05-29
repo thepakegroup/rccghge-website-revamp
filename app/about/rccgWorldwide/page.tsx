@@ -31,7 +31,12 @@ export default async function page() {
           </li>
           <li>
             <Link href={"https://www.rccgna.org/"} target="_blank">
-              RCCG United States
+              RCCG Americas
+            </Link>
+          </li>
+          <li>
+            <Link href={"https://rccgcanada.org/"} target="_blank">
+              RCCG Canada
             </Link>
           </li>
           <li>

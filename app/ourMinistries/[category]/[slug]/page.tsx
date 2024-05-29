@@ -438,7 +438,7 @@ export default async function page({
       });
 
       return (
-        <div className=" space-y-14 md:space-y-20   ">
+        <div className=" space-y-14    ">
           {content?.map((item, index) => {
             return (
               <div
@@ -475,7 +475,7 @@ export default async function page({
       );
 
       return (
-        <div className=" space-y-14 md:space-y-20   ">
+        <div className=" space-y-14    ">
           {content?.map((item, index) => {
             return (
               <div
@@ -492,7 +492,7 @@ export default async function page({
                 />
 
                 {/* text-section */}
-                <div className="space-y-2 md:space-y-5 sm:text-lg  lg:w-3/5">
+                <div className="space-y-2  sm:text-lg  lg:w-3/5">
                   <Title title={item.name} />
                   <div
                     className="text-justify "

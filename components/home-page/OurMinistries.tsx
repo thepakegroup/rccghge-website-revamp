@@ -20,22 +20,22 @@ export default async function OurMinistries() {
     <div className=" flex flex-col gap-8  ">
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
-      <ScrollArea className="w-full">
+      <ScrollArea
+        className="w-full "
+        >
         <MotionDiv
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-          className="ministries-card-container w-full gap-5 flex items-center mb-3"
-        >
+          className="ministries-card-container w-full gap-5 flex items-center mb-3">
           {ministries?.map((ministry, i) => {
             return (
               <MotionLink
                 variants={staggerFromRightItem}
                 key={i}
                 className="card bg-white "
-                href={`/ourMinistries/${ministry.category}/${ministry.slug}`}
-              >
+                href={`/ourMinistries/${ministry.category}/${ministry.slug}`}>
                 <div className="card-img relative h-1/2 ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${ministry.banner}`}
@@ -49,8 +49,7 @@ export default async function OurMinistries() {
                 <div className="card-content space-y-2 pt-5 p-2 h-1/2">
                   <h1
                     className="text-xl  capitalize font-bold"
-                    title={ministry?.name}
-                  >
+                    title={ministry?.name}>
                     {Truncate(ministry.name, 25)}
                   </h1>
                   <p className="line-clamp-2">
@@ -61,7 +60,10 @@ export default async function OurMinistries() {
             );
           })}
         </MotionDiv>
-        <ScrollBar orientation="horizontal" />
+        <ScrollBar
+        
+          orientation="horizontal"
+        />
       </ScrollArea>
       <LearnMoreBtn className=" self-end" url="/ourMinistries/Ministry" />
     </div>

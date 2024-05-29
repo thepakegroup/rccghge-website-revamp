@@ -14,7 +14,7 @@ import {
 } from "@/lib/framer-motion/motionComponents";
 import useIsActiveLink from "@/lib/hooks/useIsActiveLink";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaBars, FaChevronDown, FaChevronUp, FaX } from "react-icons/fa6";
 import Logo from "../Logo";
@@ -26,7 +26,7 @@ import {
 
 export default function NavBar() {
   return (
-    <nav className=" sticky w-full top-0 z-50 py-2 bg-white shadow-sm shadow-zinc-300 text-black">
+    <nav className=" sticky w-full top-0 z-50  bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -61,7 +61,7 @@ const MobileNav = () => {
     <div
       ref={scope}
       className="flex justify-between items-center px-6 py-2 relative">
-      <Link href={"/"} className="w-[28%] max-w-28  h-auto ">
+      <Link href={"/"} className="w-96   h-auto ">
         <Logo className="" />
       </Link>
       {isOpen ? (
@@ -151,6 +151,7 @@ const MobileNav = () => {
   );
 };
 const LgNav = () => {
+  const router = useRouter();
   const [scope, animate] = useAnimate();
   useEffect(() => {
     animate(
@@ -168,13 +169,17 @@ const LgNav = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       ref={scope}
-      className="nav-container flex w-full justify-center items-center gap-10 font-medium xl:gap-20">
+      className="nav-container flex w-full justify-center items-center gap-10 font-semibold z xl:gap-20 uppercase">
       {navLinks.map((link) => {
         //if home page display logo
         if (link.url === "/") {
           return (
-            <Link className="nav-link" key={link.name} href={link.url}>
-              <Logo className=" w-44 " />
+            <Link
+              className="nav-link"
+              key={link.name}
+              href={link.url}
+              onClick={() => router.replace(link.url)}>
+              <Logo className="  " style={{ width: "200px" }} />
             </Link>
           );
         }
@@ -190,7 +195,7 @@ const LgNav = () => {
                 {link.name}
               </HoverCardTrigger>
 
-              <HoverCardContent className="w-40 space-y-2 ">
+              <HoverCardContent className="min-w-40 w-fit space-y-2 ">
                 {subUrls.map((subLink) => (
                   <Link
                     key={subLink.name}

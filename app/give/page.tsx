@@ -69,6 +69,7 @@ export default async function page() {
               </Button>
             </div>
           </div>
+          {/* secure give */}
           <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
@@ -91,6 +92,7 @@ export default async function page() {
               </Button>
             </div>
           </div>
+          {/* zelle */}
           <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80  relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
@@ -103,14 +105,14 @@ export default async function page() {
             <div className="space-y-2 p-4 ">
               <h1 className="text-lg">Zelle</h1>
               <p>
-                You can write a check in favour of RCCG, Heaven&apos;s Glorius
-                Embassy and drop in the offering basket or Zelle to give{" "}
+                Zelle to give{" "}
                 <span className=" text-primary font-semibold">
                   give@rccghge.org
                 </span>
               </p>
             </div>
           </div>
+          {/* text2give */}
           <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
@@ -129,6 +131,7 @@ export default async function page() {
               </p>
             </div>
           </div>
+          {/* cashapp */}
           <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
@@ -146,7 +149,8 @@ export default async function page() {
               </p>
             </div>
           </div>
-          <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
+          {/* mail */}
+          <div className="  h-auto card border rounded-lg divide-y px-2 w-full md:w-80 relative ">
             {/* image */}
             <div className=" h-32  w-full  relative">
               <ImageFill
@@ -157,10 +161,15 @@ export default async function page() {
             {/* content */}
             <div className="space-y-2 p-4 ">
               <h1 className="text-lg">Mail</h1>
+              <p>
+                <span className="font-semibold">In-Person:</span> Check in favor
+                of RCCG HGE or cash to be dropped in the offering basket.
+              </p>
               <p className="">
-                You can mail your gifts to the church using the address{" "}
+                <span className="font-semibold">By Mail:</span> Checks to be
+                mailed to:
                 <span className=" text-primary font-semibold">
-                  3800 E Parker Road Plano Texas 75074
+                  RCCG-HGE 3800 E Parker Road Plano Texas 75074
                 </span>
               </p>
             </div>

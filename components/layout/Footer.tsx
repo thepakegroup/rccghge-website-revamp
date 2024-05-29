@@ -45,7 +45,7 @@ export default async function Footer() {
   }
 
   return (
-    <div className=" wrapper py-5 md:py-20 bg-black text-white flex flex-col  lg:flex-row  text-sm gap-8">
+    <div className=" wrapper py-5 md:py-12 bg-black text-white flex flex-col  lg:flex-row  text-sm gap-8">
       {/* contact address and logo */}
       <div className=" flex flex-col w-full gap-10">
         <div className="contact w-full flex flex-col gap-6">

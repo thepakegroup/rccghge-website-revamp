@@ -12,7 +12,7 @@ export default async function page() {
   const serviceTimes = await getServiceTimes();
 
   return (
-    <div className="py-12 md:py-20 ">
+    <div className="py-12  ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"

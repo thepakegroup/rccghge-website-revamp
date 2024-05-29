@@ -9,10 +9,10 @@ import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
 export default function ConnectDropdown() {
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(true);
 
   return (
-    <Collapsible className="w-full">
+    <Collapsible defaultOpen={true} className="w-full">
       <CollapsibleTrigger
         onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
         className=" w-full md:text-lg flex items-center gap-20 justify-between bg-white border rounded p-2 ">

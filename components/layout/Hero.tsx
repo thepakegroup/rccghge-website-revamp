@@ -24,36 +24,32 @@ import {
   getWellnessHeroContent,
   getYoungAdultsHeroContent,
 } from "@/app/utils/subMinistriesActions";
+import { MoveLeft, MoveRight } from "lucide-react";
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
   const [imageUrl, setImageUrl] = useState<string | undefined>();
   const [homepageImgUrl, setHomepageImgUrl] = useState<string | undefined>();
   const [content, setContent] = useState<JSX.Element>();
-
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [homeHeroContent, setHeroContent] = useState<HeroContent | undefined>();
   // setting the hero images and titles
   useEffect(() => {
     let heroContent: HeroContent | undefined;
-    let interval: NodeJS.Timeout;
+   
     // Fetch hero content and update image and content
     const fetchAndUpdateHeroContent = async () => {
       let i = 0;
       // HOME PAGE
       if (pathname.endsWith("/")) {
-        heroContent = await getHeroContent("landing_page");
-        if (heroContent) {
-          // Set interval to change the image every 5 seconds
-          setHomepageImgUrl(heroContent?.ImgArr[0]);
-          interval = setInterval(() => {
-            if (heroContent) {
-              setHomepageImgUrl(heroContent.ImgArr[i]);
-              i = (i + 1) % heroContent.ImgArr.length;
-            }
-          }, 5000);
-          setContent(<Home title={heroContent?.title} />);
-        }
+         heroContent = await getHeroContent("landing_page");
+         setHeroContent(heroContent);
+         if (heroContent) {
+           setHomepageImgUrl(heroContent.ImgArr[currentImageIndex]);
+           setContent(<Home title={heroContent.title} />);
+         }
       } else {
-        clearInterval(interval);
+        
         // ABOUT PAGE
         if (pathname.startsWith("/about/ourPastors")) {
           heroContent = await getHeroContent("our_pastors");
@@ -570,81 +566,77 @@ export default function Hero() {
       }
     };
     fetchAndUpdateHeroContent();
-    return () => clearInterval(interval);
-  }, [pathname, animate]);
 
+    
+  }, [pathname, animate, homeHeroContent?.ImgArr.length, currentImageIndex]);
+ useEffect(() => {
+   if (pathname === "/" && homeHeroContent) {
+     const interval = setInterval(() => {
+       setCurrentImageIndex((prevIndex) => {
+         const newIndex = (prevIndex + 1) % homeHeroContent.ImgArr.length;
+         setHomepageImgUrl(homeHeroContent.ImgArr[newIndex]);
+         return newIndex;
+       });
+     }, 7000);
+
+     return () => clearInterval(interval);
+   }
+ }, [pathname, homeHeroContent]);
   // if the pathname is "/" and heroContent.ImgArr array length > 1,
   useEffect(() => {
-    // console.log(imageUrl);
-  }, [imageUrl]);
+    // console.log(currentImageIndex);
+  }, [homepageImgUrl, currentImageIndex]);
   //if on the home page return a different hero component
   if (pathname === "/") {
+    const PreviousImage = () => {
+      if (homeHeroContent)
+        setCurrentImageIndex(
+          (prevIndex) =>
+            (prevIndex - 1 + homeHeroContent?.ImgArr.length) %
+            homeHeroContent.ImgArr.length
+        );
+    };
+
+    const NextImage = () => {
+      if (homeHeroContent)
+        setCurrentImageIndex(
+          (prevIndex) => (prevIndex + 1) % homeHeroContent.ImgArr.length
+        );
+    };
     return (
       <div
         ref={scope}
         className="   text-center bg-blue-950 text-white  flex flex-col  items-center   relative">
-        {/* h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)] */}
-
-        {/* gradient wavy bottom header tilte */}
-        <div className="relative   z-20 w-full overflow-hidden">
-          <div className="homeGradient svg-background h-[180px] sm:h-[230px]  "></div>
+        {/* header tilte */}
+        <div className=" bg-white h-fit   z-20 w-full overflow-hidden relative">
+          <div className=" -z-10 svg-background bg-primary/10  absolute inset-0 "></div>
           {/* header content */}
-          <div className="z-10 absolute  top-4 sm:top-8  left-0 right-0 px-1 mx-auto content space-y-4 max-w-[800px]">
+
+          <div className=" px-1 py-3 md:py-5 mx-auto content space-y-4 max-w-screen-lg">
             {content}
           </div>
-          {/* wave svg */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            className=" w-full  -mt-1 "
-            viewBox="0 0 1440 320">
-            <defs>
-              {/* gradient definition */}
-              <linearGradient
-                id="blueGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%">
-                <stop
-                  offset="20%"
-                  style={{ stopColor: "#12234e", stopOpacity: 1 }}
-                />
-                <stop
-                  offset="100%"
-                  style={{ stopColor: "#4473ba", stopOpacity: 1 }}
-                />
-              </linearGradient>
-              {/* image Pattern definition */}
-              <pattern
-                id="imagePattern"
-                patternUnits="userSpaceOnUse"
-                width="1440"
-                height="320">
-                <image
-                  href="/images/stars1.png"
-                  x="0"
-                  y="0"
-                  width="1500"
-                  height="400"
-                  preserveAspectRatio="xMidYMid slice"
-                />
-              </pattern>
-            </defs>
-            <path
-              fill="url(#blueGradient)"
-              fill-opacity="1"
-              d="M0,32L80,53.3C160,75,320,117,480,117.3C640,117,800,75,960,64C1120,53,1280,75,1360,85.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
-            <path
-              fill="url(#imagePattern)"
-              fill-opacity="1"
-              d="M0,32L80,53.3C160,75,320,117,480,117.3C640,117,800,75,960,64C1120,53,1280,75,1360,85.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
-          </svg>
         </div>
         {/* hero image */}
-        <div className="relative h-[300px] sm:h-[450px] lg:h-[600px] -mt-[8rem] sm:-mt-44 xl:-mt-72 lg:-mt-64 2xl:-mt-80 hero-image-container bg-blue-950  w-full z-10">
+        <div className="relative h-[450px] lg:h-[600px]   hero-image-container bg-blue-950  w-full z-10 ">
+          {/* Image Nav Btn */}
+          <div className="absolute w-full flex justify-between items-center h-16 top-1/2 z-30 text-white capitalize ">
+            {/* Previous Button */}
+
+            <button
+              onClick={PreviousImage}
+              className={`prev-btn h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2 `}>
+              <MoveLeft className="shrink-0" />
+            </button>
+
+            {/* Next Button */}
+            {/* ${nextSlug ? "opacity-100" : "opacity-0 pointer-events-none"} */}
+            <button
+              onClick={NextImage}
+              className={`next-btn  h-full w-fit bg-zinc-500/60 rounded-l-full flex items-center text-right justify-end group gap-3 pl-2`}>
+              <MoveRight className="shrink-0" />
+            </button>
+          </div>
           <AnimatePresence mode="popLayout">
-            {/* <div className="relative w-full h-full"> */}
             {/* Dark overlay */}
 
             {homepageImgUrl && (
@@ -660,7 +652,7 @@ export default function Hero() {
                 sizes="100vw"
                 priority
                 quality={100}
-                className="  object-cover object-center  "
+                className="object-cover object-center  "
               />
             )}
             {/* </div> */}
@@ -672,7 +664,7 @@ export default function Hero() {
   return (
     <div
       ref={scope}
-      className="h-[400px]  md:h-[560px] lg:h-[calc(100vh-100px)]   text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
+      className="h-[400px]   lg:h-[60vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
       <AnimatePresence mode="popLayout">
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black opacity-[0.35] z-10"></div>
@@ -718,14 +710,14 @@ const Home = ({ title }: { title: string }) => {
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5  text-white  ${headingClasses}  `}
+        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5  text-black  ${headingClasses}  `}
       />
 
       <div className="desc mt-5">
         <Button
-          className="lg:text-lg desc active:scale-95  bg-white text-blue-950 hover:bg-transparent hover:border-2 hover:border-white hover:text-white"
+          className="lg:text-lg desc active:scale-95 text-white  "
           asChild>
-          <Link href="/about/ourStory">Learn More About Us </Link>
+          <Link href="/about/ourStory"> Learn about HGE </Link>
         </Button>
       </div>
     </m.div>

@@ -1,14 +1,13 @@
-import { Playfair_Display, Quicksand } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
 import NavBar from "@/components/layout/NavBar";
+import { Toaster } from "@/components/ui/sonner";
+import ScrollToTop from "@/lib/components/ScrollToTop";
+import FramerMotion from "@/lib/framer-motion/LazyMotion";
 import { ReduxProvider } from "@/redux/provider";
 import { Metadata } from "next";
+import { Playfair_Display, Quicksand } from "next/font/google";
 import "./globals.css";
-import FramerMotion from "@/lib/framer-motion/LazyMotion";
-import { Toaster } from "@/components/ui/sonner";
-import Script from "next/script";
-import Head from "next/head";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -23,8 +22,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "RCCGHE",
-    template: "%s | RCCGHE",
+    default: "RCCGHGE",
+    template: "%s | RCCGHGE",
   },
   description: "Heavens glorious embassy - Into his presence through worship",
 };
@@ -36,6 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
+      <ScrollToTop />
       <FramerMotion>
         <body
           suppressHydrationWarning

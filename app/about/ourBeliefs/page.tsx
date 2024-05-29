@@ -23,7 +23,7 @@ export default async function page() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="space-y-14 md:space-y-20">
+        className="space-y-14 ">
         <h1 className="capitalize text-2xl sm:text-3xl font-semibold wrapper text-center">
           Our Beliefs
         </h1>

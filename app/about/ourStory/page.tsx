@@ -19,7 +19,7 @@ export default async function page() {
   }
 
   return (
-    <div className=" py-10 sm:py-20 space-y-10 sm:space-y-20">
+    <div className=" py-12  space-y-14 ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"

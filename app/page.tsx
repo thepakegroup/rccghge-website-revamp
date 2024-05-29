@@ -10,7 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPageDisplaySetting } from "./utils/actions";
 import ScrollToTop from "@/lib/components/ScrollToTop";
-
+import { MotionMain } from "@/lib/framer-motion/motionComponents";
+import { slideInFromBottom } from "./give/page";
 export default async function Home() {
   const displaySetting = await getPageDisplaySetting("landing_page");
   let our_service_times,
@@ -27,10 +28,16 @@ export default async function Home() {
   }
 
   return (
-    <main className=" page-spacing">
-      <ScrollToTop />
+    <MotionMain
+      variants={slideInFromBottom(1, 0.5)}
+      initial="hidden"
+      animate="visible"
+      className=" page-spacing">
+   
       {/* divider */}
-      <LogoDivider />
+      <div className="-my-5">
+        <LogoDivider />
+      </div>
       {our_service_times === "true" && <ServiceTimes />}
 
       {our_upcoming_events === "true" && <EventsBlock />}
@@ -66,8 +73,8 @@ export default async function Home() {
         </div>
         {/* text section */}
         <div className="flex sm:w-1/2 flex-col gap-6 space-y-4 lg:space-y-10">
-          <div className="text container space-y-4 lg:space-y-10">
-            <h1 className="font-bold text-xl lg:text-3xl text-center sm:text-start ">
+          <div className="text container  space-y-4 lg:space-y-10">
+            <h1 className="font-bold text-xl  lg:text-3xl text-center ">
               {" "}
               Download The RCCGHGE App
             </h1>
@@ -114,6 +121,6 @@ export default async function Home() {
       <GetConnected />
 
       <PrayerRequestForm />
-    </main>
+    </MotionMain>
   );
 }

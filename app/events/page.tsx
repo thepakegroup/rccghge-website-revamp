@@ -40,7 +40,7 @@ export default async function page({
   };
 
   return (
-    <div className="py-12 md:py-20 wrapper space-y-10">
+    <div className="py-12 wrapper space-y-10">
       {/* search bar */}
       <div className="wrapper">
         <SearchBar searchQuery={searchQuery} dateQuery={dateQuery} />
