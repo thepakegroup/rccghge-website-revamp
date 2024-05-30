@@ -17,13 +17,16 @@ export default async function Home() {
   let our_service_times,
     our_upcoming_events,
     our_mission_vision,
-    our_ministries;
+    our_ministries,
+    give_section;
+  
   if (displaySetting) {
     ({
       our_service_times,
       our_upcoming_events,
       our_mission_vision,
       our_ministries,
+      give_section
     } = displaySetting);
   }
 
@@ -48,7 +51,7 @@ export default async function Home() {
         {our_ministries === "true" && <OurMinistries />}
       </div>
       <div className="wrapper">
-        <GiveCTA />
+       {give_section && <GiveCTA give_section={give_section} />}
       </div>
       {/* download app image section */}
       <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col sm:flex-row gap-5 md:py-10  relative">

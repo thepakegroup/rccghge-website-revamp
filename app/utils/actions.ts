@@ -34,6 +34,11 @@ type DisplaySetting = {
   our_upcoming_events: "true" | "false";
   our_mission_vision: "true" | "false";
   our_ministries: "true" | "false";
+  give_section: {
+    give_header_text: string;
+    give_subheading: string;
+    give_bg_image:string
+  };
 };
 
 export const getHeroContent = async (
