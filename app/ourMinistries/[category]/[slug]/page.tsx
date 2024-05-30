@@ -517,7 +517,7 @@ const TitleBodyContainer = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className=" prose md:prose-lg prose-p:text-justify  max-w-none">
+    <div className=" prose md:prose-lg prose-headings:font-semibold prose-p:text-justify  max-w-none">
       <Title title={title} />
       {children}
     </div>

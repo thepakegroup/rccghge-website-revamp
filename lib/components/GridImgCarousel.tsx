@@ -138,7 +138,7 @@ export default function GridImgCarousel({
                       <div className="flex flex-col w-fit gap-1">
                         <div className="line bg-primary w-16 h-1"></div>
                         <h1
-                          className={"text-xl sm:text-2xl font-bold capitalize"}
+                          className={"text-xl sm:text-2xl capitalize"}
                         >
                           {office}
                         </h1>

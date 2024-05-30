@@ -20,9 +20,7 @@ export default async function OurMinistries() {
     <div className=" flex flex-col gap-8  ">
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
-      <ScrollArea
-        className="w-full "
-        >
+      <ScrollArea className="w-full ">
         <MotionDiv
           variants={staggerContainer}
           initial="hidden"
@@ -47,9 +45,7 @@ export default async function OurMinistries() {
                 </div>
 
                 <div className="card-content space-y-2 pt-5 p-2 h-1/2">
-                  <h1
-                    className="text-xl  capitalize font-bold"
-                    title={ministry?.name}>
+                  <h1 className="text-xl  capitalize " title={ministry?.name}>
                     {Truncate(ministry.name, 25)}
                   </h1>
                   <p className="line-clamp-2">
@@ -60,10 +56,7 @@ export default async function OurMinistries() {
             );
           })}
         </MotionDiv>
-        <ScrollBar
-        
-          orientation="horizontal"
-        />
+        <ScrollBar orientation="horizontal" />
       </ScrollArea>
       <LearnMoreBtn className=" self-end" url="/ourMinistries/Ministry" />
     </div>

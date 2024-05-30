@@ -36,20 +36,19 @@ export default function Hero() {
   // setting the hero images and titles
   useEffect(() => {
     let heroContent: HeroContent | undefined;
-   
+
     // Fetch hero content and update image and content
     const fetchAndUpdateHeroContent = async () => {
       let i = 0;
       // HOME PAGE
       if (pathname.endsWith("/")) {
-         heroContent = await getHeroContent("landing_page");
-         setHeroContent(heroContent);
-         if (heroContent) {
-           setHomepageImgUrl(heroContent.ImgArr[currentImageIndex]);
-           setContent(<Home title={heroContent.title} />);
-         }
+        heroContent = await getHeroContent("landing_page");
+        setHeroContent(heroContent);
+        if (heroContent) {
+          setHomepageImgUrl(heroContent.ImgArr[currentImageIndex]);
+          setContent(<Home title={heroContent.title} />);
+        }
       } else {
-        
         // ABOUT PAGE
         if (pathname.startsWith("/about/ourPastors")) {
           heroContent = await getHeroContent("our_pastors");
@@ -566,22 +565,20 @@ export default function Hero() {
       }
     };
     fetchAndUpdateHeroContent();
-
-    
   }, [pathname, animate, homeHeroContent?.ImgArr.length, currentImageIndex]);
- useEffect(() => {
-   if (pathname === "/" && homeHeroContent) {
-     const interval = setInterval(() => {
-       setCurrentImageIndex((prevIndex) => {
-         const newIndex = (prevIndex + 1) % homeHeroContent.ImgArr.length;
-         setHomepageImgUrl(homeHeroContent.ImgArr[newIndex]);
-         return newIndex;
-       });
-     }, 7000);
+  useEffect(() => {
+    if (pathname === "/" && homeHeroContent) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => {
+          const newIndex = (prevIndex + 1) % homeHeroContent.ImgArr.length;
+          setHomepageImgUrl(homeHeroContent.ImgArr[newIndex]);
+          return newIndex;
+        });
+      }, 7000);
 
-     return () => clearInterval(interval);
-   }
- }, [pathname, homeHeroContent]);
+      return () => clearInterval(interval);
+    }
+  }, [pathname, homeHeroContent]);
   // if the pathname is "/" and heroContent.ImgArr array length > 1,
   useEffect(() => {
     // console.log(currentImageIndex);
@@ -609,31 +606,30 @@ export default function Hero() {
         className="   text-center bg-blue-950 text-white  flex flex-col  items-center   relative">
         {/* header tilte */}
         <div className=" bg-white h-fit   z-20 w-full overflow-hidden relative">
-          <div className=" -z-10 svg-background bg-primary/10  absolute inset-0 "></div>
+          <div className=" -z-10 svg-background bg-primary/5  absolute inset-0 "></div>
           {/* header content */}
 
-          <div className=" px-1 py-3 md:py-5 mx-auto content space-y-4 max-w-screen-lg">
+          <div className=" px-4 md:px-6 py-4 md:py-[50px] mx-auto content max-w-screen-lg">
             {content}
           </div>
         </div>
         {/* hero image */}
         <div className="relative h-[450px] lg:h-[600px]   hero-image-container bg-blue-950  w-full z-10 ">
           {/* Image Nav Btn */}
-          <div className="absolute w-full flex justify-between items-center h-16 top-1/2 z-30 text-white capitalize ">
+          <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2 z-30 text-white capitalize ">
             {/* Previous Button */}
-
             <button
               onClick={PreviousImage}
-              className={`prev-btn h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2 `}>
-              <MoveLeft className="shrink-0" />
+             
+              className={`prev-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center group justify-center  `}>
+              <MoveLeft strokeWidth={3} size={30} className="shrink-0  " />
             </button>
 
-            {/* Next Button */}
-            {/* ${nextSlug ? "opacity-100" : "opacity-0 pointer-events-none"} */}
+            {/* Next Button */}        
             <button
               onClick={NextImage}
-              className={`next-btn  h-full w-fit bg-zinc-500/60 rounded-l-full flex items-center text-right justify-end group gap-3 pl-2`}>
-              <MoveRight className="shrink-0" />
+              className={`next-btn   size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center group `}>
+              <MoveRight strokeWidth={3} size={30} className="shrink-0  " />
             </button>
           </div>
           <AnimatePresence mode="popLayout">
@@ -705,15 +701,15 @@ const Home = ({ title }: { title: string }) => {
       { duration: 0.8, delay: 1.2 }
     );
   }, [pathname, animate]);
-  const headingClasses = `[&_h1]:text-3xl sm:[&_h1]:text-4xl md:[&_h1]:text-5xl xl:[&_h1]:text-6xl [&_h2]:text-lg md:[&_h2]:text-2xl xl:[&_h2]:text-3xl `;
+  const headingClasses = `[&_h1]:text-2xl  sm:[&_h1]:text-3xl md:[&_h1]:text-5xl [&_h2]:text-lg md:[&_h2]:text-2xl  `;
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5  text-black  ${headingClasses}  `}
+        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5  text-black ${headingClasses} [&_h1]:font-normal  `}
       />
 
-      <div className="desc mt-5">
+      <div className="desc mt-5 md:mt-[30px]">
         <Button
           className="lg:text-lg desc active:scale-95 text-white  "
           asChild>

@@ -11,7 +11,7 @@ export default function TitleBorderTop({
   return (
     <div className="flex flex-col w-fit gap-2">
       <div className="line bg-primary w-16 h-1"></div>
-      <h1 className={cn("text-2xl sm:text-3xl font-bold capitalize", className)}>
+      <h1 className={cn("text-2xl sm:text-3xl  capitalize", className)}>
         {title}
       </h1>
     </div>

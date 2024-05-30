@@ -79,7 +79,7 @@ export default async function Page({
 
               <div className="card-content space-y-2 pt-5   p-2 flex flex-col justify-between h-fit">
                 <div className="space-y-2">
-                  <h1 className="text-xl capitalize font-bold line-clamp-1">
+                  <h1 className="text-xl capitalize  line-clamp-1">
                     {item.name}
                   </h1>
                   <p className="line-clamp-2 text-gray-500">

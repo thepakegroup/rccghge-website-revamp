@@ -52,7 +52,7 @@ export default function NavButtons({
       <Link
         href={`/ourMinistries/${params.category}/${prevSlug}`}
         className={`prev-btn ${prevSlug ? "opacity-100" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-r-full flex items-center group gap-3 pr-2 `}>
-        <MoveLeft className="shrink-0" />
+        <MoveLeft strokeWidth={3} className="shrink-0" />
         <h1 className="hidden group-hover:block ">{prevPage}</h1>
       </Link>
 
@@ -62,7 +62,7 @@ export default function NavButtons({
         href={`/ourMinistries/${params.category}/${nextSlug}`}
         className={`next-btn ${nextSlug ? "opacity-100" : "opacity-0 pointer-events-none"} h-full w-fit bg-zinc-500/60 rounded-l-full flex items-center text-right justify-end group gap-3 pl-2`}>
         <h1 className="hidden group-hover:block">{nextPage}</h1>
-        <MoveRight className="shrink-0" />
+        <MoveRight strokeWidth={3} className="shrink-0" />
       </Link>
     </div>
   );

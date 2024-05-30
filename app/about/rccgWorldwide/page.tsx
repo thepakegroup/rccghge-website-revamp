@@ -53,7 +53,7 @@ export default async function page() {
         whileInView="visible"
         className="space-y-5 wrapper !mt-10 mb-12 md:mb-20  max-w-screen-lg">
         <h1
-          className="font-bold text-2xl sm:text-3xl capitalize
+          className="font-semibold text-2xl sm:text-3xl capitalize
         ">
           {writeUp?.heading}
         </h1>

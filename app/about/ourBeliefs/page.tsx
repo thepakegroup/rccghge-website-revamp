@@ -23,7 +23,7 @@ export default async function page() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="space-y-14 ">
+        className="space-y-10 ">
         <h1 className="capitalize text-2xl sm:text-3xl font-semibold wrapper text-center">
           Our Beliefs
         </h1>
@@ -34,7 +34,6 @@ export default async function page() {
           // collapsible
           className=" space-y-8 md:space-y-12  ">
           {beliefs?.map((item, i) => {
-          
             return (
               <AccordionItem
                 value={item.title}
@@ -42,7 +41,7 @@ export default async function page() {
                 className="border lg:rounded-lg bg-primary/5  w-[min(100%,768px)] mx-auto px-6 py-2 md:px-8 md:py-3">
                 <AccordionTrigger className="">
                   <div className="flex items-center gap-5  ">
-                    <div className="w-8 md:w-10 shrink-0 aspect-square blueGradient rounded-full flex justify-center items-center !hover:no-underline   font-bold text-xl text-white ">
+                    <div className="w-8 md:w-10 shrink-0 aspect-square blueGradient rounded-full flex justify-center items-center !hover:no-underline   font-semibold text-xl text-white ">
                       {i + 1}
                     </div>
                     <h1 className="text-lg md:text-xl  capitalize text-left ">

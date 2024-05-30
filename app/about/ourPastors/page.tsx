@@ -62,7 +62,7 @@ export default async function OurPastors() {
                       </div>
                     </div>
                   </div>
-                  <h1 className="lg:hidden font-bold text-lg sm:text-xl -mt-4">
+                  <h1 className="lg:hidden font-semibold text-lg sm:text-xl -mt-4">
                     {leader.name}
                   </h1>
                 </div>
@@ -73,7 +73,7 @@ export default async function OurPastors() {
                   </div>
                   <p className="text-justify">{leader.short_description}</p>
 
-                  <h1 className="hidden lg:block font-bold text-lg sm:text-xl">
+                  <h1 className="hidden lg:block font-semibold text-lg sm:text-xl">
                     {leader.name}
                   </h1>
                   <Link

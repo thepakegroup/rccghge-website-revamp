@@ -445,6 +445,7 @@ type Newsletter = {
   name: string;
   email: string;
   mobile: string;
+
 };
 
 export const subscribeNewsletter = async (data: Newsletter) => {
@@ -540,7 +541,12 @@ export const connectWithUs = async (data: Connect) => {
   }
 };
 
-type JoinUs = Newsletter;
+type JoinUs = {
+  name: string;
+  email: string;
+  mobile: string;
+  ministry: string;
+};
 // JOIN US
 export const joinUs = async (data: JoinUs) => {
   // join-group

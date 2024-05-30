@@ -103,10 +103,10 @@ export default async function YoungAdults() {
                 />
 
                 {/* text-section */}
-                <div className="space-y-2 md:space-y-5 prose  lg:w-3/5">
+                <div className="space-y-2 md:space-y-5 prose prose-headings:font-semibold  lg:w-3/5">
                   <Title title={program.name} />
                   <div
-                    className=" prose"
+                   
                     dangerouslySetInnerHTML={{ __html: program.description }}
                   />
                 

@@ -68,7 +68,7 @@ export default async function page({ params }: { params: { slug: string } }) {
                   />
                 </div>
               </div>
-              <h1 className="font-bold text-lg sm:text-xl mt-2">
+              <h1 className="font-semibold text-lg sm:text-xl mt-2">
                 {leader.name}
               </h1>
             </div>

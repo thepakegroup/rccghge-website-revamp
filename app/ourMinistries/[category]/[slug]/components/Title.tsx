@@ -9,7 +9,7 @@ export default function Title({
   className?: string;
 }) {
   return (
-    <h1 className={cn("text-2xl sm:text-3xl font-bold capitalize", className)}>
+    <h1 className={cn("text-2xl sm:text-3xl  capitalize", className)}>
       {title}
     </h1>
   );

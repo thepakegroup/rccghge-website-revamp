@@ -25,7 +25,7 @@ export default async function OurMission() {
         {/*content  */}
         {missions?.map((mission, i) => (
           <div key={i} className="mission space-y-2">
-            <h1 className="text-xl capitalize sm:text-2xl font-bold ">
+            <h1 className="text-xl capitalize sm:text-2xl  ">
               {mission.title}
             </h1>
             <p className="desc line-clamp-2  ">{mission.description}</p>

@@ -81,7 +81,7 @@
   h4,
   h5,
   h6 {
-    @apply font-playfair font-bold;
+    @apply font-playfair font-semibold;
   }
 }
 

@@ -60,7 +60,7 @@ export default async function Home() {
             width={234}
             height={555}
             quality={100}
-            className=" w-28 h-64 lg:h-[450px] md:w-52 object-fill  "
+            className=" w-28 h-64 lg:h-[450px] md:w-52 md:h-[350px] object-fill  "
           />
           <Image
             src="/images/phone-right.png"
@@ -68,17 +68,17 @@ export default async function Home() {
             width={234}
             height={555}
             quality={100}
-            className=" w-28  h-64 lg:h-[450px] md:w-52 object-fill "
+            className=" w-28  h-64 lg:h-[450px] md:w-52 md:h-[350px] object-fill "
           />
         </div>
         {/* text section */}
         <div className="flex sm:w-1/2 flex-col gap-6 space-y-4 lg:space-y-10">
           <div className="text container  space-y-4 lg:space-y-10">
-            <h1 className="font-bold text-xl  lg:text-3xl text-center ">
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center ">
               {" "}
               Download The RCCGHGE App
             </h1>
-            <ol className="space-y-2 lg:space-y-6 mx-auto lg:text-xl w-fit">
+            <ol className="space-y-2 md:space-y-6 mx-auto lg:text-xl w-fit">
               <li className="list-disc">Submit Prayer Requests</li>
               <li className="list-disc">Watch And Listen To Sermons</li>
               <li className="list-disc">Find A Small Group</li>

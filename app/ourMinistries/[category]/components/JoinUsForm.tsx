@@ -1,5 +1,5 @@
 "use client";
-import { joinUs } from "@/app/utils/actions";
+import { getMinistriesSlug, joinUs } from "@/app/utils/actions";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,11 +12,17 @@ import {
 import { Input } from "@/components/ui/input";
 import ImageFill from "@/lib/components/ImageFill";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-export default function JoinUsForm() {
+export default function JoinUsForm({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) {
+
   const formSchema = z.object({
     name: z.string().min(2, {
       message: "name must be at least 2 characters.",
@@ -29,17 +35,42 @@ export default function JoinUsForm() {
     email: z.string().email({
       message: "Please enter a valid email address.",
     }),
+    ministry: z.string(),
   });
   const defaultValues: z.infer<typeof formSchema> = {
     name: "",
     mobile: "",
     email: "",
+    ministry: "",
   };
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues,
   });
+    const [slugArr, setSlugArr] = useState<{ slug: string; name: string }[]>();
+    const [currentIndex, setCurrentIndex] = useState<number>(-1);
+
+    useEffect(() => {
+      (async () => {
+        try {
+          const res = await getMinistriesSlug(params.category);
+          setSlugArr(res);
+          // Find the index of the current slug in slugAr
+          const index = res?.findIndex((item) => item.slug === params.slug);
+          setCurrentIndex(index ?? -1);
+        } catch (error) {
+          if (error instanceof Error) console.log(error.message);
+        }
+      })();
+    }, [params.category, params.slug]);
+
+    useEffect(() => {
+      if (slugArr) {
+        console.log(slugArr[currentIndex].name);
+        form.setValue("ministry", slugArr[currentIndex].name);
+      }
+    }, [slugArr, currentIndex, form]);
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -110,6 +141,18 @@ export default function JoinUsForm() {
                     <Input className="md:text-lg" type="email" {...field} />
                   </FormControl>
                   <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* ministry */}
+            <FormField
+              control={form.control}
+              name="ministry"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input className="md:text-lg hidden" {...field} />
+                  </FormControl>
                 </FormItem>
               )}
             />

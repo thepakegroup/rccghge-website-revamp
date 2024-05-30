@@ -66,14 +66,14 @@ const MobileNav = () => {
       </Link>
       {isOpen ? (
         <FaX
-          className="text-2xl cursor-pointer active:scale-90"
+          className="text-2xl cursor-pointer active:scale-90 shrink-0"
           onClick={() => {
             setIsOpen(!isOpen);
             setIsSubMenuOpen(false);
           }}></FaX>
       ) : (
         <FaBars
-          className="text-[28px] cursor-pointer active:scale-90"
+          className="text-[28px] cursor-pointer active:scale-90 shrink-0"
           onClick={() => {
             setIsOpen(!isOpen);
             setIsSubMenuOpen(false);
@@ -179,7 +179,7 @@ const LgNav = () => {
               key={link.name}
               href={link.url}
               onClick={() => router.replace(link.url)}>
-              <Logo className="  " style={{ width: "200px" }} />
+              <Logo className="  " style={{ width: "250px" }} />
             </Link>
           );
         }

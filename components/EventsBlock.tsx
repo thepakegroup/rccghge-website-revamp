@@ -55,7 +55,7 @@ export default async function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full lg:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8    `}>
+                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full md:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8    `}>
                 <h1 className="title text-lg truncate max-w-xl md:text-xl lg:tracking-wide font-semibold   ">
                   {event.title}
                 </h1>
