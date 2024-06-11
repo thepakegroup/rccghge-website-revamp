@@ -27,19 +27,43 @@ export type HeroContent = {
   ImgArr: string[];
 };
 
-type DisplaySetting = {
-  heading_text: string;
-  description_text: string;
-  our_service_times: "true" | "false";
-  our_upcoming_events: "true" | "false";
-  our_mission_vision: "true" | "false";
-  our_ministries: "true" | "false";
-  give_section: {
-    give_header_text: string;
-    give_subheading: string;
-    give_bg_image:string
-  };
-};
+ type DisplaySetting = {
+   heading_text: string;
+   description_text: string;
+   our_service_times: "true" | "false";
+   our_upcoming_events: "true" | "false";
+   our_mission_vision: "true" | "false";
+   our_ministries: "true" | "false";
+   // give page settings
+   give_section: {
+     give_header_text: string;
+     give_subheading: string;
+     give_bg_image: string;
+   };
+   // i'm new page settings
+   subheading_text: string;
+   subheading_description_text: string;
+   arrivalAndParking: string;
+   worshipExperience: string;
+   sundayServices: {
+     adultsText: string;
+     adultYoutubeLink: string;
+     nextGenYouthText: string;
+     nextGenKidsText: string;
+     pageImage: string;
+   };
+   wednesdayBibleStudy: {
+     adultText: string;
+     nextGenYouthText: string;
+     nextGenKidText: string;
+   };
+   pageVideoLink: {
+     url: string;
+   };
+   blueBannerContent: {
+     body: string;
+   };
+ };
 
 export const getHeroContent = async (
   pageName: string
@@ -450,7 +474,6 @@ type Newsletter = {
   name: string;
   email: string;
   mobile: string;
-
 };
 
 export const subscribeNewsletter = async (data: Newsletter) => {
