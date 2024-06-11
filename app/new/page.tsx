@@ -23,7 +23,7 @@ export default async function page() {
   const displaySetting = await getPageDisplaySetting("iam_new_page");
   const sundayService = displaySetting?.sundayServices;
   const wednesdayBibleStudy = displaySetting?.wednesdayBibleStudy;
-  console.log(wednesdayBibleStudy?.nextGenKidText);
+  
   // extracts the video id
   function extractYouTubeVideoID(url: string) {
     try {
