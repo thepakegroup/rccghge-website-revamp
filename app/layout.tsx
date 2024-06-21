@@ -26,6 +26,19 @@ export const metadata: Metadata = {
     template: "%s | RCCGHGE",
   },
   description: "Heavens glorious embassy - Into his presence through worship",
+  icons: {
+    icon: "/images/rccg-logo.svg",
+  },
+  keywords: [
+    "RCCGHGE",
+    "heavens glorious embassy",
+    "church",
+    "worship",
+    "Pastor John Omewah",
+    "pastor",
+    "prayer",
+  ],
+  
 };
 
 export default function RootLayout({
