@@ -192,18 +192,7 @@ export default function Hero() {
             );
           }
           // MINISTRIES SUB PAGES (Departments and Ministries)
-          if (pathname.endsWith("/young-adult-ministry")) {
-            heroContent = await getYoungAdultsHeroContent();
-            if (heroContent) {
-              setImageUrl(heroContent?.ImgArr[0]);
-              setContent(
-                <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
-                />
-              );
-            }
-          }
+
           if (pathname.endsWith("/hge-children-ministry")) {
             heroContent = await getChildrenHeroContent();
             if (heroContent) {
@@ -559,6 +548,21 @@ export default function Hero() {
               desc="Stay up to date, don’t miss any."
             />
           );
+        }
+          // YOUNG ADULT
+        else if (pathname.endsWith("/young-adult-ministry")) {        
+          heroContent = await getYoungAdultsHeroContent();
+          console.log(
+            "🚀 ~ fetchAndUpdateHeroContent ~ heroContent:",
+            heroContent?.ImgArr[0]
+          );
+          
+          if (heroContent) {
+            setImageUrl(heroContent?.ImgArr[0]);
+            setContent(
+              <HeroContent title={heroContent.title} desc={heroContent.desc} />
+            );
+          }
         } else {
           console.log("not found");
         }
@@ -566,6 +570,8 @@ export default function Hero() {
     };
     fetchAndUpdateHeroContent();
   }, [pathname, animate, homeHeroContent?.ImgArr.length, currentImageIndex]);
+
+  // Effect to change the image every 7 seconds
   useEffect(() => {
     if (pathname === "/" && homeHeroContent) {
       const interval = setInterval(() => {
@@ -579,10 +585,7 @@ export default function Hero() {
       return () => clearInterval(interval);
     }
   }, [pathname, homeHeroContent]);
-  // if the pathname is "/" and heroContent.ImgArr array length > 1,
-  useEffect(() => {
-    // console.log(currentImageIndex);
-  }, [homepageImgUrl, currentImageIndex]);
+
   //if on the home page return a different hero component
   if (pathname === "/") {
     const PreviousImage = () => {
@@ -620,12 +623,11 @@ export default function Hero() {
             {/* Previous Button */}
             <button
               onClick={PreviousImage}
-             
               className={`prev-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center group justify-center  `}>
               <MoveLeft strokeWidth={3} size={30} className="shrink-0  " />
             </button>
 
-            {/* Next Button */}        
+            {/* Next Button */}
             <button
               onClick={NextImage}
               className={`next-btn   size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center group `}>
@@ -657,6 +659,7 @@ export default function Hero() {
       </div>
     );
   }
+
   return (
     <div
       ref={scope}

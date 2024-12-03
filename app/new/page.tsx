@@ -23,7 +23,7 @@ export default async function page() {
   const displaySetting = await getPageDisplaySetting("iam_new_page");
   const sundayService = displaySetting?.sundayServices;
   const wednesdayBibleStudy = displaySetting?.wednesdayBibleStudy;
-  
+
   // extracts the video id
   function extractYouTubeVideoID(url: string) {
     try {
@@ -57,7 +57,7 @@ export default async function page() {
             {/* video section */}
             <div className="space-y-10 sm:space-y-12 mt-32 sm:mt-24 md:mt-16 lg:mt-10  ">
               <h1 className=" wrapper text-center  text-3xl sm:text-5xl ">
-                Welcome to Heaven’s Glorious Assembly
+                Welcome to Heaven’s Glorious Embassy
               </h1>
               <div className=" w-[min(100%,1000px)] mb-12  md:mb-20 aspect-video lg:h-[480px] mx-auto bg-red-500 ">
                 <iframe
@@ -78,38 +78,63 @@ export default async function page() {
               <FaCaretLeft className="absolute -right-16 md:text-[9rem] text-9xl" />
             </h1>
             <div className="grid grid-cols-1 gap-8 w-full mx-auto lg:grid-cols-[1fr_auto_1fr] wrapper">
-              <div className="space-y-2 md:space-y-3  ">
-                {/* {displaySetting?.sundayServices} */}
-                <TitleBorderTop title="Adults" />
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: sundayService?.adultsText!,
-                  }}
-                />
-                <br />
-                <a
-                  href={sundayService?.adultYoutubeLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className=" text-[#1ca8db] text-2xl py-4 lg:py-px font-playfair  font-bold  ">
-                  Watch on YouTube
-                </a>
+              <div className="space-y-8  ">
+                <div className="space-y-2 md:space-y-3  ">
+                  {/* {displaySetting?.sundayServices} */}
+                  <TitleBorderTop title="Adults" />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: sundayService?.adultsText!,
+                    }}
+                  />
+                  <br />
+
+                  <a
+                    href={sundayService?.adultYoutubeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=" text-[#1ca8db] text-2xl py-4 lg:py-px font-playfair  font-bold  ">
+                    Watch on YouTube
+                  </a>
+                </div>
+                <div className="space-y-2 md:space-y-3  ">
+                  <TitleBorderTop title="HGE SEEDS" />
+                  <div>
+                    Our children from ages 1 day to 12 years have their own
+                    building, joined to the main church building. We have
+                    anointed and wonderful teachers that love children who takes
+                    care of our children. The children have their own powerful
+                    choir (One Voice) that leads them in worship. That are
+                    taught the word of God in a friendly environment, where they
+                    can also play like children. If you have children within
+                    this age, you are encouraged to check them into their
+                    various classes before you go to the adult church.
+                  </div>
+                  {/* TODO: fetch from api (ask success to add) */}
+                  {/* <div
+                    dangerouslySetInnerHTML={{
+                      __html: sundayService?.nextGenYouthText!,
+                    }}
+                  /> */}
+                </div>
               </div>
               <Separator orientation="vertical" />
               <div className="space-y-8  ">
                 <div className="space-y-2 md:space-y-3  ">
-                  <TitleBorderTop title="NextGen Youth" />
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: sundayService?.nextGenYouthText!,
-                    }}
-                  />
-                </div>
-                <div className="space-y-2 md:space-y-3  ">
-                  <TitleBorderTop title="NextGen Kids" />
+                  {/* name was chaged from next gen kids to teenagers chapel */}
+                  <TitleBorderTop title="Teenagers Chapel" />
                   <div
                     dangerouslySetInnerHTML={{
                       __html: sundayService?.nextGenKidsText!,
+                    }}
+                  />
+                </div>
+                {/* name was chaged from next gen youth to NEXT–Impact Service */}
+                <div className="space-y-2 md:space-y-3  ">
+                  <TitleBorderTop title="NEXT – Impact Services" />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: sundayService?.nextGenYouthText!,
                     }}
                   />
                 </div>
@@ -128,14 +153,14 @@ export default async function page() {
             </h1>
             <div className="grid grid-cols-1 gap-8 w-full mx-auto lg:grid-cols-[1fr_auto_1fr] wrapper">
               <div className="space-y-2 md:space-y-3  ">
-                <TitleBorderTop title="Adults" />
+                {/* <TitleBorderTop title="Adults" /> */}
                 <div
                   dangerouslySetInnerHTML={{
                     __html: wednesdayBibleStudy?.adultText!,
                   }}
                 />
               </div>
-              <Separator orientation="vertical" />
+              {/* <Separator orientation="vertical" />
               <div className="space-y-8  ">
                 <div className="space-y-2 md:space-y-3  ">
                   <TitleBorderTop title="NextGen Youth" />
@@ -153,7 +178,7 @@ export default async function page() {
                     }}
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           {/* blue Gratient text */}
@@ -170,6 +195,7 @@ export default async function page() {
             <h1 className=" text-center text-3xl sm:text-4xl -mb-2">
               Plan your visit
             </h1>
+            {/* lg:grid-cols-[1fr_auto_1fr] */}
             <div className="grid grid-cols-1 gap-8 w-full mx-auto  lg:grid-cols-[1fr_auto_1fr]">
               <div className="space-y-2 md:space-y-5  ">
                 <TitleBorderTop title="Arrival & Parking" />
@@ -179,7 +205,7 @@ export default async function page() {
                   }}
                 />
               </div>
-              <Separator orientation="vertical" />
+              {/* <Separator orientation="vertical" />
               <div className="space-y-2 md:space-y-5  ">
                 <TitleBorderTop title="The Worship Experience" />
                 <div
@@ -187,8 +213,7 @@ export default async function page() {
                     __html: displaySetting?.worshipExperience!,
                   }}
                 />
-                
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

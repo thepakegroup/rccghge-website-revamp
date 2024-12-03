@@ -61,34 +61,43 @@ export default async function Page({
           whileInView={"visible"}
           viewport={{ once: true }}
           className="ministries-card-container mx-auto  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start max-w-screen-xl ">
-          {ministriesData?.map((item, i) => (
-            <Link
-              key={i}
-              href={`/ourMinistries/${params.category}/${item.slug}`}
-              scroll={true}
-              className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-400 cursor-pointer translation-all duration-300 ">
-              <div className="    card-img relative h-[200px] rounded-t-md ">
-                <ImageFill
-                  src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
-                  className="rounded-t-md group-hover:opacity-30  "
-                />
-              </div>
-              <div className="w-10 absolute top-44 left-2  aspect-square blueGradient rounded-full flex items-center justify-center text-xl text-white">
-                <FaUsers />
-              </div>
+          {ministriesData?.map((item, i) => {
+            let route = `/ourMinistries/${params.category}/${item.slug}`;
+            if (item.name === `Men’s Ministry`) {
+              route = `https://rccghge-men-frontend.vercel.app`;
+            } else if (item.name === `Young Adult Ministry`) {
+              route = `/${item.slug}`;
+            }
 
-              <div className="card-content space-y-2 pt-5   p-2 flex flex-col justify-between h-fit">
-                <div className="space-y-2">
-                  <h1 className="text-xl capitalize  line-clamp-1">
-                    {item.name}
-                  </h1>
-                  <p className="line-clamp-2 text-gray-500">
-                    {item.description}
-                  </p>
+            return (
+              <Link
+                key={i}
+                href={route}
+                scroll={true}
+                className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-400 cursor-pointer translation-all duration-300 ">
+                <div className="    card-img relative h-[200px] rounded-t-md ">
+                  <ImageFill
+                    src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
+                    className="rounded-t-md group-hover:opacity-30  "
+                  />
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="w-10 absolute top-44 left-2  aspect-square blueGradient rounded-full flex items-center justify-center text-xl text-white">
+                  <FaUsers />
+                </div>
+
+                <div className="card-content space-y-2 pt-5   p-2 flex flex-col justify-between h-fit">
+                  <div className="space-y-2">
+                    <h1 className="text-xl capitalize  line-clamp-1">
+                      {item.name}
+                    </h1>
+                    <p className="line-clamp-2 text-gray-500">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </MotionDiv>
       </div>
     </div>
