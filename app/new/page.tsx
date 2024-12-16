@@ -1,19 +1,14 @@
-import EventsBlock from "@/components/EventsBlock";
-import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
-import React from "react";
-import { getPageDisplaySetting } from "../utils/actions";
+import { Separator } from "@/components/ui/separator";
+import ImageFill from "@/lib/components/ImageFill";
 import {
   MotionDiv,
-  MotionH1,
-  SlideInFromBottom,
+  SlideInFromBottom
 } from "@/lib/framer-motion/motionComponents";
-import { slideInFromBottom } from "../give/page";
 import { Metadata } from "next";
-import { Separator } from "@/components/ui/separator";
 import { FaCaretLeft } from "react-icons/fa6";
-import Link from "next/link";
-import ImageFill from "@/lib/components/ImageFill";
+import { slideInFromBottom } from "../give/page";
+import { getPageDisplaySetting } from "../utils/actions";
 
 export const metadata: Metadata = {
   title: "New Here?",
@@ -99,23 +94,12 @@ export default async function page() {
                 </div>
                 <div className="space-y-2 md:space-y-3  ">
                   <TitleBorderTop title="HGE SEEDS" />
-                  <div>
-                    Our children from ages 1 day to 12 years have their own
-                    building, joined to the main church building. We have
-                    anointed and wonderful teachers that love children who takes
-                    care of our children. The children have their own powerful
-                    choir (One Voice) that leads them in worship. That are
-                    taught the word of God in a friendly environment, where they
-                    can also play like children. If you have children within
-                    this age, you are encouraged to check them into their
-                    various classes before you go to the adult church.
-                  </div>
-                  {/* TODO: fetch from api (ask success to add) */}
-                  {/* <div
+                  <div
                     dangerouslySetInnerHTML={{
-                      __html: sundayService?.nextGenYouthText!,
+                      __html: sundayService?.hgeSeedsText!,
                     }}
-                  /> */}
+                  />
+                 
                 </div>
               </div>
               <Separator orientation="vertical" />
@@ -125,7 +109,7 @@ export default async function page() {
                   <TitleBorderTop title="Teenagers Chapel" />
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: sundayService?.nextGenKidsText!,
+                      __html: sundayService?.teenagersChapelText!,
                     }}
                   />
                 </div>
@@ -134,7 +118,7 @@ export default async function page() {
                   <TitleBorderTop title="NEXT – Impact Services" />
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: sundayService?.nextGenYouthText!,
+                      __html: sundayService?.nextImpactServiceText!,
                     }}
                   />
                 </div>
@@ -192,7 +176,7 @@ export default async function page() {
           </div>
           {/* plan your visit */}
           <div className="space-y-8 sm:space-y-12 wrapper max-w-screen-2xl ">
-            <h1 className=" text-center text-3xl sm:text-4xl -mb-2">
+            <h1 className=" = text-3xl sm:text-4xl -mb-2">
               Plan your visit
             </h1>
             {/* lg:grid-cols-[1fr_auto_1fr] */}

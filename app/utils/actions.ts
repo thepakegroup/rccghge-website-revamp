@@ -27,43 +27,46 @@ export type HeroContent = {
   ImgArr: string[];
 };
 
- type DisplaySetting = {
-   heading_text: string;
-   description_text: string;
-   our_service_times: "true" | "false";
-   our_upcoming_events: "true" | "false";
-   our_mission_vision: "true" | "false";
-   our_ministries: "true" | "false";
-   // give page settings
-   give_section: {
-     give_header_text: string;
-     give_subheading: string;
-     give_bg_image: string;
-   };
-   // i'm new page settings
-   subheading_text: string;
-   subheading_description_text: string;
-   arrivalAndParking: string;
-   worshipExperience: string;
-   sundayServices: {
-     adultsText: string;
-     adultYoutubeLink: string;
-     nextGenYouthText: string;
-     nextGenKidsText: string;
-     pageImage: string;
-   };
-   wednesdayBibleStudy: {
-     adultText: string;
-     nextGenYouthText: string;
-     nextGenKidText: string;
-   };
-   pageVideoLink: {
-     url: string;
-   };
-   blueBannerContent: {
-     body: string;
-   };
- };
+type DisplaySetting = {
+  heading_text: string;
+  description_text: string;
+  our_service_times: "true" | "false";
+  our_upcoming_events: "true" | "false";
+  our_mission_vision: "true" | "false";
+  our_ministries: "true" | "false";
+  // give page settings
+  give_section: {
+    give_header_text: string;
+    give_subheading: string;
+    give_bg_image: string;
+  };
+  // i'm new page settings
+  subheading_text: string;
+  subheading_description_text: string;
+  arrivalAndParking: string;
+  worshipExperience: string;
+  sundayServices: {
+    adultsText: string;
+    adultYoutubeLink: string;
+    nextGenYouthText: string;
+    nextGenKidsText: string;
+    pageImage: string;
+    hgeSeedsText: string;
+    teenagersChapelText: string;
+    nextImpactServiceText: string;
+  };
+  wednesdayBibleStudy: {
+    adultText: string;
+    nextGenYouthText: string;
+    nextGenKidText: string;
+  };
+  pageVideoLink: {
+    url: string;
+  };
+  blueBannerContent: {
+    body: string;
+  };
+};
 
 export const getHeroContent = async (
   pageName: string
@@ -596,6 +599,35 @@ export const joinUs = async (data: JoinUs) => {
     await res.json();
 
     return "Request sent successfully";
+  } catch (error) {
+    console.error("Error sending request:", error);
+    throw new Error("Request Failed. Please try again.");
+  }
+};
+
+
+export const getInstagramPostUrl = async () => {
+  try {
+    // Get user ID
+    const userRes = await fetch(
+      `https://graph.instagram.com/me?fields=user_id&access_token=${process.env.INSTAGRAM_KEY}`
+    );
+    const userData = await userRes.json();
+    console.log("🚀 ~ getInstagramPostUrl ~ userData:", userData);
+
+    // Get Post urls
+    if (userData) {
+      const postResponse = await fetch(
+        `https://graph.instagram.com/v21.0/${userData.user_id}/media?fields=permalink&access_token=${process.env.INSTAGRAM_KEY}`
+      );
+
+      const postUrl = await postResponse.json();
+      console.log("🚀 ~ getInstagramPostUrl ~ postUrl:", postUrl);
+      return postUrl.data as {
+        permalink: string;
+        id: string;
+      }[];
+    }
   } catch (error) {
     console.error("Error sending request:", error);
     throw new Error("Request Failed. Please try again.");
