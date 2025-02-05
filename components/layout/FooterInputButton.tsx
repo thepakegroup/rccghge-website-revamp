@@ -19,7 +19,10 @@ export default function FooterInputButton() {
     }
   }, [pending]);
   return (
-    <Button type="submit" disabled={pending} className=" rounded-l-none  ">
+    <Button
+      type="submit"
+      disabled={pending}
+      className=" rounded-l-none h-full ">
       {pending ? "Sending..." : requestSent ? "Sent ✔" : "Send"}
     </Button>
   );
