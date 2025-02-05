@@ -1,19 +1,12 @@
 import SearchBar from "@/components/SearchBar";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import ImageFill from "@/lib/components/ImageFill";
-import { getAllEvents } from "../utils/actions";
 import { Metadata } from "next";
+import { getAllEvents } from "../utils/actions";
 export const metadata: Metadata = {
   title: "Our Upcoming Events",
   description: "Stay up to date, don’t miss any.",
 };
-
+export const dynamic = "force-dynamic";
 export default async function page({
   searchParams,
 }: {
@@ -23,16 +16,17 @@ export default async function page({
   const dateQuery = (searchParams.dateQuery || "") as string;
 
   const events = await getAllEvents(searchQuery, dateQuery);
+  
   const formattedDateRange = (startDate: Date, endDate: Date) => {
-    const formattedStartDate = startDate.toLocaleDateString("en-US", {
+    const formattedStartDate = startDate.toLocaleString(undefined, {
       month: "long",
       day: "numeric",
     });
-    const formattedStartTime = startDate.toLocaleTimeString("en-US", {
+    const formattedStartTime = startDate.toLocaleString(undefined, {
       hour: "numeric",
       minute: "2-digit",
     });
-    const formattedEndTime = endDate.toLocaleTimeString("en-US", {
+    const formattedEndTime = endDate.toLocaleString(undefined, {
       hour: "numeric",
       minute: "2-digit",
     });
@@ -59,11 +53,11 @@ export default async function page({
             const startDate = new Date(event.start_date);
             const endDate = new Date(event.end_date);
 
+
             return (
               <div
                 key={i}
-                className=" even:lg:flex-row-reverse flex items-center justify-center gap-8 flex-col lg:flex-row"
-              >
+                className=" even:lg:flex-row-reverse flex items-center justify-center gap-8 flex-col lg:flex-row">
                 {/* image */}
                 <div className="relative w-full lg:w-1/2 lg:max-w-[500px] h-80 text-center">
                   <div className="date absolute blueGradient rounded px-2 py-1 z-10 top-2 mx-3  md:text-lg right-0 left-0 break-words ">
