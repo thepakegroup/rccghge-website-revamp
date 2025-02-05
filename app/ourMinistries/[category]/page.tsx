@@ -7,6 +7,7 @@ import Link from "next/link";
 import { FaUsers } from "react-icons/fa6";
 import MinistriesTab from "./components/MinistriesTab";
 import ScrollToTop from "@/lib/components/ScrollToTop";
+import { EXTERNAL_MINISTRY_URLS } from "@/lib/constants";
 type Param = {
   params: { category: string };
 };
@@ -64,9 +65,10 @@ export default async function Page({
           {ministriesData?.map((item, i) => {
             let route = `/ourMinistries/${params.category}/${item.slug}`;
             if (item.name === `Men’s Ministry`) {
-              route = `https://rccghge-men-frontend.vercel.app`;
-            } else if (item.name === `Young Adult Ministry`) {
-              route = `/${item.slug}`;
+              route = EXTERNAL_MINISTRY_URLS.Men;
+            } else if (item.name === `Young Adult Ministry`) { 
+              route = route = EXTERNAL_MINISTRY_URLS.Youth;
+
             }
 
             return (
