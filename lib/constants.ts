@@ -10,7 +10,7 @@ export const EXTERNAL_MINISTRY_URLS = {
   Men: "https://rccghge-men-frontend.vercel.app",
 };
 
-const apiUrl = process.env.NEXT_PUBLIC_STAGING_API_URL;
+const apiUrl = process?.env?.NEXT_PUBLIC_STAGING_API_URL;
 
 if (!apiUrl) {
   throw new Error("API URL is not defined");

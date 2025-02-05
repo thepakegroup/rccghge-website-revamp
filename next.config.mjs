@@ -4,9 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "api1.kouakoudomagni.com",
+        hostname: "api.kouakoudomagni.com",
         port: "",
-        pathname: "/home/webfiles/**",
+        pathname: "/**",
       },
       {
         protocol: "https",
@@ -16,8 +16,6 @@ const nextConfig = {
       },
     ],
   },
-
-
 };
 
 export default nextConfig;

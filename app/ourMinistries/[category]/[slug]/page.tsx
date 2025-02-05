@@ -15,13 +15,15 @@ import Title from "./components/Title";
 import YoungAdults from "./components/YoungAdults";
 import { apiUrl } from "@/lib/constants";
 export async function generateStaticParams() {
+  
   const res = await fetch(
     `${apiUrl}/groups?category=All&page=1`
   );
+    console.log("🚀 ~ generateStaticParams ~ apiUrl:", apiUrl)
   const ministryData = await res.json();
-  return ministryData?.message.data.map((data: Ministry) => ({
-    category: data.category,
-    slug: data.slug,
+  return ministryData?.message?.data?.map((data: Ministry) => ({
+    category: data?.category,
+    slug: data?.slug,
   }));
 }
 export default async function page({
@@ -41,8 +43,8 @@ export default async function page({
       );
     case "elders-ministry":
       content = await getMinistryContent("elders_minstry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -54,8 +56,8 @@ export default async function page({
       content = await getMinistryContent(
         "pre-marital-marriage-department"
       ).then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -66,8 +68,8 @@ export default async function page({
 
     case "women-s-ministry":
       content = await getMinistryContent("womens_ministry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -78,8 +80,8 @@ export default async function page({
     case "music-ministry":
       content = await getMinistryContent("embassy_choir_ministry").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 
@@ -90,8 +92,8 @@ export default async function page({
       );
     case "men-s-ministry":
       content = await getMinistryContent("mens_ministry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -101,8 +103,8 @@ export default async function page({
       );
     case "drama-ministry":
       content = await getDramaContent().then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
       imgArr = await getDramaContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
@@ -122,8 +124,8 @@ export default async function page({
       );
     case "connect-ministry":
       content = await getMinistryContent("connect_ministry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -133,8 +135,8 @@ export default async function page({
       );
     case "prayer-ministry":
       content = await getPrayerContent().then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -183,8 +185,8 @@ export default async function page({
       );
     case "hge-wellness-ministry":
       content = await getWellnessContent().then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
       imgArr = await getWellnessContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
@@ -203,8 +205,8 @@ export default async function page({
       );
     case "teenage-ministry":
       content = await getTeenageContent().then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
       imgArr = await getTeenageContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
@@ -241,8 +243,8 @@ export default async function page({
       );
     case "hge-children-ministry":
       content = await getChildrenContent().then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
       imgArr = await getChildrenContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
@@ -266,8 +268,8 @@ export default async function page({
     // DEPARTMENTS
     case "evangelism":
       content = await getMinistryContent("evangelism_ministry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -278,8 +280,8 @@ export default async function page({
     case "believers-class-membership-class":
       content = await getMinistryContent("believers_membership").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 
@@ -290,8 +292,8 @@ export default async function page({
       );
     case "protocol-department":
       content = await getMinistryContent("protocol_department").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -301,8 +303,8 @@ export default async function page({
       );
     case "greeters-department":
       content = await getMinistryContent("greeters_department").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -325,8 +327,8 @@ export default async function page({
       );
     case "ushering-department":
       content = await getMinistryContent("ushering_department").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -337,8 +339,8 @@ export default async function page({
     case "media-publication-department":
       content = await getMinistryContent("media_publication_ministry").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 
@@ -349,8 +351,8 @@ export default async function page({
       );
     case "it-department":
       content = await getMinistryContent("it_department").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -361,8 +363,8 @@ export default async function page({
     case "public-relations-department":
       content = await getMinistryContent("public_relations_ministry").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 
@@ -374,8 +376,8 @@ export default async function page({
     case "sunday-school-department":
       content = await getMinistryContent("sunday_school_ministry").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 
@@ -386,8 +388,8 @@ export default async function page({
       );
     case "sanitation-janitorial-department":
       content = await getMinistryContent("sanitation_ministry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -399,8 +401,8 @@ export default async function page({
     case "transportation-department":
       content = await getMinistryContent("transportation_department").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 
@@ -411,8 +413,8 @@ export default async function page({
       );
     case "follow-up-department":
       content = await getMinistryContent("follow_up_ministry").then((res) => ({
-        title: res?.settings.settings.body.title,
-        body: res?.settings.settings.body.content,
+        title: res?.settings?.settings?.body?.title,
+        body: res?.settings?.settings?.body?.content,
       }));
 
       return (
@@ -423,8 +425,8 @@ export default async function page({
     case "hospitality-care-department":
       content = await getMinistryContent("hospitality_care_department").then(
         (res) => ({
-          title: res?.settings.settings.body.title,
-          body: res?.settings.settings.body.content,
+          title: res?.settings?.settings?.body?.title,
+          body: res?.settings?.settings?.body?.content,
         })
       );
 

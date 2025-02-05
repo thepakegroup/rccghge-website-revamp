@@ -137,7 +137,6 @@ export default async function Footer() {
             name="email"
             id="email"
           />
-        {/* TODO:add loader */}
           <FooterInputButton />
         </form>
         <small>Copyright RCCG: Heaven&apos;s Glorious Embassy</small>
