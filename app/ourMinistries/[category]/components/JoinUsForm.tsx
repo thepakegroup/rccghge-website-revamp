@@ -57,7 +57,7 @@ export default function JoinUsForm({
           const res = await getMinistriesSlug(params.category);
           setSlugArr(res);
           // Find the index of the current slug in slugAr
-          const index = res?.findIndex((item) => item.slug === params.slug);
+          const index = res?.findIndex((item) => item?.slug === params?.slug);
           setCurrentIndex(index ?? -1);
         } catch (error) {
           if (error instanceof Error) console.log(error.message);
@@ -67,8 +67,7 @@ export default function JoinUsForm({
 
     useEffect(() => {
       if (slugArr) {
-        console.log(slugArr[currentIndex].name);
-        form.setValue("ministry", slugArr[currentIndex].name);
+        form.setValue("ministry", slugArr[currentIndex]?.name);
       }
     }, [slugArr, currentIndex, form]);
   // 2. Define a submit handler.
