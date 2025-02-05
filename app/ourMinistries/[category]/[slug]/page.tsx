@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   const res = await fetch(
     `${apiUrl}/groups?category=All&page=1`
   );
-    console.log("🚀 ~ generateStaticParams ~ apiUrl:", apiUrl)
+    
   const ministryData = await res.json();
   return ministryData?.message?.data?.map((data: Ministry) => ({
     category: data?.category,
@@ -243,8 +243,8 @@ export default async function page({
       );
     case "hge-children-ministry":
       content = await getChildrenContent().then((res) => ({
-        title: res?.settings?.settings?.body?.title,
-        body: res?.settings?.settings?.body?.content,
+        title: res?.settings?.settings?.body?.title || "",
+        body: res?.settings?.settings?.body?.content||"",
       }));
       imgArr = await getChildrenContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
@@ -252,11 +252,11 @@ export default async function page({
 
       return (
         <>
-          <TitleBodyContainer title={content?.title ?? ""}>
+          <TitleBodyContainer title={content?.title || ""}>
             <div
               className="marker:text-black"
-              dangerouslySetInnerHTML={{ __html: content?.body ?? "" }}/>
-           
+              dangerouslySetInnerHTML={{ __html: content?.body || "" }}
+            />
           </TitleBodyContainer>
           {/* carousel */}
           <div className="w-full wrapper h-80 md:h-[450px] relative mt-10 ">

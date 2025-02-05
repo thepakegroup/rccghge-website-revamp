@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Our Upcoming Events",
   description: "Stay up to date, don’t miss any.",
 };
-export const dynamic = "force-dynamic";
+
 export default async function page({
   searchParams,
 }: {
