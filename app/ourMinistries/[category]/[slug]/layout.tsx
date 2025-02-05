@@ -32,7 +32,7 @@ export default async function MinistriesLayout({
       break;
     case "hge-children-ministry":
       heading = await getChildrenContent().then((res) => ({
-        title: res?.settings.settings.subheading_text,
+        title: res?.settings?.settings?.subheading_text,
       }));
       break;
     case "prayer-ministry":
@@ -54,13 +54,13 @@ export default async function MinistriesLayout({
         whileInView="visible"
         viewport={{ once: true }}>
         <div className="title-top wrapper">
-          {params.slug === "hge-children-ministry" && heading.title && (
+          {params?.slug === "hge-children-ministry" && heading?.title && (
             <Title className="text-center mb-10" title={heading?.title} />
           )}
-          {params.slug === "prayer-ministry" && heading.title && (
+          {params?.slug === "prayer-ministry" && heading?.title && (
             <Title className="text-center mb-10" title={heading?.title} />
           )}
-          {params.slug === "young-adult-ministry" && heading.title && (
+          {params?.slug === "young-adult-ministry" && heading?.title && (
             <div className="space-y-4 text-center max-w-4xl mx-auto mb-10">
               <Title className="text-center " title={heading?.title} />
               <p className="font-medium">{heading?.desc}</p>
@@ -70,7 +70,7 @@ export default async function MinistriesLayout({
 
         <LogoDivider />
         <div
-          className={` ${params.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 marker:text-black `}>
+          className={` ${params?.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 marker:text-black `}>
           <ScrollToTop />
           {children}
         </div>

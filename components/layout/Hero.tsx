@@ -45,8 +45,8 @@ export default function Hero() {
         heroContent = await getHeroContent("landing_page");
         setHeroContent(heroContent);
         if (heroContent) {
-          setHomepageImgUrl(heroContent.ImgArr[currentImageIndex]);
-          setContent(<Home title={heroContent.title} />);
+          setHomepageImgUrl(heroContent?.ImgArr[currentImageIndex]);
+          setContent(<Home title={heroContent?.title} />);
         }
       } else {
         // ABOUT PAGE
@@ -199,8 +199,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -212,8 +212,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -224,8 +224,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -237,8 +237,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -249,8 +249,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -264,8 +264,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -276,8 +276,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -291,8 +291,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -303,8 +303,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -315,8 +315,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -327,8 +327,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -339,8 +339,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -351,8 +351,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -365,8 +365,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -377,8 +377,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -391,8 +391,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -403,8 +403,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -415,8 +415,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -429,8 +429,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -443,8 +443,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -455,8 +455,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -467,8 +467,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -481,8 +481,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -493,8 +493,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -507,8 +507,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -519,8 +519,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -531,8 +531,8 @@ export default function Hero() {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
                 <HeroContent
-                  title={heroContent.title}
-                  desc={heroContent.desc}
+                  title={heroContent?.title}
+                  desc={heroContent?.desc}
                 />
               );
             }
@@ -560,7 +560,7 @@ export default function Hero() {
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
-              <HeroContent title={heroContent.title} desc={heroContent.desc} />
+              <HeroContent title={heroContent?.title} desc={heroContent?.desc} />
             );
           }
         } else {
@@ -576,8 +576,8 @@ export default function Hero() {
     if (pathname === "/" && homeHeroContent) {
       const interval = setInterval(() => {
         setCurrentImageIndex((prevIndex) => {
-          const newIndex = (prevIndex + 1) % homeHeroContent.ImgArr.length;
-          setHomepageImgUrl(homeHeroContent.ImgArr[newIndex]);
+          const newIndex = (prevIndex + 1) % homeHeroContent?.ImgArr.length;
+          setHomepageImgUrl(homeHeroContent?.ImgArr[newIndex]);
           return newIndex;
         });
       }, 7000);
@@ -593,14 +593,14 @@ export default function Hero() {
         setCurrentImageIndex(
           (prevIndex) =>
             (prevIndex - 1 + homeHeroContent?.ImgArr.length) %
-            homeHeroContent.ImgArr.length
+            homeHeroContent?.ImgArr.length
         );
     };
 
     const NextImage = () => {
       if (homeHeroContent)
         setCurrentImageIndex(
-          (prevIndex) => (prevIndex + 1) % homeHeroContent.ImgArr.length
+          (prevIndex) => (prevIndex + 1) % homeHeroContent?.ImgArr.length
         );
     };
     return (
