@@ -15,7 +15,7 @@ export default async function YoungAdults() {
 
     return dateA - dateB;
   });
-  const missionSection = content?.settings.settings.subsection;
+  const missionSection = content?.settings?.settings?.subsection;
   const galleryImages = content?.gallery;
   const teamImages = content?.teams;
   return (
@@ -41,39 +41,39 @@ export default async function YoungAdults() {
               {/* mission */}
               <div className="border-2 rounded-lg p-3 space-y-2   mx-6 lg:mx-12">
                 <h1 className="capitalize text-xl sm:text-2xl text-primary">
-                  {missionSection?.our_mission.title}
+                  {missionSection?.our_mission?.title}
                 </h1>
 
                 <div
                   className="font-medium text-sm text-pretty md:text-base "
                   dangerouslySetInnerHTML={{
-                    __html: missionSection?.our_mission.content,
+                    __html: missionSection?.our_mission?.content,
                   }}
                 />
               </div>
               {/* vision */}
               <div className="border-2 rounded-lg p-3 space-y-2   mx-6 lg:mx-12">
                 <h1 className="capitalize text-xl sm:text-2xl text-primary">
-                  {missionSection?.our_vision.title}
+                  {missionSection?.our_vision?.title}
                 </h1>
 
                 <div
                   className="font-medium text-sm text-pretty md:text-base "
                   dangerouslySetInnerHTML={{
-                    __html: missionSection?.our_vision.content,
+                    __html: missionSection?.our_vision?.content,
                   }}
                 />
               </div>
               {/* events */}
               <div className="border-2 rounded-lg p-3 space-y-2   mx-6 lg:mx-12">
                 <h1 className="capitalize text-xl sm:text-2xl text-primary">
-                  {missionSection?.our_events.title}
+                  {missionSection?.our_events?.title}
                 </h1>
 
                 <div
                   className=" text-sm text-pretty md:text-base"
                   dangerouslySetInnerHTML={{
-                    __html: missionSection?.our_events.content,
+                    __html: missionSection?.our_events?.content,
                   }}
                 />
               </div>
@@ -95,7 +95,7 @@ export default async function YoungAdults() {
                 {/* image */}
 
                 <Image
-                  src={program.flyer_url}
+                  src={program?.flyer_url}
                   width={556}
                   height={449}
                   className="w-full max-h-96 lg:w-2/5 object-contain "
@@ -104,10 +104,10 @@ export default async function YoungAdults() {
 
                 {/* text-section */}
                 <div className="space-y-2 md:space-y-5 prose prose-headings:font-semibold  lg:w-3/5">
-                  <Title title={program.name} />
+                  <Title title={program?.name} />
                   <div
                    
-                    dangerouslySetInnerHTML={{ __html: program.description }}
+                    dangerouslySetInnerHTML={{ __html: program?.description }}
                   />
                 
                 </div>
