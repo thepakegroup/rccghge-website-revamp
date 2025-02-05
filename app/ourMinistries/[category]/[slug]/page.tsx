@@ -246,6 +246,7 @@ export default async function page({
         title: res?.settings?.settings?.body?.title || "",
         body: res?.settings?.settings?.body?.content||"",
       }));
+      console.log("🚀 ~ content=awaitgetChildrenContent ~ content:", content)
       imgArr = await getChildrenContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
       });
