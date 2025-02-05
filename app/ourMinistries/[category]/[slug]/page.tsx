@@ -13,9 +13,10 @@ import Image from "next/image";
 import React from "react";
 import Title from "./components/Title";
 import YoungAdults from "./components/YoungAdults";
+import { apiUrl } from "@/lib/constants";
 export async function generateStaticParams() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=All&page=1`
+    `${apiUrl}/groups?category=All&page=1`
   );
   const ministryData = await res.json();
   return ministryData?.message.data.map((data: Ministry) => ({
