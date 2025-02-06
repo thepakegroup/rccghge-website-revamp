@@ -2,13 +2,13 @@ import React from "react";
 import Logo from "../Logo";
 import { Button } from "../ui/button";
 import {
-  get3Events,
   getServiceTimes,
   subscribeSermon,
 } from "@/app/utils/actions";
 import { toast } from "sonner";
 import FooterInputButton from "./FooterInputButton";
 import Link from "next/link";
+import { get3Events } from "@/app/utils/api-request";
 
 export default async function Footer() {
   const events = await get3Events();

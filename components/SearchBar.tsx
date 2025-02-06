@@ -79,14 +79,21 @@ function SearchBar({
     <div className="flex items-center gap-10">
       <Select
         onValueChange={(value) => {
-          router.push(
-            `/events?searchQuery=${searchQuery}&dateQuery=${currentYear}-${encodeURIComponent(value)}-01`
-          );
+          if (value === "all") {
+            router.push(`/events`);
+          } else {
+            router.push(
+              `/events?searchQuery=${searchQuery}&dateQuery=${currentYear}-${encodeURIComponent(value)}-01`
+            );
+          }
         }}>
         <SelectTrigger className="focus-visible:ring-0 focus-visible:ring-offset-0 capitalize  md:text-base w-fit font-semibold   ">
           <SelectValue placeholder={"select month "} />
         </SelectTrigger>
         <SelectContent>
+          <SelectItem className="capitalize md:text-base" value="all">
+            All
+          </SelectItem>
           {months.map((month) => {
             return (
               <SelectItem

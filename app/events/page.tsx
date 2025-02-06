@@ -1,13 +1,16 @@
+"use client";
 import SearchBar from "@/components/SearchBar";
 import ImageFill from "@/lib/components/ImageFill";
-import { Metadata } from "next";
-import { getAllEvents } from "../utils/actions";
-export const metadata: Metadata = {
-  title: "Our Upcoming Events",
-  description: "Stay up to date, don’t miss any.",
-};
+import { formattedDateRange } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { Event, getAllEvents } from "../utils/api-request";
+// import { getAllEvents } from "../utils/actions";
+// export const metadata: Metadata = {
+//   title: "Our Upcoming Events",
+//   description: "Stay up to date, don’t miss any.",
+// };
 
-export default async function page({
+export default  function Page({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -15,23 +18,21 @@ export default async function page({
   const searchQuery = (searchParams.searchQuery || "") as string;
   const dateQuery = (searchParams.dateQuery || "") as string;
 
-  const events = await getAllEvents(searchQuery, dateQuery);
-  
-  const formattedDateRange = (startDate: Date, endDate: Date) => {
-    const formattedStartDate = startDate.toLocaleString(undefined, {
-      month: "long",
-      day: "numeric",
-    });
-    const formattedStartTime = startDate.toLocaleString(undefined, {
-      hour: "numeric",
-      minute: "2-digit",
-    });
-    const formattedEndTime = endDate.toLocaleString(undefined, {
-      hour: "numeric",
-      minute: "2-digit",
-    });
-    return `${formattedStartDate}, ${formattedStartTime}-${formattedEndTime}`;
-  };
+   const [events, setEvents] = useState<Event[]>([]);
+   const [loading, setLoading] = useState(true);
+
+   useEffect(() => {
+     async function fetchEvents() {
+       const eventsData = await getAllEvents(searchQuery, dateQuery);
+       setEvents(eventsData || []);
+       setLoading(false);
+     }
+     fetchEvents();
+   }, [searchQuery, dateQuery]);
+
+   if (loading) {
+     return <p>Loading...</p>;
+   }
 
   return (
     <div className="py-12 wrapper space-y-10">
@@ -52,7 +53,6 @@ export default async function page({
             // getting formatted date
             const startDate = new Date(event.start_date);
             const endDate = new Date(event.end_date);
-
 
             return (
               <div
