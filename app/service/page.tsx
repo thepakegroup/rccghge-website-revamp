@@ -1,10 +1,10 @@
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
 import React from "react";
-import { getServiceTimes } from "../utils/actions";
 import { Metadata } from "next";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "../give/page";
+import { getServiceTimes } from "../utils/api-request";
 export const metadata: Metadata = {
   title: "Service Times",
 };

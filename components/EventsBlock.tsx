@@ -22,15 +22,15 @@ export default function EventsBlock() {
     });
     return [`${formattedStartMonth}`, `${formattedStartTime} `];
   };
- const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
- useEffect(() => {
-   async function fetchEvents() {
-     const eventsData = await get3Events();
-     setEvents(eventsData || []);
-   }
-   fetchEvents();
- }, []);
+  useEffect(() => {
+    async function fetchEvents() {
+      const eventsData = await get3Events();
+      setEvents(eventsData || []);
+    }
+    fetchEvents();
+  }, []);
   return (
     <div className=" flex flex-col items-center wrapper  lg:flex-row gap-1 lg:gap-0   ">
       <div className="h-10 pl-2 lg:wrapper  items-center lg:items-start w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-20 lg:flex-col flex gap-5  blueGradient py-8 text-white relative ">
@@ -64,7 +64,7 @@ export default function EventsBlock() {
                 key={i}
                 href={"/events"}
                 className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full md:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8    `}>
-                <h1 className="title text-lg truncate max-w-xl md:text-xl lg:tracking-wide font-semibold   ">
+                <h1 className="title text-lg truncate overflow-ellipsis max-w-xl md:text-xl lg:tracking-wide font-semibold    ">
                   {event.title}
                 </h1>
                 <p className="desc  text-sm md:text-lg text-gray-500  line-clamp-3 max-w-xl ">

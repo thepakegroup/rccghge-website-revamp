@@ -49,3 +49,30 @@ export const get3Events = async () => {
     return;
   }
 };
+
+// SERVICE TIMES
+export type ServiceTime = {
+  id: number;
+  service_name: string;
+  service_description: string;
+  service_period: string;
+  image_url: string;
+  created_at: string;
+  updated_at: string;
+};
+export const getServiceTimes = async (): Promise<ServiceTime[] | undefined> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/service-times`,
+      { ...onThisDay }
+    );
+    if (!res.ok) {
+      return;
+    }
+    const serviceTimesData = await res.json();
+
+    return serviceTimesData.message.reverse();
+  } catch (error) {
+    return;
+  }
+};
