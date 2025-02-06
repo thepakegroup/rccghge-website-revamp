@@ -1,18 +1,27 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Logo from "../Logo";
 import { Button } from "../ui/button";
-import {
-
-  subscribeSermon,
-} from "@/app/utils/actions";
+import { subscribeSermon } from "@/app/utils/actions";
 import { toast } from "sonner";
 import FooterInputButton from "./FooterInputButton";
 import Link from "next/link";
-import { get3Events, getServiceTimes } from "@/app/utils/api-request";
+import { Event, get3Events, getServiceTimes, ServiceTime } from "@/app/utils/api-request";
 
-export default async function Footer() {
-  const events = await get3Events();
-  const serviceTimes = await getServiceTimes();
+export default function Footer() {
+  const [events, setEvents] = useState<Event[] | undefined>();
+  const [serviceTimes, setServiceTimes] = useState<ServiceTime[] | undefined>();
+
+  useEffect(() => {
+    async function fetchData() {
+      const eventsData = await get3Events();
+      const serviceTimesData = await getServiceTimes();
+      setEvents(eventsData);
+      setServiceTimes(serviceTimesData);
+    }
+    fetchData();
+  }, []);
+
   function formatDate(startDate: Date, endDate: Date) {
     // Get month abbreviation (e.g., JAN)
     const monthAbbreviation = startDate
@@ -38,7 +47,7 @@ export default async function Footer() {
     const ampm = startDate.getHours() >= 12 ? "pm" : "am";
 
     // Construct the formatted date string
-    const monthFormat = `${monthAbbreviation}${dayOfMonth}`;
+    const monthFormat = `${monthAbbreviation} ${dayOfMonth}`;
     const rangeFormat = `${startMonth} ${dayOfMonth} @ ${startHour}:${startMin} ${ampm} - ${endMonth} ${endHour}:${endMin} ${ampm}`;
 
     return { monthFormat, rangeFormat };
