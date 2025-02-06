@@ -1,12 +1,12 @@
-import { get3Events } from "@/app/utils/actions";
+"use client";
+import { Event, get3Events } from "@/app/utils/api-request";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { FaCaretDown, FaCaretRight } from "react-icons/fa";
-import { FaCalendar } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import { FaCaretRight } from "react-icons/fa";
 
-export default async function EventsBlock() {
+export default function EventsBlock() {
   const formattedDateRange = (startDate: Date, endDate: Date) => {
     const formattedStartMonth = startDate.toLocaleDateString("en-US", {
       month: "short",
@@ -22,7 +22,15 @@ export default async function EventsBlock() {
     });
     return [`${formattedStartMonth}`, `${formattedStartTime} `];
   };
-  const events = await get3Events();
+ const [events, setEvents] = useState<Event[]>([]);
+
+ useEffect(() => {
+   async function fetchEvents() {
+     const eventsData = await get3Events();
+     setEvents(eventsData || []);
+   }
+   fetchEvents();
+ }, []);
   return (
     <div className=" flex flex-col items-center wrapper  lg:flex-row gap-1 lg:gap-0   ">
       <div className="h-10 pl-2 lg:wrapper  items-center lg:items-start w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-20 lg:flex-col flex gap-5  blueGradient py-8 text-white relative ">
