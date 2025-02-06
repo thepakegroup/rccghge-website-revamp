@@ -1,4 +1,5 @@
-import { getHeroContent, getServiceTimes } from "@/app/utils/actions";
+"use client"
+import { useEffect, useState } from "react";
 import ImageFill from "@/lib/components/ImageFill";
 import {
   MotionDiv,
@@ -10,32 +11,30 @@ import LearnMoreBtn from "./LearnMoreBtn";
 import TitleBorderTop from "./TitleBorderTop";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 import { Skeleton } from "./ui/skeleton";
+import { getServiceTimes, ServiceTime } from "@/app/utils/api-request";
 
-export default async function ServiceTimes() {
-  const serviceTimes = await getServiceTimes();
+export default function ServiceTimes() {
+  const [serviceTimes, setServiceTimes] = useState<ServiceTime[] | undefined>();
+
+  useEffect(() => {
+    async function fetchServiceTimes() {
+      const data = await getServiceTimes();
+      setServiceTimes(data);
+    }
+    fetchServiceTimes();
+  }, []);
 
   return (
-    <div className="flex items-center  wrapper  md:gap-8 ">
-      {/* image */}
-      {/* <div className="hidden md:w-2/5 md:h-[480px] relative  lg:block">
-        {imgArr ? (
-          <ImageFill src={imgArr[0]} className="" />
-        ) : (
-          <Skeleton className=" w-full h-full" />
-        )}
-      </div> */}
-
-      <div className=" w-full h-full  flex flex-col gap-5">
-        {/* title */}
+    <div className="flex items-center wrapper md:gap-8">
+      <div className="w-full h-full flex flex-col gap-5">
         <TitleBorderTop title={"Our Service Times"} />
-        {/* card */}
         <ScrollArea className="w-full">
           <MotionDiv
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-            className=" card-container w-full h-72 md:h-80 mb-3  flex item-center gap-5">
+            className="card-container w-full h-72 md:h-80 mb-3 flex item-center gap-5">
             {serviceTimes?.map((service, i) => {
               const [startTime, startAmPm, endTime, endAmPm] =
                 service.service_period.split(" ");
@@ -46,10 +45,10 @@ export default async function ServiceTimes() {
                   key={i}
                   className="card"
                   href="/service">
-                  <div className=" absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
+                  <div className="absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
                     {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
                   </div>
-                  <div className="image relative h-1/2 ">
+                  <div className="image relative h-1/2">
                     <ImageFill
                       src={
                         service.image_url || "/images/service-component-img.png"
@@ -58,12 +57,12 @@ export default async function ServiceTimes() {
                     />
                   </div>
 
-                  <div className="card-content py-2 px-1 h-1/2 ">
-                    <p className="card-title font-bold capitalize ">
+                  <div className="card-content py-2 px-1 h-1/2">
+                    <p className="card-title font-bold capitalize">
                       {service.service_name}
                     </p>
                     <div
-                      className="desc text-sm line-clamp-4 sm:text-[15px] "
+                      className="desc text-sm line-clamp-4 sm:text-[15px]"
                       dangerouslySetInnerHTML={{
                         __html: service?.service_description,
                       }}
