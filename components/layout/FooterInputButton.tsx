@@ -2,28 +2,41 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { useFormStatus } from "react-dom";
+import { Loader2, CheckCircle2 } from "lucide-react";
 
 export default function FooterInputButton() {
   const { pending } = useFormStatus();
   const [requestSent, setRequestSent] = useState(false);
 
+  // Handle sent state transition
   useEffect(() => {
-    if (!pending) {
-      // Pending state has changed to false, indicating request completion
+    if (!pending && requestSent) {
+      const timer = setTimeout(() => setRequestSent(false), 3000);
+      return () => clearTimeout(timer);
+    }
+    if (!pending && !requestSent) {
       setRequestSent(true);
-      // Reset the request sent status after some time (optional)
-      const timeout = setTimeout(() => {
-        setRequestSent(false);
-      }, 3000); // Change the time as per your requirement
-      return () => clearTimeout(timeout);
     }
   }, [pending]);
+
   return (
     <Button
       type="submit"
       disabled={pending}
-      className=" rounded-l-none h-full ">
-      {pending ? "Sending..." : requestSent ? "Sent ✔" : "Send"}
+      className="rounded-l-none h-full gap-2 transition-all">
+      {pending ? (
+        <>
+          <Loader2 className="h-4 w-4 animate-spin" />
+          Sending...
+        </>
+      ) : requestSent ? (
+        <>
+          <CheckCircle2 className="h-4 w-4" />
+          Sent
+        </>
+      ) : (
+        "Send"
+      )}
     </Button>
   );
 }
