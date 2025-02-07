@@ -26,6 +26,7 @@ export async function generateStaticParams() {
     slug: data?.slug,
   }));
 }
+
 export default async function page({
   params,
 }: {
