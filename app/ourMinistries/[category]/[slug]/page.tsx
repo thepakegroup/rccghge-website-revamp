@@ -26,6 +26,8 @@ export async function generateStaticParams() {
     slug: data?.slug,
   }));
 }
+  console.log("🚀 ~ middleware ~ pathname:", "pathname");
+
 export default async function page({
   params,
 }: {

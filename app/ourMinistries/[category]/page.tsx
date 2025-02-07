@@ -64,12 +64,7 @@ export default async function Page({
           className="ministries-card-container mx-auto  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start max-w-screen-xl ">
           {ministriesData?.map((item, i) => {
             let route = `/ourMinistries/${params.category}/${item.slug}`;
-            if (item.name === `Men’s Ministry`) {
-              route = EXTERNAL_MINISTRY_URLS.Men;
-            } else if (item.name === `Young Adult Ministry`) { 
-              route = route = EXTERNAL_MINISTRY_URLS.Youth;
-
-            }
+    
 
             return (
               <Link
