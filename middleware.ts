@@ -5,7 +5,7 @@ import { EXTERNAL_MINISTRY_URLS } from "@/lib/constants";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  console.log("🚀 ~ middleware ~ pathname:", "pathname");
+  
   if (pathname.startsWith("/ourMinistries/Ministry/men-s-ministry")) {
     return NextResponse.redirect(EXTERNAL_MINISTRY_URLS.Men);
   } else if (
