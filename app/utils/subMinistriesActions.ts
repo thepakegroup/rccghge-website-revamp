@@ -1,7 +1,7 @@
 "use server";
 
-import { HeroContent } from "./actions";
 import { onThisDay } from "@/lib/constants";
+import { HeroContent } from "./api-request";
 // Get youth ministry
 export type Team = {
   id: number;
