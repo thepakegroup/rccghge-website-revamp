@@ -2,8 +2,8 @@ import ImageFill from "@/lib/components/ImageFill";
 import React from "react";
 import TitleBorderTop from "../TitleBorderTop";
 import LearnMoreBtn from "../LearnMoreBtn";
-import { getHeroContent, getOurMissions } from "@/app/utils/actions";
 import { Skeleton } from "../ui/skeleton";
+import { getHeroContent, getOurMissions } from "@/app/utils/api-request";
 
 export default async function OurMission() {
   const missions = await getOurMissions();

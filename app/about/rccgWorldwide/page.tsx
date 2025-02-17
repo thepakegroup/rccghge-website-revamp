@@ -1,5 +1,5 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getPageWriteUp } from "@/app/utils/actions";
+import { getPageWriteUp } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { Metadata } from "next";

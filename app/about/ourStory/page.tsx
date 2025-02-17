@@ -1,5 +1,5 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getPageDisplaySetting, getPageWriteUp } from "@/app/utils/actions";
+import { getPageDisplaySetting, getPageWriteUp } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";

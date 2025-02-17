@@ -1,30 +1,29 @@
 // a reuseable hero component,
 // contains image,title, desc?
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
-import {
-  AnimatePresence,
-  MotionImage,
-  m,
-  useAnimate,
-} from "@/lib/framer-motion/motionComponents";
-import { useEffect, useState } from "react";
-import { type HeroContent, getHeroContent } from "@/app/utils/actions";
+
+import { getHeroContent, type HeroContent } from "@/app/utils/api-request";
 import {
   getChildrenHeroContent,
   getDramaHeroContent,
   getMinistryHeroContent,
   getMinistryHeroContent2,
   getPrayerHeroContent,
-  getTeenageContent,
   getTeenageHeroContent,
   getWellnessHeroContent,
-  getYoungAdultsHeroContent,
+  getYoungAdultsHeroContent
 } from "@/app/utils/subMinistriesActions";
+import {
+  AnimatePresence,
+  MotionImage,
+  m,
+  useAnimate,
+} from "@/lib/framer-motion/motionComponents";
 import { MoveLeft, MoveRight } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -666,7 +665,9 @@ export default function Hero() {
       className="h-[400px]   lg:h-[60vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
       <AnimatePresence mode="popLayout">
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black opacity-[0.35] z-10"></div>
+        <div
+          key="dark-overlay"
+          className="absolute inset-0 bg-black opacity-[0.35] z-10"></div>
         {imageUrl && (
           <MotionImage
             key={imageUrl}

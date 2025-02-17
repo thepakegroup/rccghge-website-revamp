@@ -34,6 +34,7 @@ import { sendRideRequest } from "@/app/utils/actions";
 import { toast } from "sonner";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "@/app/give/page";
+import SubmitButton from "@/components/SubmitButton";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -221,9 +222,8 @@ export default function Page() {
                 </FormItem>
               )}
             />
-            <Button size="lg" className=" w-3/12 md:text-lg">
-              Submit
-            </Button>
+                       <SubmitButton form={form} />
+
           </form>
         </Form>
       </MotionDiv>

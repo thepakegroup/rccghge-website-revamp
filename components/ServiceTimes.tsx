@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react";
+import { getServiceTimes, ServiceTime } from "@/app/utils/api-request";
 import ImageFill from "@/lib/components/ImageFill";
 import {
   MotionDiv,
@@ -7,11 +7,10 @@ import {
   staggerContainer,
   staggerFromRightItem,
 } from "@/lib/framer-motion/motionComponents";
+import { useEffect, useState } from "react";
 import LearnMoreBtn from "./LearnMoreBtn";
 import TitleBorderTop from "./TitleBorderTop";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
-import { Skeleton } from "./ui/skeleton";
-import { getServiceTimes, ServiceTime } from "@/app/utils/api-request";
 
 export default function ServiceTimes() {
   const [serviceTimes, setServiceTimes] = useState<ServiceTime[] | undefined>();

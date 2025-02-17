@@ -1,5 +1,5 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getSingleLeader } from "@/app/utils/actions";
+import { getSingleLeader } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";

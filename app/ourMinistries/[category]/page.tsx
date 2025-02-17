@@ -1,13 +1,11 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getMinistries } from "@/app/utils/actions";
+import { getMinistries } from "@/app/utils/api-request";
 import ImageFill from "@/lib/components/ImageFill";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { Metadata } from "next";
 import Link from "next/link";
 import { FaUsers } from "react-icons/fa6";
 import MinistriesTab from "./components/MinistriesTab";
-import ScrollToTop from "@/lib/components/ScrollToTop";
-import { EXTERNAL_MINISTRY_URLS } from "@/lib/constants";
 type Param = {
   params: { category: string };
 };

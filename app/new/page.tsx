@@ -8,7 +8,7 @@ import {
 import { Metadata } from "next";
 import { FaCaretLeft } from "react-icons/fa6";
 import { slideInFromBottom } from "../give/page";
-import { getPageDisplaySetting } from "../utils/actions";
+import { getPageDisplaySetting } from "../utils/api-request";
 
 export const metadata: Metadata = {
   title: "New Here?",
