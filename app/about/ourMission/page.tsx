@@ -1,5 +1,5 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getOurMissions, getPageDisplaySetting } from "@/app/utils/actions";
+import { getOurMissions, getPageDisplaySetting } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
 import {

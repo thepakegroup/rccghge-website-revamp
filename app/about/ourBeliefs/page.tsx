@@ -1,5 +1,5 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getOurBeliefs } from "@/app/utils/actions";
+import { getOurBeliefs } from "@/app/utils/api-request";
 import {
   Accordion,
   AccordionContent,

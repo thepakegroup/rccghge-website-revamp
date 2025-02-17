@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { subscribeSermon } from "@/app/utils/actions";
+import { Event, get3Events, getServiceTimes, ServiceTime } from "@/app/utils/api-request";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import Logo from "../Logo";
 import { Button } from "../ui/button";
-import { subscribeSermon } from "@/app/utils/actions";
-import { toast } from "sonner";
 import FooterInputButton from "./FooterInputButton";
-import Link from "next/link";
-import { Event, get3Events, getServiceTimes, ServiceTime } from "@/app/utils/api-request";
 
 export default function Footer() {
   const [events, setEvents] = useState<Event[] | undefined>();

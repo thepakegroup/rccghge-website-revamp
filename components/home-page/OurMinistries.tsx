@@ -1,4 +1,3 @@
-import { getMinistries } from "@/app/utils/actions";
 import ImageFill from "@/lib/components/ImageFill";
 import {
   MotionDiv,
@@ -11,6 +10,7 @@ import LearnMoreBtn from "../LearnMoreBtn";
 import TitleBorderTop from "../TitleBorderTop";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { Truncate } from "@/lib/components/truncate";
+import { getMinistries } from "@/app/utils/api-request";
 
 export default async function OurMinistries() {
   // Ministry

@@ -1,4 +1,3 @@
-import { getHeroContent } from "@/app/utils/actions";
 import ImageFill from "@/lib/components/ImageFill";
 import LearnMoreBtn from "../LearnMoreBtn";
 import { Skeleton } from "../ui/skeleton";

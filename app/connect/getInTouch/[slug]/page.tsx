@@ -5,6 +5,7 @@ import {
   sendQuestion,
   subscribeNewsletter,
 } from "@/app/utils/actions";
+import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -549,9 +550,8 @@ const Connect = () => {
             )}
           />
           <div className="btn-container flex items-center gap-5">
-            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg ">
-              Submit
-            </Button>
+                       <SubmitButton form={form} />
+
             <Button
               asChild
               size="lg"
@@ -686,9 +686,8 @@ const Question = () => {
             )}
           />
           <div className="btn-container flex items-center gap-5">
-            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg">
-              Submit
-            </Button>
+                       <SubmitButton form={form} />
+           
             <Button
               asChild
               size="lg"
@@ -794,9 +793,8 @@ const Newsletter = () => {
           />
 
           <div className="btn-container flex items-center gap-5">
-            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg">
-              Submit
-            </Button>
+                      <SubmitButton form={form} />
+
             <Button
               asChild
               size="lg"

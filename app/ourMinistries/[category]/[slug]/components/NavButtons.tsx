@@ -1,5 +1,5 @@
 "use client";
-import { getMinistriesSlug } from "@/app/utils/actions";
+import { getMinistriesSlug } from "@/app/utils/api-request";
 import { MoveLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

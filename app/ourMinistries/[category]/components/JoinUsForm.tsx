@@ -1,5 +1,7 @@
 "use client";
-import { getMinistriesSlug, joinUs } from "@/app/utils/actions";
+import { joinUs } from "@/app/utils/actions";
+import { getMinistriesSlug } from "@/app/utils/api-request";
+import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -22,7 +24,6 @@ export default function JoinUsForm({
 }: {
   params: { category: string; slug: string };
 }) {
-
   const formSchema = z.object({
     name: z.string().min(2, {
       message: "name must be at least 2 characters.",
@@ -48,32 +49,30 @@ export default function JoinUsForm({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues,
   });
-    const [slugArr, setSlugArr] = useState<{ slug: string; name: string }[]>();
-    const [currentIndex, setCurrentIndex] = useState<number>(-1);
-
-    useEffect(() => {
-      (async () => {
-        try {
-          const res = await getMinistriesSlug(params.category);
-          setSlugArr(res);
-          // Find the index of the current slug in slugAr
-          const index = res?.findIndex((item) => item?.slug === params?.slug);
-          setCurrentIndex(index ?? -1);
-        } catch (error) {
-          if (error instanceof Error) console.log(error.message);
-        }
-      })();
-    }, [params.category, params.slug]);
-
-    useEffect(() => {
-      if (slugArr) {
-        form.setValue("ministry", slugArr[currentIndex]?.name);
+  const [slugArr, setSlugArr] = useState<{ slug: string; name: string }[]>();
+  const [currentIndex, setCurrentIndex] = useState<number>(-1);
+  // effect to get the slug /name pair array
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await getMinistriesSlug(params.category);
+        setSlugArr(res);
+        // Find the index of the current slug in slugAr
+        const index = res?.findIndex((item) => item?.slug === params?.slug);
+        setCurrentIndex(index ?? -1);
+      } catch (error) {
+        if (error instanceof Error) console.log(error.message);
       }
-    }, [slugArr, currentIndex, form]);
+    })();
+  }, [params.category, params.slug]);
+
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = await joinUs(values);
+      const res = await joinUs({
+        ...values,
+        ministry: slugArr?.[currentIndex]?.name ?? "",
+      });
 
       toast.success(res);
       form.reset();
@@ -155,10 +154,7 @@ export default function JoinUsForm({
                 </FormItem>
               )}
             />
-
-            <Button size="lg" className=" active:scale-90 w-3/12 md:text-lg">
-              Submit
-            </Button>
+            <SubmitButton form={form} />
           </form>
         </Form>
       </div>

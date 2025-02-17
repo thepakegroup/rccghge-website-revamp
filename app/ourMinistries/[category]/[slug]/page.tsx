@@ -1,4 +1,4 @@
-import { Ministry, getMinistriesSlug } from "@/app/utils/actions";
+import { Ministry } from "@/app/utils/api-request";
 import {
   getChildrenContent,
   getDramaContent,
@@ -9,11 +9,11 @@ import {
   getWellnessContent,
 } from "@/app/utils/subMinistriesActions";
 import ImageCarousel from "@/lib/components/ImageCarousel";
+import { apiUrl } from "@/lib/constants";
 import Image from "next/image";
 import React from "react";
 import Title from "./components/Title";
 import YoungAdults from "./components/YoungAdults";
-import { apiUrl } from "@/lib/constants";
 export async function generateStaticParams() {
   
   const res = await fetch(
