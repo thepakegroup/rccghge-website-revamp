@@ -6,12 +6,11 @@ import GiveCTA from "@/components/home-page/GiveCTA";
 import OurMinistries from "@/components/home-page/OurMinistries";
 import OurMission from "@/components/home-page/OurMission";
 import PrayerRequestForm from "@/components/home-page/PrayerRequestForm";
+import { MotionMain } from "@/lib/framer-motion/motionComponents";
 import Image from "next/image";
 import Link from "next/link";
-import { getPageDisplaySetting } from "./utils/actions";
-import ScrollToTop from "@/lib/components/ScrollToTop";
-import { MotionMain } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "./give/page";
+import { getPageDisplaySetting } from "./utils/api-request";
 export default async function Home() {
   const displaySetting = await getPageDisplaySetting("landing_page");
   let our_service_times,

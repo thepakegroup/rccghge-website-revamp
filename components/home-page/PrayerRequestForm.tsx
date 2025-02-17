@@ -19,6 +19,7 @@ import { Textarea } from "../ui/textarea";
 import ImageFill from "@/lib/components/ImageFill";
 import { sendPrayerRequest } from "@/app/utils/actions";
 import { toast } from "sonner";
+import SubmitButton from "../SubmitButton";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -146,7 +147,8 @@ export default function PrayerRequestForm() {
                 </FormItem>
               )}
             />
-            <Button>Submit</Button>
+                       <SubmitButton form={form} />
+
           </form>
         </Form>
       </div>
