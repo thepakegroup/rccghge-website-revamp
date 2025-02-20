@@ -14,21 +14,21 @@ type PrayerRequest = {
 };
 export const sendPrayerRequest = async (data: PrayerRequest) => {
   try {
-    // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   }
-    // );
-    // if (!res.ok) {
-    //   throw new Error("Failed to send prayer request. Please try again.");
-    // }
-    // const prayerRequestData = await res.json();
-    return" prayerRequestData.message";
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to send prayer request. Please try again.");
+    }
+    const prayerRequestData = await res.json();
+    return prayerRequestData.message;
   } catch (error) {
     console.error("Error sending prayer request:", error);
     throw new Error("Failed to send prayer request. Please try again.");
