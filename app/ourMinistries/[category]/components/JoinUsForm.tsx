@@ -33,6 +33,7 @@ export default function JoinUsForm({
       .refine((value) => /^\+?\d{1,3}[- ]?\d{3,}-?\d{4,}$/i.test(value), {
         message: "Please enter a valid phone number.",
       }),
+    address:z.string().min(5,{message:"Please enter a valid address"}),
     email: z.string().email({
       message: "Please enter a valid email address.",
     }),
@@ -42,6 +43,7 @@ export default function JoinUsForm({
     name: "",
     mobile: "",
     email: "",
+    address: "",
     ministry: "",
   };
   // 1. Define your form.
@@ -137,6 +139,22 @@ export default function JoinUsForm({
                   </FormLabel>
                   <FormControl>
                     <Input className="md:text-lg" type="email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* address */}
+            <FormField
+              control={form.control}
+              name="address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="md:text-lg">
+                    Address: <span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Input className="md:text-lg"  {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
