@@ -85,7 +85,7 @@ export default function Footer() {
               name="email"
               id="email"
             />
-            <Button className=" rounded-l-none ">Send</Button>
+            <FooterInputButton />
           </form>
           <small>Copyright RCCG: Heaven&apos;s Glorious Embassy</small>
         </div>
