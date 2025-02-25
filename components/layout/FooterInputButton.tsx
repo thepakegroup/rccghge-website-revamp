@@ -8,13 +8,17 @@ export default function FooterInputButton() {
   const { pending } = useFormStatus();
   const [requestSent, setRequestSent] = useState(false);
 
-  // Handle sent state transition
+  // Reset requestSent after 3 seconds
   useEffect(() => {
-    if (!pending && requestSent) {
+    if (requestSent) {
       const timer = setTimeout(() => setRequestSent(false), 3000);
       return () => clearTimeout(timer);
     }
-    if (!pending && !requestSent) {
+  }, [requestSent]);
+
+  // This ensures the "Sent" message appears only after submission completes
+  useEffect(() => {
+    if (!pending && requestSent === false) {
       setRequestSent(true);
     }
   }, [pending]);
