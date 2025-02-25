@@ -6,7 +6,7 @@ const isSunday = currentDate.getDay() === 0;
 export const onThisDay = { next: { revalidate: 0 } };
 
 export const EXTERNAL_MINISTRY_URLS = {
-  Youth: "https://rccghge-youth-ministry.vercel.app/",
+  Youth: "https://rccghge.youth.kouakoudomagni.com",
   Men: "https://rccghge.men.kouakoudomagni.com",
 };
 
