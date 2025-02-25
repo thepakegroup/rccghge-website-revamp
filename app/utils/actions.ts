@@ -137,22 +137,23 @@ export const subscribeSermon = async (formData: FormData) => {
   const email = formData.get("email") as string;
   if (!email) return;
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/sermon-subscription`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      }
-    );
+    // const res = await fetch(
+    //   `${process.env.NEXT_PUBLIC_STAGING_API_URL}/sermon-subscription`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ email }),
+    //   }
+    // );
 
-    if (!res.ok) {
-      throw new Error("Subscription Failed. Please try again.");
-    }
-    await res.json();
-
+    // if (!res.ok) {
+    //   throw new Error("Subscription Failed. Please try again.");
+    // }
+    // await res.json();
+await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API delay
+return "Subscribed successfully";
     return "Subscribed successfully";
   } catch (error) {
     console.error("subscription failed:", error);
