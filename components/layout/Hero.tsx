@@ -665,9 +665,9 @@ export default function Hero() {
       className="h-[400px]   lg:h-[60vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
       <AnimatePresence mode="popLayout">
         {/* Dark overlay */}
-        {/* <div
+        <div
           key="dark-overlay"
-          className="absolute inset-0 bg-black opacity-[0.35] z-10"></div> */}
+          className="absolute inset-0 bg-black opacity-[0.35] z-10"></div>
         {imageUrl && (
           <MotionImage
             key={imageUrl}

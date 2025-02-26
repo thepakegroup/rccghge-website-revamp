@@ -68,7 +68,7 @@ export default function Footer() {
             <p className="">{`3800 E. Parker Road`}</p>
             <p className="">{`Plano TX 75074`}</p>
             <p className="phonNo">{`972-509-5300`}</p>
-            <p className="email">{`info@rccghge.org events@rccghge.org`}</p>
+            <p className="email">{`info@rccghge.org`}</p>
           </div>
         </div>
         {/* email input */}

@@ -46,6 +46,9 @@ export default function ServiceTimes() {
                   href="/service">
                   <div className="absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
                     {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
+                    {/* {service.service_name.toLowerCase() === "holy ghost service"
+                      ? `${startTime} ${startAmPm} & Every First Friday of the Month`
+                      : `${startTime} ${startAmPm} - ${endTime} ${endAmPm}`} */}
                   </div>
                   <div className="image relative h-1/2">
                     <ImageFill
