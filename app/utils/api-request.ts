@@ -99,7 +99,16 @@ export const getHeroContent = async (
 };
 
 export const getPageDisplaySetting = async (
-  pageName: string
+  pageName:
+    | "landing_page"
+    | "our_mission"
+    | "give"
+    | "iam_new_page"
+    | "our_ministries"
+    | "our_story"
+    | "our_pastors"
+    | "our_beliefs"
+    | "rccghge_worldwide"|'prayer_request'
 ): Promise<DisplaySetting | undefined> => {
   try {
     const res = await fetch(

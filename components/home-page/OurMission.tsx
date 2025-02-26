@@ -1,13 +1,24 @@
+import {
+  getHeroContent,
+  getOurMissions,
+  getPageDisplaySetting,
+} from "@/app/utils/api-request";
 import ImageFill from "@/lib/components/ImageFill";
-import React from "react";
-import TitleBorderTop from "../TitleBorderTop";
+import EventsBlock from "../EventsBlock";
 import LearnMoreBtn from "../LearnMoreBtn";
+import ServiceTimes from "../ServiceTimes";
+import TitleBorderTop from "../TitleBorderTop";
 import { Skeleton } from "../ui/skeleton";
-import { getHeroContent, getOurMissions } from "@/app/utils/api-request";
 
 export default async function OurMission() {
   const missions = await getOurMissions();
   const imgArr = await getHeroContent("our_mission").then((res) => res?.ImgArr);
+  const displaySetting = await getPageDisplaySetting("our_mission");
+  let our_service_times, our_upcoming_events;
+
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
 
   return (
     <div className="flex sm:gap-10 lg:gap-14 ">
@@ -35,6 +46,9 @@ export default async function OurMission() {
         {/* learn More button */}
         <LearnMoreBtn url="/about/ourMission" className="w-32" />
       </div>
+
+      {our_service_times === "true" && <ServiceTimes />}
+      {our_upcoming_events === "true" && <EventsBlock />}
     </div>
   );
 }
