@@ -13,12 +13,7 @@ import { Skeleton } from "../ui/skeleton";
 export default async function OurMission() {
   const missions = await getOurMissions();
   const imgArr = await getHeroContent("our_mission").then((res) => res?.ImgArr);
-  const displaySetting = await getPageDisplaySetting("our_mission");
-  let our_service_times, our_upcoming_events;
 
-  if (displaySetting) {
-    ({ our_service_times, our_upcoming_events } = displaySetting);
-  }
 
   return (
     <div className="flex sm:gap-10 lg:gap-14 ">
@@ -46,9 +41,6 @@ export default async function OurMission() {
         {/* learn More button */}
         <LearnMoreBtn url="/about/ourMission" className="w-32" />
       </div>
-
-      {our_service_times === "true" && <ServiceTimes />}
-      {our_upcoming_events === "true" && <EventsBlock />}
     </div>
   );
 }
