@@ -1,12 +1,12 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getPageWriteUp } from "@/app/utils/api-request";
+import { getPageDisplaySetting, getPageWriteUp } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import ServiceTimes from "@/components/ServiceTimes";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { Metadata } from "next";
 
 import Link from "next/link";
 
-import React from "react";
 export const metadata: Metadata = {
   title: "RCCG Worldwide",
   description:
@@ -14,6 +14,13 @@ export const metadata: Metadata = {
 };
 export default async function page() {
   const writeUp = await getPageWriteUp("rccg-worldwide");
+  const displaySetting = await getPageDisplaySetting("rccghge_worldwide");
+  let our_service_times, our_upcoming_events;
+
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
+
 
   return (
     <div className=" page-spacing relative ">
@@ -75,7 +82,15 @@ export default async function page() {
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen></iframe>
       </div>
-      <EventsBlock />
+     {our_service_times === "true" && (
+               <div>
+                 <ServiceTimes />
+               </div>
+             )}
+     
+             {/* events block */}
+     
+             {our_upcoming_events === "true" && <EventsBlock />}
     </div>
   );
 }

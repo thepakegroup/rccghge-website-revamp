@@ -45,15 +45,12 @@ export default async function page() {
           })}
         </MotionDiv>
         {/* service time component */}
-
         {our_service_times === "true" && (
           <div>
             <ServiceTimes />
           </div>
         )}
-
         {/* events block */}
-
         {our_upcoming_events === "true" && <EventsBlock />}
       </div>
     </SlideInFromBottom>

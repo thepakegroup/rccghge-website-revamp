@@ -3,12 +3,14 @@ import { Separator } from "@/components/ui/separator";
 import ImageFill from "@/lib/components/ImageFill";
 import {
   MotionDiv,
-  SlideInFromBottom
+  SlideInFromBottom,
 } from "@/lib/framer-motion/motionComponents";
 import { Metadata } from "next";
 import { FaCaretLeft } from "react-icons/fa6";
 import { slideInFromBottom } from "../give/page";
 import { getPageDisplaySetting } from "../utils/api-request";
+import EventsBlock from "@/components/EventsBlock";
+import ServiceTimes from "@/components/ServiceTimes";
 
 export const metadata: Metadata = {
   title: "New Here?",
@@ -18,6 +20,11 @@ export default async function page() {
   const displaySetting = await getPageDisplaySetting("iam_new_page");
   const sundayService = displaySetting?.sundayServices;
   const wednesdayBibleStudy = displaySetting?.wednesdayBibleStudy;
+  let our_service_times, our_upcoming_events;
+
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
 
   // extracts the video id
   function extractYouTubeVideoID(url: string) {
@@ -33,7 +40,7 @@ export default async function page() {
   if (displaySetting !== undefined)
     return (
       <SlideInFromBottom>
-        <div className="page-spacing  relative sm:text-lg [&_a]:underline [&_a]:text-[#1ca8db]">
+        <div className="page-spacing  relative sm:text-lg ">
           <div className="">
             <MotionDiv
               variants={slideInFromBottom(1, 0.5)}
@@ -67,7 +74,7 @@ export default async function page() {
             </div>
           </div>
           {/* sunday service */}
-          <div className="space-y-8 sm:space-y-12  max-w-screen-2xl ">
+          <div className="space-y-8 sm:space-y-12  max-w-screen-2xl [&_a]:underline [&_a]:text-[#1ca8db] ">
             <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl sm:w-[300px] lg:w-[500px] relative">
               Sunday Services
               <FaCaretLeft className="absolute -right-16 md:text-[9rem] text-9xl" />
@@ -99,7 +106,6 @@ export default async function page() {
                       __html: sundayService?.hgeSeedsText!,
                     }}
                   />
-                 
                 </div>
               </div>
               <Separator orientation="vertical" />
@@ -126,11 +132,11 @@ export default async function page() {
             </div>
           </div>
           {/* image */}
-          <div className=" h-80 lg:h-96 relative ">
+          <div className=" h-80 lg:h-96 relative [&_a]:underline [&_a]:text-[#1ca8db] ">
             <ImageFill src={sundayService?.pageImage!} />
           </div>
           {/* Wednesday bible study*/}
-          <div className="space-y-8 sm:space-y-12  max-w-screen ">
+          <div className="space-y-8 sm:space-y-12  max-w-screen [&_a]:underline [&_a]:text-[#1ca8db] ">
             <h1 className="blueGradient  px-6 lg:px-12 text-white font-semibold flex items-center text-xl h-14 md:h-20 w-[280px] md:text-3xl sm:w-[400px] lg:w-[500px] relative">
               Wednesday Bible Study
               <FaCaretLeft className="absolute -right-16 md:text-[9rem] text-9xl" />
@@ -176,9 +182,7 @@ export default async function page() {
           </div>
           {/* plan your visit */}
           <div className="space-y-8 sm:space-y-12 wrapper max-w-screen-2xl ">
-            <h1 className=" = text-3xl sm:text-4xl -mb-2">
-              Plan your visit
-            </h1>
+            <h1 className=" = text-3xl sm:text-4xl -mb-2">Plan your visit</h1>
             {/* lg:grid-cols-[1fr_auto_1fr] */}
             <div className="grid grid-cols-1 gap-8 w-full mx-auto  lg:grid-cols-[1fr_auto_1fr]">
               <div className="space-y-2 md:space-y-5  ">
@@ -200,6 +204,14 @@ export default async function page() {
               </div> */}
             </div>
           </div>
+          {/* service time component */}
+          {our_service_times === "true" && (
+            <div>
+              <ServiceTimes />
+            </div>
+          )}
+          {/* events block */}
+          {our_upcoming_events === "true" && <EventsBlock />}
         </div>
       </SlideInFromBottom>
     );

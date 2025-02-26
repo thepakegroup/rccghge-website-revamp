@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getAllLeaders, getPageDisplaySetting } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
@@ -88,6 +89,7 @@ export default async function OurPastors() {
         </MotionDiv>
 
         {our_upcoming_events === "true" && <EventsBlock />}
+        {our_service_times === "true" && <ServiceTimes />}
       </div>
     </div>
   );
