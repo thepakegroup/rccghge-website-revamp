@@ -3,8 +3,10 @@ import EventsBlock from "@/components/EventsBlock";
 import PageForm from "./PageForm";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "@/app/give/page";
+import { getPageDisplaySetting } from "@/app/utils/api-request";
 
-export default function page() {
+export default async function page() {
+
   return (
     <div className=" page-spacing ">
       <MotionDiv

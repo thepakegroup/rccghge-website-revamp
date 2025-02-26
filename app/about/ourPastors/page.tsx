@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getAllLeaders, getPageDisplaySetting } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
@@ -40,7 +41,7 @@ export default async function OurPastors() {
                 {/* image section */}
                 <div className="flex flex-col items-center justify-center gap-2 ">
                   <div className="lg:hidden">
-                    <TitleBorderTop title={`Our ${leader.position}`} />
+                    <TitleBorderTop title={`${leader.position}`} />
                   </div>
                   <div className="image-container relative max-w-sm py-8 lg:py-0 flex items-center justify-center ">
                     {/* image */}
@@ -88,6 +89,7 @@ export default async function OurPastors() {
         </MotionDiv>
 
         {our_upcoming_events === "true" && <EventsBlock />}
+        {our_service_times === "true" && <ServiceTimes />}
       </div>
     </div>
   );

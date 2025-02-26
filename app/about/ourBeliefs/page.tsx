@@ -1,5 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
-import { getOurBeliefs } from "@/app/utils/api-request";
+import { getOurBeliefs, getPageDisplaySetting } from "@/app/utils/api-request";
+import EventsBlock from "@/components/EventsBlock";
+import ServiceTimes from "@/components/ServiceTimes";
 import {
   Accordion,
   AccordionContent,
@@ -15,6 +17,12 @@ export const metadata: Metadata = {
 };
 export default async function page() {
   const beliefs = await getOurBeliefs();
+  const displaySetting = await getPageDisplaySetting("our_beliefs");
+  let our_service_times, our_upcoming_events;
+
+  if (displaySetting) {
+    ({ our_service_times, our_upcoming_events } = displaySetting);
+  }
 
   return (
     <div className=" page-spacing ">
@@ -56,6 +64,12 @@ export default async function page() {
             );
           })}
         </Accordion>
+        {our_service_times === "true" && (
+          <div>
+            <ServiceTimes />
+          </div>
+        )}
+        {our_upcoming_events === "true" && <EventsBlock />}
       </MotionDiv>
     </div>
   );
