@@ -40,7 +40,7 @@ export default async function OurPastors() {
                 {/* image section */}
                 <div className="flex flex-col items-center justify-center gap-2 ">
                   <div className="lg:hidden">
-                    <TitleBorderTop title={`Our ${leader.position}`} />
+                    <TitleBorderTop title={`${leader.position}`} />
                   </div>
                   <div className="image-container relative max-w-sm py-8 lg:py-0 flex items-center justify-center ">
                     {/* image */}
