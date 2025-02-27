@@ -1,0 +1,17 @@
+services:
+  rccghge_website_prod:
+    container_name: rccghge_website_prod
+    image: rccghge-website-prod:latest
+    build:
+      context: .
+    ports:
+      - "3003:3000"
+    env_file:
+      - .env
+    networks:
+      - rccghge_website_prod_network
+    restart: always
+
+networks:
+  rccghge_website_prod_network:
+    name: rccghge_website_prod_network
