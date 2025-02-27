@@ -70,7 +70,7 @@ export default async function OurPastors() {
                 {/* text-section */}
                 <div className="space-y-2 md:space-y-5  lg:text-left lg:w-3/5">
                   <div className="hidden lg:block">
-                    <TitleBorderTop title={`Our ${leader.position}`} />
+                    <TitleBorderTop title={`${leader.position}`} />
                   </div>
                   <p className="text-justify">{leader.short_description}</p>
 

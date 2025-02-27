@@ -47,7 +47,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           {/* image section */}
           <div className="flex flex-col items-center justify-center lg:justify-start gap-2 ">
             <div className="lg:hidden">
-              <TitleBorderTop title={`Our ${leader?.position}`}  />
+              <TitleBorderTop title={`${leader?.position}`}  />
             </div>
             <div className="image-container relative max-w-sm pt-8 lg:pt-0 flex flex-col items-center justify-center gap-2 md:gap-5 ">
               {/* image */}
@@ -76,7 +76,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           {/* text-section */}
           <div className="space-y-3 lg:text-left  lg:w-3/5">
             <div className="hidden lg:block">
-              <TitleBorderTop title={`Our ${leader?.position}`} />
+              <TitleBorderTop title={`${leader?.position}`} />
             </div>
             {/* text body */}
             <p className="text-justify" dangerouslySetInnerHTML={{ __html: highlightedDesc }} />
