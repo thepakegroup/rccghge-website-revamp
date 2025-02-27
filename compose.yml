@@ -6,8 +6,8 @@ services:
       context: .
     ports:
       - "3002:3000"
-    #env_file:
-    #  - .env
+    env_file:
+      - .env
     networks:
       - rccghge_website_network
     restart: always
