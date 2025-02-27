@@ -64,7 +64,7 @@ export default async function OurPastors() {
                     </div>
                   </div>
                   <h1 className="lg:hidden font-semibold text-lg sm:text-xl -mt-4">
-                    {leader.name}
+                    {`${leader.name}, ${leader.qualification}`}
                   </h1>
                 </div>
                 {/* text-section */}
