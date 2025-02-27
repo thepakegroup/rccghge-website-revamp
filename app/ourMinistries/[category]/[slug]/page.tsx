@@ -209,6 +209,7 @@ export default async function page({
         title: res?.settings?.settings?.body?.title,
         body: res?.settings?.settings?.body?.content,
       }));
+      console.log("🚀 ~ content=awaitgetTeenageContent ~ content:", content)
       imgArr = await getTeenageContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
       });
