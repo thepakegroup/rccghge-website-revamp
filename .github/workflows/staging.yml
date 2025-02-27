@@ -1,1 +1,24 @@
 
+name: RCCGHGE MAIN STAGING WEBSITE Deployment
+on:
+  push:
+    branches:
+      - staging-dev
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to DROPLET
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/apps/rccghge-website-dev
+            git pull origin staging-dev --no-ff
+            docker compose up --build --force-recreate -d
