@@ -75,7 +75,7 @@ export default async function OurPastors() {
                   <p className="text-justify">{leader.short_description}</p>
 
                   <h1 className="hidden lg:block font-semibold text-lg sm:text-xl">
-                    {leader.name}
+                    {`${leader.name}, ${leader.qualification}`}
                   </h1>
                   <Link
                     href={`/about/ourPastors/${leader.slug}`}
