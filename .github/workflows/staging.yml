@@ -21,4 +21,4 @@ jobs:
           script: |
             cd /opt/apps/rccghge-website-dev
             git pull origin staging-dev --no-ff
-            docker compose up --build --force-recreate -d
+            docker compose -f compose-dev.yml up --build --force-recreate -d
