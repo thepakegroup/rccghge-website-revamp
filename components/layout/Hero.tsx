@@ -11,7 +11,7 @@ import {
   getPrayerHeroContent,
   getTeenageHeroContent,
   getWellnessHeroContent,
-  getYoungAdultsHeroContent
+  getYoungAdultsHeroContent,
 } from "@/app/utils/subMinistriesActions";
 import {
   AnimatePresence,
@@ -143,7 +143,6 @@ export default function Hero() {
         // CONNECT PAGE
         else if (pathname.endsWith("/connect/prayerRequests")) {
           heroContent = await getHeroContent("prayer_request");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -548,18 +547,16 @@ export default function Hero() {
             />
           );
         }
-          // YOUNG ADULT
-        else if (pathname.endsWith("/young-adult-ministry")) {        
+        // YOUNG ADULT
+        else if (pathname.endsWith("/young-adult-ministry")) {
           heroContent = await getYoungAdultsHeroContent();
-          console.log(
-            "🚀 ~ fetchAndUpdateHeroContent ~ heroContent:",
-            heroContent?.ImgArr[0]
-          );
-          
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
-              <HeroContent title={heroContent?.title} desc={heroContent?.desc} />
+              <HeroContent
+                title={heroContent?.title}
+                desc={heroContent?.desc}
+              />
             );
           }
         } else {
@@ -569,6 +566,7 @@ export default function Hero() {
     };
     fetchAndUpdateHeroContent();
   }, [pathname, animate, homeHeroContent?.ImgArr.length, currentImageIndex]);
+
 
   // Effect to change the image every 7 seconds
   useEffect(() => {
@@ -685,9 +683,11 @@ export default function Hero() {
           />
         )}
         {/* </div> */}
-        <div className="z-10 content space-y-4 max-w-[800px] font-semibold">
-          {content}
-        </div>
+        {content && (
+          <div className="z-10 content space-y-4 max-w-[800px] font-semibold">
+            {content}
+          </div>
+        )}
       </AnimatePresence>
     </div>
   );

@@ -79,7 +79,7 @@ export const getHeroContent = async (
 
     if (!res.ok) {
       console.error(heroContent.data);
-      return;
+      return { title: "", desc: "", ImgArr: [] };
     }
     const imgArr = heroContent.data.slides.map((slide: Slide) => {
       return slide.image_url;
@@ -93,8 +93,7 @@ export const getHeroContent = async (
     };
   } catch (error) {
     console.error(error);
-
-    return;
+    return { title: "", desc: "", ImgArr: [] };
   }
 };
 
