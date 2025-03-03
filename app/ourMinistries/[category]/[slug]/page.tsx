@@ -39,7 +39,7 @@ export default async function page({
     case "young-adult-ministry":
       return (
         <>
-          <YoungAdults />
+          {/* <YoungAdults /> */}
         </>
       );
     case "elders-ministry":
