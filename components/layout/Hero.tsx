@@ -24,6 +24,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -535,7 +536,6 @@ export default function Hero() {
               );
             }
           }
-          ///////
         }
         // EVENTS
         else if (pathname.endsWith("/events")) {
@@ -656,10 +656,18 @@ export default function Hero() {
     );
   }
 
+
+              console.log(
+                `🚀 ~ Hero ~ ${pathname.startsWith("/about/ourPastors")}`
+              );
+
   return (
     <div
       ref={scope}
-      className="h-[400px]   lg:h-[60vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative">
+      className={cn(
+        "h-[400px]   lg:h-[60vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
+        pathname.startsWith("/about/ourPastors") && "lg:h-[100vh]"
+      )}>
       <AnimatePresence mode="popLayout">
         {/* Dark overlay */}
         {/* <div
@@ -678,7 +686,10 @@ export default function Hero() {
             sizes="100vw"
             priority
             quality={100}
-            className=" object-cover object-center "
+            className={cn(
+              " object-cover object-center ",
+              pathname.startsWith("/about/ourPastors") && " object-[50%_10%] "
+            )}
           />
         )}
         {/* </div> */}
