@@ -539,7 +539,7 @@ export default function Hero() {
         }
         // EVENTS
         else if (pathname.endsWith("/events")) {
-          setImageUrl("/images/hero-images/upcoming events.jpg");
+          setImageUrl("/images/hero-images/event-hero.webp");
           setContent(
             <HeroContent
               title="Our Upcoming Events"
@@ -566,7 +566,6 @@ export default function Hero() {
     };
     fetchAndUpdateHeroContent();
   }, [pathname, animate, homeHeroContent?.ImgArr.length, currentImageIndex]);
-
 
   // Effect to change the image every 7 seconds
   useEffect(() => {
