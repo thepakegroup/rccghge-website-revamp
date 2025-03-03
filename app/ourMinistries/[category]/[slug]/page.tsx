@@ -39,7 +39,7 @@ export default async function page({
     case "young-adult-ministry":
       return (
         <>
-          <YoungAdults />
+          {/* <YoungAdults /> */}
         </>
       );
     case "elders-ministry":
@@ -247,6 +247,7 @@ export default async function page({
         title: res?.settings?.settings?.body?.title || "",
         body: res?.settings?.settings?.body?.content||"",
       }));
+    
       imgArr = await getChildrenContent().then((res) => {
         return res?.carousel?.map((slide) => slide.item_url);
       });
