@@ -1,23 +1,31 @@
+# Install dependencies
 FROM node:20-alpine AS dependencies
 RUN apk add --no-cache libc6-compat
 WORKDIR /home/app
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --force && npm install sharp --force
+COPY package.json package-lock.json ./
+RUN npm install && npm install sharp
+
+# Build the application
 FROM node:20-alpine AS builder
 WORKDIR /home/app
 COPY --from=dependencies /home/app/node_modules ./node_modules
 COPY . .
-COPY .env /.env
-ENV NEXT_TELEMETRY_DISABLED 1
+COPY .env .env
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
+
+# Prepare runtime image
 FROM node:20-alpine AS runner
 WORKDIR /home/app
-ENV NEXT_TELEMETRY_DISABLED 1
-COPY --from=builder /home/app/.next/standalone ./.next/standalone
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Copy necessary build artifacts
+COPY --from=builder /home/app/.next/standalone /home/app/.next/standalone
 COPY --from=builder /home/app/public /home/app/public
 COPY --from=builder /home/app/.next/static /home/app/.next/static
-#COPY --from=builder /home/app/.env ./.env
+COPY --from=builder /home/app/.env /home/app/.env
+
+# Set up the server
 EXPOSE 3000
-ENV PORT 3000
-CMD ["node", "./.next/standalone/server.js"]
+ENV PORT=3000
+CMD ["node", "/home/app/.next/standalone/server.js"]
