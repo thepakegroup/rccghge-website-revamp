@@ -27,4 +27,4 @@ COPY --from=builder /home/app/.next/static /home/app/standalone/.next/static
 # Set up the server
 EXPOSE 3000
 ENV PORT=3000
-CMD ["node", "/home/app/.next/standalone/server.js"]
+CMD ["node", "./standalone/server.js"]
