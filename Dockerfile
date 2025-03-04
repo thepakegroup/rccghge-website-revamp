@@ -20,10 +20,9 @@ WORKDIR /home/app
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Copy necessary build artifacts
-COPY --from=builder /home/app/.next/standalone /home/app/.next/standalone
-COPY --from=builder /home/app/public /home/app/public
-COPY --from=builder /home/app/.next/static /home/app/.next/static
-COPY --from=builder /home/app/.env /home/app/.env
+COPY --from=builder /home/app/.next/standalone ./standalone
+COPY --from=builder /home/app/public /home/app/standalone/public
+COPY --from=builder /home/app/.next/static /home/app/standalone/.next/static
 
 # Set up the server
 EXPOSE 3000
