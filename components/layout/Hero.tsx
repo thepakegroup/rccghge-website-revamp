@@ -657,9 +657,7 @@ export default function Hero() {
   }
 
 
-              console.log(
-                `🚀 ~ Hero ~ ${pathname.startsWith("/about/ourPastors")}`
-              );
+
 
   return (
     <div
