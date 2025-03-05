@@ -174,7 +174,20 @@ const LgNav = () => {
       animate={{ opacity: 1 }}
       ref={scope}
       className="nav-container flex w-full justify-center items-center gap-10 font-semibold z xl:gap-20 uppercase">
-      {navLinks.map((link) => {
+      {navLinks.map((link,index) => {
+ 
+// if it is the home link at the first index display normal link
+        if (link.url === "/" && index === 0) {
+          return (
+            <Link
+              key={link.name}
+              href={link.url}
+              className={`nav-link hover:underline decoration-2 underline-offset-8 decoration-primary ${pathname === "/" && "underline"}`}>
+              {link.name}
+            </Link>
+          );
+        }
+        
         //if home page display logo
         if (link.url === "/") {
           return (
@@ -187,6 +200,10 @@ const LgNav = () => {
             </Link>
           );
         }
+
+        
+
+        
 
         //if the navlink has a subUrls property, display a dropdown
         if (link.subUrls) {

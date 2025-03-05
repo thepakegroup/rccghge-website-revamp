@@ -3,8 +3,8 @@ import ImageFill from "@/lib/components/ImageFill";
 import React from "react";
 import { Metadata } from "next";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
-import { slideInFromBottom } from "../give/page";
-import { getServiceTimes } from "../utils/api-request";
+import { slideInFromBottom } from "../../give/page";
+import { getServiceTimes } from "../../utils/api-request";
 export const metadata: Metadata = {
   title: "Service Times",
 };
@@ -41,7 +41,9 @@ export default async function page() {
                 />
                 <div
                   className=""
-                  dangerouslySetInnerHTML={{ __html: service.service_description }}
+                  dangerouslySetInnerHTML={{
+                    __html: service.service_description,
+                  }}
                 />
                 <div className="flex items-center gap-3">
                   {/* <p className="blueGradient px-8 rounded ">{service.day}</p> */}

@@ -1,5 +1,9 @@
 export const navLinks = [
   {
+    name: "Home",
+    url: "/",
+  },
+  {
     name: "About Us",
     url: "/about",
     subUrls: [
@@ -10,6 +14,10 @@ export const navLinks = [
       {
         name: "Our Pastors",
         url: "/ourPastors",
+      },
+      {
+        name: "Service",
+        url: "/service",
       },
       {
         name: "Our Mission",
@@ -29,10 +37,10 @@ export const navLinks = [
     name: "I'm New",
     url: "/new",
   },
-  {
-    name: "Service",
-    url: "/service",
-  },
+  // {
+  //   name: "Service",
+  //   url: "/service",
+  // },
   {
     name: "Home",
     url: "/",

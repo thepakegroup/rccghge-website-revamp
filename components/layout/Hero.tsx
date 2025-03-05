@@ -540,7 +540,7 @@ export default function Hero() {
         // EVENTS
         //TODO: change path to image folder
         else if (pathname.endsWith("/events")) {
-          setImageUrl("/images/event-hero.webp");
+          setImageUrl("/images/hero-images/event-card-hero.webp");
           setContent(
             <HeroContent
               title="Our Upcoming Events"
@@ -647,7 +647,7 @@ export default function Hero() {
                 sizes="100vw"
                 priority
                 quality={100}
-                className="object-cover object-center  "
+                className="object-fill object-center  "
               />
             )}
             {/* </div> */}
@@ -664,7 +664,7 @@ export default function Hero() {
     <div
       ref={scope}
       className={cn(
-        "h-[400px]   lg:h-[60vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
+        "h-[400px] lg:h-[70vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
         pathname.startsWith("/about/ourPastors") && "lg:h-[100vh]"
       )}>
       <AnimatePresence mode="popLayout">
@@ -682,11 +682,11 @@ export default function Hero() {
             src={imageUrl}
             alt="hero image"
             fill
-            sizes="100vw"
+            // sizes="100vw"
             priority
             quality={100}
             className={cn(
-              " object-cover object-center ",
+              " object-fill object-center ",
               pathname.startsWith("/about/ourPastors") && " object-[50%_10%] "
             )}
           />
