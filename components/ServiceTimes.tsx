@@ -33,7 +33,7 @@ export default function ServiceTimes() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-            className="card-container w-full h-72 md:h-80 mb-3 flex item-center gap-5">
+            className="card-container w-full h-72 md:h-80 mb-3 flex item-center gap-5 overflow-hidden">
             {serviceTimes?.map((service, i) => {
               const [startTime, startAmPm, endTime, endAmPm] =
                 service.service_period.split(" ");

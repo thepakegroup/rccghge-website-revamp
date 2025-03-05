@@ -74,3 +74,11 @@ export const navLinks = [
     ],
   },
 ];
+
+export const mobileNavLinks = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  ...navLinks.filter((link) => link.url !== "/"),
+];

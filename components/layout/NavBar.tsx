@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/app/data";
+import { mobileNavLinks, navLinks } from "@/app/data";
 import {
   HoverCard,
   HoverCardContent,
@@ -89,12 +89,12 @@ const MobileNav = () => {
             animate={{ x: 0, scaleX: 1 }}
             exit={{ x: 300, scaleX: 0 }}
             transition={{ duration: 0.5 }}
-            className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  font-medium  absolute bg-white top-16 right-0 h-screen  `}>
-            {navLinks.map((link, i) => {
+            className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  font-medium  absolute bg-white top-20  right-0 h-screen  `}>
+            {mobileNavLinks.map((link, i) => {
               //if home page display logo
-              if (link.url === "/") {
-                return <React.Fragment key={link.name}></React.Fragment>;
-              }
+              // if (link.url === "/") {
+              //   return <React.Fragment key={link.name}></React.Fragment>;
+              // }
 
               //if the navlink has a subUrls property, display a dropdown
               if (link.subUrls) {

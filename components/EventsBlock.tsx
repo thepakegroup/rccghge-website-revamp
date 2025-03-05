@@ -1,5 +1,6 @@
 "use client";
 import { Event, get3Events } from "@/app/utils/api-request";
+import { cn } from "@/lib/utils";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,7 +64,11 @@ export default function EventsBlock() {
               <Link
                 key={i}
                 href={"/events"}
-                className={`${i === 2 ? "hidden xl:flex" : i === 0 ? "hidden sm:flex" : "flex"}  text-left overflow-hidden w-full md:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8    `}>
+                className={cn(
+                  `flex  text-left overflow-hidden w-full md:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8 `,
+                  i === 2 && "hidden xl:flex",
+                  i === 1 && "hidden sm:flex"
+                )}>
                 <h1 className="title text-lg truncate overflow-ellipsis max-w-xl md:text-xl lg:tracking-wide font-semibold    ">
                   {event.title}
                 </h1>
