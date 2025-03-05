@@ -90,7 +90,7 @@ const MobileNav = () => {
             exit={{ x: 300, scaleX: 0 }}
             transition={{ duration: 0.5 }}
             className={`flex  lg:hidden  flex-col w-[min(70%,350px)] overflow-x-hidden  font-medium  absolute bg-white top-20  right-0 h-screen  `}>
-            {mobileNavLinks.map((link, i) => {
+            {mobileNavLinks?.map((link, i) => {
               //if home page display logo
               // if (link.url === "/") {
               //   return <React.Fragment key={link.name}></React.Fragment>;
@@ -139,7 +139,11 @@ const MobileNav = () => {
                   onClick={() => setIsOpen(false)}
                   key={link.name}
                   href={link.url}
-                  className={`nav-link hover:border-primary border-b-2 decoration-2 underline-offset-8  pl-4 py-3 w-full ${pathname.startsWith(link.url) && "border-primary"}`}>
+                  className={`nav-link hover:border-primary border-b-2 decoration-2 underline-offset-8  pl-4 py-3 w-full${
+                    link.url === "/"
+                      ? pathname === "/" && "border-primary"
+                      : pathname.startsWith(link.url) && "border-primary"
+                  }`}>
                   {link.name}
                 </Link>
               );
