@@ -139,7 +139,7 @@ const MobileNav = () => {
                   onClick={() => setIsOpen(false)}
                   key={link.name}
                   href={link.url}
-                  className={`nav-link hover:border-primary border-b-2 decoration-2 underline-offset-8  pl-4 py-3 w-full${
+                  className={`nav-link hover:border-primary border-b-2 decoration-2 underline-offset-8  pl-4 py-3 w-full ${
                     link.url === "/"
                       ? pathname === "/" && "border-primary"
                       : pathname.startsWith(link.url) && "border-primary"
