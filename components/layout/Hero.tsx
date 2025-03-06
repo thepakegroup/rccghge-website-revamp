@@ -603,18 +603,16 @@ export default function Hero() {
     return (
       <div
         ref={scope}
-        className="   text-center bg-blue-950 text-white  flex flex-col  items-center   relative">
+        className="   text-center  text-white  flex flex-col  items-center ">
         {/* header tilte */}
-        <div className=" bg-white h-fit   z-20 w-full overflow-hidden relative">
-          <div className=" -z-10 svg-background bg-primary/5  absolute inset-0 "></div>
-          {/* header content */}
-
-          <div className=" px-4 md:px-6 py-4 md:py-[50px] mx-auto content max-w-screen-lg">
+        <div className=" bg-white h-fit   z-20 w-full overflow-hidden ">
+          <div className=" px-1 md:px-6 py-4 md:py-[50px] text-center content max-w-screen-lg mx-auto">
             {content}
           </div>
         </div>
+
         {/* hero image */}
-        <div className="relative h-[450px] lg:h-[600px]   hero-image-container bg-blue-950  w-full z-10 ">
+        <div className="relative h-[300px] md:h-[600px]  bg-blue-950  w-full z-10 ">
           {/* Image Nav Btn */}
           <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2 z-30 text-white capitalize ">
             {/* Previous Button */}
@@ -647,7 +645,7 @@ export default function Hero() {
                 sizes="100vw"
                 priority
                 quality={100}
-                className="object-fill object-center  "
+                className=" object-center   "
               />
             )}
             {/* </div> */}
@@ -657,14 +655,11 @@ export default function Hero() {
     );
   }
 
-
-
-
   return (
     <div
       ref={scope}
       className={cn(
-        "h-[400px] lg:h-[70vh] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
+        "h-[250px] md:h-[500px] lg:h-[70vh]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
         pathname.startsWith("/about/ourPastors") && "lg:h-[100vh]"
       )}>
       <AnimatePresence mode="popLayout">
@@ -686,8 +681,9 @@ export default function Hero() {
             priority
             quality={100}
             className={cn(
-              " object-fill object-center ",
-              pathname.startsWith("/about/ourPastors") && " object-[50%_10%] "
+              " object-center  ",
+              pathname.startsWith("/about/ourPastors") &&
+                " object-[50%_10%] object-cover "
             )}
           />
         )}

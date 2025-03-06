@@ -38,7 +38,6 @@ export const metadata: Metadata = {
     "pastor",
     "prayer",
   ],
-  
 };
 
 export default function RootLayout({
@@ -55,9 +54,9 @@ export default function RootLayout({
           className="font-quicksand overflow-x-hidden max-w-screen-2xl mx-auto   w-full  ">
           <ReduxProvider>
             <NavBar />
-            <Hero />
-            {children}
-            <Footer />
+              <Hero />
+              {children}
+              <Footer />
             <Toaster richColors position="top-right" />
           </ReduxProvider>
         </body>

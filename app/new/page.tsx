@@ -46,7 +46,7 @@ export default async function page() {
               variants={slideInFromBottom(1, 0.5)}
               initial="hidden"
               animate="visible"
-              className="blueGradient w-[calc(100%-40px)] absolute -top-32 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-20 lg:text-lg z-20 max-w-screen-xl">
+              className="blueGradient w-[calc(100%-40px)] absolute -top-10 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-20 lg:text-lg z-20 max-w-screen-xl">
               <h1 className="text-lg sm:text-xl">
                 {displaySetting.subheading_text}
               </h1>
@@ -57,7 +57,7 @@ export default async function page() {
               />
             </MotionDiv>
             {/* video section */}
-            <div className="space-y-10 sm:space-y-12 mt-32 sm:mt-24 md:mt-16 lg:mt-10  ">
+            <div className="space-y-10 sm:space-y-12 mt-[200px] sm:mt-24 md:mt-16 lg:mt-10  ">
               <h1 className=" wrapper text-center  text-3xl sm:text-5xl ">
                 Welcome to Heaven’s Glorious Embassy
               </h1>

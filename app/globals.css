@@ -114,11 +114,6 @@
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
   }
 
-  @media screen and (max-width: 450px) {
-    .hero-image-container {
-      margin-top: -6rem !important;
-    }
-  }
 }
 input[type="color"],
 input[type="date"],
