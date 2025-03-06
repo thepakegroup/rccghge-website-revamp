@@ -43,7 +43,7 @@ export default function ServiceTimes() {
                   variants={staggerFromRightItem}
                   key={i}
                   className="card"
-                  href="/service">
+                  href="/about/service">
                   <div className="absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
                     {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
                     {/* {service.service_name.toLowerCase() === "holy ghost service"
@@ -77,7 +77,7 @@ export default function ServiceTimes() {
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
 
-        <LearnMoreBtn url="/service" />
+        <LearnMoreBtn url="/about/service" />
       </div>
     </div>
   );
