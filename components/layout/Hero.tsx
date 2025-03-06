@@ -659,7 +659,7 @@ export default function Hero() {
     <div
       ref={scope}
       className={cn(
-        "h-[250px] md:h-[500px] lg:h-[70vh]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
+        "h-[250px] md:h-[500px] lg:h-[70vh] max-h-[600px]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
         pathname.startsWith("/about/ourPastors") && "lg:h-[100vh]"
       )}>
       <AnimatePresence mode="popLayout">
