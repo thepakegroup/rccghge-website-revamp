@@ -1,5 +1,3 @@
-// a reuseable hero component,
-// contains image,title, desc?
 "use client";
 
 import { getHeroContent, type HeroContent } from "@/app/utils/api-request";
@@ -25,6 +23,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+
 export default function Hero() {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -33,11 +32,11 @@ export default function Hero() {
   const [content, setContent] = useState<JSX.Element>();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [homeHeroContent, setHeroContent] = useState<HeroContent | undefined>();
-  // setting the hero images and titles
+
+  // Setting the hero images and titles
   useEffect(() => {
     let heroContent: HeroContent | undefined;
 
-    // Fetch hero content and update image and content
     const fetchAndUpdateHeroContent = async () => {
       let i = 0;
       // HOME PAGE
@@ -52,7 +51,6 @@ export default function Hero() {
         // ABOUT PAGE
         if (pathname.startsWith("/about/ourPastors")) {
           heroContent = await getHeroContent("our_pastors");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -64,7 +62,6 @@ export default function Hero() {
           }
         } else if (pathname.endsWith("/about/ourMission")) {
           heroContent = await getHeroContent("our_mission");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -76,14 +73,12 @@ export default function Hero() {
           }
         } else if (pathname.endsWith("/about/ourStory")) {
           heroContent = await getHeroContent("our_story");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(<HeroContent title={heroContent?.title} />);
           }
         } else if (pathname.endsWith("/about/ourBeliefs")) {
           heroContent = await getHeroContent("our_beliefs");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -111,7 +106,6 @@ export default function Hero() {
         // NEW || SERVICE || GIVE PAGE
         else if (pathname.endsWith("/new")) {
           heroContent = await getHeroContent("iam_new_page");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -123,14 +117,12 @@ export default function Hero() {
           }
         } else if (pathname.endsWith("/service")) {
           heroContent = await getHeroContent("our_service");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(<HeroContent title={heroContent?.title} />);
           }
         } else if (pathname.endsWith("/give")) {
           heroContent = await getHeroContent("give");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -155,7 +147,6 @@ export default function Hero() {
           }
         } else if (pathname.endsWith("/connect/needARide")) {
           heroContent = await getHeroContent("need_a_ride");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -167,7 +158,6 @@ export default function Hero() {
           }
         } else if (pathname.startsWith("/connect/getInTouch")) {
           heroContent = await getHeroContent("get_in_touch");
-
           if (heroContent) {
             setImageUrl(heroContent?.ImgArr[0]);
             setContent(
@@ -191,7 +181,6 @@ export default function Hero() {
             );
           }
           // MINISTRIES SUB PAGES (Departments and Ministries)
-
           if (pathname.endsWith("/hge-children-ministry")) {
             heroContent = await getChildrenHeroContent();
             if (heroContent) {
@@ -206,7 +195,6 @@ export default function Hero() {
           }
           if (pathname.endsWith("/drama-ministry")) {
             heroContent = await getDramaHeroContent();
-
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -229,7 +217,6 @@ export default function Hero() {
               );
             }
           }
-
           if (pathname.endsWith("/hge-wellness-ministry")) {
             heroContent = await getWellnessHeroContent();
             if (heroContent) {
@@ -254,11 +241,9 @@ export default function Hero() {
               );
             }
           }
-          // same fetch
+          // Same fetch
           if (pathname.endsWith("/church-office")) {
-            heroContent = await getMinistryHeroContent2(
-              "church_office_ministry"
-            );
+            heroContent = await getMinistryHeroContent2("church_office_ministry");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -281,11 +266,9 @@ export default function Hero() {
               );
             }
           }
-          //same fetch
+          // Same fetch
           if (pathname.endsWith("/pre-marital-marriage-counselling")) {
-            heroContent = await getMinistryHeroContent(
-              "pre-marital-marriage-department"
-            );
+            heroContent = await getMinistryHeroContent("pre-marital-marriage-department");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -357,9 +340,7 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/media-publication-department")) {
-            heroContent = await getMinistryHeroContent(
-              "media_publication_ministry"
-            );
+            heroContent = await getMinistryHeroContent("media_publication_ministry");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -383,9 +364,7 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/public-relations-department")) {
-            heroContent = await getMinistryHeroContent(
-              "public_relations_ministry"
-            );
+            heroContent = await getMinistryHeroContent("public_relations_ministry");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -421,9 +400,7 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/music-ministry")) {
-            heroContent = await getMinistryHeroContent(
-              "embassy_choir_ministry"
-            );
+            heroContent = await getMinistryHeroContent("embassy_choir_ministry");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -435,9 +412,7 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/sunday-school-department")) {
-            heroContent = await getMinistryHeroContent(
-              "sunday_school_ministry"
-            );
+            heroContent = await getMinistryHeroContent("sunday_school_ministry");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -473,9 +448,7 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/transportation-department")) {
-            heroContent = await getMinistryHeroContent(
-              "transportation_department"
-            );
+            heroContent = await getMinistryHeroContent("transportation_department");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -499,9 +472,7 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/hospitality-care-department")) {
-            heroContent = await getMinistryHeroContent(
-              "hospitality_care_department"
-            );
+            heroContent = await getMinistryHeroContent("hospitality_care_department");
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -538,7 +509,6 @@ export default function Hero() {
           }
         }
         // EVENTS
-        //TODO: change path to image folder
         else if (pathname.endsWith("/events")) {
           setImageUrl("/images/event-hero.webp");
           setContent(
@@ -578,12 +548,11 @@ export default function Hero() {
           return newIndex;
         });
       }, 7000);
-
       return () => clearInterval(interval);
     }
   }, [pathname, homeHeroContent]);
 
-  //if on the home page return a different hero component
+  // Homepage Hero
   if (pathname === "/") {
     const PreviousImage = () => {
       if (homeHeroContent)
@@ -600,38 +569,37 @@ export default function Hero() {
           (prevIndex) => (prevIndex + 1) % homeHeroContent?.ImgArr.length
         );
     };
+
     return (
       <div
         ref={scope}
-        className="   text-center  text-white  flex flex-col  items-center ">
-        {/* header tilte */}
-        <div className=" bg-primary/5 h-fit   z-20 w-full overflow-hidden ">
-          <div className=" px-1 md:px-6 py-4 md:py-[50px] text-center content max-w-screen-lg mx-auto">
+        className="text-center text-white flex flex-col items-center"
+      >
+        {/* Header title */}
+        <div className="bg-primary/5 h-fit z-20 w-full overflow-hidden">
+          <div className="px-1 md:px-6 py-4 md:py-[50px] text-center content max-w-screen-lg mx-auto">
             {content}
           </div>
         </div>
 
-        {/* hero image */}
-        <div className="relative h-[250px] md:h-[600px]  bg-blue-950  w-full z-10 ">
-          {/* Image Nav Btn */}
-          <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2 z-30 text-white capitalize ">
-            {/* Previous Button */}
+        {/* Hero image */}
+        <div className="relative w-full h-[250px] md:h-[600px] bg-blue-950 z-10 overflow-hidden">
+          {/* Image Nav Buttons */}
+          <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2 z-30 text-white capitalize">
             <button
               onClick={PreviousImage}
-              className={`prev-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center group justify-center  `}>
-              <MoveLeft strokeWidth={3} size={30} className="shrink-0  " />
+              className="prev-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center"
+            >
+              <MoveLeft strokeWidth={3} size={30} className="shrink-0" />
             </button>
-
-            {/* Next Button */}
             <button
               onClick={NextImage}
-              className={`next-btn   size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center group `}>
-              <MoveRight strokeWidth={3} size={30} className="shrink-0  " />
+              className="next-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center"
+            >
+              <MoveRight strokeWidth={3} size={30} className="shrink-0" />
             </button>
           </div>
           <AnimatePresence mode="popLayout">
-            {/* Dark overlay */}
-
             {homepageImgUrl && (
               <MotionImage
                 key={homepageImgUrl}
@@ -645,28 +613,25 @@ export default function Hero() {
                 sizes="100vw"
                 priority
                 quality={100}
-                className=" object-center"
+                className="object-cover object-center" // Ensures no distortion
               />
             )}
-            {/* </div> */}
           </AnimatePresence>
         </div>
       </div>
     );
   }
 
+  // Other Pages Hero
   return (
     <div
       ref={scope}
       className={cn(
-        "h-[250px] md:h-[500px] lg:h-[70vh] max-h-[600px]  text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4  relative",
+        "w-full h-[250px] md:h-[500px] lg:h-[70vh] max-h-[600px] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4 relative overflow-hidden",
         pathname.startsWith("/about/ourPastors") && "lg:h-[100vh]"
-      )}>
+      )}
+    >
       <AnimatePresence mode="popLayout">
-        {/* Dark overlay */}
-        {/* <div
-          key="dark-overlay"
-          className="absolute inset-0 bg-black opacity-[0.35] z-10"></div> */}
         {imageUrl && (
           <MotionImage
             key={imageUrl}
@@ -677,17 +642,15 @@ export default function Hero() {
             src={imageUrl}
             alt="hero image"
             fill
-            // sizes="100vw"
+            sizes="100vw"
             priority
             quality={100}
             className={cn(
-              " object-center  ",
-              pathname.startsWith("/about/ourPastors") &&
-                " object-[50%_10%] object-cover "
+              "object-cover object-center", // Ensures no distortion
+              pathname.startsWith("/about/ourPastors") && "object-[50%_10%]"
             )}
           />
         )}
-        {/* </div> */}
         {content && (
           <div className="z-10 content space-y-4 max-w-[800px] font-semibold">
             {content}
@@ -698,7 +661,7 @@ export default function Hero() {
   );
 }
 
-// hero content for home page
+// Hero content for home page
 const Home = ({ title }: { title: string }) => {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -710,26 +673,26 @@ const Home = ({ title }: { title: string }) => {
       { duration: 0.8, delay: 1.2 }
     );
   }, [pathname, animate]);
-  const headingClasses = `[&_h1]:text-2xl  sm:[&_h1]:text-3xl md:[&_h1]:text-5xl [&_h2]:text-lg md:[&_h2]:text-2xl  `;
+  const headingClasses = `[&_h1]:text-2xl sm:[&_h1]:text-3xl md:[&_h1]:text-5xl [&_h2]:text-lg md:[&_h2]:text-2xl`;
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
       <div
         dangerouslySetInnerHTML={{ __html: title }}
-        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5  text-black ${headingClasses} [&_h1]:font-normal  `}
+        className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5 text-black ${headingClasses} [&_h1]:font-normal`}
       />
-
       <div className="desc mt-5 md:mt-[30px]">
         <Button
-          className="lg:text-lg desc active:scale-95 text-white  "
-          asChild>
-          <Link href="/about/ourStory"> Learn about HGE </Link>
+          className="lg:text-lg desc active:scale-95 text-white"
+          asChild
+        >
+          <Link href="/about/ourStory">Learn about HGE</Link>
         </Button>
       </div>
     </m.div>
   );
 };
 
-// hero content for other pages
+// Hero content for other pages
 const HeroContent = ({ title, desc }: { title: string; desc?: string }) => {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
@@ -743,7 +706,7 @@ const HeroContent = ({ title, desc }: { title: string; desc?: string }) => {
   }, [pathname, animate]);
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope}>
-      <h1 className="title   text-3xl md:text-4xl lg:text-5xl !leading-relaxed  capitalize ">
+      <h1 className="title text-3xl md:text-4xl lg:text-5xl !leading-relaxed capitalize">
         {title}
       </h1>
       <div className="desc lg:text-lg text-[15px] px-5">{desc}</div>
