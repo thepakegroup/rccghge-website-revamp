@@ -612,7 +612,7 @@ export default function Hero() {
         </div>
 
         {/* hero image */}
-        <div className="relative h-[300px] md:h-[600px]  bg-blue-950  w-full z-10 ">
+        <div className="relative h-[250px] md:h-[600px]  bg-blue-950  w-full z-10 ">
           {/* Image Nav Btn */}
           <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2 z-30 text-white capitalize ">
             {/* Previous Button */}
@@ -645,7 +645,7 @@ export default function Hero() {
                 sizes="100vw"
                 priority
                 quality={100}
-                className=" object-center   "
+                className=" object-center"
               />
             )}
             {/* </div> */}
