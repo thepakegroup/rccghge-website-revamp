@@ -605,7 +605,7 @@ export default function Hero() {
         ref={scope}
         className="   text-center  text-white  flex flex-col  items-center ">
         {/* header tilte */}
-        <div className=" bg-white h-fit   z-20 w-full overflow-hidden ">
+        <div className=" bg-primary/5 h-fit   z-20 w-full overflow-hidden ">
           <div className=" px-1 md:px-6 py-4 md:py-[50px] text-center content max-w-screen-lg mx-auto">
             {content}
           </div>
