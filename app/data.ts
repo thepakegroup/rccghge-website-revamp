@@ -90,3 +90,24 @@ export const mobileNavLinks = [
   },
   ...navLinks.filter((link) => link.url !== "/"),
 ];
+
+export enum Routes {
+  HOME = "/",
+  ABOUT = "/about",
+  OUR_STORY = `${ABOUT}/ourStory`,
+  OUR_PASTORS = `${ABOUT}/ourPastors`,
+  SERVICE = `${ABOUT}/service`,
+  OUR_MISSION = `${ABOUT}/ourMission`,
+  OUR_BELIEFS = `${ABOUT}/ourBeliefs`,
+  RCCG_WORLDWIDE = `${ABOUT}/rccgWorldwide`,
+  NEW = "/new",
+  GIVE = "/give",
+  OUR_MINISTRIES = "/ourMinistries",
+  MINISTRY = `${OUR_MINISTRIES}/ministry`,
+  DEPARTMENT = `${OUR_MINISTRIES}/department`,
+  CONNECT = "/connect",
+  GET_IN_TOUCH = `${CONNECT}/getInTouch`,
+  PRAYER_REQUESTS = `${CONNECT}/prayerRequests`,
+  NEED_A_RIDE = `${CONNECT}/needARide`,
+
+}

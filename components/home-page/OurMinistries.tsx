@@ -22,7 +22,7 @@ export default async function OurMinistries() {
       {/* ministries card container */}
       <ScrollArea className="w-full ">
         <MotionDiv
-          variants={staggerContainer}
+        variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "0px 0px -200px 0px" }}

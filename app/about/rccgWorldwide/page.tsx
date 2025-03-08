@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getPageDisplaySetting, getPageWriteUp } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import ServiceTimes from "@/components/ServiceTimes";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { Metadata } from "next";
@@ -23,13 +24,13 @@ export default async function page() {
 
 
   return (
-    <div className=" page-spacing relative ">
+    <MaxWidthContainer className=" page-spacing relative ">
       <MotionDiv
         variants={slideInFromBottom(1, 0.5)}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md max-w-screen-xl">
+        className="z-20  bg-white absolute -top-5 mx-auto rounded-lg left-0 right-0 p-4 w-fit lg:text-lg shadow-md ">
         <ul className="flex items-center justify-center gap-10 text-primary text-sm md:text-base">
           <li>
             <Link href={"https://www.rccg.org/"} target="_blank">
@@ -58,7 +59,7 @@ export default async function page() {
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
         whileInView="visible"
-        className="space-y-5 wrapper !mt-10 mb-12 md:mb-20  max-w-screen-lg">
+        className="space-y-5 wrapper !mt-10 mb-12 md:mb-20  ">
         <h1
           className="font-semibold text-2xl sm:text-3xl capitalize
         ">
@@ -91,6 +92,6 @@ export default async function page() {
              {/* events block */}
      
              {our_upcoming_events === "true" && <EventsBlock />}
-    </div>
+    </MaxWidthContainer>
   );
 }

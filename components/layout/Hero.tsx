@@ -1,5 +1,6 @@
 "use client";
 
+import { Routes } from "@/app/data";
 import { getHeroContent, type HeroContent } from "@/app/utils/api-request";
 import {
   getChildrenHeroContent,
@@ -17,12 +18,12 @@ import {
   m,
   useAnimate,
 } from "@/lib/framer-motion/motionComponents";
+import { cn } from "@/lib/utils";
 import { MoveLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
 
 export default function Hero() {
   const pathname = usePathname();
@@ -243,7 +244,9 @@ export default function Hero() {
           }
           // Same fetch
           if (pathname.endsWith("/church-office")) {
-            heroContent = await getMinistryHeroContent2("church_office_ministry");
+            heroContent = await getMinistryHeroContent2(
+              "church_office_ministry"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -268,7 +271,9 @@ export default function Hero() {
           }
           // Same fetch
           if (pathname.endsWith("/pre-marital-marriage-counselling")) {
-            heroContent = await getMinistryHeroContent("pre-marital-marriage-department");
+            heroContent = await getMinistryHeroContent(
+              "pre-marital-marriage-department"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -340,7 +345,9 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/media-publication-department")) {
-            heroContent = await getMinistryHeroContent("media_publication_ministry");
+            heroContent = await getMinistryHeroContent(
+              "media_publication_ministry"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -364,7 +371,9 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/public-relations-department")) {
-            heroContent = await getMinistryHeroContent("public_relations_ministry");
+            heroContent = await getMinistryHeroContent(
+              "public_relations_ministry"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -400,7 +409,9 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/music-ministry")) {
-            heroContent = await getMinistryHeroContent("embassy_choir_ministry");
+            heroContent = await getMinistryHeroContent(
+              "embassy_choir_ministry"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -412,7 +423,9 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/sunday-school-department")) {
-            heroContent = await getMinistryHeroContent("sunday_school_ministry");
+            heroContent = await getMinistryHeroContent(
+              "sunday_school_ministry"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -448,7 +461,9 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/transportation-department")) {
-            heroContent = await getMinistryHeroContent("transportation_department");
+            heroContent = await getMinistryHeroContent(
+              "transportation_department"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -472,7 +487,9 @@ export default function Hero() {
             }
           }
           if (pathname.endsWith("/hospitality-care-department")) {
-            heroContent = await getMinistryHeroContent("hospitality_care_department");
+            heroContent = await getMinistryHeroContent(
+              "hospitality_care_department"
+            );
             if (heroContent) {
               setImageUrl(heroContent?.ImgArr[0]);
               setContent(
@@ -573,8 +590,7 @@ export default function Hero() {
     return (
       <div
         ref={scope}
-        className="text-center text-white flex flex-col items-center"
-      >
+        className="text-center text-white flex flex-col items-center">
         {/* Header title */}
         <div className="bg-primary/5 h-fit z-20 w-full overflow-hidden">
           <div className="px-1 md:px-6 py-4 md:py-[50px] text-center content max-w-screen-lg mx-auto">
@@ -583,21 +599,21 @@ export default function Hero() {
         </div>
 
         {/* Hero image */}
-        <div className="relative w-full h-[250px] md:h-[600px] bg-blue-950 z-10 overflow-hidden">
+        <div className="relative w-full h-[150px] md:h-[250px] lg:h-[300px] xl:h-[450px] [@media(min-width:2560px)]:h-[800px]  bg-primary/5 z-10 overflow-hidden ">
           {/* Image Nav Buttons */}
-          <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2 z-30 text-white capitalize">
-            <button
-              onClick={PreviousImage}
-              className="prev-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center"
-            >
-              <MoveLeft strokeWidth={3} size={30} className="shrink-0" />
-            </button>
-            <button
-              onClick={NextImage}
-              className="next-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center"
-            >
-              <MoveRight strokeWidth={3} size={30} className="shrink-0" />
-            </button>
+          <div className="max-w-screen-2xl mx-auto h-full  relative">
+            <div className="absolute w-full flex justify-between md:px-10 items-center h-16 top-1/2  z-30 text-white capitalize  ">
+              <button
+                onClick={PreviousImage}
+                className="prev-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center">
+                <MoveLeft strokeWidth={3} size={30} className="shrink-0" />
+              </button>
+              <button
+                onClick={NextImage}
+                className="next-btn size-14 md:size-16 bg-zinc-500/60 hover:bg-primary active:scale-90 rounded-full flex items-center justify-center">
+                <MoveRight strokeWidth={3} size={30} className="shrink-0" />
+              </button>
+            </div>
           </div>
           <AnimatePresence mode="popLayout">
             {homepageImgUrl && (
@@ -607,13 +623,12 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                src={homepageImgUrl}
+                src={"/images/image-2560x600.jpg"}
                 alt="hero image"
                 fill
-                sizes="100vw"
                 priority
                 quality={100}
-                className="object-cover object-center" // Ensures no distortion
+                className=" md:object-fill [@media(min-width:2560px)]:object-cover" // Ensures no distortion
               />
             )}
           </AnimatePresence>
@@ -627,10 +642,10 @@ export default function Hero() {
     <div
       ref={scope}
       className={cn(
-        "w-full h-[250px] md:h-[500px] lg:h-[70vh] max-h-[600px] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4 relative overflow-hidden",
-        pathname.startsWith("/about/ourPastors") && "lg:h-[100vh]"
-      )}
-    >
+        "w-full min-h-[150px]  md:h-[250px] lg:h-[300px] xl:h-[450px] [@media(min-width:2560px)]:h-[800px] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4 relative overflow-hidden",
+        pathname.endsWith("/about/ourPastors") && "lg:h-[100vh]",
+        pathname.endsWith(Routes.RCCG_WORLDWIDE) && "text-[#078c09]"
+      )}>
       <AnimatePresence mode="popLayout">
         {imageUrl && (
           <MotionImage
@@ -639,14 +654,14 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            src={imageUrl}
+            src={"/images/image-2560x600.jpg"}
             alt="hero image"
             fill
             sizes="100vw"
             priority
             quality={100}
             className={cn(
-              "object-cover object-center", // Ensures no distortion
+              "md:object-fill [@media(min-width:2560px)]:object-cover object-center", // Ensures no distortion
               pathname.startsWith("/about/ourPastors") && "object-[50%_10%]"
             )}
           />
@@ -681,10 +696,7 @@ const Home = ({ title }: { title: string }) => {
         className={`hero-title title space-y-1 md:space-y-2 lg:space-y-5 text-black ${headingClasses} [&_h1]:font-normal`}
       />
       <div className="desc mt-5 md:mt-[30px]">
-        <Button
-          className="lg:text-lg desc active:scale-95 text-white"
-          asChild
-        >
+        <Button className="lg:text-lg desc active:scale-95 text-white" asChild>
           <Link href="/about/ourStory">Learn about HGE</Link>
         </Button>
       </div>
@@ -709,7 +721,7 @@ const HeroContent = ({ title, desc }: { title: string; desc?: string }) => {
       <h1 className="title text-3xl md:text-4xl lg:text-5xl !leading-relaxed capitalize">
         {title}
       </h1>
-      <div className="desc lg:text-lg text-[15px] px-5">{desc}</div>
+      <div className="desc lg:text-lg text-sm ">{desc}</div>
     </m.div>
   );
 };

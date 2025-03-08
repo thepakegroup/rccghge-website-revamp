@@ -11,6 +11,7 @@ import { slideInFromBottom } from "../give/page";
 import { getPageDisplaySetting } from "../utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
 import ServiceTimes from "@/components/ServiceTimes";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 
 export const metadata: Metadata = {
   title: "New Here?",
@@ -40,13 +41,13 @@ export default async function page() {
   if (displaySetting !== undefined)
     return (
       <SlideInFromBottom>
-        <div className="page-spacing  relative sm:text-lg ">
+        <MaxWidthContainer className="page-spacing  relative sm:text-lg ">
           <div className="">
             <MotionDiv
               variants={slideInFromBottom(1, 0.5)}
               initial="hidden"
               animate="visible"
-              className="blueGradient w-[calc(100%-40px)] absolute -top-10 sm:-top-28 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-20 lg:text-lg z-20 max-w-screen-xl">
+              className="blueGradient w-[calc(100%-40px)] absolute -top-7 sm:-top-10 wrapper text-white rounded-lg left-0 right-0 p-5 lg:px-20 lg:text-lg z-20 max-w-screen-xl">
               <h1 className="text-lg sm:text-xl">
                 {displaySetting.subheading_text}
               </h1>
@@ -57,7 +58,7 @@ export default async function page() {
               />
             </MotionDiv>
             {/* video section */}
-            <div className="space-y-10 sm:space-y-12 mt-[200px] sm:mt-24 md:mt-16 lg:mt-10  ">
+            <div className="space-y-10 sm:space-y-12 mt-[250px] sm:mt-[160px]  lg:mt-[100px]  ">
               <h1 className=" wrapper text-center  text-3xl sm:text-5xl ">
                 Welcome to Heaven’s Glorious Embassy
               </h1>
@@ -212,7 +213,7 @@ export default async function page() {
           )}
           {/* events block */}
           {our_upcoming_events === "true" && <EventsBlock />}
-        </div>
+        </MaxWidthContainer>
       </SlideInFromBottom>
     );
 }

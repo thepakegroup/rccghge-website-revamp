@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "../../give/page";
 import { getServiceTimes } from "../../utils/api-request";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 export const metadata: Metadata = {
   title: "Service Times",
 };
@@ -12,7 +13,7 @@ export default async function page() {
   const serviceTimes = await getServiceTimes();
 
   return (
-    <div className="py-12  ">
+    <MaxWidthContainer className="py-12  ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
@@ -56,6 +57,6 @@ export default async function page() {
           );
         })}
       </MotionDiv>
-    </div>
+    </MaxWidthContainer>
   );
 }

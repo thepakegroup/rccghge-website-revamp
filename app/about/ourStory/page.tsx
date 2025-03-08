@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getPageDisplaySetting, getPageWriteUp } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
@@ -19,7 +20,8 @@ export default async function page() {
   }
 
   return (
-    <div className=" py-12  space-y-14 ">
+  
+    <MaxWidthContainer className=" py-12  space-y-14 ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
@@ -35,6 +37,6 @@ export default async function page() {
       </MotionDiv>
       {our_service_times === "true" && <ServiceTimes />}
       {our_upcoming_events === "true" && <EventsBlock />}
-    </div>
+    </MaxWidthContainer>
   );
 }

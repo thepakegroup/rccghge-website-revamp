@@ -51,12 +51,12 @@ export default function RootLayout({
       <FramerMotion>
         <body
           suppressHydrationWarning
-          className="font-quicksand overflow-x-hidden max-w-screen-2xl mx-auto   w-full  ">
+          className="font-quicksand overflow-x-hidden  mx-auto   w-full  ">
           <ReduxProvider>
             <NavBar />
-              <Hero />
-              {children}
-              <Footer />
+            <Hero />
+            {children}
+            <Footer />
             <Toaster richColors position="top-right" />
           </ReduxProvider>
         </body>

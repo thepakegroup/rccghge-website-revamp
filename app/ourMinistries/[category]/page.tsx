@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { FaUsers } from "react-icons/fa6";
 import MinistriesTab from "./components/MinistriesTab";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 type Param = {
   params: { category: string };
 };
@@ -50,7 +51,7 @@ export default async function Page({
   const ministriesData = await getMinistries(params.category);
 
   return (
-    <div className="page-spacing wrapper relative">
+    <MaxWidthContainer className="page-spacing wrapper relative">
       <div>
         {/* tabs */}
         <MinistriesTab />
@@ -59,7 +60,7 @@ export default async function Page({
           initial="hidden"
           whileInView={"visible"}
           viewport={{ once: true }}
-          className="ministries-card-container mx-auto  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start max-w-screen-xl ">
+          className="ministries-card-container mx-auto  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start  ">
           {ministriesData?.map((item, i) => {
             let route = `/ourMinistries/${params.category}/${item.slug}`;
     
@@ -70,7 +71,7 @@ export default async function Page({
                 href={route}
                 scroll={true}
                 className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-400 cursor-pointer translation-all duration-300 ">
-                <div className="    card-img relative h-[200px] rounded-t-md ">
+                <div className="card-img relative h-[200px] rounded-t-md ">
                   <ImageFill
                     src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
                     className="rounded-t-md group-hover:opacity-30  "
@@ -95,6 +96,6 @@ export default async function Page({
           })}
         </MotionDiv>
       </div>
-    </div>
+    </MaxWidthContainer>
   );
 }

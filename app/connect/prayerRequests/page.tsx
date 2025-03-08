@@ -1,14 +1,13 @@
 import EventsBlock from "@/components/EventsBlock";
 
-import PageForm from "./PageForm";
-import { MotionDiv } from "@/lib/framer-motion/motionComponents";
 import { slideInFromBottom } from "@/app/give/page";
-import { getPageDisplaySetting } from "@/app/utils/api-request";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
+import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import PageForm from "./PageForm";
 
 export default async function page() {
-
   return (
-    <div className=" page-spacing ">
+    <MaxWidthContainer className=" page-spacing ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
@@ -18,6 +17,6 @@ export default async function page() {
         <PageForm />
       </MotionDiv>
       <EventsBlock />
-    </div>
+    </MaxWidthContainer>
   );
 }

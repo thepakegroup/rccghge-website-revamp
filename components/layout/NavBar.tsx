@@ -15,7 +15,7 @@ import {
 import useIsActiveLink from "@/lib/hooks/useIsActiveLink";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars, FaChevronDown, FaChevronUp, FaX } from "react-icons/fa6";
 import Logo from "../Logo";
 import {
@@ -26,7 +26,7 @@ import {
 
 export default function NavBar() {
   return (
-    <nav className=" sticky w-full top-0 z-50   bg-white shadow-sm shadow-zinc-300 text-black">
+    <nav className=" sticky w-full top-0 z-50   mx-auto bg-white shadow-sm shadow-zinc-300 text-black">
       <div className="lg:hidden">
         <MobileNav />
       </div>
@@ -174,9 +174,8 @@ const LgNav = () => {
       animate={{ opacity: 1 }}
       ref={scope}
       className="nav-container flex w-full justify-center items-center gap-10 font-semibold z xl:gap-20 uppercase">
-      {navLinks.map((link,index) => {
- 
-// if it is the home link at the first index display normal link
+      {navLinks.map((link, index) => {
+        // if it is the home link at the first index display normal link
         if (link.url === "/" && index === 0) {
           return (
             <Link
@@ -187,7 +186,7 @@ const LgNav = () => {
             </Link>
           );
         }
-        
+
         //if home page display logo
         if (link.url === "/") {
           return (
@@ -200,10 +199,6 @@ const LgNav = () => {
             </Link>
           );
         }
-
-        
-
-        
 
         //if the navlink has a subUrls property, display a dropdown
         if (link.subUrls) {

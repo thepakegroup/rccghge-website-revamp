@@ -6,9 +6,10 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   
-  if (pathname.startsWith("/ourMinistries/Ministry/men-s-ministry")) {
-    return NextResponse.redirect(EXTERNAL_MINISTRY_URLS.Men);
-  } else if (
+  // if (pathname.startsWith("/ourMinistries/Ministry/men-s-ministry")) {
+  //   return NextResponse.redirect(EXTERNAL_MINISTRY_URLS.Men);
+  // } else
+    if (
     pathname.startsWith("/ourMinistries/Ministry/young-adult-ministry")
   ) {
     return NextResponse.redirect(EXTERNAL_MINISTRY_URLS.Youth);

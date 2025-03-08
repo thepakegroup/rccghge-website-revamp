@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getAllLeaders, getPageDisplaySetting } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import ServiceTimes from "@/components/ServiceTimes";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
@@ -26,7 +27,7 @@ export default async function OurPastors() {
 
   return (
     <div className="py-12 ">
-      <div className=" space-y-14    text-center">
+      <MaxWidthContainer className=" space-y-14    text-center">
         {/* lead pastor */}
         <MotionDiv
           variants={slideInFromBottom(1, 1)}
@@ -37,7 +38,7 @@ export default async function OurPastors() {
             return (
               <div
                 key={i}
-                className=" w-[96%] lg:w-[90%] space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center max-w-7xl  lg:gap-24  tracking-wide leading-relaxed   ">
+                className=" w-[96%] lg:w-[90%] space-y-8 lg:flex even:lg:flex-row-reverse mx-auto lg:item-center  lg:gap-24  tracking-wide leading-relaxed   ">
                 {/* image section */}
                 <div className="flex flex-col items-center justify-center gap-2 ">
                   <div className="lg:hidden">
@@ -90,7 +91,7 @@ export default async function OurPastors() {
 
         {our_upcoming_events === "true" && <EventsBlock />}
         {our_service_times === "true" && <ServiceTimes />}
-      </div>
+      </MaxWidthContainer>
     </div>
   );
 }

@@ -33,6 +33,7 @@ export default function EventsBlock() {
     fetchEvents();
   }, []);
   return (
+    
     <div className=" flex flex-col items-center wrapper  lg:flex-row gap-1 lg:gap-0   ">
       <div className="h-10 pl-2 lg:wrapper  items-center lg:items-start w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-20 lg:flex-col flex gap-5  blueGradient py-8 text-white relative ">
         <Image

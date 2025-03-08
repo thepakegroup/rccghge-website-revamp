@@ -11,6 +11,7 @@ import React from "react";
 import JoinUsForm from "../components/JoinUsForm";
 import NavButtons from "./components/NavButtons";
 import Title from "./components/Title";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 
 export default async function MinistriesLayout({
   params,
@@ -69,11 +70,11 @@ export default async function MinistriesLayout({
         </div>
 
         <LogoDivider />
-        <div
+        <MaxWidthContainer
           className={` ${params?.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 marker:text-black `}>
           <ScrollToTop />
           {children}
-        </div>
+        </MaxWidthContainer>
       </MotionDiv>
 
       <JoinUsForm params={params}  />

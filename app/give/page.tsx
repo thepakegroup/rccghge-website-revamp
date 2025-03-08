@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import ImageFill from "@/lib/components/ImageFill";
 import Link from "next/link";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 
 export const slideInFromBottom = (duration = 0.8, delay = 0) => {
   return {
@@ -19,13 +20,13 @@ export const slideInFromBottom = (duration = 0.8, delay = 0) => {
 };
 export default async function page() {
   return (
-    <div className="page-spacing relative">
+    <MaxWidthContainer className="page-spacing relative">
       <div>
         <MotionDiv
           variants={slideInFromBottom(1, 0.5)}
           initial="hidden"
           animate="visible"
-          className="z-20 blueGradient w-[calc(100%-40px)] absolute -top-10 sm:-top-20 wrapper text-white rounded-lg left-0 right-0 p-5 lg:text-lg max-w-screen-xl lg:px-20">
+          className="z-20 blueGradient w-[calc(100%-40px)] absolute -top-10 sm:-top-20 wrapper text-white rounded-lg left-0 right-0 p-5 lg:text-lg lg:px-20">
           <h1 className="text-lg sm:text-xl">Our belief about giving</h1>
           <p>
             The stewardship of our finances is a tremendous—and often
@@ -43,7 +44,7 @@ export default async function page() {
           initial="hidden"
           whileInView={"visible"}
           viewport={{ once: true }}
-          className=" wrapper card-container flex flex-col justify-center md:grid lg:grid-cols-3 md:grid-cols-2 max-w-screen-xl flex-wrap gap-10  mt-[250px] sm:mt-16 lg:mt-18 pb-10 ">
+          className=" wrapper card-container flex flex-col justify-center md:grid lg:grid-cols-3 md:grid-cols-2  flex-wrap gap-10  mt-[280px] sm:mt-[100px] lg:mt-18 pb-10 ">
           <div className=" h-80 card border rounded-lg divide-y px-2 w-full md:w-80 relative   ">
             {/* image */}
             <div className=" h-32  w-full  relative">
@@ -177,6 +178,6 @@ export default async function page() {
         </MotionDiv>
       </div>
       <EventsBlock />
-    </div>
+    </MaxWidthContainer>
   );
 }

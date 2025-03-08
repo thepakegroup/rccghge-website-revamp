@@ -1,5 +1,8 @@
 "use client";
-import EventsBlock from "@/components/EventsBlock";
+import { slideInFromBottom } from "@/app/give/page";
+import { sendRideRequest } from "@/app/utils/actions";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
+import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -16,13 +19,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Textarea } from "@/components/ui/textarea";
-import { addDays, format } from "date-fns";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -30,11 +26,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { sendRideRequest } from "@/app/utils/actions";
-import { toast } from "sonner";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
-import { slideInFromBottom } from "@/app/give/page";
-import SubmitButton from "@/components/SubmitButton";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { addDays, format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -85,7 +84,7 @@ export default function Page() {
     form.reset();
   }
   return (
-    <div className=" page-spacing ">
+    <MaxWidthContainer className=" page-spacing ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
@@ -222,11 +221,10 @@ export default function Page() {
                 </FormItem>
               )}
             />
-                       <SubmitButton form={form} />
-
+            <SubmitButton form={form} />
           </form>
         </Form>
       </MotionDiv>
-    </div>
+    </MaxWidthContainer>
   );
 }

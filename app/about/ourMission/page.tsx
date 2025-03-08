@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getOurMissions, getPageDisplaySetting } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import ServiceTimes from "@/components/ServiceTimes";
 import {
   MotionDiv,
@@ -23,7 +24,7 @@ export default async function page() {
 
   return (
     <SlideInFromBottom>
-      <div className=" page-spacing ">
+      <MaxWidthContainer className=" page-spacing ">
         <MotionDiv
           variants={slideInFromBottom(1, 0)}
           initial="hidden"
@@ -52,7 +53,7 @@ export default async function page() {
         )}
         {/* events block */}
         {our_upcoming_events === "true" && <EventsBlock />}
-      </div>
+      </MaxWidthContainer>
     </SlideInFromBottom>
   );
 }

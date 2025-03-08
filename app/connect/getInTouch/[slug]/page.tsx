@@ -5,6 +5,7 @@ import {
   sendQuestion,
   subscribeNewsletter,
 } from "@/app/utils/actions";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import SubmitButton from "@/components/SubmitButton";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -57,7 +58,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       break;
   }
   return (
-    <div className="py-12 ">
+    <MaxWidthContainer className="py-12 ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
@@ -66,7 +67,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         className="w-full flex justify-center ">
         {page}
       </MotionDiv>
-    </div>
+    </MaxWidthContainer>
   );
 }
 
@@ -550,7 +551,7 @@ const Connect = () => {
             )}
           />
           <div className="btn-container flex items-center gap-5">
-                       <SubmitButton form={form} />
+            <SubmitButton form={form} />
 
             <Button
               asChild
@@ -686,8 +687,8 @@ const Question = () => {
             )}
           />
           <div className="btn-container flex items-center gap-5">
-                       <SubmitButton form={form} />
-           
+            <SubmitButton form={form} />
+
             <Button
               asChild
               size="lg"
@@ -793,7 +794,7 @@ const Newsletter = () => {
           />
 
           <div className="btn-container flex items-center gap-5">
-                      <SubmitButton form={form} />
+            <SubmitButton form={form} />
 
             <Button
               asChild

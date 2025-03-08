@@ -1,6 +1,7 @@
 import { slideInFromBottom } from "@/app/give/page";
 import { getSingleLeader } from "@/app/utils/api-request";
 import EventsBlock from "@/components/EventsBlock";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import TitleBorderTop from "@/components/TitleBorderTop";
 import ImageFill from "@/lib/components/ImageFill";
 import { MotionDiv } from "@/lib/framer-motion/motionComponents";
@@ -36,13 +37,13 @@ export default async function page({ params }: { params: { slug: string } }) {
   );
 
   return (
-    <div className="page-spacing text-center">
+    <MaxWidthContainer className="page-spacing text-center">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden "
         whileInView={"visible"}
         viewport={{ once: true }}
-        className="relative space-y-2 lg:flex lg:flex-row-reverse lg:justify-between lg:item-center max-w-7xl lg:px-24 lg:gap-10 tracking-wide leading-relaxed   wrapper ">
+        className="relative space-y-2 lg:flex lg:flex-row-reverse lg:justify-between lg:item-center lg:px-24 lg:gap-10 tracking-wide leading-relaxed   wrapper ">
         {/* image section */}
         <div className="flex flex-col items-center justify-center lg:justify-start gap-2 ">
           <div className="lg:hidden">
@@ -91,6 +92,6 @@ export default async function page({ params }: { params: { slug: string } }) {
       </MotionDiv>
 
       <EventsBlock />
-    </div>
+    </MaxWidthContainer>
   );
 }
