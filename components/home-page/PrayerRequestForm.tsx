@@ -75,7 +75,7 @@ export default function PrayerRequestForm() {
     <div className="relative flex items-center  justify-center">
       {/* dark overlay */}
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-      <ImageFill src="/images/ourMission-img.png" />
+      <ImageFill src="/images/ourMission.jpg" />
       <div className="space-y-5 bg-white z-10 w-[min(90%,35rem)] wrapper py-10 my-5 sm:my-10 rounded-lg">
         <TitleBorderTop
           title="Have A Prayer Request?"
