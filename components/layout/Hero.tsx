@@ -623,7 +623,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                src={"/images/image-2560x600.jpg"}
+                src={homepageImgUrl}
                 alt="hero image"
                 fill
                 priority
@@ -654,7 +654,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            src={"/images/image-2560x600.jpg"}
+            src={imageUrl}
             alt="hero image"
             fill
             sizes="100vw"
