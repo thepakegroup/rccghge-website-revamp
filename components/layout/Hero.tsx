@@ -643,7 +643,7 @@ export default function Hero() {
       ref={scope}
       className={cn(
         "w-full min-h-[150px]  md:h-[250px] lg:h-[300px] xl:h-[450px] [@media(min-width:2560px)]:h-[800px] text-center text-white bg-blue-950 flex flex-col justify-center items-center px-4 relative overflow-hidden",
-        pathname.endsWith("/about/ourPastors") && "lg:h-[100vh]",
+        pathname.endsWith("/about/ourPastors") && "lg:h-[100vh] xl:h-[100vh]",
         pathname.endsWith(Routes.RCCG_WORLDWIDE) && "text-[#078c09]"
       )}>
       <AnimatePresence mode="popLayout">
@@ -661,8 +661,8 @@ export default function Hero() {
             priority
             quality={100}
             className={cn(
-              "md:object-fill [@media(min-width:2560px)]:object-cover object-center", // Ensures no distortion
-              pathname.startsWith("/about/ourPastors") && "object-[50%_10%]"
+              "[@media(min-width:2560px)]:object-cover object-center",
+              pathname.startsWith("/about/ourPastors") && "object-[50%_10%] object-cover"
             )}
           />
         )}
