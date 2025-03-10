@@ -9,16 +9,15 @@ import {
   getWellnessContent,
 } from "@/app/utils/subMinistriesActions";
 import ImageCarousel from "@/lib/components/ImageCarousel";
-import { apiUrl } from "@/lib/constants";
+
+import { API_URL } from "@/lib/constants";
 import Image from "next/image";
 import React from "react";
 import Title from "./components/Title";
-import YoungAdults from "./components/YoungAdults";
-import MaxWidthContainer from "@/components/MaxWidthContainer";
 export async function generateStaticParams() {
   
   const res = await fetch(
-    `${apiUrl}/groups?category=All&page=1`
+    `${API_URL}/groups?category=All&page=1`
   );
     
   const ministryData = await res.json();
