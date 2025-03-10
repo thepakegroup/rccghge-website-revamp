@@ -28,13 +28,14 @@ export default function EventsBlock() {
   useEffect(() => {
     async function fetchEvents() {
       const eventsData = await get3Events();
+      console.log("🚀 ~ fetchEvents ~ eventsData:", eventsData)
       setEvents(eventsData || []);
     }
     fetchEvents();
   }, []);
   return (
     
-    <div className=" flex flex-col items-center wrapper  lg:flex-row gap-1 lg:gap-0   ">
+    <div className=" flex flex-col items-center wrapper lg:px-0  lg:flex-row gap-1 lg:gap-0   ">
       <div className="h-10 pl-2 lg:wrapper  items-center lg:items-start w-full lg:h-80 lg:w-2/5 lg:max-w-80 lg:gap-2 lg:pt-20 lg:flex-col flex gap-5  blueGradient py-8 text-white relative ">
         <Image
           src="/images/calender_icon.png"
@@ -67,6 +68,7 @@ export default function EventsBlock() {
                 href={"/events"}
                 className={cn(
                   `flex  text-left overflow-hidden w-full md:px-5  items-start  flex-col gap-3 lg:gap-4 pb-8 lg:py-8 `,
+                  i === 3 && "hidden 2xl:flex",
                   i === 2 && "hidden xl:flex",
                   i === 1 && "hidden sm:flex"
                 )}>

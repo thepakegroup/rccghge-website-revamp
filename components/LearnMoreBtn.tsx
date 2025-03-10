@@ -15,11 +15,12 @@ export default function LearnMoreBtn({
   return (
     <Button
       className={cn(
-        " lg:text-lg w-32 hover:bg-orange-400 active:scale-95 capitalize",
-        className
+        ' w-32 bg-primary capitalize hover:bg-orange-400 active:scale-95 lg:text-lg',
+        className,
       )}
-      asChild>
-      <Link href={url}>{ text || "Learn More"} </Link>
+      asChild
+    >
+      <Link href={url}>{text || 'Learn More'} </Link>
     </Button>
   );
 }

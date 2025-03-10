@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import LearnMoreBtn from "./LearnMoreBtn";
 import TitleBorderTop from "./TitleBorderTop";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import MaxWidthContainer from "./MaxWidthContainer";
 
 export default function ServiceTimes() {
   const [serviceTimes, setServiceTimes] = useState<ServiceTime[] | undefined>();
@@ -24,27 +25,30 @@ export default function ServiceTimes() {
   }, []);
 
   return (
-    <div className="flex items-center wrapper md:gap-8">
-      <div className="w-full h-full flex flex-col gap-5">
-        <TitleBorderTop title={"Our Service Times"} />
+    <div className="wrapper blueGradient flex items-center py-10 md:gap-8">
+      <MaxWidthContainer className="flex h-full w-full flex-col gap-5">
+        <TitleBorderTop title={'Our Service Times'} />
         <ScrollArea className="w-full">
           <MotionDiv
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -200px 0px" }}
-            className="card-container w-full h-72 md:h-80 mb-3 flex item-center gap-5 overflow-hidden">
+            viewport={{ once: true, margin: '0px 0px -200px 0px' }}
+            className="card-container item-center mb-3 flex h-72 w-full gap-5 overflow-hidden md:h-80"
+          >
             {serviceTimes?.map((service, i) => {
-              const [startTime, startAmPm, endTime, endAmPm] =
-                service.service_period.split(" ");
+              const [startTime, startAmPm, endTime, endAmPm] = service.service_period.split(' ');
 
               return (
                 <MotionLink
                   variants={staggerFromRightItem}
                   key={i}
                   className="card"
-                  href="/about/service">
-                  <div className="absolute top-2 left-2 text-sm z-10 blueGradient rounded px-2 text-white">
+                  initial="hidden"
+                  whileInView="visible"
+                  href="/about/service"
+                >
+                  <div className="blueGradient absolute left-2 top-2 z-10 rounded px-2 text-sm text-white">
                     {`${startTime} ${startAmPm} - ${endTime} ${endAmPm}`}
                     {/* {service.service_name.toLowerCase() === "holy ghost service"
                       ? `${startTime} ${startAmPm} & Every First Friday of the Month`
@@ -52,19 +56,15 @@ export default function ServiceTimes() {
                   </div>
                   <div className="image relative h-1/2">
                     <ImageFill
-                      src={
-                        service.image_url || "/images/service-component-img.png"
-                      }
+                      src={service.image_url || '/images/service-component-img.png'}
                       className="rounded-t-md"
                     />
                   </div>
 
-                  <div className="card-content py-2 px-1 h-1/2">
-                    <p className="card-title font-bold capitalize">
-                      {service.service_name}
-                    </p>
+                  <div className="card-content h-1/2 px-1 py-2 bg-white text-black  rounded-b-md">
+                    <p className="card-title font-bold capitalize">{service.service_name}</p>
                     <div
-                      className="desc text-sm line-clamp-4 sm:text-[15px]"
+                      className="desc line-clamp-4 text-sm sm:text-[15px]"
                       dangerouslySetInnerHTML={{
                         __html: service?.service_description,
                       }}
@@ -78,7 +78,7 @@ export default function ServiceTimes() {
         </ScrollArea>
 
         <LearnMoreBtn url="/about/service" />
-      </div>
+      </MaxWidthContainer>
     </div>
   );
 }

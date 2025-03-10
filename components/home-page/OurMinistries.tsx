@@ -17,7 +17,7 @@ export default async function OurMinistries() {
   const ministries = await getMinistries("Ministry");
 
   return (
-    <div className=" flex flex-col gap-8  ">
+    <div className=" flex flex-col gap-8  py-10 ">
       <TitleBorderTop title="Our Ministries" />
       {/* ministries card container */}
       <ScrollArea className="w-full ">
@@ -44,7 +44,7 @@ export default async function OurMinistries() {
                   <FaUsers />
                 </div>
 
-                <div className="card-content space-y-2 pt-5 p-2 h-1/2">
+                <div className="card-content space-y-2 pt-5 p-2 h-1/2 text-black">
                   <h1 className="text-xl  capitalize " title={ministry?.name}>
                     {Truncate(ministry.name, 25)}
                   </h1>

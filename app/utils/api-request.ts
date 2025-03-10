@@ -350,7 +350,7 @@ export const get3Events = async () => {
       return;
     }
 
-    return events?.slice(0, 3);
+    return events?.slice(0, 4);
   } catch (error) {
     return;
   }
