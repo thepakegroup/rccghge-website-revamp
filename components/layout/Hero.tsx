@@ -527,7 +527,7 @@ export default function Hero() {
         }
         // EVENTS
         else if (pathname.endsWith("/events")) {
-          setImageUrl("/images/event-hero.webp");
+          setImageUrl("/images/event-hero.png");
           setContent(
             <HeroContent
               title="Our Upcoming Events"
