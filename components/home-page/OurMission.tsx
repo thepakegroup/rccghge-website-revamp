@@ -16,8 +16,8 @@ export default async function OurMission() {
 
 
   return (
-    <div className="flex sm:gap-10 lg:gap-14 ">
-      <div className="hidden lg:w-2/5 sm:w-4/5 sm:h-[340px]  relative  sm:block">
+    <div className="flex sm:gap-10 lg:gap-14  ">
+      <div className="hidden lg:w-2/5 sm:w-4/5 sm:h-[340px] relative  sm:block">
         {imgArr ? (
           <ImageFill src={imgArr[0]} className="" />
         ) : (

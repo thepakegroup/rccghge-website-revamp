@@ -16,7 +16,7 @@ export const navLinks = [
         url: "/ourPastors",
       },
       {
-        name: "Service",
+        name: "Services",
         url: "/service",
       },
       {

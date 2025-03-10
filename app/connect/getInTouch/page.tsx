@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 export default function page() {
   return (
-    <MaxWidthContainer className="page-spacing">
-      <div className="flex items-center justify-center">
+    <div className="page-spacing">
+      <MaxWidthContainer className="flex items-center justify-center">
         <MotionDiv
           variants={slideInFromBottom(1, 0)}
           initial="hidden"
@@ -26,8 +26,8 @@ export default function page() {
           </p>
           <ConnectDropdown />
         </MotionDiv>
-      </div>
+      </MaxWidthContainer>
       <GetConnected />
-    </MaxWidthContainer>
+    </div>
   );
 }

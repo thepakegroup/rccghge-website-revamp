@@ -7,7 +7,7 @@ import PageForm from "./PageForm";
 
 export default async function page() {
   return (
-    <MaxWidthContainer className=" page-spacing ">
+    <div className=" page-spacing ">
       <MotionDiv
         variants={slideInFromBottom(1, 0)}
         initial="hidden"
@@ -17,6 +17,6 @@ export default async function page() {
         <PageForm />
       </MotionDiv>
       <EventsBlock />
-    </MaxWidthContainer>
+    </div>
   );
 }

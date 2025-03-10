@@ -70,11 +70,11 @@ export default async function MinistriesLayout({
         </div>
 
         <LogoDivider />
-        <MaxWidthContainer
+        <div
           className={` ${params?.slug === "young-adult-ministry" ? "" : "wrapper"} mt-10 marker:text-black `}>
           <ScrollToTop />
           {children}
-        </MaxWidthContainer>
+        </div>
       </MotionDiv>
 
       <JoinUsForm params={params}  />

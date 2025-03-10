@@ -40,23 +40,21 @@ export default async function Home() {
       <div className="-my-5">
         <LogoDivider />
       </div>
+      {our_service_times === "true" && <ServiceTimes />}
+      {our_upcoming_events === "true" && <EventsBlock />}
       <MaxWidthContainer className=" page-spacing">
-        {our_service_times === "true" && <ServiceTimes />}
-        {our_upcoming_events === "true" && <EventsBlock />}
         <div className="wrapper ">
           {our_mission_vision === "true" && <OurMission />}
         </div>
       </MaxWidthContainer>
 
       <div className="wrapper bg-primary/5 py-5 ">
-        <MaxWidthContainer className="">
-          {our_ministries === "true" && <OurMinistries />}
-        </MaxWidthContainer>
+        {our_ministries === "true" && <OurMinistries />}
+      </div>
+      <div className="wrapper ">
+        {give_section && <GiveCTA give_section={give_section} />}
       </div>
       <MaxWidthContainer className=" page-spacing">
-        <div className="wrapper">
-          {give_section && <GiveCTA give_section={give_section} />}
-        </div>
         {/* download app image section */}
         <div className=" wrapper  flex lg:justify-center lg:items-center md:gap-20 flex-col sm:flex-row gap-5 md:py-10  relative">
           {/* image section */}
@@ -124,8 +122,8 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      <GetConnected />
       </MaxWidthContainer>
+      <GetConnected />
 
       <PrayerRequestForm />
     </MotionMain>

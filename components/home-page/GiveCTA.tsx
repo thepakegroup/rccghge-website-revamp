@@ -5,7 +5,7 @@ import { Skeleton } from "../ui/skeleton";
 export default async function GiveCTA({give_section}:{give_section:{give_header_text:string,give_subheading:string,give_bg_image:string}}) {
 
   return (
-    <div className=" sm:flex items-center h-80 lg:h-96 ">
+    <div className=" sm:flex items-center h-80 lg:h-96  ">
       <div className="h-full blueGradient text-white flex flex-col justify-center text-center items-center gap-3 px-5 lg:px-20 sm:w-1/2">
         <h1 className="text-2xl lg:text-3xl">
           {give_section.give_header_text}

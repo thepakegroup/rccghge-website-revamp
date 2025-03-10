@@ -41,6 +41,8 @@ export default function ServiceTimes() {
               return (
                 <MotionLink
                   variants={staggerFromRightItem}
+                  initial="hidden"
+                  whileInView="visible"
                   key={i}
                   className="card"
                   href="/about/service">
