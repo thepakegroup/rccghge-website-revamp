@@ -63,7 +63,6 @@ export default async function Page({
           className="ministries-card-container mx-auto  w-full pt-8 gap-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-start  ">
           {ministriesData?.map((item, i) => {
             let route = `/ourMinistries/${params.category}/${item.slug}`;
-    
 
             return (
               <Link
@@ -73,7 +72,7 @@ export default async function Page({
                 className="  relative  border-2  rounded-lg w-full md:h-80 hover:shadow-lg hover:shadow-gray-400 cursor-pointer translation-all duration-300 ">
                 <div className="card-img relative h-[200px] rounded-t-md ">
                   <ImageFill
-                    src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${item.banner}`}
+                    src={`${process.env.NEXT_PUBLIC_API_URL}/load-media/${item.banner}`}
                     className="rounded-t-md group-hover:opacity-30  "
                   />
                 </div>

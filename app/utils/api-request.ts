@@ -1,4 +1,4 @@
-import { onThisDay } from "@/lib/constants";
+import { API_URL, onThisDay } from "@/lib/constants";
 // ## GET REQUESTS ## //
 
 // HERO SECTION
@@ -72,7 +72,7 @@ export const getHeroContent = async (
 ): Promise<HeroContent | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`,
+      `${API_URL}/page-setting/info?name=${pageName}`,
       { ...onThisDay }
     );
     const heroContent = await res.json();
@@ -107,11 +107,12 @@ export const getPageDisplaySetting = async (
     | "our_story"
     | "our_pastors"
     | "our_beliefs"
-    | "rccghge_worldwide"|'prayer_request'
+    | "rccghge_worldwide"
+    | "prayer_request"
 ): Promise<DisplaySetting | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/page-setting/info?name=${pageName}`,
+      `${API_URL}/page-setting/info?name=${pageName}`,
       { ...onThisDay }
     );
     const displaySettings = await res.json();
@@ -141,7 +142,7 @@ export const getMinistries = async (
 ): Promise<Ministry[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`,
+      `${API_URL}/groups?category=${category}&page=1`,
       { ...onThisDay }
     );
     const ministryData = await res.json();
@@ -160,7 +161,7 @@ export const getMinistriesSlug = async (
 ): Promise<{ slug: string; name: string }[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/groups?category=${category}&page=1`,
+      `${API_URL}/groups?category=${category}&page=1`,
       { ...onThisDay }
     );
     const ministryData = await res.json();
@@ -192,7 +193,7 @@ export const getPageWriteUp = async (
 ): Promise<PageWriteUp | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/writeup/${slug}`,
+      `${API_URL}/writeup/${slug}`,
       { ...onThisDay }
     );
     const writeUpData = await res.json();
@@ -225,10 +226,9 @@ type Leader = {
 
 export const getAllLeaders = async (): Promise<Leader[] | undefined> => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leaders`,
-      { ...onThisDay }
-    );
+    const res = await fetch(`${API_URL}/leaders`, {
+      ...onThisDay,
+    });
     const leadersData = await res.json();
     if (!res.ok) {
       console.error(leadersData.message);
@@ -244,7 +244,7 @@ export const getSingleLeader = async (
 ): Promise<Leader | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/leader/${slug}`,
+      `${API_URL}/leader/${slug}`,
       { ...onThisDay }
     );
     const leaderData = await res.json();
@@ -260,7 +260,6 @@ export const getSingleLeader = async (
   }
 };
 
-
 // OUR MISSION
 type Mission = {
   id: number;
@@ -273,7 +272,7 @@ type Mission = {
 export const getOurMissions = async (): Promise<Mission[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-mission`,
+      `${API_URL}/oms/our-mission`,
       { ...onThisDay }
     );
     const missionsData = await res.json();
@@ -292,7 +291,7 @@ type Belief = Mission;
 export const getOurBeliefs = async (): Promise<Belief[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/oms/our-belief`,
+      `${API_URL}/oms/our-belief`,
       { ...onThisDay }
     );
     const ourBeliefData = await res.json();
@@ -328,7 +327,7 @@ export const getAllEvents = async (
 ): Promise<Event[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`,
+      `${API_URL}/events/1?search=${searchQuery}&date=${dateQuery}`,
       { ...onThisDay }
     );
     const eventData = await res.json();
@@ -370,7 +369,7 @@ export type ServiceTime = {
 export const getServiceTimes = async (): Promise<ServiceTime[] | undefined> => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/service-times`,
+      `${API_URL}/service-times`,
       { ...onThisDay }
     );
     if (!res.ok) {

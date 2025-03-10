@@ -10,10 +10,10 @@ export const EXTERNAL_MINISTRY_URLS = {
   Men: "https://rccghge.men.kouakoudomagni.com",
 };
 
-const apiUrl = process?.env?.NEXT_PUBLIC_STAGING_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-if (!apiUrl) {
+if (!API_URL) {
   throw new Error("API URL is not defined");
 }
 
-export { apiUrl };
+export { API_URL };

@@ -1,7 +1,5 @@
 "use server";
-import { onThisDay } from "@/lib/constants";
-
-
+import { API_URL, onThisDay } from "@/lib/constants";
 
 // ## POST REQUESTS ## //
 // SEND PRAYER REQUEST
@@ -15,7 +13,7 @@ type PrayerRequest = {
 export const sendPrayerRequest = async (data: PrayerRequest) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/create-prayer-request`,
+      `${API_URL}/create-prayer-request`,
       {
         method: "POST",
         headers: {
@@ -46,16 +44,13 @@ type RideRequest = {
 
 export const sendRideRequest = async (data: RideRequest) => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ride-request`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const res = await fetch(`${API_URL}/ride-request`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     if (!res.ok) {
       throw new Error("Failed to send ride request. Please try again.");
@@ -78,16 +73,13 @@ type Question = {
 
 export const sendQuestion = async (data: Question) => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/question`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const res = await fetch(`${API_URL}/question`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     if (!res.ok) {
       throw new Error("Failed to send question. Please try again.");
     }
@@ -109,16 +101,13 @@ type Newsletter = {
 
 export const subscribeNewsletter = async (data: Newsletter) => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/subscribe`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const res = await fetch(`${API_URL}/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     if (!res.ok) {
       throw new Error("Subscription Failed. Please try again.");
@@ -138,7 +127,7 @@ export const subscribeSermon = async (formData: FormData) => {
   if (!email) return;
   try {
     // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_STAGING_API_URL}/sermon-subscription`,
+    //   `${API_URL}/sermon-subscription`,
     //   {
     //     method: "POST",
     //     headers: {
@@ -152,8 +141,8 @@ export const subscribeSermon = async (formData: FormData) => {
     //   throw new Error("Subscription Failed. Please try again.");
     // }
     // await res.json();
-await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API delay
-return "Subscribed successfully";
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API delay
+    return "Subscribed successfully";
     return "Subscribed successfully";
   } catch (error) {
     console.error("subscription failed:", error);
@@ -178,16 +167,13 @@ type Connect = {
 
 export const connectWithUs = async (data: Connect) => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/new-connect`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const res = await fetch(`${API_URL}/new-connect`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     if (!res.ok) {
       throw new Error("Request Failed. Please try again.");
@@ -211,16 +197,13 @@ type JoinUs = {
 export const joinUs = async (data: JoinUs) => {
   // join-group
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/join-group`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const res = await fetch(`${API_URL}/join-group`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     if (!res.ok) {
       throw new Error("Request Failed. Please try again.");

@@ -56,7 +56,7 @@ export default async function page({ params }: { params: { slug: string } }) {
               <div className="box bg-primary rounded-lg absolute -top-2 sm: -left-2 w-52 h-1/2 aspect-square"></div>
 
               <ImageFill
-                src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${leader.profile_picture}`}
+                src={`${process.env.NEXT_PUBLIC_API_URL}/load-media/${leader.profile_picture}`}
                 className="z-10 rounded-lg"
               />
 

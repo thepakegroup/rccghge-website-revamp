@@ -1,6 +1,6 @@
 "use server";
 
-import { onThisDay } from "@/lib/constants";
+import { API_URL, onThisDay } from "@/lib/constants";
 import { HeroContent } from "./api-request";
 // Get youth ministry
 export type Team = {
@@ -68,7 +68,7 @@ type YoungAdultsContent = {
 export const getYoungAdultsContent = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/youth-page`,
+      `${API_URL}/ministry-page/youth-page`,
       { ...onThisDay }
     );
     const ministryData: YoungAdultsContent = await res
@@ -115,7 +115,7 @@ type ChildrenContent = {
 export const getChildrenContent = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/children-page`,
+      `${API_URL}/ministry-page/children-page`,
       { ...onThisDay }
     );
     const childrenContent: ChildrenContent = await res
@@ -136,7 +136,7 @@ export const getChildrenContent = async () => {
 export const getWellnessContent = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/wellness-page`,
+      `${API_URL}/ministry-page/wellness-page`,
       { ...onThisDay }
     );
     const wellnessContent: ChildrenContent = await res
@@ -157,7 +157,7 @@ export const getWellnessContent = async () => {
 export const getDramaContent = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/drama-page`,
+      `${API_URL}/ministry-page/drama-page`,
       { ...onThisDay }
     );
     const dramaContent: ChildrenContent = await res
@@ -179,7 +179,7 @@ type PrayerContent = Omit<ChildrenContent, "carousel">;
 export const getPrayerContent = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/prayer-page`,
+      `${API_URL}/ministry-page/prayer-page`,
       { ...onThisDay }
     );
     const prayerContent: PrayerContent = await res
@@ -200,7 +200,7 @@ export const getPrayerContent = async () => {
 export const getTeenageContent = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/teenage-page`,
+      `${API_URL}/ministry-page/teenage-page`,
       { ...onThisDay }
     );
     const teenageContent: ChildrenContent = await res
@@ -243,7 +243,7 @@ type MinistryOptions =
 export const getMinistryContent = async (ministry: MinistryOptions) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/common-1/${ministry}`,
+      `${API_URL}/ministry-page/common-1/${ministry}`,
       { ...onThisDay }
     );
     const pageContent: ChildrenContent = await res
@@ -277,7 +277,7 @@ type MinistryContent2 = ChildrenContent & {
 export const getMinistryContent2 = async (ministry: MinistryOption2) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STAGING_API_URL}/ministry-page/common-2/${ministry}`,
+      `${API_URL}/ministry-page/common-2/${ministry}`,
       { ...onThisDay }
     );
     const pageContent: MinistryContent2 = await res

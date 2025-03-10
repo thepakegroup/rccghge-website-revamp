@@ -22,7 +22,7 @@ export default async function OurMinistries() {
       {/* ministries card container */}
       <ScrollArea className="w-full ">
         <MotionDiv
-        variants={staggerContainer}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "0px 0px -200px 0px" }}
@@ -36,7 +36,7 @@ export default async function OurMinistries() {
                 href={`/ourMinistries/${ministry.category}/${ministry.slug}`}>
                 <div className="card-img relative h-1/2 ">
                   <ImageFill
-                    src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/load-media/${ministry.banner}`}
+                    src={`${process.env.NEXT_PUBLIC_API_URL}/load-media/${ministry.banner}`}
                     className=" rounded-t-md"
                   />
                 </div>

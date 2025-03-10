@@ -1,4 +1,4 @@
-This is [RCCGHGE revamped website](https://rccghge-website-revamp.vercel.app/) 
+This is [RCCGHGE revamped website](https://rccghge-website-revamp.vercel.app/)
 
 ## Getting Started
 
@@ -17,4 +17,5 @@ bun dev
 ```
 
 ## Environment variables
-NEXT_PUBLIC_STAGING_API_URL
+
+NEXT_PUBLIC_API_URL

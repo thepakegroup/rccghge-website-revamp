@@ -68,7 +68,7 @@ export default  function Page({
 
                   <ImageFill
                     // NOTE: change the src to event banner
-                    src={`${process.env.NEXT_PUBLIC_STAGING_API_URL}/event-image/${!!event.banner ? event.banner : ""}`}
+                    src={`${process.env.NEXT_PUBLIC_API_URL}/event-image/${!!event.banner ? event.banner : ""}`}
                     className="rounded-lg"
                   />
                 </div>
